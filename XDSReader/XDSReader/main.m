@@ -14,3 +14,21 @@ int main(int argc, char * argv[]) {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
+
+
+////MARK: - ABOUT UI
+//- (void)createUI{
+//    
+//}
+////MARK: - DELEGATE METHODS
+//
+////MARK: - ABOUT REQUEST
+//
+////MARK: - ABOUT EVENTS
+//
+////MARK: - OTHER PRIVATE METHODS
+//
+////MARK: - ABOUT MEMERY
+//- (void)dataInit{
+//
+//}

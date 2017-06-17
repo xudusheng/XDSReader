@@ -24,7 +24,6 @@
 #import "XDSReaderGlobleConst.h"
 #import "GTMNSString+HTML.h"
 #import "NSString+HTML.h"
-
 #import "XDSReaderUtil.h"
 #import "XDSReadConfig.h"
 #import "XDSReadParser.h"
@@ -35,5 +34,16 @@
 #import "XDSNoteModel.h"
 #import "XDSBookModel.h"
 #import "XDSReadOperation.h"
+
+#import "XDSMagnifierView.h"
+#import "XDSMenuTopView.h"
+#import "XDSMenuBottomView.h"
+#import "XDSMenuView.h"
+#import "XDSReadView.h"
+#import "XDSReaderDelegate.h"
+
+#import "XDSRightMenuViewController.h"
+#import "XDSReadViewController.h"
+#import "XDSReadPageViewController.h"
 
 #endif /* XDSReaderHeader_h */

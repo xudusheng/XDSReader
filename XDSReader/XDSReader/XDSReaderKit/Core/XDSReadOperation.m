@@ -100,34 +100,43 @@
 
 #pragma mark - ePub处理
 + (NSMutableArray *)ePubFileHandle:(NSString *)path{
+    //解压epub文件并返回解压文件夹的相对路径(根路径为document路径)
     NSString *ePubPath = [self unZip:path];
     if (!ePubPath) {
         return nil;
     }
+    
+    //获取opf文件的相对路径
     NSString *OPFPath = [self OPFPath:ePubPath];
     return [self parseOPF:OPFPath];
     
 }
-#pragma mark - 解压文件路径
+#pragma mark - 解压文件路径(相对路径)
 + (NSString *)unZip:(NSString *)path{
     ZipArchive *zip = [[ZipArchive alloc] init];
-    NSString *zipFile = [[path stringByDeletingPathExtension] lastPathComponent];
+    
     if ([zip UnzipOpenFile:path]) {
-        NSString *zipPath = [NSString stringWithFormat:@"%@/%@",NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject,zipFile];
+        //相对路径
+        NSString *zipFile_relativePath = [[path stringByDeletingPathExtension] lastPathComponent];
+        zipFile_relativePath = [EPUB_EXTRACTION_FOLDER stringByAppendingString:zipFile_relativePath];
+        zipFile_relativePath = [@"/" stringByAppendingString:zipFile_relativePath];
+        //完整路径
+        NSString *zipPath_fullPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:zipFile_relativePath];
         NSFileManager *filemanager=[[NSFileManager alloc] init];
-        if ([filemanager fileExistsAtPath:zipPath]) {
+        if ([filemanager fileExistsAtPath:zipPath_fullPath]) {
             NSError *error;
-            [filemanager removeItemAtPath:zipPath error:&error];
+            [filemanager removeItemAtPath:zipPath_fullPath error:&error];
         }
-        if ([zip UnzipFileTo:[NSString stringWithFormat:@"%@/",zipPath] overWrite:YES]) {
-            return zipPath;
+        if ([zip UnzipFileTo:[NSString stringWithFormat:@"%@/",zipPath_fullPath] overWrite:YES]) {
+            return zipFile_relativePath;
         }
     }
     return nil;
 }
 #pragma mark - OPF文件路径
 + (NSString *)OPFPath:(NSString *)epubPath{
-    NSString *containerPath = [NSString stringWithFormat:@"%@/META-INF/container.xml",epubPath];
+    NSString *epubExtractionFolderFullPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:epubPath];
+    NSString *containerPath = [epubExtractionFolderFullPath stringByAppendingString:@"/META-INF/container.xml"];
     //container.xml文件路径 通过container.xml获取到opf文件的路径
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     if ([fileManager fileExistsAtPath:containerPath]) {
@@ -160,7 +169,8 @@
 //    }
 //}
 #pragma mark - 解析OPF文件
-+ (NSMutableArray *)parseOPF:(NSString *)opfPath{
++ (NSMutableArray *)parseOPF:(NSString *)opfRelativePath{
+    NSString *opfPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:opfRelativePath];
     CXMLDocument* document = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:opfPath] options:0 error:nil];
     NSArray* itemsArray = [document nodesForXPath:@"//opf:item" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
     //opf文件的命名空间 xmlns="http://www.idpf.org/2007/opf" 需要取到某个节点设置命名空间的键为opf 用opf:节点来获取节点
@@ -170,7 +180,6 @@
         [itemDictionary setValue:[[element attributeForName:@"href"] stringValue] forKey:[[element attributeForName:@"id"] stringValue]];
         if([[[element attributeForName:@"media-type"] stringValue] isEqualToString:@"application/x-dtbncx+xml"]){
             ncxFile = [[element attributeForName:@"href"] stringValue]; //获取ncx文件名称 根据ncx获取书的目录
-            
         }
     }
     
@@ -201,12 +210,16 @@
             [titleDictionary setValue:[titleElement stringValue] forKey:href];
         }
     }
+    
+    NSString *chapterRelativeFolder = [opfRelativePath stringByDeletingLastPathComponent];
     NSArray* itemRefsArray = [document nodesForXPath:@"//opf:itemref" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
     NSMutableArray *chapters = [NSMutableArray array];
     for (CXMLElement* element in itemRefsArray){
         NSString* chapHref = [itemDictionary valueForKey:[[element attributeForName:@"idref"] stringValue]];
-        //        LSYChapterModel *model = [LSYChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",absolutePath,chapHref] title:[titleDictionary valueForKey:chapHref] imagePath:[opfPath stringByDeletingLastPathComponent]];
-        XDSChapterModel *model = [XDSChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",absolutePath,chapHref] title:[titleDictionary valueForKey:chapHref] imagePath:[[[opfPath stringByDeletingLastPathComponent]stringByAppendingPathComponent:chapHref] stringByDeletingLastPathComponent]];
+
+        XDSChapterModel *model = [XDSChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",chapterRelativeFolder,chapHref]
+                                                            title:[titleDictionary valueForKey:chapHref]
+                                                        imagePath:[[[opfRelativePath stringByDeletingLastPathComponent]stringByAppendingPathComponent:chapHref] stringByDeletingLastPathComponent]];
         [chapters addObject:model];
         
     }

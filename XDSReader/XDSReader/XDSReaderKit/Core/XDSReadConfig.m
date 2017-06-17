@@ -27,6 +27,7 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
     });
     return readConfig;
 }
+
 - (instancetype)init{
     if (self = [super init]) {
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kReadConfigEncodeKey];
@@ -59,7 +60,7 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
                       context:(void *)context{
     [XDSReadConfig updateLocalConfig:self];
 }
-+(void)updateLocalConfig:(XDSReadConfig *)config{
++ (void)updateLocalConfig:(XDSReadConfig *)config{
     NSMutableData *data=[[NSMutableData alloc]init];
     NSKeyedArchiver *archiver=[[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
     [archiver encodeObject:config forKey:kReadConfigEncodeKey];
@@ -73,8 +74,7 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
     [aCoder encodeObject:self.textColor forKey:kReadConfigTextColorEncodeKey];
     [aCoder encodeObject:self.theme forKey:kReadConfigThemeEncodeKey];
 }
--(id)initWithCoder:(NSCoder *)aDecoder
-{
+-(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
         self.fontSize = [aDecoder decodeDoubleForKey:kReadConfigFontSizeEncodeKey];

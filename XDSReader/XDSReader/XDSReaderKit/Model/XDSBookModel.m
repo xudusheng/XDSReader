@@ -10,17 +10,16 @@
 
 @implementation XDSBookModel
 
+NSString *const kBookModelResourceEncodeKey = @"resource";
 NSString *const kBookModelContentEncodeKey = @"content";
+NSString *const kBookModelBookTypeEncodeKey = @"bookType";
 NSString *const kBookModelMarksEncodeKey = @"marks";
 NSString *const kBookModelNotesEncodeKey = @"notes";
 NSString *const kBookModelChaptersEncodeKey = @"chapters";
-NSString *const kBookModelRecordEncodeKey = @"record";
-NSString *const kBookModelResourceEncodeKey = @"resource";
 NSString *const kBookModelMarksRecordEncodeKey = @"marksRecord";
-NSString *const kBookModelBookTypeEncodeKey = @"bookType";
+NSString *const kBookModelRecordEncodeKey = @"record";
 
--(instancetype)initWithContent:(NSString *)content
-{
+-(instancetype)initWithContent:(NSString *)content{
     self = [super init];
     if (self) {
         _content = content;
@@ -37,8 +36,7 @@ NSString *const kBookModelBookTypeEncodeKey = @"bookType";
     }
     return self;
 }
--(instancetype)initWithePub:(NSString *)ePubPath;
-{
+-(instancetype)initWithePub:(NSString *)ePubPath;{
     self = [super init];
     if (self) {
         _chapters = [XDSReadOperation ePubFileHandle:ePubPath];
@@ -85,8 +83,7 @@ NSString *const kBookModelBookTypeEncodeKey = @"bookType";
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-+(id)getLocalModelWithURL:(NSURL *)url
-{
++(id)getLocalModelWithURL:(NSURL *)url{
     NSString *key = [url.path lastPathComponent];
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     if (!data) {

@@ -37,15 +37,17 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     return self;
 }
 
-+(id)chapterWithEpub:(NSString *)chapterpath//章节路径
++ (id)chapterWithEpub:(NSString *)chapterpath//章节路径(相对路径)
                title:(NSString *)title//章节标题
-           imagePath:(NSString *)path{//图片路径
+           imagePath:(NSString *)imagePath{//图片路径（相对）
     XDSChapterModel *model = [[XDSChapterModel alloc] init];
     model.title = title;
-    model.epubImagePath = path;
+    model.epubImagePath = imagePath;
     model.bookType = XDSEBookTypeEpub;
     model.chapterpath = chapterpath;
-    NSString* html = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:chapterpath]] encoding:NSUTF8StringEncoding];
+    
+    NSString *chapterFullPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:chapterpath];
+    NSString* html = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:chapterFullPath]] encoding:NSUTF8StringEncoding];
     model.html = html;
     model.content = [html stringByConvertingHTMLToPlainText];
     [model parserEpubToDictionary];
@@ -57,8 +59,7 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     return model;
 }
 
--(void)parserEpubToDictionary
-{
+-(void)parserEpubToDictionary{
     NSMutableArray *array = [NSMutableArray array];
     NSMutableArray *imageArray = [NSMutableArray array];
     NSScanner *scanner = [NSScanner scannerWithString:self.content];
@@ -67,23 +68,22 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
         if ([scanner scanString:@"<img>" intoString:NULL]) {
             NSString *img;
             [scanner scanUpToString:@"</img>" intoString:&img];
-            NSString *imageString = [self.epubImagePath stringByAppendingPathComponent:img];
-            UIImage *image = [UIImage imageWithContentsOfFile:imageString];
+            NSString *imageRelativePath = [self.epubImagePath stringByAppendingPathComponent:img];
+            NSString *imageFullPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingPathComponent:imageRelativePath];
+            
+            UIImage *image = [UIImage imageWithContentsOfFile:imageFullPath];
             CGSize size = CGSizeMake((DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight),
                                      (DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight)/(DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom)*image.size.width);
             if (size.height>(DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom-20)) {
                 size.height = DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom-20
                 ;
             }
-            [array addObject:@{@"type":@"img",@"content":imageString?imageString:@"",@"width":@(size.width),@"height":@(size.height)}];
+            [array addObject:@{@"type":@"img",@"content":imageRelativePath?imageFullPath:@"",@"width":@(size.width),@"height":@(size.height)}];
             //存储图片信息
             XDSImageModel *imageData = [[XDSImageModel alloc] init];
-            imageData.url = imageString?imageString:@"";
+            imageData.url = imageRelativePath?imageFullPath:@"";
             imageData.position = newString.length;
-            //            imageData.imageRect = CGRectMake(0, 0, size.width, size.height);
             [imageArray addObject:imageData];
-            
-            //            [newString appendString:@" "];
             [scanner scanString:@"</img>" intoString:NULL];
         }
         else{
@@ -98,8 +98,7 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     self.imageArray = [imageArray copy];
     //    self.content = [newString copy];
 }
--(void)paginateEpubWithBounds:(CGRect)bounds
-{
+-(void)paginateEpubWithBounds:(CGRect)bounds{
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] init];
     for (NSDictionary *dic in _epubContent) {
         if ([dic[@"type"] isEqualToString:@"txt"]) {
@@ -175,8 +174,7 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     
     [self paginateWithBounds:rect];
 }
--(void)paginateWithBounds:(CGRect)bounds
-{
+-(void)paginateWithBounds:(CGRect)bounds{
     [_pageArray removeAllObjects];
     NSAttributedString *attrString;
     CTFramesetterRef frameSetter;

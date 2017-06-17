@@ -51,6 +51,14 @@
     
 }
 
++ (UIButton *)commonButtonSEL:(SEL)sel target:(id)target{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [button.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    [button setTintColor:[UIColor whiteColor]];
+    [button addTarget:target action:sel forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message{
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:({

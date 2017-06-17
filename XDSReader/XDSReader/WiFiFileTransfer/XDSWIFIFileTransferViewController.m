@@ -20,9 +20,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
+
 @property (assign, nonatomic)NSInteger fileCount;//文件数量  许杜生添加 2015.12.22
 @property (assign, nonatomic)UInt64 contentLength;//文件内容大小  许杜生添加 2015.12.22
 @property (assign, nonatomic)UInt64 downloadLength;//已下载的文件内容大小  许杜生添加 2015.12.22
+@property (copy, nonatomic)NSString *curentDownloadFileName;//正在下载的文件名称  许杜生添加 2016.06.25
+@property (assign, nonatomic)UInt64 curentDownloadFileCount;//第几个文件正在被下载  许杜生添加 2016.06.25
 
 //self.fileCount += 1;
 //self.contentLength = contentLength;
@@ -40,8 +43,18 @@
     [self XDSWIFIFileTransferViewControllerDataInit];
     [self createXDSWIFIFileTransferViewControllerUI];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveANewFileNotification:) name:kGetContentLengthNotificationName object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveDownloadProcessBodyDataNotification:) name:kDownloadProcessBodyDataNotificationName object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(receiveANewFileNotification:)
+                                                name:kGetContentLengthNotificationName
+                                              object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(receiveDownloadProcessBodyDataNotification:)
+                                                name:kDownloadProcessBodyDataNotificationName
+                                              object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(processStartOfPartWithHeaderNotification:)
+                                                name:kGetProcessStartOfPartWithHeaderNotificationName
+                                              object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -55,18 +68,24 @@
 - (void)receiveANewFileNotification:(NSNotification *)notification{
     NSLog(@"class = %@", notification.class);
     self.fileCount += 1;
-    self.contentLength = [notification.object longLongValue];
+    self.contentLength = [notification.object integerValue];
     self.downloadLength = 0;
 }
 
 - (void)receiveDownloadProcessBodyDataNotification:(NSNotification *)notification{
-    self.downloadLength += [notification.object length];
+    self.downloadLength += [notification.object integerValue];
     // 主线程执行
     dispatch_async(dispatch_get_main_queue(), ^{
         // something
         _progressView.progress = (double)_downloadLength/_contentLength;
-        _progressLabel.text = [NSString stringWithFormat:NSLocalizedString(@"XDSWIFIFileTransferUploadingText", nil) , _fileCount, (NSInteger)(_progressView.progress * 100)];
+        _progressLabel.text = [NSString stringWithFormat:@"正在下载第%zd文件：%@ %zd%%", _fileCount, _curentDownloadFileName, (NSInteger)(_progressView.progress * 100)];
+
     });
+    
+}
+- (void)processStartOfPartWithHeaderNotification:(NSNotification *)notification{
+    _curentDownloadFileName = notification.object;
+    _curentDownloadFileCount += 1;
 }
 #pragma mark - UI相关
 - (void)createXDSWIFIFileTransferViewControllerUI{

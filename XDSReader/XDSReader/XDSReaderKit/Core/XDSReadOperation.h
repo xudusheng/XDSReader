@@ -12,8 +12,6 @@
 
 + (void)separateChapter:(NSMutableArray **)chapters content:(NSString *)content;
 
-
-
 /**
  * ePub格式处理
  * 返回章节信息数组

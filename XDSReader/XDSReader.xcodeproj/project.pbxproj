@@ -80,6 +80,27 @@
 		FCA78B9F1EF2E18100114907 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B981EF2E18100114907 /* zip.c */; };
 		FCA78BA01EF2E18100114907 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B9B1EF2E18100114907 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FCA78BA31EF2E37200114907 /* XDSReaderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BA21EF2E37200114907 /* XDSReaderUtil.m */; };
+		FCA78BA61EF3603A00114907 /* XDSReadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BA51EF3603A00114907 /* XDSReadManager.m */; };
+		FCA78BA91EF362CA00114907 /* XDSMagnifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BA81EF362CA00114907 /* XDSMagnifierView.m */; };
+		FCA78BAC1EF3639400114907 /* XDSMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BAB1EF3639400114907 /* XDSMenuView.m */; };
+		FCA78BB01EF3646D00114907 /* XDSMenuTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BAF1EF3646D00114907 /* XDSMenuTopView.m */; };
+		FCA78BB31EF3647900114907 /* XDSMenuBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BB21EF3647900114907 /* XDSMenuBottomView.m */; };
+		FCA78BB61EF372B800114907 /* XDSRightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BB51EF372B800114907 /* XDSRightMenuViewController.m */; };
+		FCA78BB91EF375D900114907 /* XDSReadView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BB81EF375D900114907 /* XDSReadView.m */; };
+		FCA78BBC1EF3770600114907 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BBB1EF3770600114907 /* XDSReadPageViewController.m */; };
+		FCA78BBF1EF3771400114907 /* XDSReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BBE1EF3771400114907 /* XDSReadViewController.m */; };
+		FCA78BC21EF39B6000114907 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */; };
+		FCA78BCF1EF3A2D600114907 /* 细说明朝.epub in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC41EF3A2D600114907 /* 细说明朝.epub */; };
+		FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */; };
+		FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC61EF3A2D600114907 /* mdjyml.txt */; };
+		FCA78BD21EF3A2D700114907 /* sale_discount_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */; };
+		FCA78BD31EF3A2D700114907 /* ic_add.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC81EF3A2D600114907 /* ic_add.png */; };
+		FCA78BD41EF3A2D700114907 /* reader_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC91EF3A2D600114907 /* reader_more@2x.png */; };
+		FCA78BD51EF3A2D700114907 /* bg_back_white.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCA1EF3A2D600114907 /* bg_back_white.png */; };
+		FCA78BD61EF3A2D700114907 /* bg_back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCB1EF3A2D600114907 /* bg_back_white@2x.png */; };
+		FCA78BD71EF3A2D700114907 /* reader_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCC1EF3A2D600114907 /* reader_cover@2x.png */; };
+		FCA78BD81EF3A2D700114907 /* r_drag-dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCD1EF3A2D600114907 /* r_drag-dot@2x.png */; };
+		FCA78BD91EF3A2D700114907 /* bt_tjcp_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCE1EF3A2D600114907 /* bt_tjcp_no@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +247,38 @@
 		FCA78B9B1EF2E18100114907 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
 		FCA78BA11EF2E37200114907 /* XDSReaderUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderUtil.h; sourceTree = "<group>"; };
 		FCA78BA21EF2E37200114907 /* XDSReaderUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReaderUtil.m; sourceTree = "<group>"; };
+		FCA78BA41EF3603A00114907 /* XDSReadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadManager.h; sourceTree = "<group>"; };
+		FCA78BA51EF3603A00114907 /* XDSReadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadManager.m; sourceTree = "<group>"; };
+		FCA78BA71EF362CA00114907 /* XDSMagnifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMagnifierView.h; sourceTree = "<group>"; };
+		FCA78BA81EF362CA00114907 /* XDSMagnifierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMagnifierView.m; sourceTree = "<group>"; };
+		FCA78BAA1EF3639400114907 /* XDSMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMenuView.h; sourceTree = "<group>"; };
+		FCA78BAB1EF3639400114907 /* XDSMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMenuView.m; sourceTree = "<group>"; };
+		FCA78BAD1EF363DD00114907 /* XDSReaderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSReaderDelegate.h; sourceTree = "<group>"; };
+		FCA78BAE1EF3646D00114907 /* XDSMenuTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMenuTopView.h; sourceTree = "<group>"; };
+		FCA78BAF1EF3646D00114907 /* XDSMenuTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMenuTopView.m; sourceTree = "<group>"; };
+		FCA78BB11EF3647900114907 /* XDSMenuBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMenuBottomView.h; sourceTree = "<group>"; };
+		FCA78BB21EF3647900114907 /* XDSMenuBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMenuBottomView.m; sourceTree = "<group>"; };
+		FCA78BB41EF372B800114907 /* XDSRightMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSRightMenuViewController.h; sourceTree = "<group>"; };
+		FCA78BB51EF372B800114907 /* XDSRightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSRightMenuViewController.m; sourceTree = "<group>"; };
+		FCA78BB71EF375D900114907 /* XDSReadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadView.h; sourceTree = "<group>"; };
+		FCA78BB81EF375D900114907 /* XDSReadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadView.m; sourceTree = "<group>"; };
+		FCA78BBA1EF3770600114907 /* XDSReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadPageViewController.h; sourceTree = "<group>"; };
+		FCA78BBB1EF3770600114907 /* XDSReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadPageViewController.m; sourceTree = "<group>"; };
+		FCA78BBD1EF3771400114907 /* XDSReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadViewController.h; sourceTree = "<group>"; };
+		FCA78BBE1EF3771400114907 /* XDSReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadViewController.m; sourceTree = "<group>"; };
+		FCA78BC01EF39B6000114907 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		FCA78BC41EF3A2D600114907 /* 细说明朝.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "细说明朝.epub"; sourceTree = "<group>"; };
+		FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "每天懂一点好玩心理学.epub"; sourceTree = "<group>"; };
+		FCA78BC61EF3A2D600114907 /* mdjyml.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdjyml.txt; sourceTree = "<group>"; };
+		FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sale_discount_yellow.png; sourceTree = "<group>"; };
+		FCA78BC81EF3A2D600114907 /* ic_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add.png; sourceTree = "<group>"; };
+		FCA78BC91EF3A2D600114907 /* reader_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_more@2x.png"; sourceTree = "<group>"; };
+		FCA78BCA1EF3A2D600114907 /* bg_back_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_back_white.png; sourceTree = "<group>"; };
+		FCA78BCB1EF3A2D600114907 /* bg_back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_back_white@2x.png"; sourceTree = "<group>"; };
+		FCA78BCC1EF3A2D600114907 /* reader_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_cover@2x.png"; sourceTree = "<group>"; };
+		FCA78BCD1EF3A2D600114907 /* r_drag-dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "r_drag-dot@2x.png"; sourceTree = "<group>"; };
+		FCA78BCE1EF3A2D600114907 /* bt_tjcp_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_tjcp_no@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -431,6 +484,7 @@
 		FCA78AD61EF2916700114907 /* XDSReaderKit */ = {
 			isa = PBXGroup;
 			children = (
+				FCA78BC31EF3A2CF00114907 /* Resource */,
 				FCA78B351EF2932200114907 /* External */,
 				FCA78AD71EF2916700114907 /* Core */,
 				FCA78B101EF2916700114907 /* Model */,
@@ -451,6 +505,8 @@
 				FCA78B3E1EF293F300114907 /* XDSReadParser.m */,
 				FCA78B4C1EF2DD9200114907 /* XDSReadOperation.h */,
 				FCA78B4D1EF2DD9200114907 /* XDSReadOperation.m */,
+				FCA78BA41EF3603A00114907 /* XDSReadManager.h */,
+				FCA78BA51EF3603A00114907 /* XDSReadManager.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -479,6 +535,7 @@
 				FCA78B151EF2916700114907 /* XDSReaderGlobleConst.m */,
 				FCA78BA11EF2E37200114907 /* XDSReaderUtil.h */,
 				FCA78BA21EF2E37200114907 /* XDSReaderUtil.m */,
+				FCA78BAD1EF363DD00114907 /* XDSReaderDelegate.h */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -486,6 +543,16 @@
 		FCA78B161EF2916700114907 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FCA78BA71EF362CA00114907 /* XDSMagnifierView.h */,
+				FCA78BA81EF362CA00114907 /* XDSMagnifierView.m */,
+				FCA78BAA1EF3639400114907 /* XDSMenuView.h */,
+				FCA78BAB1EF3639400114907 /* XDSMenuView.m */,
+				FCA78BAE1EF3646D00114907 /* XDSMenuTopView.h */,
+				FCA78BAF1EF3646D00114907 /* XDSMenuTopView.m */,
+				FCA78BB11EF3647900114907 /* XDSMenuBottomView.h */,
+				FCA78BB21EF3647900114907 /* XDSMenuBottomView.m */,
+				FCA78BB71EF375D900114907 /* XDSReadView.h */,
+				FCA78BB81EF375D900114907 /* XDSReadView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -493,6 +560,12 @@
 		FCA78B171EF2916700114907 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FCA78BB41EF372B800114907 /* XDSRightMenuViewController.h */,
+				FCA78BB51EF372B800114907 /* XDSRightMenuViewController.m */,
+				FCA78BBD1EF3771400114907 /* XDSReadViewController.h */,
+				FCA78BBE1EF3771400114907 /* XDSReadViewController.m */,
+				FCA78BBA1EF3770600114907 /* XDSReadPageViewController.h */,
+				FCA78BBB1EF3770600114907 /* XDSReadPageViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -515,6 +588,8 @@
 				FCA78B3B1EF2935200114907 /* GTMNSString+HTML.m */,
 				FCA78B361EF2933E00114907 /* NSString+HTML.h */,
 				FCA78B371EF2933E00114907 /* NSString+HTML.m */,
+				FCA78BC01EF39B6000114907 /* UIImage+ImageEffects.h */,
+				FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -597,6 +672,24 @@
 			path = minizip;
 			sourceTree = "<group>";
 		};
+		FCA78BC31EF3A2CF00114907 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FCA78BC41EF3A2D600114907 /* 细说明朝.epub */,
+				FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */,
+				FCA78BC61EF3A2D600114907 /* mdjyml.txt */,
+				FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */,
+				FCA78BC81EF3A2D600114907 /* ic_add.png */,
+				FCA78BC91EF3A2D600114907 /* reader_more@2x.png */,
+				FCA78BCA1EF3A2D600114907 /* bg_back_white.png */,
+				FCA78BCB1EF3A2D600114907 /* bg_back_white@2x.png */,
+				FCA78BCC1EF3A2D600114907 /* reader_cover@2x.png */,
+				FCA78BCD1EF3A2D600114907 /* r_drag-dot@2x.png */,
+				FCA78BCE1EF3A2D600114907 /* bt_tjcp_no@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -628,6 +721,7 @@
 				TargetAttributes = {
 					FCA78A4C1EF290F400114907 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 85W725W7AQ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -657,13 +751,24 @@
 			files = (
 				FCA78AD01EF2914F00114907 /* index.html in Resources */,
 				FCA78A601EF290F400114907 /* LaunchScreen.storyboard in Resources */,
+				FCA78BD71EF3A2D700114907 /* reader_cover@2x.png in Resources */,
 				FCA78AD21EF2914F00114907 /* wifi.png in Resources */,
 				FCA78A5D1EF290F400114907 /* Assets.xcassets in Resources */,
+				FCA78BD51EF3A2D700114907 /* bg_back_white.png in Resources */,
+				FCA78BD41EF3A2D700114907 /* reader_more@2x.png in Resources */,
+				FCA78BD61EF3A2D700114907 /* bg_back_white@2x.png in Resources */,
+				FCA78BCF1EF3A2D600114907 /* 细说明朝.epub in Resources */,
+				FCA78BD21EF3A2D700114907 /* sale_discount_yellow.png in Resources */,
+				FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */,
 				FCA78AD11EF2914F00114907 /* upload.html in Resources */,
+				FCA78BD91EF3A2D700114907 /* bt_tjcp_no@2x.png in Resources */,
 				FCA78AB31EF2914F00114907 /* About.txt in Resources */,
+				FCA78BD81EF3A2D700114907 /* r_drag-dot@2x.png in Resources */,
 				FCA78A5B1EF290F400114907 /* Main.storyboard in Resources */,
+				FCA78BD31EF3A2D700114907 /* ic_add.png in Resources */,
 				FCA78ABD1EF2914F00114907 /* README.txt in Resources */,
 				FCA78AD51EF2914F00114907 /* XDSWIFIFileTransferViewController.xib in Resources */,
+				FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */,
 				FCA78AB51EF2914F00114907 /* About.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,8 +789,10 @@
 				FCA78B811EF2DEB500114907 /* CXMLElement.m in Sources */,
 				FCA78B851EF2DEB500114907 /* CXMLNode.m in Sources */,
 				FCA78AC11EF2914F00114907 /* HTTPAuthenticationRequest.m in Sources */,
+				FCA78BA91EF362CA00114907 /* XDSMagnifierView.m in Sources */,
 				FCA78B7C1EF2DEB500114907 /* CXMLDocument_CreationExtensions.m in Sources */,
 				FCA78AB41EF2914F00114907 /* GCDAsyncSocket.m in Sources */,
+				FCA78BB61EF372B800114907 /* XDSRightMenuViewController.m in Sources */,
 				FCA78A581EF290F400114907 /* ViewController.m in Sources */,
 				FCA78B481EF2994200114907 /* XDSNoteModel.m in Sources */,
 				FCA78ACC1EF2914F00114907 /* HTTPFileResponse.m in Sources */,
@@ -694,17 +801,23 @@
 				FCA78BA01EF2E18100114907 /* ZipArchive.mm in Sources */,
 				FCA78B9D1EF2E18100114907 /* mztools.c in Sources */,
 				FCA78B9E1EF2E18100114907 /* unzip.c in Sources */,
+				FCA78BA61EF3603A00114907 /* XDSReadManager.m in Sources */,
 				FCA78AC31EF2914F00114907 /* HTTPMessage.m in Sources */,
 				FCA78ACD1EF2914F00114907 /* HTTPRedirectResponse.m in Sources */,
 				FCA78B7F1EF2DEB500114907 /* CXMLDocument.m in Sources */,
 				FCA78B831EF2DEB500114907 /* CXMLElement_ElementTreeExtensions.m in Sources */,
+				FCA78BB01EF3646D00114907 /* XDSMenuTopView.m in Sources */,
 				FCA78AB71EF2914F00114907 /* DDASLLogger.m in Sources */,
+				FCA78BAC1EF3639400114907 /* XDSMenuView.m in Sources */,
 				FCA78B191EF2916700114907 /* XDSReadConfig.m in Sources */,
 				FCA78ACF1EF2914F00114907 /* MyHTTPConnection.m in Sources */,
+				FCA78BBF1EF3771400114907 /* XDSReadViewController.m in Sources */,
+				FCA78BC21EF39B6000114907 /* UIImage+ImageEffects.m in Sources */,
 				FCA78ACA1EF2914F00114907 /* HTTPDynamicFileResponse.m in Sources */,
 				FCA78ABB1EF2914F00114907 /* ContextFilterLogFormatter.m in Sources */,
 				FCA78BA31EF2E37200114907 /* XDSReaderUtil.m in Sources */,
 				FCA78B7D1EF2DEB500114907 /* CXMLNode_CreationExtensions.m in Sources */,
+				FCA78BBC1EF3770600114907 /* XDSReadPageViewController.m in Sources */,
 				FCA78ABA1EF2914F00114907 /* DDTTYLogger.m in Sources */,
 				FCA78AB81EF2914F00114907 /* DDFileLogger.m in Sources */,
 				FCA78B381EF2933E00114907 /* NSString+HTML.m in Sources */,
@@ -717,6 +830,7 @@
 				FCA78B421EF2965C00114907 /* XDSRecordModel.m in Sources */,
 				FCA78B4E1EF2DD9200114907 /* XDSReadOperation.m in Sources */,
 				FCA78ACB1EF2914F00114907 /* HTTPErrorResponse.m in Sources */,
+				FCA78BB91EF375D900114907 /* XDSReadView.m in Sources */,
 				FCA78B311EF2916700114907 /* XDSReaderGlobleConst.m in Sources */,
 				FCA78B861EF2DEB500114907 /* CXMLNode_PrivateExtensions.m in Sources */,
 				FCA78B9C1EF2E18100114907 /* ioapi.c in Sources */,
@@ -729,6 +843,7 @@
 				FCA78AD31EF2914F00114907 /* XDSIPHelper.m in Sources */,
 				FCA78B3C1EF2935200114907 /* GTMNSString+HTML.m in Sources */,
 				FCA78AC81EF2914F00114907 /* HTTPAsyncFileResponse.m in Sources */,
+				FCA78BB31EF3647900114907 /* XDSMenuBottomView.m in Sources */,
 				FCA78ABF1EF2914F00114907 /* DDNumber.m in Sources */,
 				FCA78B451EF2986800114907 /* XDSMarkModel.m in Sources */,
 				FCA78ABE1EF2914F00114907 /* DDData.m in Sources */,
@@ -858,9 +973,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 85W725W7AQ;
 				GCC_PREFIX_HEADER = XDSReader/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = " ${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = XDSReader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.XDSReader;
@@ -872,9 +989,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 85W725W7AQ;
 				GCC_PREFIX_HEADER = XDSReader/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = " ${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = XDSReader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.XDSReader;
@@ -901,6 +1020,7 @@
 				FCA78A661EF290F400114907 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

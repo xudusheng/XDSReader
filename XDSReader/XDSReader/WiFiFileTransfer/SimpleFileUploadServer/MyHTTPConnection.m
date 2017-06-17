@@ -126,7 +126,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
     parser.delegate = self;
 	uploadedFiles = [[NSMutableArray alloc] init];
     
-//    NSLog(@"prepareForBodyWithSize = %zd", contentLength);
+    NSLog(@"prepareForBodyWithSize = %zd", contentLength);
 }
 
 #pragma mark - 00003（每次下载的文件大小）
@@ -136,9 +136,8 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
     // append data to the parser. It will invoke callbacks to let us handle
     // parsed data.
     [parser appendData:postDataChunk];
-//    NSLog(@"processBodyData = %zd",postDataChunk.length);
-//    [[NSNotificationCenter defaultCenter] postNotificationName:kDownloadProcessBodyDataNotificationName object:postDataChunk];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDownloadProcessBodyDataNotificationName object:postDataChunk userInfo:@{kDownloadProcessBodyDataNotificationName:postDataChunk}];
+    NSLog(@"processBodyData = %zd",postDataChunk.length);
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDownloadProcessBodyDataNotificationName object:@(postDataChunk.length) userInfo:@{kDownloadProcessBodyDataNotificationName:@(postDataChunk.length)}];
 }
 
 
@@ -149,17 +148,20 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
 - (void) processStartOfPartWithHeader:(MultipartMessageHeader*) header {
 	// in this sample, we are not interested in parts, other then file parts.
 	// check content disposition to find out filename
-
+    NSLog(@"processStartOfPartWithHeader = %@", header.fields);
     MultipartMessageHeaderField* disposition = [header.fields objectForKey:@"Content-Disposition"];
 	NSString* filename = [[disposition.params objectForKey:@"filename"] lastPathComponent];
+
     if ( (nil == filename) || [filename isEqualToString: @""] ) {
         // it's either not a file part, or
 		// an empty form sent. we won't handle it.
 		return;
-	}    
+	}
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kGetProcessStartOfPartWithHeaderNotificationName object:filename userInfo:@{kGetProcessStartOfPartWithHeaderNotificationName:filename}];
+
 	NSString* uploadDirPath = [[config documentRoot] stringByAppendingPathComponent:@"upload"];
     NSLog(@"uploadDirPath = %@", uploadDirPath);
-    NSLog(@"processStartOfPartWithHeader = %@", header.fields);
     
 	BOOL isDir = YES;
 	if (![[NSFileManager defaultManager]fileExistsAtPath:uploadDirPath isDirectory:&isDir ]) {
