@@ -15,20 +15,22 @@ int main(int argc, char * argv[]) {
     }
 }
 
-
-////MARK: - ABOUT UI
+////MARK: -  override super method
+//
+////MARK: - ABOUT UI UI相关
 //- (void)createUI{
 //    
 //}
-////MARK: - DELEGATE METHODS
+////MARK: - DELEGATE METHODS 代理方法
 //
-////MARK: - ABOUT REQUEST
+////MARK: - ABOUT REQUEST 网络请求
 //
-////MARK: - ABOUT EVENTS
+////MARK: - ABOUT EVENTS 事件响应
 //
-////MARK: - OTHER PRIVATE METHODS
+////MARK: - OTHER PRIVATE METHODS 私有方法
 //
-////MARK: - ABOUT MEMERY
+////MARK: - ABOUT MEMERY 内存管理
 //- (void)dataInit{
 //
 //}
+

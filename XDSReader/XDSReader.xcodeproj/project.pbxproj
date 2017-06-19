@@ -101,6 +101,16 @@
 		FCA78BD71EF3A2D700114907 /* reader_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCC1EF3A2D600114907 /* reader_cover@2x.png */; };
 		FCA78BD81EF3A2D700114907 /* r_drag-dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCD1EF3A2D600114907 /* r_drag-dot@2x.png */; };
 		FCA78BD91EF3A2D700114907 /* bt_tjcp_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCE1EF3A2D600114907 /* bt_tjcp_no@2x.png */; };
+		FCA78BDF1EF585FC00114907 /* XDSReadMenuBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BDE1EF585FC00114907 /* XDSReadMenuBottomView.m */; };
+		FCA78BE31EF5F6AA00114907 /* LPPReadMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BE21EF5F6AA00114907 /* LPPReadMenu.m */; };
+		FCA78BE61EF6D6FE00114907 /* LPPMenuBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BE51EF6D6FE00114907 /* LPPMenuBottomView.m */; };
+		FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BE71EF7592100114907 /* XDSReadMenu.xcassets */; };
+		FCA78BEB1EF75CB300114907 /* LPPReadViewConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BEA1EF75CB300114907 /* LPPReadViewConst.m */; };
+		FCA78BF51EF7B2FB00114907 /* LPPReadSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BF41EF7B2FB00114907 /* LPPReadSettingView.m */; };
+		FCA78BF81EF7B67700114907 /* LPPReadRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BF71EF7B67700114907 /* LPPReadRootView.m */; };
+		FCA78BFA1EF7BC2800114907 /* LPPReadSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BF91EF7BC2800114907 /* LPPReadSettingView.xib */; };
+		FCA78BFD1EF7CA5A00114907 /* LPPHaloButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BFC1EF7CA5A00114907 /* LPPHaloButton.m */; };
+		FCA78C011EF7CEA200114907 /* UIView+YGPulseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C001EF7CEA200114907 /* UIView+YGPulseView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -279,6 +289,24 @@
 		FCA78BCC1EF3A2D600114907 /* reader_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_cover@2x.png"; sourceTree = "<group>"; };
 		FCA78BCD1EF3A2D600114907 /* r_drag-dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "r_drag-dot@2x.png"; sourceTree = "<group>"; };
 		FCA78BCE1EF3A2D600114907 /* bt_tjcp_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_tjcp_no@2x.png"; sourceTree = "<group>"; };
+		FCA78BDD1EF585FC00114907 /* XDSReadMenuBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadMenuBottomView.h; sourceTree = "<group>"; };
+		FCA78BDE1EF585FC00114907 /* XDSReadMenuBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadMenuBottomView.m; sourceTree = "<group>"; };
+		FCA78BE11EF5F6AA00114907 /* LPPReadMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPReadMenu.h; sourceTree = "<group>"; };
+		FCA78BE21EF5F6AA00114907 /* LPPReadMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPReadMenu.m; sourceTree = "<group>"; };
+		FCA78BE41EF6D6FE00114907 /* LPPMenuBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPMenuBottomView.h; sourceTree = "<group>"; };
+		FCA78BE51EF6D6FE00114907 /* LPPMenuBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPMenuBottomView.m; sourceTree = "<group>"; };
+		FCA78BE71EF7592100114907 /* XDSReadMenu.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = XDSReadMenu.xcassets; sourceTree = "<group>"; };
+		FCA78BE91EF75CB300114907 /* LPPReadViewConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPReadViewConst.h; sourceTree = "<group>"; };
+		FCA78BEA1EF75CB300114907 /* LPPReadViewConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPReadViewConst.m; sourceTree = "<group>"; };
+		FCA78BF31EF7B2FB00114907 /* LPPReadSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPReadSettingView.h; sourceTree = "<group>"; };
+		FCA78BF41EF7B2FB00114907 /* LPPReadSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPReadSettingView.m; sourceTree = "<group>"; };
+		FCA78BF61EF7B67700114907 /* LPPReadRootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPReadRootView.h; sourceTree = "<group>"; };
+		FCA78BF71EF7B67700114907 /* LPPReadRootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPReadRootView.m; sourceTree = "<group>"; };
+		FCA78BF91EF7BC2800114907 /* LPPReadSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPPReadSettingView.xib; sourceTree = "<group>"; };
+		FCA78BFB1EF7CA5A00114907 /* LPPHaloButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPHaloButton.h; sourceTree = "<group>"; };
+		FCA78BFC1EF7CA5A00114907 /* LPPHaloButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPHaloButton.m; sourceTree = "<group>"; };
+		FCA78BFF1EF7CEA200114907 /* UIView+YGPulseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YGPulseView.h"; sourceTree = "<group>"; };
+		FCA78C001EF7CEA200114907 /* UIView+YGPulseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YGPulseView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +341,7 @@
 		FCA78A4F1EF290F400114907 /* XDSReader */ = {
 			isa = PBXGroup;
 			children = (
+				FCA78BE01EF5F40200114907 /* XDSReadMenu */,
 				FCA78AD61EF2916700114907 /* XDSReaderKit */,
 				FCA78A681EF2914F00114907 /* WiFiFileTransfer */,
 				FCA78A531EF290F400114907 /* AppDelegate.h */,
@@ -553,6 +582,8 @@
 				FCA78BB21EF3647900114907 /* XDSMenuBottomView.m */,
 				FCA78BB71EF375D900114907 /* XDSReadView.h */,
 				FCA78BB81EF375D900114907 /* XDSReadView.m */,
+				FCA78BDD1EF585FC00114907 /* XDSReadMenuBottomView.h */,
+				FCA78BDE1EF585FC00114907 /* XDSReadMenuBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -690,6 +721,37 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		FCA78BE01EF5F40200114907 /* XDSReadMenu */ = {
+			isa = PBXGroup;
+			children = (
+				FCA78BFE1EF7CEA200114907 /* YGPulseView */,
+				FCA78BF61EF7B67700114907 /* LPPReadRootView.h */,
+				FCA78BF71EF7B67700114907 /* LPPReadRootView.m */,
+				FCA78BE11EF5F6AA00114907 /* LPPReadMenu.h */,
+				FCA78BE21EF5F6AA00114907 /* LPPReadMenu.m */,
+				FCA78BE41EF6D6FE00114907 /* LPPMenuBottomView.h */,
+				FCA78BE51EF6D6FE00114907 /* LPPMenuBottomView.m */,
+				FCA78BF31EF7B2FB00114907 /* LPPReadSettingView.h */,
+				FCA78BF41EF7B2FB00114907 /* LPPReadSettingView.m */,
+				FCA78BFB1EF7CA5A00114907 /* LPPHaloButton.h */,
+				FCA78BFC1EF7CA5A00114907 /* LPPHaloButton.m */,
+				FCA78BF91EF7BC2800114907 /* LPPReadSettingView.xib */,
+				FCA78BE71EF7592100114907 /* XDSReadMenu.xcassets */,
+				FCA78BE91EF75CB300114907 /* LPPReadViewConst.h */,
+				FCA78BEA1EF75CB300114907 /* LPPReadViewConst.m */,
+			);
+			path = XDSReadMenu;
+			sourceTree = "<group>";
+		};
+		FCA78BFE1EF7CEA200114907 /* YGPulseView */ = {
+			isa = PBXGroup;
+			children = (
+				FCA78BFF1EF7CEA200114907 /* UIView+YGPulseView.h */,
+				FCA78C001EF7CEA200114907 /* UIView+YGPulseView.m */,
+			);
+			path = YGPulseView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -753,10 +815,12 @@
 				FCA78A601EF290F400114907 /* LaunchScreen.storyboard in Resources */,
 				FCA78BD71EF3A2D700114907 /* reader_cover@2x.png in Resources */,
 				FCA78AD21EF2914F00114907 /* wifi.png in Resources */,
+				FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */,
 				FCA78A5D1EF290F400114907 /* Assets.xcassets in Resources */,
 				FCA78BD51EF3A2D700114907 /* bg_back_white.png in Resources */,
 				FCA78BD41EF3A2D700114907 /* reader_more@2x.png in Resources */,
 				FCA78BD61EF3A2D700114907 /* bg_back_white@2x.png in Resources */,
+				FCA78BFA1EF7BC2800114907 /* LPPReadSettingView.xib in Resources */,
 				FCA78BCF1EF3A2D600114907 /* 细说明朝.epub in Resources */,
 				FCA78BD21EF3A2D700114907 /* sale_discount_yellow.png in Resources */,
 				FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */,
@@ -793,6 +857,7 @@
 				FCA78B7C1EF2DEB500114907 /* CXMLDocument_CreationExtensions.m in Sources */,
 				FCA78AB41EF2914F00114907 /* GCDAsyncSocket.m in Sources */,
 				FCA78BB61EF372B800114907 /* XDSRightMenuViewController.m in Sources */,
+				FCA78BE31EF5F6AA00114907 /* LPPReadMenu.m in Sources */,
 				FCA78A581EF290F400114907 /* ViewController.m in Sources */,
 				FCA78B481EF2994200114907 /* XDSNoteModel.m in Sources */,
 				FCA78ACC1EF2914F00114907 /* HTTPFileResponse.m in Sources */,
@@ -802,6 +867,7 @@
 				FCA78B9D1EF2E18100114907 /* mztools.c in Sources */,
 				FCA78B9E1EF2E18100114907 /* unzip.c in Sources */,
 				FCA78BA61EF3603A00114907 /* XDSReadManager.m in Sources */,
+				FCA78C011EF7CEA200114907 /* UIView+YGPulseView.m in Sources */,
 				FCA78AC31EF2914F00114907 /* HTTPMessage.m in Sources */,
 				FCA78ACD1EF2914F00114907 /* HTTPRedirectResponse.m in Sources */,
 				FCA78B7F1EF2DEB500114907 /* CXMLDocument.m in Sources */,
@@ -812,6 +878,7 @@
 				FCA78B191EF2916700114907 /* XDSReadConfig.m in Sources */,
 				FCA78ACF1EF2914F00114907 /* MyHTTPConnection.m in Sources */,
 				FCA78BBF1EF3771400114907 /* XDSReadViewController.m in Sources */,
+				FCA78BE61EF6D6FE00114907 /* LPPMenuBottomView.m in Sources */,
 				FCA78BC21EF39B6000114907 /* UIImage+ImageEffects.m in Sources */,
 				FCA78ACA1EF2914F00114907 /* HTTPDynamicFileResponse.m in Sources */,
 				FCA78ABB1EF2914F00114907 /* ContextFilterLogFormatter.m in Sources */,
@@ -834,9 +901,11 @@
 				FCA78B311EF2916700114907 /* XDSReaderGlobleConst.m in Sources */,
 				FCA78B861EF2DEB500114907 /* CXMLNode_PrivateExtensions.m in Sources */,
 				FCA78B9C1EF2E18100114907 /* ioapi.c in Sources */,
+				FCA78BF51EF7B2FB00114907 /* LPPReadSettingView.m in Sources */,
 				FCA78B891EF2DEB500114907 /* CTidy.m in Sources */,
 				FCA78AC01EF2914F00114907 /* DDRange.m in Sources */,
 				FCA78AC51EF2914F00114907 /* MultipartFormDataParser.m in Sources */,
+				FCA78BFD1EF7CA5A00114907 /* LPPHaloButton.m in Sources */,
 				FCA78B821EF2DEB500114907 /* CXMLElement_CreationExtensions.m in Sources */,
 				FCA78AC21EF2914F00114907 /* HTTPConnection.m in Sources */,
 				FCA78AC61EF2914F00114907 /* MultipartMessageHeader.m in Sources */,
@@ -846,12 +915,15 @@
 				FCA78BB31EF3647900114907 /* XDSMenuBottomView.m in Sources */,
 				FCA78ABF1EF2914F00114907 /* DDNumber.m in Sources */,
 				FCA78B451EF2986800114907 /* XDSMarkModel.m in Sources */,
+				FCA78BF81EF7B67700114907 /* LPPReadRootView.m in Sources */,
 				FCA78ABE1EF2914F00114907 /* DDData.m in Sources */,
 				FCA78A521EF290F400114907 /* main.m in Sources */,
 				FCA78B301EF2916700114907 /* XDSChapterModel.m in Sources */,
 				FCA78B3F1EF293F300114907 /* XDSReadParser.m in Sources */,
 				FCA78AB61EF2914F00114907 /* DDAbstractDatabaseLogger.m in Sources */,
 				FCA78B841EF2DEB500114907 /* CXMLNamespaceNode.m in Sources */,
+				FCA78BDF1EF585FC00114907 /* XDSReadMenuBottomView.m in Sources */,
+				FCA78BEB1EF75CB300114907 /* LPPReadViewConst.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,10 @@
 
 #import "XDSWIFIFileTransferViewController.h"
 
+#import "LPPReadMenu.h"
 @interface ViewController ()
+
+@property (strong, nonatomic) LPPReadMenu *readMenuView;
 
 @end
 
@@ -30,8 +33,11 @@
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"mdjyml"withExtension:@"txt"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 2){
-        XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
-        [self.navigationController pushViewController:wifiTransferVC animated:YES];
+//        XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
+//        [self.navigationController pushViewController:wifiTransferVC animated:YES];
+        
+        [self.view addSubview:self.readMenuView];
+        
     }
 }
 
@@ -50,4 +56,13 @@
     });
 }
 
+
+
+- (LPPReadMenu *)readMenuView{
+    if (nil == _readMenuView) {
+        _readMenuView = [[LPPReadMenu alloc] initWithFrame:self.view.bounds];
+        _readMenuView.backgroundColor = [UIColor redColor];
+    }
+    return _readMenuView;
+}
 @end
