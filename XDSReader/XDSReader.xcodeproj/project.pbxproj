@@ -112,6 +112,11 @@
 		FCA78C011EF7CEA200114907 /* UIView+YGPulseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C001EF7CEA200114907 /* UIView+YGPulseView.m */; };
 		FCA78C041EF81E1A00114907 /* LPPLightView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C031EF81E1A00114907 /* LPPLightView.m */; };
 		FCA78C071EF8EE2E00114907 /* LPPMenuTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C061EF8EE2E00114907 /* LPPMenuTopView.m */; };
+		FCA78C0E1EF91EDA00114907 /* LPPCatalogueView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C0D1EF91EDA00114907 /* LPPCatalogueView.m */; };
+		FCA78C111EF91F0800114907 /* LPPCatalogueTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C101EF91F0800114907 /* LPPCatalogueTabBarController.m */; };
+		FCA78C141EF929AA00114907 /* LPPCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C131EF929AA00114907 /* LPPCatalogueViewController.m */; };
+		FCA78C171EF929BE00114907 /* LPPNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C161EF929BE00114907 /* LPPNoteViewController.m */; };
+		FCA78C1A1EF929CE00114907 /* LPPMarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C191EF929CE00114907 /* LPPMarkViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -311,6 +316,16 @@
 		FCA78C031EF81E1A00114907 /* LPPLightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPLightView.m; sourceTree = "<group>"; };
 		FCA78C051EF8EE2E00114907 /* LPPMenuTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPMenuTopView.h; sourceTree = "<group>"; };
 		FCA78C061EF8EE2E00114907 /* LPPMenuTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPMenuTopView.m; sourceTree = "<group>"; };
+		FCA78C0C1EF91EDA00114907 /* LPPCatalogueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPCatalogueView.h; sourceTree = "<group>"; };
+		FCA78C0D1EF91EDA00114907 /* LPPCatalogueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPCatalogueView.m; sourceTree = "<group>"; };
+		FCA78C0F1EF91F0800114907 /* LPPCatalogueTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPCatalogueTabBarController.h; sourceTree = "<group>"; };
+		FCA78C101EF91F0800114907 /* LPPCatalogueTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPCatalogueTabBarController.m; sourceTree = "<group>"; };
+		FCA78C121EF929AA00114907 /* LPPCatalogueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPCatalogueViewController.h; sourceTree = "<group>"; };
+		FCA78C131EF929AA00114907 /* LPPCatalogueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPCatalogueViewController.m; sourceTree = "<group>"; };
+		FCA78C151EF929BE00114907 /* LPPNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPNoteViewController.h; sourceTree = "<group>"; };
+		FCA78C161EF929BE00114907 /* LPPNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPNoteViewController.m; sourceTree = "<group>"; };
+		FCA78C181EF929CE00114907 /* LPPMarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPMarkViewController.h; sourceTree = "<group>"; };
+		FCA78C191EF929CE00114907 /* LPPMarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPMarkViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -728,6 +743,7 @@
 		FCA78BE01EF5F40200114907 /* XDSReadMenu */ = {
 			isa = PBXGroup;
 			children = (
+				FCA78C0B1EF91EC100114907 /* Catologue */,
 				FCA78BFE1EF7CEA200114907 /* YGPulseView */,
 				FCA78BF61EF7B67700114907 /* LPPReadRootView.h */,
 				FCA78BF71EF7B67700114907 /* LPPReadRootView.m */,
@@ -757,6 +773,23 @@
 				FCA78C001EF7CEA200114907 /* UIView+YGPulseView.m */,
 			);
 			path = YGPulseView;
+			sourceTree = "<group>";
+		};
+		FCA78C0B1EF91EC100114907 /* Catologue */ = {
+			isa = PBXGroup;
+			children = (
+				FCA78C0C1EF91EDA00114907 /* LPPCatalogueView.h */,
+				FCA78C0D1EF91EDA00114907 /* LPPCatalogueView.m */,
+				FCA78C0F1EF91F0800114907 /* LPPCatalogueTabBarController.h */,
+				FCA78C101EF91F0800114907 /* LPPCatalogueTabBarController.m */,
+				FCA78C121EF929AA00114907 /* LPPCatalogueViewController.h */,
+				FCA78C131EF929AA00114907 /* LPPCatalogueViewController.m */,
+				FCA78C151EF929BE00114907 /* LPPNoteViewController.h */,
+				FCA78C161EF929BE00114907 /* LPPNoteViewController.m */,
+				FCA78C181EF929CE00114907 /* LPPMarkViewController.h */,
+				FCA78C191EF929CE00114907 /* LPPMarkViewController.m */,
+			);
+			path = Catologue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -855,7 +888,9 @@
 				FCA78B7E1EF2DEB500114907 /* CXHTMLDocument.m in Sources */,
 				FCA78AC41EF2914F00114907 /* HTTPServer.m in Sources */,
 				FCA78AC71EF2914F00114907 /* MultipartMessageHeaderField.m in Sources */,
+				FCA78C171EF929BE00114907 /* LPPNoteViewController.m in Sources */,
 				FCA78AD41EF2914F00114907 /* XDSWIFIFileTransferViewController.m in Sources */,
+				FCA78C111EF91F0800114907 /* LPPCatalogueTabBarController.m in Sources */,
 				FCA78B811EF2DEB500114907 /* CXMLElement.m in Sources */,
 				FCA78B851EF2DEB500114907 /* CXMLNode.m in Sources */,
 				FCA78AC11EF2914F00114907 /* HTTPAuthenticationRequest.m in Sources */,
@@ -890,6 +925,7 @@
 				FCA78ACA1EF2914F00114907 /* HTTPDynamicFileResponse.m in Sources */,
 				FCA78ABB1EF2914F00114907 /* ContextFilterLogFormatter.m in Sources */,
 				FCA78BA31EF2E37200114907 /* XDSReaderUtil.m in Sources */,
+				FCA78C0E1EF91EDA00114907 /* LPPCatalogueView.m in Sources */,
 				FCA78B7D1EF2DEB500114907 /* CXMLNode_CreationExtensions.m in Sources */,
 				FCA78C041EF81E1A00114907 /* LPPLightView.m in Sources */,
 				FCA78BBC1EF3770600114907 /* XDSReadPageViewController.m in Sources */,
@@ -900,6 +936,7 @@
 				FCA78B871EF2DEB500114907 /* CXMLNode_XPathExtensions.m in Sources */,
 				FCA78B9F1EF2E18100114907 /* zip.c in Sources */,
 				FCA78A551EF290F400114907 /* AppDelegate.m in Sources */,
+				FCA78C1A1EF929CE00114907 /* LPPMarkViewController.m in Sources */,
 				FCA78ABC1EF2914F00114907 /* DispatchQueueLogFormatter.m in Sources */,
 				FCA78ACE1EF2914F00114907 /* WebSocket.m in Sources */,
 				FCA78B421EF2965C00114907 /* XDSRecordModel.m in Sources */,
@@ -928,6 +965,7 @@
 				FCA78A521EF290F400114907 /* main.m in Sources */,
 				FCA78B301EF2916700114907 /* XDSChapterModel.m in Sources */,
 				FCA78B3F1EF293F300114907 /* XDSReadParser.m in Sources */,
+				FCA78C141EF929AA00114907 /* LPPCatalogueViewController.m in Sources */,
 				FCA78AB61EF2914F00114907 /* DDAbstractDatabaseLogger.m in Sources */,
 				FCA78B841EF2DEB500114907 /* CXMLNamespaceNode.m in Sources */,
 				FCA78BDF1EF585FC00114907 /* XDSReadMenuBottomView.m in Sources */,

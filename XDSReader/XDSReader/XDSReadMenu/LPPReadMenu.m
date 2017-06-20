@@ -11,6 +11,7 @@
 #import "LPPMenuBottomView.h"
 #import "LPPReadSettingView.h"
 #import "LPPLightView.h"
+#import "LPPCatalogueView.h"
 /// 阅读页面动画的时间
 CGFloat const kLPPReadMenuAnimateDuration = 0.2f;
 /// BottomView 高
@@ -22,13 +23,14 @@ CGFloat const kLPPReadMenuLightButtonWH = 84.f;
 /// ReadSettingView 高
 CGFloat const kLPPReadMenuSettingViewHeight = 218.f;
 
+
 @interface LPPReadMenu ()<
 LPPMenuBottomViewDelegate,
 LPPReadSettingViewDelegatge
 >
 //@property (weak, nonatomic) id /**<XDSReadMenuDelegate>*/ delegate;/// 代理
 @property (assign, nonatomic) BOOL menuShow;// 菜单显示
-@property (strong, nonatomic) UIView *leftView;// LeftView
+@property (strong, nonatomic) LPPCatalogueView *leftView;// LeftView
 @property (strong, nonatomic) LPPMenuTopView *topView;/// TopView
 @property (strong, nonatomic) LPPMenuBottomView *bottomView;/// BottomView
 @property (strong, nonatomic) LPPLightView *lightView;/// 亮度
@@ -79,6 +81,9 @@ LPPReadSettingViewDelegatge
     [self createSettingView];
     //Light View
     [self createLightView];
+    
+    //left view
+    [self createLeftView];
 }
 //TODO: -- Top View
 - (void)createMenuTopView{
@@ -114,6 +119,16 @@ LPPReadSettingViewDelegatge
     self.lightView.backgroundColor = READ_BACKGROUND_COLOC;
     [self addSubview:self.lightView];
 }
+
+- (void)createLeftView{
+    CGRect frame = CGRectMake(-DEVICE_MAIN_SCREEN_WIDTH_LPPR*3/4,
+                              0,
+                              DEVICE_MAIN_SCREEN_WIDTH_LPPR*3/4,
+                              DEVICE_MAIN_SCREEN_HEIGHT_LPPR);
+    self.leftView = [[LPPCatalogueView alloc] initWithFrame:frame];
+    self.leftView.backgroundColor = READ_BACKGROUND_COLOC;
+    [self addSubview:self.leftView];
+}
 //MARK: - ABOUT UI
 - (void)createUI{
     
@@ -122,7 +137,7 @@ LPPReadSettingViewDelegatge
 //TODO: LPPMenuBottomViewDelegate
 - (void)menuBottomView:(LPPMenuBottomView *)bottomView didSelectedFuctionButton:(UIButton *)button{
     if (button.tag == 0) {
-        
+        [self showCatalogueView];
     }else if (button.tag == 1){
         [self showLightView];
     }else if (button.tag == 2){
@@ -178,6 +193,24 @@ LPPReadSettingViewDelegatge
     [self hideReadMenu];
 }
 //MARK: - OTHER PRIVATE METHODS
+- (void)showCatalogueView{
+    CGRect topFrame = CGRectMake(0, -kNavgationBarHeight, DEVICE_MAIN_SCREEN_WIDTH_XDSR, kNavgationBarHeight);
+    CGRect bottomViewFrame = CGRectMake(0,
+                                        DEVICE_MAIN_SCREEN_HEIGHT_XDSR,
+                                        DEVICE_MAIN_SCREEN_WIDTH_XDSR,
+                                        kLPPReadMenuBottomViewHeight);
+    CGRect catalogueViewFrame = self.leftView.frame;
+    catalogueViewFrame.origin.x = 0;
+    
+    [UIView animateWithDuration:kLPPReadMenuAnimateDuration animations:^{
+        self.bottomView.frame = bottomViewFrame;
+        self.topView.frame = topFrame;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:kLPPReadMenuAnimateDuration animations:^{
+            self.leftView.frame = catalogueViewFrame;
+        } completion:nil];
+    }];
+}
 - (void)showLightView{
     CGRect bottomViewFrame = CGRectMake(0,
                                         DEVICE_MAIN_SCREEN_HEIGHT_XDSR,
@@ -230,7 +263,10 @@ LPPReadSettingViewDelegatge
                                        DEVICE_MAIN_SCREEN_HEIGHT_XDSR,
                                        DEVICE_MAIN_SCREEN_WIDTH_XDSR,
                                        kLPPReadMenuLightButtonWH);
-    
+    CGRect leftViewFrame = CGRectMake(-DEVICE_MAIN_SCREEN_WIDTH_LPPR*3/4,
+                              0,
+                              DEVICE_MAIN_SCREEN_WIDTH_LPPR*3/4,
+                              DEVICE_MAIN_SCREEN_HEIGHT_LPPR);
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     if (CGRectGetMinY(self.readSettingView.frame) < DEVICE_MAIN_SCREEN_HEIGHT_XDSR) {
         [UIView animateWithDuration:kLPPReadMenuAnimateDuration animations:^{
@@ -242,6 +278,13 @@ LPPReadSettingViewDelegatge
     }else if (CGRectGetMinY(self.lightView.frame) < DEVICE_MAIN_SCREEN_HEIGHT_XDSR) {
         [UIView animateWithDuration:kLPPReadMenuAnimateDuration animations:^{
             self.lightView.frame = lightViewFrame;
+            self.topView.frame = topFrame;
+        } completion:^(BOOL finished) {
+            [self removeFromSuperview];
+        }];
+    }else if (CGRectGetMaxX(self.leftView.frame) > 0) {
+        [UIView animateWithDuration:kLPPReadMenuAnimateDuration animations:^{
+            self.leftView.frame = leftViewFrame;
             self.topView.frame = topFrame;
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
