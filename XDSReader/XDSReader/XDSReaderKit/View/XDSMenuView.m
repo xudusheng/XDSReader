@@ -44,7 +44,6 @@
     _menuBottomView.readModel = recordModel;
 }
 #pragma mark - LSYMenuViewmvdelegate
-
 -(void)menuViewInvokeCatalog:(XDSMenuBottomView *)menuBottomView{
     if ([self.mvDelegate respondsToSelector:@selector(menuViewInvokeCatalog:)]) {
         [self.mvDelegate menuViewInvokeCatalog:menuBottomView];

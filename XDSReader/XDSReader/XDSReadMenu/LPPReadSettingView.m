@@ -198,6 +198,15 @@ CGFloat const kSettingThemesViewHeight = 74.f;
         [self.svDelegate readSettingView:self didSelectedFontSize:button.tag];
     }
 }
+
+- (void)startHaloAnimate{
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:[LPPHaloButton class]]) {
+            LPPHaloButton *haloBtn = (LPPHaloButton *)view;
+            [haloBtn openHalo];
+        }
+    }
+}
 //MARK: - OTHER PRIVATE METHODS 私有方法
 
 //MARK: - ABOUT MEMERY 内存管理

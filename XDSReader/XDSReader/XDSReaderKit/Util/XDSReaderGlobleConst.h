@@ -32,7 +32,6 @@ UIKIT_EXTERN CGFloat const kReadViewMarginRight;
 
 
 #define LSYNoteNotification @"LSYNoteNotification"
-#define LSYThemeNotification @"LSYThemeNotification"
 #define LSYEditingNotification @"LSYEditingNotification"
 #define LSYEndEditNotification @"LSYEndEditNotification"
 

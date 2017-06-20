@@ -13,6 +13,8 @@
 @interface LPPReadSettingView : LPPReadRootView
 @property (weak, nonatomic) id <LPPReadSettingViewDelegatge> svDelegate;
 
+- (void)startHaloAnimate;//开启光环动画
+
 @end
 
 @protocol LPPReadSettingViewDelegatge <NSObject>

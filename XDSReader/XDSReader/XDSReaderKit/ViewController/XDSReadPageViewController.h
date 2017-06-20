@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XDSReadManager.h"
 
-@interface XDSReadPageViewController : UIViewController
+@interface XDSReadPageViewController : UIViewController <XDSReadManagerDelegate>
 
-@property (nonatomic,strong) NSURL *resourceURL;
-@property (nonatomic,strong) XDSBookModel *bookModel;
+//@property (nonatomic,strong) NSURL *resourceURL;
+//@property (nonatomic,strong) XDSBookModel *bookModel;
 
 @end

@@ -43,9 +43,6 @@
     [self addSubview:self.decreaseFont];
     [self addSubview:self.fontLabel];
     [self addSubview:self.themeView];
-    [self addObserver:self forKeyPath:@"readModel.currentChapter" options:NSKeyValueObservingOptionNew context:NULL];
-    [self addObserver:self forKeyPath:@"readModel.currentPage" options:NSKeyValueObservingOptionNew context:NULL];
-    [[XDSReadConfig shareInstance] addObserver:self forKeyPath:@"fontSize" options:NSKeyValueObservingOptionNew context:NULL];
 }
 -(UIButton *)catalog{
     if (!_catalog) {
@@ -129,64 +126,41 @@
 }
 #pragma mark - Button Click
 -(void)jumpChapter:(UIButton *)sender{
+    NSInteger currentChapter = CURRENT_RECORD.currentChapter;
+    
     if (sender == _nextChapter) {
-        if ([self.mvdelegate respondsToSelector:@selector(menuViewJumpChapter:page:)]) {
-            [self.mvdelegate menuViewJumpChapter:(_readModel.currentChapter == _readModel.totalChapters-1)?_readModel.currentChapter:_readModel.currentChapter+1 page:0];
+        if (currentChapter < CURRENT_RECORD.totalChapters - 1) {
+            currentChapter += 1;
         }
+    }else{
+        currentChapter -= 1;
     }
-    else{
-        if ([self.mvdelegate respondsToSelector:@selector(menuViewJumpChapter:page:)]) {
-            [self.mvdelegate menuViewJumpChapter:_readModel.currentChapter?_readModel.currentChapter-1:0 page:0];
-        }
-        
-    }
+    
+    [[XDSReadManager sharedManager] readViewJumpToChapter:currentChapter page:0];
+    _slider.value = CURRENT_RECORD.currentPage/((float)(CURRENT_RECORD.chapterModel.pageCount-1))*100;
+    [_progressView title:CURRENT_RECORD.chapterModel.title progress:[NSString stringWithFormat:@"%.1f%%",_slider.value]];
+    
 }
 -(void)changeFont:(UIButton *)sender{
-    
-    if (sender == _increaseFont) {
-        
-        if (floor([XDSReadConfig shareInstance].fontSize) == floor(MaxFontSize)) {
-            return;
-        }
-        [XDSReadConfig shareInstance].fontSize++;
-    }
-    else{
-        if (floor([XDSReadConfig shareInstance].fontSize) == floor(MinFontSize)){
-            return;
-        }
-        [XDSReadConfig shareInstance].fontSize--;
-    }
-    
-    if ([self.mvdelegate respondsToSelector:@selector(menuViewFontSize:)]) {
-        [self.mvdelegate menuViewFontSize:self];
-    }
+    BOOL plus = (sender == _increaseFont);
+    [[XDSReadManager sharedManager] configReadFontSize:plus];
+    _fontLabel.text = @([XDSReadConfig shareInstance].fontSize).stringValue;
 }
 #pragma mark showMsg
 
 -(void)changeMsg:(UISlider *)sender{
     NSUInteger page =ceil((_readModel.chapterModel.pageCount-1)*sender.value/100.00);
-    if ([self.mvdelegate respondsToSelector:@selector(menuViewJumpChapter:page:)]) {
-        [self.mvdelegate menuViewJumpChapter:_readModel.currentPage page:page];
-    }
-    
-    
+    [[XDSReadManager sharedManager] readViewJumpToChapter:CURRENT_RECORD.currentChapter page:page];
+    _slider.value = CURRENT_RECORD.currentPage/((float)(CURRENT_RECORD.chapterModel.pageCount-1))*100;
+    [_progressView title:CURRENT_RECORD.chapterModel.title progress:[NSString stringWithFormat:@"%.1f%%",_slider.value]];
 }
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    
-    if ([keyPath isEqualToString:@"readModel.currentChapter"] || [keyPath isEqualToString:@"readModel.currentPage"]) {
-        _slider.value = _readModel.currentPage/((float)(_readModel.chapterModel.pageCount-1))*100;
-        [_progressView title:_readModel.chapterModel.title progress:[NSString stringWithFormat:@"%.1f%%",_slider.value]];
+    if (_slider.state == UIControlStateNormal) {
+        _progressView.hidden = YES;
     }
-    else if ([keyPath isEqualToString:@"fontSize"]){
-        _fontLabel.text = [NSString stringWithFormat:@"%d",(int)[XDSReadConfig shareInstance].fontSize];
-    }
-    else{
-        if (_slider.state == UIControlStateNormal) {
-            _progressView.hidden = YES;
-        }
-        else if(_slider.state == UIControlStateHighlighted){
-            _progressView.hidden = NO;
-        }
+    else if(_slider.state == UIControlStateHighlighted){
+        _progressView.hidden = NO;
     }
     
 }
@@ -228,9 +202,6 @@
 }
 -(void)dealloc{
     [_slider removeObserver:self forKeyPath:@"highlighted"];
-    [self removeObserver:self forKeyPath:@"readModel.currentChapter"];
-    [self removeObserver:self forKeyPath:@"readModel.currentPage"];
-    [[XDSReadConfig shareInstance] removeObserver:self forKeyPath:@"fontSize"];
 }
 @end
 @interface XDSThemeView ()
@@ -277,7 +248,7 @@
     return _theme3;
 }
 -(void)changeTheme:(UITapGestureRecognizer *)tap{
-    [[NSNotificationCenter defaultCenter] postNotificationName:LSYThemeNotification object:tap.view.backgroundColor];
+    [[XDSReadManager sharedManager] configReadTheme:tap.view.backgroundColor];
 }
 -(void)layoutSubviews{
     CGFloat spacing = (CGRectGetWidth(self.frame)-40*3)/4;

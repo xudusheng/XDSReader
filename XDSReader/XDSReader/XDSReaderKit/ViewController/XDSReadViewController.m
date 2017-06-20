@@ -17,9 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self readViewControllerDataInit];
-    [self createReadViewControllerUI];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readViewThemeChanged:) name:LSYThemeNotification object:nil];
+    [self createReadViewControllerUI];    
 }
 
 -(void)viewDidLayoutSubviews{
@@ -46,10 +44,6 @@
 //MARK: - ABOUT REQUEST
 
 //MARK: - ABOUT EVENTS
-- (void)readViewThemeChanged:(NSNotification *)notification{
-    [XDSReadConfig shareInstance].theme = notification.object;
-    [self.view setBackgroundColor:[XDSReadConfig shareInstance].theme];
-}
 //MARK: - OTHER PRIVATE METHODS
 //TODO: GETTER
 - (XDSReadView *)readView{

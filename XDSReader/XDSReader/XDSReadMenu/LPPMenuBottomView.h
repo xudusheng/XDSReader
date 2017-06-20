@@ -12,7 +12,10 @@
 @protocol LPPMenuBottomViewDelegate;
 
 @interface LPPMenuBottomView : LPPReadRootView
+
 @property (weak, nonatomic) id <LPPMenuBottomViewDelegate> bvDelegate;
+
+- (void)setReadProgram:(CGFloat)program;
 
 @end
 
@@ -21,6 +24,7 @@
 - (void)menuBottomView:(LPPMenuBottomView *)bottomView didSelectedFuctionButton:(UIButton *)button;
 - (void)menuBottomView:(LPPMenuBottomView *)bottomView didSelectedPreviousButton:(UIButton *)previousButton;
 - (void)menuBottomView:(LPPMenuBottomView *)bottomView didSelectedNextButton:(UIButton *)nextButton;
+- (void)menuBottomView:(LPPMenuBottomView *)bottomView didSelectedSliderValueChanged:(UISlider *)slider;
 
 
 @end

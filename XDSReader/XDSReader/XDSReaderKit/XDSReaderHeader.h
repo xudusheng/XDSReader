@@ -45,5 +45,6 @@
 #import "XDSRightMenuViewController.h"
 #import "XDSReadViewController.h"
 #import "XDSReadPageViewController.h"
+#import "XDSReadManager.h"
 
 #endif /* XDSReaderHeader_h */

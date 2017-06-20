@@ -71,9 +71,9 @@
                                   CGRectGetHeight(_previousChapter.frame));
         UISlider *slider = [[UISlider alloc] initWithFrame:frame];;
         [slider setThumbImage:[UIImage imageNamed:@"RM_3"] forState:UIControlStateNormal];
-        slider.minimumValue = 1;
+        slider.minimumValue = 0;
         slider.maximumValue = 1;
-        
+        [slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
         [self addSubview:slider];
         slider;
     });
@@ -95,6 +95,10 @@
     }
 
 }
+
+- (void)setReadProgram:(CGFloat)program{
+    _slider.value = program;
+}
 //MARK: - DELEGATE METHODS 代理方法
 
 //MARK: - ABOUT REQUEST 网络请求
@@ -112,7 +116,11 @@
         [self.bvDelegate menuBottomView:self didSelectedNextButton:button];
     }
 }
-
+- (void)sliderValueChanged:(UISlider *)slider{
+    if ([self.bvDelegate respondsToSelector:@selector(menuBottomView:didSelectedSliderValueChanged:)]) {
+        [self.bvDelegate menuBottomView:self didSelectedSliderValueChanged:slider];
+    }
+}
 //功能按钮
 - (void)functionButtonClick:(UIButton *)button{
     if ([self.bvDelegate respondsToSelector:@selector(menuBottomView:didSelectedFuctionButton:)]) {

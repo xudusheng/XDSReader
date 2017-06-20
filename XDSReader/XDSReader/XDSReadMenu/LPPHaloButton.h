@@ -17,4 +17,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame haloColor:(UIColor *)haloColor;
 
+- (void)openHalo;
+- (void)closeHalo;
 @end

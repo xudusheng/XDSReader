@@ -11,6 +11,8 @@
 #import "XDSRightMenuViewController.h"
 #import "XDSReadViewController.h"
 #import "UIImage+ImageEffects.h"
+
+#import "LPPReadMenu.h"
 @interface XDSReadPageViewController ()
 <
 UIPageViewControllerDelegate,
@@ -34,8 +36,9 @@ XDSReadViewControllerDelegate
 @property (nonatomic,strong) XDSMenuView *menuView; //菜单栏
 @property (nonatomic,strong) XDSRightMenuViewController *rightMenuVC;   //侧边栏
 @property (nonatomic,strong) UIView * rightMenuContent;  //侧边栏背景
-@property (nonatomic,strong) XDSReadViewController *readView;   //当前阅读视图
+//@property (nonatomic,strong) XDSReadViewController *readView;   //当前阅读视图
 
+@property (strong, nonatomic) LPPReadMenu *readMenuView;
 
 @end
 
@@ -60,12 +63,15 @@ XDSReadViewControllerDelegate
 //MARK: - ABOUT UI
 - (void)createReadPageViewControllerUI{
     [self addChildViewController:self.pageViewController];
-    [_pageViewController setViewControllers:@[[self readViewWithChapter:_bookModel.record.currentChapter page:_bookModel.record.currentPage]]
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:CURRENT_RECORD.currentChapter
+                                                                                  page:CURRENT_RECORD.currentPage
+                                                                               delegate:self];
+    [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
                                    animated:YES
                                  completion:nil];
-    _chapter = _bookModel.record.currentChapter;
-    _page = _bookModel.record.currentPage;
+    _chapter = CURRENT_RECORD.currentChapter;
+    _page = CURRENT_RECORD.currentPage;
     [self.view addGestureRecognizer:({
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToolMenu)];
         tap.delegate = self;
@@ -80,46 +86,6 @@ XDSReadViewControllerDelegate
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addNotes:) name:LSYNoteNotification object:nil];
 }
 
-//MARK: - INIT
-- (XDSReadViewController *)readViewWithChapter:(NSUInteger)chapter page:(NSUInteger)page{
-    
-    if (_bookModel.record.currentChapter != chapter) {
-        [_bookModel.record.chapterModel updateFont];
-        [self readChapterContent:chapter];
-    }
-    _readView = [[XDSReadViewController alloc] init];
-    _readView.recordModel = _bookModel.record;
-    
-    if (_bookModel.bookType == XDSEBookTypeEpub) {
-        _readView.bookType = XDSEBookTypeEpub;
-        [self readChapterContent:chapter];
-        _readView.epubFrameRef = _bookModel.chapters[chapter].epubframeRef[page];
-        _readView.imageArray = _bookModel.chapters[chapter].imageArray;
-        _readView.content = _bookModel.chapters[chapter].content;
-    }
-    else{
-        _readView.bookType = XDSEBookTypeTxt;
-        _readView.content = [_bookModel.chapters[chapter] stringOfPage:page];
-    }
-    _readView.rvdelegate = self;
-    
-    return _readView;
-}
-
-- (void)readChapterContent:(NSInteger)chapter{
-    if (!_bookModel.chapters[chapter].epubframeRef) {
-        
-        XDSChapterModel *chapterModel = _bookModel.chapters[chapter];
-        NSString *chapterFullPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:chapterModel.chapterpath];
-        NSURL *fileURL = [NSURL fileURLWithPath:chapterFullPath];
-        NSString *html = [[NSString alloc] initWithData:[NSData dataWithContentsOfURL:fileURL] encoding:NSUTF8StringEncoding];
-        
-        _bookModel.chapters[chapter].content = [html stringByConvertingHTMLToPlainText];
-        [_bookModel.chapters[chapter] parserEpubToDictionary];
-    }
-    [_bookModel.chapters[chapter] paginateEpubWithBounds:CGRectMake(0,0, DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight, DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom)];
-
-}
 #pragma mark - init
 -(UIPageViewController *)pageViewController{
     if (!_pageViewController) {
@@ -135,7 +101,7 @@ XDSReadViewControllerDelegate
         _menuView = [[XDSMenuView alloc] init];
         _menuView.hidden = YES;
         _menuView.mvDelegate = self;
-        _menuView.recordModel = _bookModel.record;
+        _menuView.recordModel = CURRENT_RECORD;
     }
     return _menuView;
 }
@@ -143,7 +109,7 @@ XDSReadViewControllerDelegate
 -(XDSRightMenuViewController *)rightMenuVC{
     if (!_rightMenuVC) {
         _rightMenuVC = [[XDSRightMenuViewController alloc] init];
-        _rightMenuVC.bookModel = _bookModel;
+        _rightMenuVC.bookModel = CURRENT_BOOK_MODEL;
         _rightMenuVC.catalogDelegate = self;
     }
     return _rightMenuVC;
@@ -178,51 +144,70 @@ XDSReadViewControllerDelegate
     
 }
 
--(void)menuViewJumpChapter:(NSUInteger)chapter page:(NSUInteger)page{
-    [_pageViewController setViewControllers:@[[self readViewWithChapter:chapter page:page]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    [self updateReadModelWithChapter:chapter page:page];
-}
--(void)menuViewFontSize:(XDSMenuBottomView *)menuBottomView{
-    [_bookModel.record.chapterModel updateFont];
-    
-    NSInteger page =
-    (_bookModel.record.currentPage>_bookModel.record.chapterModel.pageCount-1)?
-    _bookModel.record.chapterModel.pageCount-1:
-    _bookModel.record.currentPage;
-    
-    XDSReadViewController *readVC = [self readViewWithChapter:_bookModel.record.currentChapter page:page];
-    [_pageViewController setViewControllers:@[readVC]
-                                  direction:UIPageViewControllerNavigationDirectionForward
-                                   animated:NO
-                                 completion:nil];
-    [self updateReadModelWithChapter:_bookModel.record.currentChapter page:page];
-}
-
 -(void)menuViewMark:(XDSMenuTopView *)menuTopView{
-    NSString * key = [NSString stringWithFormat:@"%d_%d",(int)_bookModel.record.currentPage,(int)_bookModel.record.currentPage];
-    id isMarkExist = _bookModel.marksRecord[key];
+    NSString * key = [NSString stringWithFormat:@"%zd_%zd",CURRENT_RECORD.currentPage,CURRENT_RECORD.currentPage];
+    id isMarkExist = CURRENT_BOOK_MODEL.marksRecord[key];
     if (isMarkExist) {
         //如果存在移除书签信息
-        [_bookModel.marksRecord removeObjectForKey:key];
-        [[_bookModel mutableArrayValueForKey:@"marks"] removeObject:isMarkExist];
+        [CURRENT_BOOK_MODEL.marksRecord removeObjectForKey:key];
+        [[CURRENT_BOOK_MODEL mutableArrayValueForKey:@"marks"] removeObject:isMarkExist];
     }
     else{
         //记录书签信息
         XDSMarkModel *model = [[XDSMarkModel alloc] init];
         model.date = [NSDate date];
-        model.recordModel = [_bookModel.record copy];
-        [[_bookModel mutableArrayValueForKey:@"marks"] addObject:model];
-        [_bookModel.marksRecord setObject:model forKey:key];
+        model.recordModel = [CURRENT_RECORD copy];
+        [[CURRENT_BOOK_MODEL mutableArrayValueForKey:@"marks"] addObject:model];
+        [CURRENT_BOOK_MODEL.marksRecord setObject:model forKey:key];
     }
     _menuView.menuTopView.isMarkExist = !isMarkExist;
-    
-    
 }
 
+//TODO: XDSReadManagerDelegate
+- (void)readViewDidClickCloseButton{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)readViewFontDidChanged{
+
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:CURRENT_RECORD.currentChapter
+                                                                                   page:CURRENT_RECORD.currentPage
+                                                                               delegate:self];
+    [_pageViewController setViewControllers:@[readVC]
+                                  direction:UIPageViewControllerNavigationDirectionForward
+                                   animated:NO
+                                 completion:nil];
+    
+    _chapter = CURRENT_RECORD.currentChapter;
+    _page = CURRENT_RECORD.currentPage;
+}
+- (void)readViewFontSizeDidChanged{}
+- (void)readViewThemeDidChanged{
+    XDSReadViewController *readView = _pageViewController.viewControllers.firstObject;
+    readView.view.backgroundColor = [XDSReadConfig shareInstance].theme;
+}
+- (void)readViewEffectDidChanged{}
+- (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page{
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:chapter
+                                                                                   page:page
+                                                                               delegate:self];
+    [_pageViewController setViewControllers:@[readVC]
+                                  direction:UIPageViewControllerNavigationDirectionForward
+                                   animated:NO
+                                 completion:nil];
+    _chapter = CURRENT_RECORD.currentChapter;
+    _page = CURRENT_RECORD.currentPage;
+}
 //TODO: XDSRightMenuViewControllerDelegate
 - (void)rightMenuViewController:(XDSRightMenuViewController *)rightMenuViewController didSelectChapter:(NSUInteger)chapter page:(NSUInteger)page{
-    [_pageViewController setViewControllers:@[[self readViewWithChapter:chapter page:page]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-    [self updateReadModelWithChapter:chapter page:page];
+    
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:chapter
+                                                                                   page:page
+                                                                               delegate:self];
+    [_pageViewController setViewControllers:@[readVC]
+                                  direction:UIPageViewControllerNavigationDirectionForward
+                                   animated:YES
+                                 completion:nil];
+    [[XDSReadManager sharedManager] updateReadModelWithChapter:chapter page:page];
     [self hiddenRightMenu];
 }
 
@@ -248,10 +233,10 @@ XDSReadViewControllerDelegate
 //TODO: UIGestureRecognizerDelegate
 //解决TabView与Tap手势冲突
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {
-        return NO;
+    if ([NSStringFromClass([touch.view class]) isEqualToString:NSStringFromClass([XDSReadView class])]) {
+        return YES;
     }
-    return  YES;
+    return  NO;
 }
 
 //TODO: UIPageViewControllerDelegate, UIPageViewControllerDataSource
@@ -266,31 +251,32 @@ XDSReadViewControllerDelegate
     }
     if (_pageChange==0) {
         _chapterChange--;
-        _pageChange = _bookModel.chapters[_chapterChange].pageCount-1;
+        _pageChange = CURRENT_BOOK_MODEL.chapters[_chapterChange].pageCount-1;
     }
     else{
         _pageChange--;
     }
     
-    return [self readViewWithChapter:_chapterChange page:_pageChange];
+    return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
+                                                          page:_pageChange
+                                                      delegate:self];
     
 }
-- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
-{
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
     
     _pageChange = _page;
     _chapterChange = _chapter;
-    if (_pageChange == _bookModel.chapters.lastObject.pageCount-1 && _chapterChange == _bookModel.chapters.count-1) {
+    if (_pageChange == CURRENT_BOOK_MODEL.chapters.lastObject.pageCount-1 && _chapterChange == CURRENT_BOOK_MODEL.chapters.count-1) {
         return nil;
     }
-    if (_pageChange == _bookModel.chapters[_chapterChange].pageCount-1) {
+    if (_pageChange == CURRENT_BOOK_MODEL.chapters[_chapterChange].pageCount-1) {
         _chapterChange++;
         _pageChange = 0;
     }
     else{
         _pageChange++;
     }
-    return [self readViewWithChapter:_chapterChange page:_pageChange];
+    return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange page:_pageChange delegate:self];
 }
 #pragma mark -PageViewController Delegate
 - (void)pageViewController:(UIPageViewController *)pageViewController
@@ -300,12 +286,11 @@ XDSReadViewControllerDelegate
     
     if (!completed) {
         XDSReadViewController *readView = previousViewControllers.firstObject;
-        _readView = readView;
         _page = readView.recordModel.currentPage;
         _chapter = readView.recordModel.currentChapter;
     }
     else{
-        [self updateReadModelWithChapter:_chapter page:_page];
+        [[XDSReadManager sharedManager] updateReadModelWithChapter:_chapter page:_page];
     }
 }
 
@@ -318,23 +303,24 @@ XDSReadViewControllerDelegate
 
 //MARK: - ABOUT EVENTS
 -(void)showToolMenu{
-    [_readView.readView cancelSelected];
-    NSString * key = [NSString stringWithFormat:@"%d_%d",(int)_bookModel.record.currentChapter,(int)_bookModel.record.currentPage];
+    XDSReadViewController *readView = _pageViewController.viewControllers.firstObject;
+    [readView.readView cancelSelected];
     
-    id isMarkExist = _bookModel.marksRecord[key];
-    isMarkExist?
-    (_menuView.menuTopView.isMarkExist=1):
-    (_menuView.menuTopView.isMarkExist=0);
-    
-    [self.menuView showAnimation:YES];
+    [self.view addSubview:self.readMenuView];
+//    NSString * key = [NSString stringWithFormat:@"%zd_%zd",CURRENT_RECORD.currentChapter,CURRENT_RECORD.currentPage];
+//    id isMarkExist = CURRENT_BOOK_MODEL.marksRecord[key];
+//    isMarkExist?
+//    (_menuView.menuTopView.isMarkExist=1):
+//    (_menuView.menuTopView.isMarkExist=0);
+//    [self.menuView showAnimation:YES];
 }
 - (void)hiddenRightMenu{
     [self showRightMenu:NO];
 }
 -(void)addNotes:(NSNotification *)notification{
     XDSNoteModel *model = notification.object;
-    model.recordModel = [_bookModel.record copy];
-    [[_bookModel mutableArrayValueForKey:@"notes"] addObject:model];    //这样写才能KVO数组变化
+    model.recordModel = [CURRENT_RECORD copy];
+    [[CURRENT_BOOK_MODEL mutableArrayValueForKey:@"notes"] addObject:model];    //这样写才能KVO数组变化
     [XDSReaderUtil showAlertWithTitle:nil message:@"保存笔记成功"];
 }
 //MARK: - OTHER PRIVATE METHODS
@@ -363,7 +349,6 @@ XDSReadViewControllerDelegate
 }
 
 - (UIImage *)blurredSnapshot {
-    
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)), NO, 1.0f);
     [self.view drawViewHierarchyInRect:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)) afterScreenUpdates:NO];
     UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -372,13 +357,12 @@ XDSReadViewControllerDelegate
     return blurredSnapshotImage;
 }
 
--(void)updateReadModelWithChapter:(NSUInteger)chapter page:(NSUInteger)page{
-    _chapter = chapter;
-    _page = page;
-    _bookModel.record.chapterModel = _bookModel.chapters[chapter];
-    _bookModel.record.currentChapter = chapter;
-    _bookModel.record.currentPage = page;
-    [XDSBookModel updateLocalModel:_bookModel url:_resourceURL];
+- (LPPReadMenu *)readMenuView{
+    if (nil == _readMenuView) {
+        _readMenuView = [[LPPReadMenu alloc] initWithFrame:self.view.bounds];
+        _readMenuView.backgroundColor = [UIColor clearColor];
+    }
+    return _readMenuView;
 }
 //MARK: - ABOUT MEMERY
 - (void)readPageViewControllerDataInit{

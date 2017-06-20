@@ -45,6 +45,10 @@
 #define kSpace_lpp_20 20
 #define kSpace_lpp_5 5
 
+#define kNavgationBarHeight 64.f// 导航栏高度
+#define kTabBarHeight 49.f// TabBar高度
+#define kStatusBarHeight 20.f// StatusBar高度
+
 //MARK: -- 尺寸计算 以iPhone6为比例
 #define SIZE_WIDHT_LPP(__size__) __size__ * (DEVICE_MAIN_SCREEN_WIDTH_LPPR / 375)
 #define SIZE_HEIGHT_LPP(__size__) __size__ * (DEVICE_MAIN_SCREEN_HEIGHT_LPPR / 667)
