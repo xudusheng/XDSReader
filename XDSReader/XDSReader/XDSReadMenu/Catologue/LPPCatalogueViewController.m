@@ -24,15 +24,9 @@ CGFloat const kCatalogueTableViewCellHeight = 44.f;
     
     //滚到可视区域
     NSInteger chapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:CURRENT_RECORD.chapterModel];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:chapter inSection:0];
-
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if ([self.tableView.visibleCells containsObject:cell]) {
-        return;
-    }
     CGRect visibleRect = self.view.bounds;
     visibleRect.size.height = kCatalogueTableViewCellHeight;
-    visibleRect.origin.y = kCatalogueTableViewCellHeight * chapter + CGRectGetHeight(self.view.bounds)*2/3;
+    visibleRect.origin.y = kCatalogueTableViewCellHeight * chapter + CGRectGetHeight(self.view.bounds)/2 + kTabBarHeight;
     [self.tableView scrollRectToVisible:visibleRect animated:NO];
 }
 

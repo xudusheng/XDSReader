@@ -26,7 +26,7 @@
     _catalogueVC = [[LPPCatalogueViewController alloc] initWithStyle:UITableViewStyleGrouped];
     _catalogueVC.title = @"目录";
     
-    _noteVC = [[LPPNoteViewController alloc] initWithStyle:UITableViewStylePlain];
+    _noteVC = [[LPPNoteViewController alloc] initWithStyle:UITableViewStyleGrouped];
     _noteVC.title = @"笔记";
 
     _markVC = [[LPPMarkViewController alloc] initWithStyle:UITableViewStyleGrouped];

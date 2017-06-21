@@ -234,7 +234,7 @@
         model.content = [_content substringWithRange:_selectRange];
         model.note = alertController.textFields.firstObject.text;
         model.date = [NSDate date];
-        [[NSNotificationCenter defaultCenter] postNotificationName:LSYNoteNotification object:model];
+        [[XDSReadManager sharedManager] addNoteModel:model];
     }];
     [alertController addAction:cancel];
     [alertController addAction:confirm];

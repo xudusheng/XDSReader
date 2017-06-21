@@ -170,4 +170,10 @@ static XDSReadManager *readManager;
         return YES;
     }
 }
+
+- (void)addNoteModel:(XDSNoteModel *)noteModel{
+    noteModel.recordModel = [CURRENT_RECORD copy];
+    [[CURRENT_BOOK_MODEL mutableArrayValueForKey:@"notes"] addObject:noteModel];    //这样写才能KVO数组变化
+    [XDSReaderUtil showAlertWithTitle:nil message:@"保存笔记成功"];
+}
 @end

@@ -32,6 +32,7 @@
 - (void)updateReadModelWithChapter:(NSInteger)chapter page:(NSInteger)page;//更新阅读记录
 - (void)closeReadView;//关闭阅读器
 - (BOOL)addBookMark;//添加或删除书签，返回添加结果
+- (void)addNoteModel:(XDSNoteModel *)noteModel;//添加笔记
 
 @end
 
@@ -39,7 +40,6 @@
 @protocol XDSReadManagerDelegate <NSObject>
 - (void)readViewDidClickCloseButton;//点击关闭按钮
 - (void)readViewFontDidChanged;//字体改变
-- (void)readViewFontSizeDidChanged;//字号改变
 - (void)readViewThemeDidChanged;//主题改变
 - (void)readViewEffectDidChanged;//翻页效果改变
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到章节
