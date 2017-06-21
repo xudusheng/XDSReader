@@ -117,6 +117,15 @@
 		FCA78C141EF929AA00114907 /* LPPCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C131EF929AA00114907 /* LPPCatalogueViewController.m */; };
 		FCA78C171EF929BE00114907 /* LPPNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C161EF929BE00114907 /* LPPNoteViewController.m */; };
 		FCA78C1A1EF929CE00114907 /* LPPMarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C191EF929CE00114907 /* LPPMarkViewController.m */; };
+		FCA78C251EFA00DB00114907 /* 华文中宋.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C1C1EFA00DA00114907 /* 华文中宋.ttf */; };
+		FCA78C261EFA00DB00114907 /* 华文宋体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C1D1EFA00DB00114907 /* 华文宋体.ttf */; };
+		FCA78C271EFA00DB00114907 /* 华文彩云.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C1E1EFA00DB00114907 /* 华文彩云.ttf */; };
+		FCA78C281EFA00DB00114907 /* 华文新魏.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C1F1EFA00DB00114907 /* 华文新魏.ttf */; };
+		FCA78C291EFA00DB00114907 /* 华文楷体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C201EFA00DB00114907 /* 华文楷体.ttf */; };
+		FCA78C2A1EFA00DB00114907 /* 华文琥珀.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C211EFA00DB00114907 /* 华文琥珀.ttf */; };
+		FCA78C2B1EFA00DB00114907 /* 华文细黑.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C221EFA00DB00114907 /* 华文细黑.ttf */; };
+		FCA78C2C1EFA00DB00114907 /* 华文行楷.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C231EFA00DB00114907 /* 华文行楷.ttf */; };
+		FCA78C2D1EFA00DB00114907 /* 华文隶书.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C241EFA00DB00114907 /* 华文隶书.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -326,6 +335,15 @@
 		FCA78C161EF929BE00114907 /* LPPNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPNoteViewController.m; sourceTree = "<group>"; };
 		FCA78C181EF929CE00114907 /* LPPMarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPMarkViewController.h; sourceTree = "<group>"; };
 		FCA78C191EF929CE00114907 /* LPPMarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPMarkViewController.m; sourceTree = "<group>"; };
+		FCA78C1C1EFA00DA00114907 /* 华文中宋.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文中宋.ttf"; sourceTree = "<group>"; };
+		FCA78C1D1EFA00DB00114907 /* 华文宋体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文宋体.ttf"; sourceTree = "<group>"; };
+		FCA78C1E1EFA00DB00114907 /* 华文彩云.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文彩云.ttf"; sourceTree = "<group>"; };
+		FCA78C1F1EFA00DB00114907 /* 华文新魏.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文新魏.ttf"; sourceTree = "<group>"; };
+		FCA78C201EFA00DB00114907 /* 华文楷体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文楷体.ttf"; sourceTree = "<group>"; };
+		FCA78C211EFA00DB00114907 /* 华文琥珀.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文琥珀.ttf"; sourceTree = "<group>"; };
+		FCA78C221EFA00DB00114907 /* 华文细黑.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文细黑.ttf"; sourceTree = "<group>"; };
+		FCA78C231EFA00DB00114907 /* 华文行楷.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文行楷.ttf"; sourceTree = "<group>"; };
+		FCA78C241EFA00DB00114907 /* 华文隶书.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文隶书.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,6 +378,7 @@
 		FCA78A4F1EF290F400114907 /* XDSReader */ = {
 			isa = PBXGroup;
 			children = (
+				FCA78C1B1EFA00DA00114907 /* 华文字体 */,
 				FCA78BE01EF5F40200114907 /* XDSReadMenu */,
 				FCA78AD61EF2916700114907 /* XDSReaderKit */,
 				FCA78A681EF2914F00114907 /* WiFiFileTransfer */,
@@ -792,6 +811,22 @@
 			path = Catologue;
 			sourceTree = "<group>";
 		};
+		FCA78C1B1EFA00DA00114907 /* 华文字体 */ = {
+			isa = PBXGroup;
+			children = (
+				FCA78C1C1EFA00DA00114907 /* 华文中宋.ttf */,
+				FCA78C1D1EFA00DB00114907 /* 华文宋体.ttf */,
+				FCA78C1E1EFA00DB00114907 /* 华文彩云.ttf */,
+				FCA78C1F1EFA00DB00114907 /* 华文新魏.ttf */,
+				FCA78C201EFA00DB00114907 /* 华文楷体.ttf */,
+				FCA78C211EFA00DB00114907 /* 华文琥珀.ttf */,
+				FCA78C221EFA00DB00114907 /* 华文细黑.ttf */,
+				FCA78C231EFA00DB00114907 /* 华文行楷.ttf */,
+				FCA78C241EFA00DB00114907 /* 华文隶书.ttf */,
+			);
+			path = "华文字体";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -855,19 +890,28 @@
 				FCA78A601EF290F400114907 /* LaunchScreen.storyboard in Resources */,
 				FCA78BD71EF3A2D700114907 /* reader_cover@2x.png in Resources */,
 				FCA78AD21EF2914F00114907 /* wifi.png in Resources */,
+				FCA78C2D1EFA00DB00114907 /* 华文隶书.ttf in Resources */,
+				FCA78C2C1EFA00DB00114907 /* 华文行楷.ttf in Resources */,
 				FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */,
 				FCA78A5D1EF290F400114907 /* Assets.xcassets in Resources */,
 				FCA78BD51EF3A2D700114907 /* bg_back_white.png in Resources */,
+				FCA78C261EFA00DB00114907 /* 华文宋体.ttf in Resources */,
+				FCA78C251EFA00DB00114907 /* 华文中宋.ttf in Resources */,
 				FCA78BD41EF3A2D700114907 /* reader_more@2x.png in Resources */,
+				FCA78C2A1EFA00DB00114907 /* 华文琥珀.ttf in Resources */,
 				FCA78BD61EF3A2D700114907 /* bg_back_white@2x.png in Resources */,
 				FCA78BCF1EF3A2D600114907 /* 细说明朝.epub in Resources */,
 				FCA78BD21EF3A2D700114907 /* sale_discount_yellow.png in Resources */,
 				FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */,
+				FCA78C2B1EFA00DB00114907 /* 华文细黑.ttf in Resources */,
+				FCA78C281EFA00DB00114907 /* 华文新魏.ttf in Resources */,
 				FCA78AD11EF2914F00114907 /* upload.html in Resources */,
 				FCA78BD91EF3A2D700114907 /* bt_tjcp_no@2x.png in Resources */,
 				FCA78AB31EF2914F00114907 /* About.txt in Resources */,
 				FCA78BD81EF3A2D700114907 /* r_drag-dot@2x.png in Resources */,
+				FCA78C291EFA00DB00114907 /* 华文楷体.ttf in Resources */,
 				FCA78A5B1EF290F400114907 /* Main.storyboard in Resources */,
+				FCA78C271EFA00DB00114907 /* 华文彩云.ttf in Resources */,
 				FCA78BD31EF3A2D700114907 /* ic_add.png in Resources */,
 				FCA78ABD1EF2914F00114907 /* README.txt in Resources */,
 				FCA78AD51EF2914F00114907 /* XDSWIFIFileTransferViewController.xib in Resources */,

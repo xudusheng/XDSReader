@@ -17,9 +17,7 @@
 <
 UIPageViewControllerDelegate,
 UIPageViewControllerDataSource,
-XDSMenuViewDelegate,
 UIGestureRecognizerDelegate,
-XDSRightMenuViewControllerDelegate,
 XDSReadViewControllerDelegate
 >
 
@@ -33,12 +31,9 @@ XDSReadViewControllerDelegate
 
 @property (nonatomic,strong) UIPageViewController *pageViewController;
 @property (nonatomic,getter=isShowBar) BOOL showBar; //是否显示状态栏
-@property (nonatomic,strong) XDSMenuView *menuView; //菜单栏
+@property (strong, nonatomic) LPPReadMenu *readMenuView;//菜单
 @property (nonatomic,strong) XDSRightMenuViewController *rightMenuVC;   //侧边栏
 @property (nonatomic,strong) UIView * rightMenuContent;  //侧边栏背景
-//@property (nonatomic,strong) XDSReadViewController *readView;   //当前阅读视图
-
-@property (strong, nonatomic) LPPReadMenu *readMenuView;
 
 @end
 
@@ -54,7 +49,7 @@ XDSReadViewControllerDelegate
     [super viewDidLayoutSubviews];
     
     _pageViewController.view.frame = self.view.frame;
-    _menuView.frame = self.view.frame;
+//    _menuView.frame = self.view.frame;
     _rightMenuContent.frame = CGRectMake(-DEVICE_MAIN_SCREEN_WIDTH_XDSR, 0, 2*DEVICE_MAIN_SCREEN_WIDTH_XDSR, DEVICE_MAIN_SCREEN_HEIGHT_XDSR);
     _rightMenuVC.view.frame = CGRectMake(0, 0, DEVICE_MAIN_SCREEN_WIDTH_XDSR-100, DEVICE_MAIN_SCREEN_HEIGHT_XDSR);
     [_rightMenuVC reload];
@@ -77,8 +72,6 @@ XDSReadViewControllerDelegate
         tap.delegate = self;
         tap;
     })];
-    [self.view addSubview:self.menuView];
-    
     [self addChildViewController:self.rightMenuVC];
     [self.view addSubview:self.rightMenuContent];
     [self.rightMenuContent addSubview:self.rightMenuVC.view];
@@ -95,15 +88,6 @@ XDSReadViewControllerDelegate
         [self.view addSubview:_pageViewController.view];
     }
     return _pageViewController;
-}
--(XDSMenuView *)menuView{
-    if (!_menuView) {
-        _menuView = [[XDSMenuView alloc] init];
-        _menuView.hidden = YES;
-        _menuView.mvDelegate = self;
-        _menuView.recordModel = CURRENT_RECORD;
-    }
-    return _menuView;
 }
 
 -(XDSRightMenuViewController *)rightMenuVC{
@@ -128,21 +112,6 @@ XDSReadViewControllerDelegate
     return _rightMenuContent;
 }
 //MARK: - DELEGATE METHODS
-//TODO: XDSMenuViewDelegate
--(void)menuViewDidHidden:(XDSMenuView *)menu{
-    _showBar = NO;
-    [self setNeedsStatusBarAppearanceUpdate];
-}
--(void)menuViewDidAppear:(XDSMenuView *)menu{
-    _showBar = YES;
-    [self setNeedsStatusBarAppearanceUpdate];
-    
-}
--(void)menuViewInvokeCatalog:(XDSMenuBottomView *)menuBottomView{
-    [_menuView hiddenAnimation:NO];
-    [self showRightMenu:YES];
-    
-}
 
 -(void)menuViewMark:(XDSMenuTopView *)menuTopView{
     NSString * key = [NSString stringWithFormat:@"%zd_%zd",CURRENT_RECORD.currentPage,CURRENT_RECORD.currentPage];
@@ -160,7 +129,6 @@ XDSReadViewControllerDelegate
         [[CURRENT_BOOK_MODEL mutableArrayValueForKey:@"marks"] addObject:model];
         [CURRENT_BOOK_MODEL.marksRecord setObject:model forKey:key];
     }
-    _menuView.menuTopView.isMarkExist = !isMarkExist;
 }
 
 //TODO: XDSReadManagerDelegate
@@ -197,18 +165,8 @@ XDSReadViewControllerDelegate
     _chapter = CURRENT_RECORD.currentChapter;
     _page = CURRENT_RECORD.currentPage;
 }
-//TODO: XDSRightMenuViewControllerDelegate
-- (void)rightMenuViewController:(XDSRightMenuViewController *)rightMenuViewController didSelectChapter:(NSUInteger)chapter page:(NSUInteger)page{
-    
-    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:chapter
-                                                                                   page:page
-                                                                               delegate:self];
-    [_pageViewController setViewControllers:@[readVC]
-                                  direction:UIPageViewControllerNavigationDirectionForward
-                                   animated:YES
-                                 completion:nil];
-    [[XDSReadManager sharedManager] updateReadModelWithChapter:chapter page:page];
-    [self hiddenRightMenu];
+- (void)readViewDidUpdateReadRecord{
+    [self.readMenuView updateReadRecord];
 }
 
 //TODO: XDSReadViewControllerDelegate
@@ -260,7 +218,6 @@ XDSReadViewControllerDelegate
     return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
                                                           page:_pageChange
                                                       delegate:self];
-    
 }
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
     

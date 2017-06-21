@@ -25,6 +25,7 @@
 #define TEXT_COLOR_LPP_6 RGB_LPP(200, 200, 200)/// LeftView文字颜色
 
 
+
 //MARK: -- 阅读背景颜色支持
 #define RGB_LPP(__R__, __G__, __B__) [UIColor colorWithRed:(__R__)/255.0 green:(__G__)/255.0 blue:(__B__)/255.0 alpha:1.0]
 #define READ_BACKGROUND_COLOC_1 RGB_LPP(238, 224, 202)
@@ -54,7 +55,11 @@
 #define SIZE_HEIGHT_LPP(__size__) __size__ * (DEVICE_MAIN_SCREEN_HEIGHT_LPPR / 667)
 
 
-
+@protocol LPPCatalogueViewDelegate <NSObject>
+- (void)catalogueViewDidSelectedChapter:(XDSChapterModel *)chapterModel;
+- (void)catalogueViewDidSelectedNote:(XDSNoteModel *)NodeModel;
+- (void)catalogueViewDidSelectedMark:(XDSMarkModel *)markModel;
+@end
 
 
 

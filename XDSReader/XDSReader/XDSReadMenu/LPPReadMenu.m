@@ -26,7 +26,8 @@ CGFloat const kLPPReadMenuSettingViewHeight = 218.f;
 
 @interface LPPReadMenu ()<
 LPPMenuBottomViewDelegate,
-LPPReadSettingViewDelegatge
+LPPReadSettingViewDelegatge,
+LPPCatalogueViewDelegate
 >
 //@property (weak, nonatomic) id /**<XDSReadMenuDelegate>*/ delegate;/// 代理
 @property (assign, nonatomic) BOOL menuShow;// 菜单显示
@@ -127,6 +128,7 @@ LPPReadSettingViewDelegatge
                               DEVICE_MAIN_SCREEN_HEIGHT_LPPR);
     self.leftView = [[LPPCatalogueView alloc] initWithFrame:frame];
     self.leftView.backgroundColor = READ_BACKGROUND_COLOC;
+    self.leftView.cvDelegate = self;
     [self addSubview:self.leftView];
 }
 //MARK: - ABOUT UI
@@ -162,10 +164,9 @@ LPPReadSettingViewDelegatge
     [bottomView setReadProgram:program];
 }
 - (void)menuBottomView:(LPPMenuBottomView *)bottomView didSelectedSliderValueChanged:(UISlider *)slider{
-    NSUInteger page =ceil((CURRENT_RECORD.chapterModel.pageCount-1)*slider.value/100.00);
+    
+    NSUInteger page =ceil((CURRENT_RECORD.chapterModel.pageCount-1)*slider.value);
     [[XDSReadManager sharedManager] readViewJumpToChapter:CURRENT_RECORD.currentChapter page:page];
-//    CGFloat program = CURRENT_RECORD.currentPage/((float)(CURRENT_RECORD.chapterModel.pageCount-1))*100;
-//    [bottomView setReadProgram:program];
 }
 
 //TODO: LPPReadSettingViewDelegatge
@@ -176,12 +177,22 @@ LPPReadSettingViewDelegatge
 
 }
 - (void)readSettingView:(LPPReadSettingView *)readSettingView didSelectedFont:(NSString *)font{
-
+    [[XDSReadManager sharedManager] configReadFontName:font];
 }
 - (void)readSettingView:(LPPReadSettingView *)readSettingView didSelectedFontSize:(BOOL)plusSize{
     [[XDSReadManager sharedManager] configReadFontSize:plusSize];
 //    _fontLabel.text = @([XDSReadConfig shareInstance].fontSize).stringValue;
 }
+
+//TODO:LPPCatalogueViewDelegate
+- (void)catalogueViewDidSelectedChapter:(XDSChapterModel *)chapterModel{
+    NSInteger selectedChapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:chapterModel];
+    [[XDSReadManager sharedManager] readViewJumpToChapter:selectedChapter page:0];
+    [self hideReadMenu];
+}
+
+- (void)catalogueViewDidSelectedNote:(XDSNoteModel *)NodeModel{}
+- (void)catalogueViewDidSelectedMark:(XDSMarkModel *)markModel{}
 
 //MARK: - ABOUT REQUEST
 
@@ -299,6 +310,10 @@ LPPReadSettingViewDelegatge
     }
 }
 
+- (void)updateReadRecord{//更新进度
+    CGFloat programe = (CURRENT_RECORD.currentPage + 1)*1.0f/CURRENT_RECORD.chapterModel.pageCount;
+    [self.bottomView setReadProgram:programe];
+}
 - (void)didMoveToSuperview{
     [super didMoveToSuperview];
     if (self.superview) {

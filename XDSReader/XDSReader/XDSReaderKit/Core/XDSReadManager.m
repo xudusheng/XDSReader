@@ -32,7 +32,9 @@ static XDSReadManager *readManager;
 - (XDSReadViewController *)readViewWithChapter:(NSUInteger)chapter page:(NSUInteger)page delegate:(id<XDSReadViewControllerDelegate>)rvDelegate{
     if (_bookModel.record.currentChapter != chapter) {
         [_bookModel.record.chapterModel updateFont];
-        [self readChapterContent:chapter];
+        if (_bookModel.bookType == XDSEBookTypeEpub) {
+            [self readChapterContent:chapter];
+        }
     }
 
     XDSReadViewController *readView = [[XDSReadViewController alloc] init];
@@ -102,6 +104,21 @@ static XDSReadManager *readManager;
     }
 }
 
+- (void)configReadFontName:(NSString *)fontName{
+    [[XDSReadConfig shareInstance] setFontName:fontName];
+    [_bookModel.record.chapterModel updateFont];
+    NSInteger page =
+    (_bookModel.record.currentPage>_bookModel.record.chapterModel.pageCount-1)?
+    _bookModel.record.chapterModel.pageCount-1:
+    _bookModel.record.currentPage;
+    
+    [self updateReadModelWithChapter:_bookModel.record.currentChapter page:page];
+    
+    if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewFontDidChanged)]) {
+        [self.rmDelegate readViewFontDidChanged];
+    }
+}
+
 - (void)configReadTheme:(UIColor *)theme{
     [XDSReadConfig shareInstance].theme = theme;
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewThemeDidChanged)]) {
@@ -120,6 +137,10 @@ static XDSReadManager *readManager;
     _bookModel.record.currentChapter = chapter;
     _bookModel.record.currentPage = page;
     [XDSBookModel updateLocalModel:_bookModel url:_resourceURL];
+    
+    if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewDidUpdateReadRecord)]) {
+        [self.rmDelegate readViewDidUpdateReadRecord];
+    }
 }
 
 

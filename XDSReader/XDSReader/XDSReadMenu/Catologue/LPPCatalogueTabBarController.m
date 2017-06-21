@@ -12,6 +12,9 @@
 #import "LPPMarkViewController.h"
 #import "LPPReadViewConst.h"
 @interface LPPCatalogueTabBarController ()
+@property (strong, nonatomic) LPPCatalogueViewController *catalogueVC;
+@property (strong, nonatomic) LPPNoteViewController *noteVC;
+@property (strong, nonatomic) LPPMarkViewController *markVC;
 
 @end
 
@@ -20,15 +23,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    LPPCatalogueViewController *catalogueVC = [[LPPCatalogueViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    catalogueVC.title = @"目录";
+    _catalogueVC = [[LPPCatalogueViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    _catalogueVC.title = @"目录";
     
-    LPPNoteViewController *noteVC = [[LPPNoteViewController alloc] initWithStyle:UITableViewStylePlain];
-    noteVC.title = @"笔记";
-    LPPMarkViewController *markVC = [[LPPMarkViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    markVC.title = @"书签";
+    _noteVC = [[LPPNoteViewController alloc] initWithStyle:UITableViewStylePlain];
+    _noteVC.title = @"笔记";
+
+    _markVC = [[LPPMarkViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    _markVC.title = @"书签";
     
-    self.viewControllers = @[catalogueVC, noteVC, markVC];
+    self.viewControllers = @[_catalogueVC, _noteVC, _markVC];
     self.tabBar.translucent = NO;
     [self.tabBar setBarTintColor:READ_BACKGROUND_COLOC];
     for (UITabBarItem *item in self.tabBar.items) {
@@ -44,9 +48,13 @@
                                                             }
                                                  forState:UIControlStateSelected];
     }
+}
 
-
-    
+- (void)setCvDelegate:(id<LPPCatalogueViewDelegate>)cvDelegate{
+    _cvDelegate = cvDelegate;
+    _catalogueVC.cvDelegate = _cvDelegate;
+    _noteVC.cvDelegate = _cvDelegate;
+    _markVC.cvDelegate = _cvDelegate;
 }
 
 - (void)didReceiveMemoryWarning {

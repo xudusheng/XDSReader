@@ -44,6 +44,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (_cvDelegate && [_cvDelegate respondsToSelector:@selector(catalogueViewDidSelectedMark:)]){
+        XDSMarkModel *markModel = CURRENT_BOOK_MODEL.marks[indexPath.row];
+        [_cvDelegate catalogueViewDidSelectedMark:markModel];
+    }
 }
 
 

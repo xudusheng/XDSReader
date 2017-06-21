@@ -10,4 +10,6 @@
 
 @interface LPPCatalogueView : LPPReadRootView
 
+@property (weak, nonatomic) id<LPPCatalogueViewDelegate>cvDelegate;
+
 @end

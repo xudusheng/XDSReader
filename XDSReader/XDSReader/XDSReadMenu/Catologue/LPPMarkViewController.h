@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "LPPReadViewConst.h"
+
 @interface LPPMarkViewController : UITableViewController
+
+@property (weak, nonatomic) id<LPPCatalogueViewDelegate>cvDelegate;
 
 @end

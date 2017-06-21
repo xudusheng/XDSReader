@@ -26,7 +26,8 @@
                                       delegate:(id<XDSReadViewControllerDelegate>)rvDelegate;
 
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到指定章节（上一章，下一章，slider，目录）
-- (void)configReadFontSize:(BOOL)plus;//设置字体;
+- (void)configReadFontSize:(BOOL)plus;//设置字体大小;
+- (void)configReadFontName:(NSString *)fontName;//设置字体;
 - (void)configReadTheme:(UIColor *)theme;//设置阅读背景
 - (void)updateReadModelWithChapter:(NSInteger)chapter page:(NSInteger)page;//更新阅读记录
 - (void)closeReadView;//关闭阅读器
@@ -36,12 +37,12 @@
 
 
 @protocol XDSReadManagerDelegate <NSObject>
-- (void)readViewDidClickCloseButton;
-- (void)readViewFontDidChanged;
-- (void)readViewFontSizeDidChanged;
-- (void)readViewThemeDidChanged;
-- (void)readViewEffectDidChanged;
-- (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;
-
+- (void)readViewDidClickCloseButton;//点击关闭按钮
+- (void)readViewFontDidChanged;//字体改变
+- (void)readViewFontSizeDidChanged;//字号改变
+- (void)readViewThemeDidChanged;//主题改变
+- (void)readViewEffectDidChanged;//翻页效果改变
+- (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到章节
+- (void)readViewDidUpdateReadRecord;//更新阅读进度
 
 @end

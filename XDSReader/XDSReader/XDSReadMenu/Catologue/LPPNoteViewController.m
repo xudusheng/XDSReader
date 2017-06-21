@@ -44,5 +44,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (_cvDelegate && [_cvDelegate respondsToSelector:@selector(catalogueViewDidSelectedNote:)]){
+        XDSNoteModel *noteModel = CURRENT_BOOK_MODEL.notes[indexPath.row];
+        [_cvDelegate catalogueViewDidSelectedNote:noteModel];
+    }
 }
 @end

@@ -11,4 +11,6 @@
 
 @interface LPPReadMenu : LPPReadRootView
 
+- (void)updateReadRecord;
+
 @end

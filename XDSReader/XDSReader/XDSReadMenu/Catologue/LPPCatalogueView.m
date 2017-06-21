@@ -29,8 +29,14 @@
 //MARK: - ABOUT UI UI相关
 - (void)createUI{
     self.tabbarVC = [[LPPCatalogueTabBarController alloc] init];
+    _tabbarVC.cvDelegate = self.cvDelegate;
     _tabbarVC.view.frame = self.bounds;
     [self addSubview:_tabbarVC.view];
+}
+
+- (void)setCvDelegate:(id<LPPCatalogueViewDelegate>)cvDelegate{
+    _cvDelegate = cvDelegate;
+    _tabbarVC.cvDelegate = _cvDelegate;
 }
 //MARK: - DELEGATE METHODS 代理方法
 

@@ -108,13 +108,13 @@ static CGFloat widthCallback(void* ref){
     CFAttributedStringSetAttribute((CFMutableAttributedStringRef)attrString, CFRangeMake(0, 1), kCTRunDelegateAttributeName, delegate);
     CFRelease(delegate);
     return [attrString copy];
-    
-    
 }
 + (NSDictionary *)parserAttribute:(XDSReadConfig *)config{
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     dict[NSForegroundColorAttributeName] = config.textColor;
-    dict[NSFontAttributeName] = [UIFont systemFontOfSize:config.fontSize];
+    NSString *fontName = config.fontName;
+    UIFont * font = fontName.length?[UIFont fontWithName:fontName size:config.fontSize]:[UIFont systemFontOfSize:config.fontSize];
+    dict[NSFontAttributeName] = font;
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = config.lineSpace;
     paragraphStyle.alignment = NSTextAlignmentJustified;

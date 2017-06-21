@@ -97,7 +97,9 @@
 }
 
 - (void)setReadProgram:(CGFloat)program{
-    _slider.value = program;
+    if (_slider.state == UIControlStateNormal) {
+        _slider.value = program;
+    }
 }
 //MARK: - DELEGATE METHODS 代理方法
 

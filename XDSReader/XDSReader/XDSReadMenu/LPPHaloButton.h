@@ -19,4 +19,5 @@
 
 - (void)openHalo;
 - (void)closeHalo;
+
 @end

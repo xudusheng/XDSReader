@@ -190,7 +190,6 @@
         [self hiddenMenu];
         [self setNeedsDisplay];
     }
-    
 }
 #pragma mark Show Menu
 -(void)showMenu{
@@ -211,8 +210,7 @@
 }
 
 #pragma mark Hidden Menu
--(void)hiddenMenu
-{
+-(void)hiddenMenu{
     [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
 }
 #pragma mark Menu Function

@@ -45,13 +45,7 @@
         [button addTarget:self action:@selector(funcButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
     }
-    
-    // 上一章
-    
-    // 下一章
-    
-    // 进度条
-    
+
 }
 
 

@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface XDSReadConfig : NSObject
+@interface XDSReadConfig : NSObject <NSCoding>
 
 @property (nonatomic) CGFloat fontSize;
+@property (nonatomic, copy) NSString *fontName;
 @property (nonatomic) CGFloat lineSpace;
 @property (nonatomic,strong) UIColor *textColor;
 @property (nonatomic,strong) UIColor *theme;

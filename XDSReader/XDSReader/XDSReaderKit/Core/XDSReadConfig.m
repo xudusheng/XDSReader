@@ -12,6 +12,7 @@
 
 NSString *const kReadConfigEncodeKey = @"ReadConfig";
 NSString *const kReadConfigFontSizeEncodeKey = @"fontSize";
+NSString *const kReadConfigFontNameEncodeKey = @"fontName";
 NSString *const kReadConfigLineSpaceEncodeKey = @"lineSpace";
 NSString *const kReadConfigTextColorEncodeKey = @"textColor";
 NSString *const kReadConfigThemeEncodeKey = @"theme";
@@ -35,6 +36,7 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
             NSKeyedUnarchiver *unarchive = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
             XDSReadConfig *config = [unarchive decodeObjectForKey:kReadConfigEncodeKey];
             [config addObserver:config forKeyPath:@"fontSize" options:NSKeyValueObservingOptionNew context:NULL];
+            [config addObserver:config forKeyPath:@"fontName" options:NSKeyValueObservingOptionNew context:NULL];
             [config addObserver:config forKeyPath:@"lineSpace" options:NSKeyValueObservingOptionNew context:NULL];
             [config addObserver:config forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:NULL];
             [config addObserver:config forKeyPath:@"theme" options:NSKeyValueObservingOptionNew context:NULL];
@@ -42,14 +44,15 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
         }
         _lineSpace = 10.0f;
         _fontSize = 14.0f;
+        _fontName = @"";
         _textColor = [UIColor blackColor];
         _theme = [UIColor whiteColor];
         [self addObserver:self forKeyPath:@"fontSize" options:NSKeyValueObservingOptionNew context:NULL];
+        [self addObserver:self forKeyPath:@"fontName" options:NSKeyValueObservingOptionNew context:NULL];
         [self addObserver:self forKeyPath:@"lineSpace" options:NSKeyValueObservingOptionNew context:NULL];
         [self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:NULL];
         [self addObserver:self forKeyPath:@"theme" options:NSKeyValueObservingOptionNew context:NULL];
         [XDSReadConfig updateLocalConfig:self];
-        
     }
     return self;
 }
@@ -70,6 +73,7 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
 }
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeDouble:self.fontSize forKey:kReadConfigFontSizeEncodeKey];
+    [aCoder encodeObject:self.fontName forKey:kReadConfigFontNameEncodeKey];
     [aCoder encodeDouble:self.lineSpace forKey:kReadConfigLineSpaceEncodeKey];
     [aCoder encodeObject:self.textColor forKey:kReadConfigTextColorEncodeKey];
     [aCoder encodeObject:self.theme forKey:kReadConfigThemeEncodeKey];
@@ -78,6 +82,7 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
     self = [super init];
     if (self) {
         self.fontSize = [aDecoder decodeDoubleForKey:kReadConfigFontSizeEncodeKey];
+        self.fontName = [aDecoder decodeObjectForKey:kReadConfigFontNameEncodeKey];
         self.lineSpace = [aDecoder decodeDoubleForKey:kReadConfigLineSpaceEncodeKey];
         self.textColor = [aDecoder decodeObjectForKey:kReadConfigTextColorEncodeKey];
         self.theme = [aDecoder decodeObjectForKey:kReadConfigThemeEncodeKey];
@@ -85,5 +90,12 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
     return self;
 }
 
+- (void)setFontName:(NSString *)fontName{
+    if (fontName.length < 1) {
+        _fontName = @"";
+        return;
+    }
+    _fontName = fontName;
+}
 
 @end
