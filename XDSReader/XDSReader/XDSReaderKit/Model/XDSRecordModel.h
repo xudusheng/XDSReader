@@ -11,7 +11,7 @@
 @interface XDSRecordModel : NSObject<NSCopying,NSCoding>
 @property (nonatomic,strong) XDSChapterModel *chapterModel;  //阅读的章节
 @property (nonatomic) NSUInteger currentPage;    //阅读的页数
-@property (nonatomic) NSUInteger currentChapter; //阅读的章节数
+@property (nonatomic) NSUInteger currentChapter; //阅读的章节
 @property (nonatomic) NSUInteger totalChapters;  //总章节数
 
 @end

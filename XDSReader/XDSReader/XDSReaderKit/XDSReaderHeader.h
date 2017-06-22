@@ -42,7 +42,6 @@
 #import "XDSReadView.h"
 #import "XDSReaderDelegate.h"
 
-#import "XDSRightMenuViewController.h"
 #import "XDSReadViewController.h"
 #import "XDSReadPageViewController.h"
 #import "XDSReadManager.h"

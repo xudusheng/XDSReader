@@ -31,7 +31,8 @@ static XDSReadManager *readManager;
 //MARK: - //获取对于章节页码的radViewController，并为其设置代理对象
 - (XDSReadViewController *)readViewWithChapter:(NSUInteger)chapter page:(NSUInteger)page delegate:(id<XDSReadViewControllerDelegate>)rvDelegate{
     if (_bookModel.record.currentChapter != chapter) {
-        [_bookModel.record.chapterModel updateFont];
+        //新的一章需要先更新字体以获取正确的章节数据
+        [_bookModel.chapters[chapter] updateFont];
         if (_bookModel.bookType == XDSEBookTypeEpub) {
             [self readChapterContent:chapter];
         }
@@ -45,8 +46,7 @@ static XDSReadManager *readManager;
         readView.epubFrameRef = _bookModel.chapters[chapter].epubframeRef[page];
         readView.imageArray = _bookModel.chapters[chapter].imageArray;
         readView.content = _bookModel.chapters[chapter].content;
-    }
-    else{
+    }else{
         readView.bookType = XDSEBookTypeTxt;
         readView.content = [_bookModel.chapters[chapter] stringOfPage:page];
     }
@@ -106,7 +106,11 @@ static XDSReadManager *readManager;
 
 - (void)configReadFontName:(NSString *)fontName{
     [[XDSReadConfig shareInstance] setFontName:fontName];
+    
+    //优化，添加穿行队列，遍历所有章节进行updateFont。如果目录需要显示页码。
+    //这里因为目录不需要显示页码，所以进刷新当前章节信息就可以了
     [_bookModel.record.chapterModel updateFont];
+    
     NSInteger page =
     (_bookModel.record.currentPage>_bookModel.record.chapterModel.pageCount-1)?
     _bookModel.record.chapterModel.pageCount-1:
@@ -173,7 +177,7 @@ static XDSReadManager *readManager;
 
 - (void)addNoteModel:(XDSNoteModel *)noteModel{
     noteModel.recordModel = [CURRENT_RECORD copy];
-    [[CURRENT_BOOK_MODEL mutableArrayValueForKey:@"notes"] addObject:noteModel];    //这样写才能KVO数组变化
+    [CURRENT_BOOK_MODEL addNote:noteModel];
     [XDSReaderUtil showAlertWithTitle:nil message:@"保存笔记成功"];
 }
 @end

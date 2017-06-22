@@ -8,7 +8,6 @@
 
 #import "XDSReadPageViewController.h"
 
-#import "XDSRightMenuViewController.h"
 #import "XDSReadViewController.h"
 #import "UIImage+ImageEffects.h"
 
@@ -19,9 +18,10 @@ UIPageViewControllerDataSource,
 UIGestureRecognizerDelegate,
 XDSReadViewControllerDelegate>
 {
+    NSUInteger _chapter;    //当前显示的章节
+    NSUInteger _page;       //当前显示的页数
     NSUInteger _chapterChange;  //将要变化的章节
     NSUInteger _pageChange;     //将要变化的页数
-    BOOL _isPaging;//是否正在翻页
 }
 
 @property (nonatomic,strong) UIPageViewController *pageViewController;
@@ -45,8 +45,11 @@ XDSReadViewControllerDelegate>
 //MARK: - ABOUT UI
 - (void)createReadPageViewControllerUI{
     [self addChildViewController:self.pageViewController];
-    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:CURRENT_RECORD.currentChapter
-                                                                                  page:CURRENT_RECORD.currentPage
+    _chapter = CURRENT_RECORD.currentChapter;
+    _page = CURRENT_RECORD.currentPage;
+    
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:_chapter
+                                                                                  page:_page
                                                                                delegate:self];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -102,6 +105,8 @@ XDSReadViewControllerDelegate>
 }
 - (void)readViewDidUpdateReadRecord{
     [self.readMenuView updateReadRecord];
+    _chapter = CURRENT_RECORD.currentChapter;
+    _page = CURRENT_RECORD.currentPage;
 }
 
 //TODO: XDSReadViewControllerDelegate
@@ -111,6 +116,7 @@ XDSReadViewControllerDelegate>
             ges.enabled = YES;
             break;
         }
+        
     }
 }
 - (void)readViewEndEdit:(XDSReadViewController *)readViewController{
@@ -135,66 +141,64 @@ XDSReadViewControllerDelegate>
 //TODO: UIPageViewControllerDelegate, UIPageViewControllerDataSource
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
                viewControllerBeforeViewController:(UIViewController *)viewController{
-    if (_isPaging) {
-        return nil;
-    }
-    _isPaging = YES;
-
-    _pageChange = CURRENT_RECORD.currentPage;
-    _chapterChange = CURRENT_RECORD.currentChapter;
+    _pageChange = _page;
+    _chapterChange = _chapter;
     
     if (_chapterChange + _pageChange == 0) {
-        _isPaging = NO;
+        [self showToolMenu];//已经是第一页了，显示菜单准备返回
         return nil;
     }
-    
     if (_pageChange == 0) {
-        _chapterChange -= 1;
-        _pageChange = CURRENT_BOOK_MODEL.chapters[_chapterChange].pageCount-1;
-    }else{
-        _chapterChange -= 1;
+        _chapterChange--;
+        XDSChapterModel *chapter = CURRENT_BOOK_MODEL.chapters[_chapterChange];
+        _pageChange = chapter.pageCount-1;
     }
+    else{
+        _pageChange--;
+    }
+    
     return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
                                                           page:_pageChange
                                                       delegate:self];
 }
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
                 viewControllerAfterViewController:(UIViewController *)viewController{
-    if (_isPaging) {
-        return nil;
-    }
-    _isPaging = YES;
-    _pageChange = CURRENT_RECORD.currentPage;
-    _chapterChange = CURRENT_RECORD.currentChapter;
-    
+
+    _pageChange = _page;
+    _chapterChange = _chapter;
     if (_pageChange == CURRENT_BOOK_MODEL.chapters.lastObject.pageCount-1 && _chapterChange == CURRENT_BOOK_MODEL.chapters.count-1) {
-        _isPaging = NO;
+        //最后一页，这里可以处理一下，添加已读完页面。
         return nil;
     }
-    
-    if (_pageChange == CURRENT_RECORD.chapterModel.pageCount-1) {
-        _chapterChange += 1;
+    if (_pageChange == CURRENT_BOOK_MODEL.chapters[_chapterChange].pageCount-1) {
+        _chapterChange++;
         _pageChange = 0;
-    }else{
-        _pageChange += 1;
+    }
+    else{
+        _pageChange++;
     }
     return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
                                                           page:_pageChange
                                                       delegate:self];
 }
+
 #pragma mark -PageViewController Delegate
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers{
+
+}
 - (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed{
-    _isPaging = NO;
     if (!completed) {
         XDSReadViewController *readView = previousViewControllers.firstObject;
-        _pageChange = readView.recordModel.currentPage;
-        _chapterChange = readView.recordModel.currentChapter;
+        _page = readView.recordModel.currentPage;
+        _chapter = readView.recordModel.currentChapter;
     }
     else{
-        [[XDSReadManager sharedManager] updateReadModelWithChapter:_chapterChange page:_pageChange];
+        _chapter = _chapterChange;
+        _page = _pageChange;
+        [[XDSReadManager sharedManager] updateReadModelWithChapter:_chapter page:_page];
     }
 }
 //MARK: - ABOUT REQUEST

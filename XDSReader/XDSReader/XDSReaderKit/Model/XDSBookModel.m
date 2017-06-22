@@ -7,7 +7,9 @@
 //
 
 #import "XDSBookModel.h"
-
+@interface XDSBookModel()
+@property (nonatomic,copy) NSArray <XDSNoteModel *>*notesDevideByChapter;//笔记按章节分组
+@end
 @implementation XDSBookModel
 
 NSString *const kBookModelResourceEncodeKey = @"resource";
@@ -111,4 +113,32 @@ NSString *const kBookModelRecordEncodeKey = @"record";
     return model;
 }
 
+- (void)addNote:(XDSNoteModel *)noteModel{
+    [[self mutableArrayValueForKey:@"notes"] addObject:noteModel];    //这样写才能KVO数组变化
+    [self devideNoteByChapter];//将笔记按章节分组
+}
+
+- (void)devideNoteByChapter{
+    NSArray *notes = [NSMutableArray arrayWithArray:self.notes];
+    
+    notes = [notes sortedArrayUsingComparator:^NSComparisonResult(XDSNoteModel *note1, XDSNoteModel *note2) {
+        return note1.recordModel.currentChapter > note2.recordModel.currentChapter;
+    }];
+    
+    NSMutableArray *containerArray = [NSMutableArray arrayWithArray:notes];
+    NSMutableArray *notesDevideByChapter = [NSMutableArray arrayWithCapacity:0];
+    while (containerArray.count) {
+        XDSNoteModel *firstNote = containerArray.firstObject;
+        NSMutableArray *subArray = [NSMutableArray arrayWithCapacity:0];
+        for (XDSNoteModel *aNote in containerArray) {
+            if (firstNote.recordModel.currentChapter == aNote.recordModel.currentChapter) {
+                [subArray addObject:aNote];
+            }
+        }
+        [notesDevideByChapter addObject:subArray];
+        [containerArray removeObjectsInArray:subArray];
+    }
+    
+    self.notesDevideByChapter = notesDevideByChapter;
+}
 @end
