@@ -29,26 +29,29 @@ static XDSReadManager *readManager;
 
 
 //MARK: - //获取对于章节页码的radViewController，并为其设置代理对象
-- (XDSReadViewController *)readViewWithChapter:(NSUInteger)chapter page:(NSUInteger)page delegate:(id<XDSReadViewControllerDelegate>)rvDelegate{
-    if (_bookModel.record.currentChapter != chapter) {
+- (XDSReadViewController *)readViewWithChapter:(NSInteger *)chapter page:(NSInteger *)page delegate:(id<XDSReadViewControllerDelegate>)rvDelegate{
+    
+    NSInteger selectedChapter = *chapter;
+    if (_bookModel.record.currentChapter != selectedChapter) {
         //新的一章需要先更新字体以获取正确的章节数据
-        [_bookModel.chapters[chapter] updateFont];
+        [_bookModel.chapters[selectedChapter] updateFontAndGetNewPageFromOldPage:page];
         if (_bookModel.bookType == XDSEBookTypeEpub) {
-            [self readChapterContent:chapter];
+            [self readChapterContent:selectedChapter];
         }
     }
 
+    NSInteger selectedPage = *page;
     XDSReadViewController *readView = [[XDSReadViewController alloc] init];
     readView.recordModel = _bookModel.record;
     if (_bookModel.bookType == XDSEBookTypeEpub) {
         readView.bookType = XDSEBookTypeEpub;
-        [self readChapterContent:chapter];
-        readView.epubFrameRef = _bookModel.chapters[chapter].epubframeRef[page];
-        readView.imageArray = _bookModel.chapters[chapter].imageArray;
-        readView.content = _bookModel.chapters[chapter].content;
+        [self readChapterContent:selectedChapter];
+        readView.epubFrameRef = _bookModel.chapters[selectedChapter].epubframeRef[selectedPage];
+        readView.imageArray = _bookModel.chapters[selectedChapter].imageArray;
+        readView.content = _bookModel.chapters[selectedChapter].content;
     }else{
         readView.bookType = XDSEBookTypeTxt;
-        readView.content = [_bookModel.chapters[chapter] stringOfPage:page];
+        readView.content = [_bookModel.chapters[selectedChapter] stringOfPage:selectedPage];
     }
     readView.rvdelegate = rvDelegate;
     return readView;
@@ -69,11 +72,18 @@ static XDSReadManager *readManager;
     
 }
 
+
 //MARK: - 跳转到指定章节（上一章，下一章，slider，目录）
-- (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page{
-    [self updateReadModelWithChapter:chapter page:page];
+- (void)readViewJumpToChapter:(NSInteger *)chapter page:(NSInteger *)page{
+    if (_bookModel.record.currentChapter != *chapter) {
+        //新的一章需要先更新字体以获取正确的章节数据x
+        XDSChapterModel *chapterModel = _bookModel.chapters[*chapter];
+        [chapterModel updateFontAndGetNewPageFromOldPage:page];
+    }
+    
+    [self updateReadModelWithChapter:*chapter page:*page];
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewJumpToChapter:page:)]) {
-        [self.rmDelegate readViewJumpToChapter:chapter page:page];
+        [self.rmDelegate readViewJumpToChapter:*chapter page:*page];
     }
 }
 
@@ -91,13 +101,9 @@ static XDSReadManager *readManager;
         [XDSReadConfig shareInstance].fontSize--;
     }
     
-    [_bookModel.record.chapterModel updateFont];
-    NSInteger page =
-    (_bookModel.record.currentPage>_bookModel.record.chapterModel.pageCount-1)?
-    _bookModel.record.chapterModel.pageCount-1:
-    _bookModel.record.currentPage;
-    
-    [self updateReadModelWithChapter:_bookModel.record.currentChapter page:page];
+    //更新字体，主要是更新pageArray，其他的不需要处理
+    NSInteger page = 0;
+    [_bookModel.record.chapterModel updateFontAndGetNewPageFromOldPage:&page];
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewFontDidChanged)]) {
         [self.rmDelegate readViewFontDidChanged];
@@ -107,15 +113,15 @@ static XDSReadManager *readManager;
 - (void)configReadFontName:(NSString *)fontName{
     [[XDSReadConfig shareInstance] setFontName:fontName];
     
-    //优化，添加穿行队列，遍历所有章节进行updateFont。如果目录需要显示页码。
-    //这里因为目录不需要显示页码，所以进刷新当前章节信息就可以了
-    [_bookModel.record.chapterModel updateFont];
-    
+
     NSInteger page =
     (_bookModel.record.currentPage>_bookModel.record.chapterModel.pageCount-1)?
     _bookModel.record.chapterModel.pageCount-1:
     _bookModel.record.currentPage;
     
+    //优化，添加串行队列，遍历所有章节进行updateFont。如果目录需要显示页码。
+    //更新字体信息并保存阅读记录
+    [_bookModel.record.chapterModel updateFontAndGetNewPageFromOldPage:&page];
     [self updateReadModelWithChapter:_bookModel.record.currentChapter page:page];
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewFontDidChanged)]) {
@@ -138,8 +144,8 @@ static XDSReadManager *readManager;
         page = 0;
     }
     _bookModel.record.chapterModel = _bookModel.chapters[chapter];
+    _bookModel.record.location = [_bookModel.record.chapterModel.pageArray[page] integerValue];
     _bookModel.record.currentChapter = chapter;
-    _bookModel.record.currentPage = page;
     [XDSBookModel updateLocalModel:_bookModel url:_resourceURL];
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewDidUpdateReadRecord)]) {
@@ -176,7 +182,7 @@ static XDSReadManager *readManager;
 }
 
 - (void)addNoteModel:(XDSNoteModel *)noteModel{
-    noteModel.recordModel = [CURRENT_RECORD copy];
+    noteModel.chapter = CURRENT_RECORD.currentChapter;
     [CURRENT_BOOK_MODEL addNote:noteModel];
     [XDSReaderUtil showAlertWithTitle:nil message:@"保存笔记成功"];
 }

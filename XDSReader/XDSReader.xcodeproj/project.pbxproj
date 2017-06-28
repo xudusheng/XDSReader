@@ -85,7 +85,6 @@
 		FCA78BAC1EF3639400114907 /* XDSMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BAB1EF3639400114907 /* XDSMenuView.m */; };
 		FCA78BB01EF3646D00114907 /* XDSMenuTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BAF1EF3646D00114907 /* XDSMenuTopView.m */; };
 		FCA78BB31EF3647900114907 /* XDSMenuBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BB21EF3647900114907 /* XDSMenuBottomView.m */; };
-		FCA78BB61EF372B800114907 /* XDSRightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BB51EF372B800114907 /* XDSRightMenuViewController.m */; };
 		FCA78BB91EF375D900114907 /* XDSReadView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BB81EF375D900114907 /* XDSReadView.m */; };
 		FCA78BBC1EF3770600114907 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BBB1EF3770600114907 /* XDSReadPageViewController.m */; };
 		FCA78BBF1EF3771400114907 /* XDSReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BBE1EF3771400114907 /* XDSReadViewController.m */; };
@@ -126,6 +125,9 @@
 		FCA78C2B1EFA00DB00114907 /* 华文细黑.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C221EFA00DB00114907 /* 华文细黑.ttf */; };
 		FCA78C2C1EFA00DB00114907 /* 华文行楷.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C231EFA00DB00114907 /* 华文行楷.ttf */; };
 		FCA78C2D1EFA00DB00114907 /* 华文隶书.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C241EFA00DB00114907 /* 华文隶书.ttf */; };
+		FCA78C3B1EFB793F00114907 /* LPPNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C3A1EFB793F00114907 /* LPPNoteCell.m */; };
+		FCA78C3E1EFCA92C00114907 /* LPPNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C3D1EFCA92C00114907 /* LPPNoDataView.m */; };
+		FCA78C401EFCA96800114907 /* LPPNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C3F1EFCA96800114907 /* LPPNoDataView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -283,8 +285,6 @@
 		FCA78BAF1EF3646D00114907 /* XDSMenuTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMenuTopView.m; sourceTree = "<group>"; };
 		FCA78BB11EF3647900114907 /* XDSMenuBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMenuBottomView.h; sourceTree = "<group>"; };
 		FCA78BB21EF3647900114907 /* XDSMenuBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMenuBottomView.m; sourceTree = "<group>"; };
-		FCA78BB41EF372B800114907 /* XDSRightMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSRightMenuViewController.h; sourceTree = "<group>"; };
-		FCA78BB51EF372B800114907 /* XDSRightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSRightMenuViewController.m; sourceTree = "<group>"; };
 		FCA78BB71EF375D900114907 /* XDSReadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadView.h; sourceTree = "<group>"; };
 		FCA78BB81EF375D900114907 /* XDSReadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadView.m; sourceTree = "<group>"; };
 		FCA78BBA1EF3770600114907 /* XDSReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadPageViewController.h; sourceTree = "<group>"; };
@@ -344,6 +344,11 @@
 		FCA78C221EFA00DB00114907 /* 华文细黑.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文细黑.ttf"; sourceTree = "<group>"; };
 		FCA78C231EFA00DB00114907 /* 华文行楷.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文行楷.ttf"; sourceTree = "<group>"; };
 		FCA78C241EFA00DB00114907 /* 华文隶书.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文隶书.ttf"; sourceTree = "<group>"; };
+		FCA78C391EFB793F00114907 /* LPPNoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPNoteCell.h; sourceTree = "<group>"; };
+		FCA78C3A1EFB793F00114907 /* LPPNoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPNoteCell.m; sourceTree = "<group>"; };
+		FCA78C3C1EFCA92C00114907 /* LPPNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPNoDataView.h; sourceTree = "<group>"; };
+		FCA78C3D1EFCA92C00114907 /* LPPNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPNoDataView.m; sourceTree = "<group>"; };
+		FCA78C3F1EFCA96800114907 /* LPPNoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPPNoDataView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -629,8 +634,6 @@
 		FCA78B171EF2916700114907 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FCA78BB41EF372B800114907 /* XDSRightMenuViewController.h */,
-				FCA78BB51EF372B800114907 /* XDSRightMenuViewController.m */,
 				FCA78BBD1EF3771400114907 /* XDSReadViewController.h */,
 				FCA78BBE1EF3771400114907 /* XDSReadViewController.m */,
 				FCA78BBA1EF3770600114907 /* XDSReadPageViewController.h */,
@@ -805,8 +808,13 @@
 				FCA78C131EF929AA00114907 /* LPPCatalogueViewController.m */,
 				FCA78C151EF929BE00114907 /* LPPNoteViewController.h */,
 				FCA78C161EF929BE00114907 /* LPPNoteViewController.m */,
+				FCA78C391EFB793F00114907 /* LPPNoteCell.h */,
+				FCA78C3A1EFB793F00114907 /* LPPNoteCell.m */,
 				FCA78C181EF929CE00114907 /* LPPMarkViewController.h */,
 				FCA78C191EF929CE00114907 /* LPPMarkViewController.m */,
+				FCA78C3C1EFCA92C00114907 /* LPPNoDataView.h */,
+				FCA78C3D1EFCA92C00114907 /* LPPNoDataView.m */,
+				FCA78C3F1EFCA96800114907 /* LPPNoDataView.xib */,
 			);
 			path = Catologue;
 			sourceTree = "<group>";
@@ -886,6 +894,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA78C401EFCA96800114907 /* LPPNoDataView.xib in Resources */,
 				FCA78AD01EF2914F00114907 /* index.html in Resources */,
 				FCA78A601EF290F400114907 /* LaunchScreen.storyboard in Resources */,
 				FCA78BD71EF3A2D700114907 /* reader_cover@2x.png in Resources */,
@@ -941,7 +950,6 @@
 				FCA78BA91EF362CA00114907 /* XDSMagnifierView.m in Sources */,
 				FCA78B7C1EF2DEB500114907 /* CXMLDocument_CreationExtensions.m in Sources */,
 				FCA78AB41EF2914F00114907 /* GCDAsyncSocket.m in Sources */,
-				FCA78BB61EF372B800114907 /* XDSRightMenuViewController.m in Sources */,
 				FCA78BE31EF5F6AA00114907 /* LPPReadMenu.m in Sources */,
 				FCA78A581EF290F400114907 /* ViewController.m in Sources */,
 				FCA78B481EF2994200114907 /* XDSNoteModel.m in Sources */,
@@ -957,10 +965,12 @@
 				FCA78ACD1EF2914F00114907 /* HTTPRedirectResponse.m in Sources */,
 				FCA78B7F1EF2DEB500114907 /* CXMLDocument.m in Sources */,
 				FCA78B831EF2DEB500114907 /* CXMLElement_ElementTreeExtensions.m in Sources */,
+				FCA78C3E1EFCA92C00114907 /* LPPNoDataView.m in Sources */,
 				FCA78BB01EF3646D00114907 /* XDSMenuTopView.m in Sources */,
 				FCA78AB71EF2914F00114907 /* DDASLLogger.m in Sources */,
 				FCA78BAC1EF3639400114907 /* XDSMenuView.m in Sources */,
 				FCA78B191EF2916700114907 /* XDSReadConfig.m in Sources */,
+				FCA78C3B1EFB793F00114907 /* LPPNoteCell.m in Sources */,
 				FCA78ACF1EF2914F00114907 /* MyHTTPConnection.m in Sources */,
 				FCA78BBF1EF3771400114907 /* XDSReadViewController.m in Sources */,
 				FCA78BE61EF6D6FE00114907 /* LPPMenuBottomView.m in Sources */,

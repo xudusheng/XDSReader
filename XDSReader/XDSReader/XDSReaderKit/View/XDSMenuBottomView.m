@@ -149,7 +149,7 @@
 #pragma mark showMsg
 
 -(void)changeMsg:(UISlider *)sender{
-    NSUInteger page =ceil((_readModel.chapterModel.pageCount-1)*sender.value/100.00);
+    NSInteger page =ceil((_readModel.chapterModel.pageCount-1)*sender.value/100.00);
     [[XDSReadManager sharedManager] readViewJumpToChapter:CURRENT_RECORD.currentChapter page:page];
     _slider.value = CURRENT_RECORD.currentPage/((float)(CURRENT_RECORD.chapterModel.pageCount-1))*100;
     [_progressView title:CURRENT_RECORD.chapterModel.title progress:[NSString stringWithFormat:@"%.1f%%",_slider.value]];

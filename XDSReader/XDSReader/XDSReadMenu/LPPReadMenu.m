@@ -187,11 +187,18 @@ LPPCatalogueViewDelegate
 //TODO:LPPCatalogueViewDelegate
 - (void)catalogueViewDidSelectedChapter:(XDSChapterModel *)chapterModel{
     NSInteger selectedChapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:chapterModel];
-    [[XDSReadManager sharedManager] readViewJumpToChapter:selectedChapter page:0];
+    NSInteger page = 0;
+    [[XDSReadManager sharedManager] readViewJumpToChapter:&selectedChapter page:&page];
     [self hideReadMenu];
 }
 
-- (void)catalogueViewDidSelectedNote:(XDSNoteModel *)NodeModel{}
+- (void)catalogueViewDidSelectedNote:(XDSNoteModel *)noteModel{
+//    [noteModel.recordModel.chapterModel updateFont];
+    NSInteger chapter = noteModel.chapter;
+    NSInteger page = noteModel.page;
+    [[XDSReadManager sharedManager] readViewJumpToChapter:&chapter page:&page];
+    [self hideReadMenu];
+}
 - (void)catalogueViewDidSelectedMark:(XDSMarkModel *)markModel{}
 
 //MARK: - ABOUT REQUEST

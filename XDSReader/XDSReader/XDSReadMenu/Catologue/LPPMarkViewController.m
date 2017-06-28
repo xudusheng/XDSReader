@@ -8,19 +8,30 @@
 
 #import "LPPMarkViewController.h"
 
+#import "LPPNoDataView.h"
 @interface LPPMarkViewController ()
-
+@property (nonatomic, strong) LPPNoDataView *noDataView;
 @end
 
 @implementation LPPMarkViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.noDataView = [LPPNoDataView newInstance];
+    self.noDataView.frame = self.view.bounds;
+    self.noDataView.titleLabel.text = @"未添加书签";
+    self.noDataView.contentLabel.text = @"在阅读时点击书签按钮可以添加书签";
+    [self.view addSubview:self.noDataView];
+    self.noDataView.hidden = YES;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    if (CURRENT_BOOK_MODEL.marks.count) {
+        self.noDataView.hidden = YES;
+    }else{
+        self.noDataView.hidden = NO;
+    }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;

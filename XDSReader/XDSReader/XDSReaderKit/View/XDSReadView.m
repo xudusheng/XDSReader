@@ -234,6 +234,8 @@
         model.content = [_content substringWithRange:_selectRange];
         model.note = alertController.textFields.firstObject.text;
         model.date = [NSDate date];
+        XDSChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
+        model.locationInChapterContent = _selectRange.location + [chapterModel.pageArray[CURRENT_RECORD.currentPage] integerValue];
         [[XDSReadManager sharedManager] addNoteModel:model];
     }];
     [alertController addAction:cancel];
@@ -308,7 +310,7 @@
 }
 -(BOOL)showImage{
     NSArray *lines = (NSArray *)CTFrameGetLines(self.frameRef);
-    NSUInteger lineCount = [lines count];
+    NSInteger lineCount = [lines count];
     CGPoint lineOrigins[lineCount];
     CTFrameGetLineOrigins(self.frameRef, CFRangeMake(0, 0), lineOrigins);
     
@@ -330,7 +332,7 @@
         return;
     }
     NSArray *lines = (NSArray *)CTFrameGetLines(self.frameRef);
-    NSUInteger lineCount = [lines count];
+    NSInteger lineCount = [lines count];
     CGPoint lineOrigins[lineCount];
     CTFrameGetLineOrigins(self.frameRef, CFRangeMake(0, 0), lineOrigins);
     for (int i = 0; i < lineCount; ++i) {

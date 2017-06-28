@@ -17,7 +17,7 @@
 -(void)menuViewDidHidden:(XDSMenuView *)menu;
 -(void)menuViewDidAppear:(XDSMenuView *)menu;
 -(void)menuViewInvokeCatalog:(XDSMenuBottomView *)menuBottomView;
--(void)menuViewJumpChapter:(NSUInteger)chapter page:(NSUInteger)page;
+-(void)menuViewJumpChapter:(NSInteger)chapter page:(NSInteger)page;
 -(void)menuViewFontSize:(XDSMenuBottomView *)menuBottomView;
 -(void)menuViewMark:(XDSMenuTopView *)menuTopView;
 @end

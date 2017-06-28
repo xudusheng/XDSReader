@@ -26,24 +26,25 @@ typedef  NS_ENUM(NSInteger,XDSEBookType){
 @end
 
 @interface XDSChapterModel : NSObject<NSCopying,NSCoding>
+
+@property (nonatomic,copy) NSArray<XDSNoteModel *>*notes;
+@property (nonatomic,assign) XDSEBookType bookType;
 @property (nonatomic,strong) NSString *content;
 @property (nonatomic,strong) NSString *title;
-@property (nonatomic,assign) NSUInteger pageCount;
+@property (nonatomic,assign) NSInteger pageCount;//章节总页数
+@property (nonatomic,readonly) NSArray *pageArray;//存放页面所在的字符串位置，也就是rang.location
 
-
-
--(NSString *)stringOfPage:(NSUInteger)index;
--(void)updateFont;
-
+//for epub
 @property (nonatomic,copy) NSString *chapterpath;
 @property (nonatomic,copy) NSString *html;
-
 @property (nonatomic,copy) NSArray *epubContent;
 @property (nonatomic,copy) NSArray *epubString;
 @property (nonatomic,copy) NSArray *epubframeRef;
 @property (nonatomic,copy) NSString *epubImagePath;
 @property (nonatomic,copy) NSArray <XDSImageModel *> *imageArray;
-@property (nonatomic,assign) XDSEBookType bookType;
+
+- (NSString *)stringOfPage:(NSInteger)index;
+- (void)updateFontAndGetNewPageFromOldPage:(NSInteger *)oldPage;
 +(id)chapterWithEpub:(NSString *)chapterpath title:(NSString *)title imagePath:(NSString *)path;
 -(void)parserEpubToDictionary;
 -(void)paginateEpubWithBounds:(CGRect)bounds;

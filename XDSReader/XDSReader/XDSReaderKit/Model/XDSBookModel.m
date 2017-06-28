@@ -8,7 +8,7 @@
 
 #import "XDSBookModel.h"
 @interface XDSBookModel()
-@property (nonatomic,copy) NSArray <XDSNoteModel *>*notesDevideByChapter;//笔记按章节分组
+@property (nonatomic,copy) NSArray <XDSChapterModel*> *chapterContainNotes;//包含笔记的章节
 @end
 @implementation XDSBookModel
 
@@ -32,7 +32,7 @@ NSString *const kBookModelRecordEncodeKey = @"record";
         _marks = [NSMutableArray array];
         _record = [[XDSRecordModel alloc] init];
         _record.chapterModel = charpter.firstObject;
-        _record.totalChapters = _chapters.count;
+        _record.location = 0;
         _marksRecord = [NSMutableDictionary dictionary];
         _bookType = XDSEBookTypeTxt;
     }
@@ -46,7 +46,7 @@ NSString *const kBookModelRecordEncodeKey = @"record";
         _marks = [NSMutableArray array];
         _record = [[XDSRecordModel alloc] init];
         _record.chapterModel = _chapters.firstObject;
-        _record.totalChapters = _chapters.count;
+        _record.location = 0;
         _marksRecord = [NSMutableDictionary dictionary];
         _bookType = XDSEBookTypeEpub;
     }
@@ -115,30 +115,62 @@ NSString *const kBookModelRecordEncodeKey = @"record";
 
 - (void)addNote:(XDSNoteModel *)noteModel{
     [[self mutableArrayValueForKey:@"notes"] addObject:noteModel];    //这样写才能KVO数组变化
-    [self devideNoteByChapter];//将笔记按章节分组
+    XDSChapterModel *chapterModel = self.chapters[noteModel.chapter];
+    NSMutableArray *notes = [NSMutableArray arrayWithCapacity:0];
+    if (chapterModel.notes) {
+        [notes addObjectsFromArray:chapterModel.notes];
+    }
+    [notes addObject:noteModel];
+    chapterModel.notes = notes;
+
+    [XDSBookModel updateLocalModel:self url:self.resource]; //本地保存
+    [self devideChaptersContainNotes];
+//    [self devideNoteByChapter];//将笔记按章节分组
 }
 
-- (void)devideNoteByChapter{
-    NSArray *notes = [NSMutableArray arrayWithArray:self.notes];
-    
-    notes = [notes sortedArrayUsingComparator:^NSComparisonResult(XDSNoteModel *note1, XDSNoteModel *note2) {
-        return note1.recordModel.currentChapter > note2.recordModel.currentChapter;
-    }];
-    
-    NSMutableArray *containerArray = [NSMutableArray arrayWithArray:notes];
-    NSMutableArray *notesDevideByChapter = [NSMutableArray arrayWithCapacity:0];
-    while (containerArray.count) {
-        XDSNoteModel *firstNote = containerArray.firstObject;
-        NSMutableArray *subArray = [NSMutableArray arrayWithCapacity:0];
-        for (XDSNoteModel *aNote in containerArray) {
-            if (firstNote.recordModel.currentChapter == aNote.recordModel.currentChapter) {
-                [subArray addObject:aNote];
-            }
+- (void)devideChaptersContainNotes{
+    NSMutableArray *chapterContainNotes = [NSMutableArray arrayWithCapacity:0];
+    for (XDSChapterModel *chapterModel in self.chapters) {
+        if (chapterModel.notes.count) {
+            [chapterContainNotes addObject:chapterModel];
         }
-        [notesDevideByChapter addObject:subArray];
-        [containerArray removeObjectsInArray:subArray];
     }
-    
-    self.notesDevideByChapter = notesDevideByChapter;
+    self.chapterContainNotes = chapterContainNotes;
 }
+
+- (NSArray<XDSChapterModel *> *)chapterContainNotes{
+    if (nil == _chapterContainNotes) {
+        [self devideChaptersContainNotes];
+    }
+    return _chapterContainNotes;
+}
+//- (void)devideNoteByChapter{
+//    NSArray *notes = [NSMutableArray arrayWithArray:self.notes];
+//    notes = [notes sortedArrayUsingComparator:^NSComparisonResult(XDSNoteModel *note1, XDSNoteModel *note2) {
+//        return note1.recordModel.currentChapter > note2.recordModel.currentChapter;
+//    }];
+//    
+//    NSMutableArray *containerArray = [NSMutableArray arrayWithArray:notes];
+//    NSMutableArray *notesDevideByChapter = [NSMutableArray arrayWithCapacity:0];
+//    while (containerArray.count) {
+//        XDSNoteModel *firstNote = containerArray.firstObject;
+//        NSMutableArray *subArray = [NSMutableArray arrayWithCapacity:0];
+//        for (XDSNoteModel *aNote in containerArray) {
+//            if (firstNote.recordModel.currentChapter == aNote.recordModel.currentChapter) {
+//                [subArray addObject:aNote];
+//            }
+//        }
+//        [notesDevideByChapter addObject:subArray];
+//        [containerArray removeObjectsInArray:subArray];
+//    }
+//    
+//    self.notesDevideByChapter = notesDevideByChapter;
+//}
+
+//- (NSArray<NSArray<XDSNoteModel *> *> *)notesDevideByChapter{
+//    if (nil == _notesDevideByChapter) {
+//        [self devideNoteByChapter];
+//    }
+//    return _notesDevideByChapter;
+//}
 @end

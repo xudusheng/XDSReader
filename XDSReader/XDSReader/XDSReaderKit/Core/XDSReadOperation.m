@@ -21,8 +21,7 @@
     
     NSArray* match = [reg matchesInString:content options:NSMatchingReportCompletion range:NSMakeRange(0, [content length])];
     
-    if (match.count != 0)
-    {
+    if (match.count != 0){
         __block NSRange lastRange = NSMakeRange(0, 0);
         [match enumerateObjectsUsingBlock:^(NSTextCheckingResult *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSRange range = [obj range];
@@ -51,8 +50,7 @@
             }
             lastRange = range;
         }];
-    }
-    else{
+    }else{
         XDSChapterModel *model = [[XDSChapterModel alloc] init];
         model.content = content;
         [*chapters addObject:model];

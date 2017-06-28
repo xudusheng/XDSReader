@@ -28,10 +28,10 @@
 #import "XDSReadConfig.h"
 #import "XDSReadParser.h"
 
+#import "XDSNoteModel.h"
 #import "XDSChapterModel.h"
 #import "XDSRecordModel.h"
 #import "XDSMarkModel.h"
-#import "XDSNoteModel.h"
 #import "XDSBookModel.h"
 #import "XDSReadOperation.h"
 

@@ -49,7 +49,7 @@
         [self.mvDelegate menuViewInvokeCatalog:menuBottomView];
     }
 }
--(void)menuViewJumpChapter:(NSUInteger)chapter page:(NSUInteger)page{
+-(void)menuViewJumpChapter:(NSInteger)chapter page:(NSInteger)page{
     if ([self.mvDelegate respondsToSelector:@selector(menuViewJumpChapter:page:)]) {
         [self.mvDelegate menuViewJumpChapter:chapter page:page];
     }

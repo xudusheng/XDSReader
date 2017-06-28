@@ -320,7 +320,7 @@ static CGFloat widthCallback(void* ref){
     }
     if (selectRange.location<lineRange.location+lineRange.length) {
         range.location = selectRange.location;
-        NSUInteger end = MIN(selectRange.location+selectRange.length, lineRange.location+lineRange.length);
+        NSInteger end = MIN(selectRange.location+selectRange.length, lineRange.location+lineRange.length);
         range.length = end-range.location;
     }
     return range;

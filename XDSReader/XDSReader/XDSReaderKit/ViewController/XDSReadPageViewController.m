@@ -18,10 +18,10 @@ UIPageViewControllerDataSource,
 UIGestureRecognizerDelegate,
 XDSReadViewControllerDelegate>
 {
-    NSUInteger _chapter;    //当前显示的章节
-    NSUInteger _page;       //当前显示的页数
-    NSUInteger _chapterChange;  //将要变化的章节
-    NSUInteger _pageChange;     //将要变化的页数
+    NSInteger _chapter;    //当前显示的章节
+    NSInteger _page;       //当前显示的页数
+    NSInteger _chapterChange;  //将要变化的章节
+    NSInteger _pageChange;     //将要变化的页数
 }
 
 @property (nonatomic,strong) UIPageViewController *pageViewController;
@@ -48,8 +48,8 @@ XDSReadViewControllerDelegate>
     _chapter = CURRENT_RECORD.currentChapter;
     _page = CURRENT_RECORD.currentPage;
     
-    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:_chapter
-                                                                                  page:_page
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&_chapter
+                                                                                  page:&_page
                                                                                delegate:self];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -81,8 +81,10 @@ XDSReadViewControllerDelegate>
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)readViewFontDidChanged {
-    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:CURRENT_RECORD.currentChapter
-                                                                                   page:CURRENT_RECORD.currentPage
+    _chapter = CURRENT_RECORD.currentChapter;
+    _page = CURRENT_RECORD.currentPage;
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&_chapter
+                                                                                   page:&_page
                                                                                delegate:self];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -95,8 +97,8 @@ XDSReadViewControllerDelegate>
 }
 - (void)readViewEffectDidChanged{}
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page{
-    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:chapter
-                                                                                   page:page
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&chapter
+                                                                                   page:&page
                                                                                delegate:self];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -157,8 +159,8 @@ XDSReadViewControllerDelegate>
         _pageChange--;
     }
     
-    return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
-                                                          page:_pageChange
+    return [[XDSReadManager sharedManager] readViewWithChapter:&_chapterChange
+                                                          page:&_pageChange
                                                       delegate:self];
 }
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
@@ -170,15 +172,15 @@ XDSReadViewControllerDelegate>
         //最后一页，这里可以处理一下，添加已读完页面。
         return nil;
     }
-    if (_pageChange == CURRENT_BOOK_MODEL.chapters[_chapterChange].pageCount-1) {
+    if (_pageChange == CURRENT_RECORD.totalPage-1) {
         _chapterChange++;
         _pageChange = 0;
     }
     else{
         _pageChange++;
     }
-    return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
-                                                          page:_pageChange
+    return [[XDSReadManager sharedManager] readViewWithChapter:&_chapterChange
+                                                          page:&_pageChange
                                                       delegate:self];
 }
 

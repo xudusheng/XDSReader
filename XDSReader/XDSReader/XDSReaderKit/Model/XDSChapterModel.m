@@ -21,6 +21,7 @@
 NSString *const kChapterModelComtentEncodeKey = @"content";
 NSString *const kChapterModelTitlEncodeKey = @"title";
 NSString *const kChapterModelPageCountEncodeKey = @"pageCount";
+NSString *const kChapterModelNotesEncodeKey = @"notes";
 NSString *const kChapterModelPageArrayEncodeKey = @"pageArray";
 NSString *const kChapterModelBookTypeEncodeKey = @"bookType";
 NSString *const kChapterModelEpubImagePathEncodeKey = @"epubImagePath";
@@ -162,17 +163,44 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     }
     
 }
--(void)updateFont{
+- (void)updateFontAndGetNewPageFromOldPage:(NSInteger *)oldPage{
     CGRect rect = CGRectMake(kReadViewMarginLeft,
                              kReadViewMarginTop,
                              DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight,
                              DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom);
     
+    //获取字体变化前的文本位置
+    NSInteger currentLocation = 0;
+    //是否是最后一页
+    BOOL isLastPage = (*oldPage >= _pageArray.count - 1);
+    if (*oldPage == 0) {
+        currentLocation = [_pageArray[*oldPage] integerValue];
+    }
+    
+    
     if (XDSEBookTypeEpub == _bookType) {
         rect.origin = (CGPoint){0,0};
     }else{}
-    
     [self paginateWithBounds:rect];
+    
+    
+    //字体转变以后
+    NSInteger newPage = 0;
+    if (oldPage == 0) {
+        newPage = 0;
+    }else if (isLastPage){
+        newPage = _pageArray.count - 1;
+    }else{
+        for (int i = 0; i < _pageArray.count; i ++) {
+            NSInteger pageLocation = [_pageArray[i] integerValue];
+            if (currentLocation < pageLocation) {
+                newPage = (i > 0)? (i - 1):0;
+                break;
+            }
+        }
+    }
+    
+    *oldPage = newPage;
 }
 -(void)paginateWithBounds:(CGRect)bounds{
     [_pageArray removeAllObjects];
@@ -180,9 +208,9 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     CTFramesetterRef frameSetter;
     CGPathRef path;
     NSMutableAttributedString *attrStr;
-    attrStr = [[NSMutableAttributedString  alloc] initWithString:self.content];
     NSDictionary *attribute = [XDSReadParser parserAttribute:[XDSReadConfig shareInstance]];
-    [attrStr setAttributes:attribute range:NSMakeRange(0, attrString.length)];
+    attrStr = [[NSMutableAttributedString  alloc] initWithString:self.content attributes:attribute];
+    
     attrString = [attrStr copy];
     frameSetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef) attrString);
     path = CGPathCreateWithRect(bounds, NULL);
@@ -207,10 +235,9 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
             // 退出循环前检查一下最后一页是否已经加上
             if (_pageArray.count == 0) {
                 [_pageArray addObject:@(currentOffset)];
-            }
-            else {
+            }else {
                 
-                NSUInteger lastOffset = [[_pageArray lastObject] integerValue];
+                NSInteger lastOffset = [[_pageArray lastObject] integerValue];
                 
                 if (lastOffset != currentOffset) {
                     [_pageArray addObject:@(currentOffset)];
@@ -240,11 +267,11 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     CFRelease(frameSetter);
     _pageCount = _pageArray.count;
 }
--(NSString *)stringOfPage:(NSUInteger)index{
-    NSUInteger local = [_pageArray[index] integerValue];
-    NSUInteger length;
+-(NSString *)stringOfPage:(NSInteger)index{
+    NSInteger local = [_pageArray[index] integerValue];
+    NSInteger length;
     if (index<self.pageCount-1) {
-        length=  [_pageArray[index+1] integerValue] - [_pageArray[index] integerValue];
+        length = [_pageArray[index+1] integerValue] - [_pageArray[index] integerValue];
     }
     else{
         length = _content.length - [_pageArray[index] integerValue];
@@ -256,7 +283,8 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     model.content = self.content;
     model.title = self.title;
     model.pageCount = self.pageCount;
-    model.pageArray = self.pageArray;
+    model.notes = self.notes;
+    model.pageArray = [NSMutableArray arrayWithArray:self.pageArray];
     model.epubImagePath = self.epubImagePath;
     model.bookType = self.bookType;
     model.epubString = self.epubString;
@@ -267,6 +295,7 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     [aCoder encodeObject:self.content forKey:kChapterModelComtentEncodeKey];
     [aCoder encodeObject:self.title forKey:kChapterModelTitlEncodeKey];
     [aCoder encodeInteger:self.pageCount forKey:kChapterModelPageCountEncodeKey];
+    [aCoder encodeObject:self.notes forKey:kChapterModelNotesEncodeKey];
     [aCoder encodeObject:self.pageArray forKey:kChapterModelPageArrayEncodeKey];
     [aCoder encodeObject:self.epubImagePath forKey:kChapterModelEpubImagePathEncodeKey];
     [aCoder encodeObject:@(self.bookType) forKey:kChapterModelBookTypeEncodeKey];
@@ -281,6 +310,7 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
         _content = [aDecoder decodeObjectForKey:kChapterModelComtentEncodeKey];
         self.title = [aDecoder decodeObjectForKey:kChapterModelTitlEncodeKey];
         self.pageCount = [aDecoder decodeIntegerForKey:kChapterModelPageCountEncodeKey];
+        self.notes = [aDecoder decodeObjectForKey:kChapterModelNotesEncodeKey];
         self.pageArray = [aDecoder decodeObjectForKey:kChapterModelPageArrayEncodeKey];
         self.epubImagePath = [aDecoder decodeObjectForKey:kChapterModelEpubImagePathEncodeKey];
         self.bookType = [[aDecoder decodeObjectForKey:kChapterModelBookTypeEncodeKey] integerValue];
