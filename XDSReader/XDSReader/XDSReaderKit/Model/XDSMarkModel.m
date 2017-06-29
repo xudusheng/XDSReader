@@ -10,20 +10,44 @@
 
 @implementation XDSMarkModel
 NSString *const kMarkModelDateEncodeKey = @"date";
-NSString *const kMarkModelRecordModelEncodeKey = @"recordModel";
+NSString *const kMarkModelContentEncodeKey = @"content";
+NSString *const kMarkModelChapterEncodeKey = @"chapter";
+NSString *const kMarkModelLocationEncodeKey = @"locationInChapterContent";
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.date forKey:kMarkModelDateEncodeKey];
-    [aCoder encodeObject:self.recordModel forKey:kMarkModelRecordModelEncodeKey];
+    [aCoder encodeObject:self.content forKey:kMarkModelContentEncodeKey];
+    [aCoder encodeInteger:self.chapter forKey:kMarkModelChapterEncodeKey];
+    [aCoder encodeInteger:self.locationInChapterContent forKey:kMarkModelLocationEncodeKey];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
         self.date = [aDecoder decodeObjectForKey:kMarkModelDateEncodeKey];
-        self.recordModel = [aDecoder decodeObjectForKey:kMarkModelRecordModelEncodeKey];
+        self.content = [aDecoder decodeObjectForKey:kMarkModelContentEncodeKey];
+        self.chapter = [aDecoder decodeIntegerForKey:kMarkModelChapterEncodeKey];
+        self.locationInChapterContent = [aDecoder decodeIntegerForKey:kMarkModelLocationEncodeKey];
     }
     return self;
 }
 
+- (NSInteger)page{
+    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapter];
+    NSInteger page = 0;
+    if (chapterModel.pageArray.count < 1) {
+        page = 0;
+    }else if (self.locationInChapterContent >= [chapterModel.pageArray.lastObject integerValue]) {
+        page = chapterModel.pageArray.count - 1;
+    }else{
+        for (int i = 0; i < chapterModel.pageArray.count; i ++) {
+            NSInteger location = [chapterModel.pageArray[i] integerValue];
+            if (self.locationInChapterContent < location) {
+                page = (i > 0)? (i - 1):0;
+                break;
+            }
+        }
+    }
+    return page;
+}
 @end

@@ -149,7 +149,7 @@ LPPCatalogueViewDelegate
 - (void)menuBottomView:(LPPMenuBottomView *)bottomView didSelectedPreviousButton:(UIButton *)previousButton{
     NSInteger currentChapter = CURRENT_RECORD.currentChapter;
     currentChapter -= 1;
-    [[XDSReadManager sharedManager] readViewJumpToChapter:currentChapter page:0];
+    [[XDSReadManager sharedManager] readViewJumpToChapter:&currentChapter page:0];
     CGFloat program = CURRENT_RECORD.currentPage/((float)(CURRENT_RECORD.chapterModel.pageCount-1))*100;
     [bottomView setReadProgram:program];
 }
@@ -159,14 +159,15 @@ LPPCatalogueViewDelegate
         currentChapter += 1;
     }
 
-    [[XDSReadManager sharedManager] readViewJumpToChapter:currentChapter page:0];
+    [[XDSReadManager sharedManager] readViewJumpToChapter:&currentChapter page:0];
     CGFloat program = CURRENT_RECORD.currentPage/((float)(CURRENT_RECORD.chapterModel.pageCount-1))*100;
     [bottomView setReadProgram:program];
 }
 - (void)menuBottomView:(LPPMenuBottomView *)bottomView didSelectedSliderValueChanged:(UISlider *)slider{
     
-    NSUInteger page =ceil((CURRENT_RECORD.chapterModel.pageCount-1)*slider.value);
-    [[XDSReadManager sharedManager] readViewJumpToChapter:CURRENT_RECORD.currentChapter page:page];
+    NSInteger page =ceil((CURRENT_RECORD.chapterModel.pageCount-1)*slider.value);
+    NSInteger chapter = CURRENT_RECORD.currentChapter;
+    [[XDSReadManager sharedManager] readViewJumpToChapter:&chapter page:&page];
 }
 
 //TODO: LPPReadSettingViewDelegatge
@@ -193,13 +194,13 @@ LPPCatalogueViewDelegate
 }
 
 - (void)catalogueViewDidSelectedNote:(XDSNoteModel *)noteModel{
-//    [noteModel.recordModel.chapterModel updateFont];
-    NSInteger chapter = noteModel.chapter;
-    NSInteger page = noteModel.page;
-    [[XDSReadManager sharedManager] readViewJumpToChapter:&chapter page:&page];
+    [[XDSReadManager sharedManager] readViewJumpToNote:noteModel];
     [self hideReadMenu];
 }
-- (void)catalogueViewDidSelectedMark:(XDSMarkModel *)markModel{}
+- (void)catalogueViewDidSelectedMark:(XDSMarkModel *)markModel{
+    [[XDSReadManager sharedManager] readViewJumpToMark:markModel];
+    [self hideReadMenu];
+}
 
 //MARK: - ABOUT REQUEST
 

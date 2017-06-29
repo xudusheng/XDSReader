@@ -86,7 +86,35 @@ static XDSReadManager *readManager;
         [self.rmDelegate readViewJumpToChapter:*chapter page:*page];
     }
 }
+//MARK: - 跳转到指定笔记，因为是笔记是基于位置查找的，使用page查找可能出错
+- (void)readViewJumpToNote:(XDSNoteModel *)note{
+    if (_bookModel.record.currentChapter != note.chapter) {
+        //新的一章需要先更新字体以获取正确的章节数据x
+        XDSChapterModel *chapterModel = _bookModel.chapters[note.chapter];
+        NSInteger page = 0;
+        [chapterModel updateFontAndGetNewPageFromOldPage:&page];
+    }
+    
+    [self updateReadModelWithChapter:note.chapter page:note.page];
+    if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewJumpToChapter:page:)]) {
+        [self.rmDelegate readViewJumpToChapter:note.chapter page:note.page];
+    }
+}
 
+//MARK: - 跳转到指定书签，因为是书签是基于位置查找的，使用page查找可能出错
+- (void)readViewJumpToMark:(XDSMarkModel *)mark{
+    if (_bookModel.record.currentChapter != mark.chapter) {
+        //新的一章需要先更新字体以获取正确的章节数据x
+        XDSChapterModel *chapterModel = _bookModel.chapters[mark.chapter];
+        NSInteger page = 0;
+        [chapterModel updateFontAndGetNewPageFromOldPage:&page];
+    }
+    
+    [self updateReadModelWithChapter:mark.chapter page:mark.page];
+    if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewJumpToChapter:page:)]) {
+        [self.rmDelegate readViewJumpToChapter:mark.chapter page:mark.page];
+    }
+}
 //MARK: - 设置字体
 - (void)configReadFontSize:(BOOL)plus{
     if (plus) {
@@ -173,8 +201,13 @@ static XDSReadManager *readManager;
     }else{
         //记录书签信息
         XDSMarkModel *markModel = [[XDSMarkModel alloc] init];
+        XDSChapterModel *chapterModel = _bookModel.record.chapterModel;
+        NSInteger currentPage = _bookModel.record.currentPage;
+        NSInteger currentChapter = _bookModel.record.currentChapter;
         markModel.date = [NSDate date];
-        markModel.recordModel = [_bookModel.record copy];
+        markModel.content = [chapterModel stringOfPage:currentPage];
+        markModel.chapter = currentChapter;
+        markModel.locationInChapterContent = [chapterModel.pageArray[currentPage] integerValue];
         [[_bookModel mutableArrayValueForKey:@"marks"] addObject:markModel];
         [_bookModel.marksRecord setObject:markModel forKey:key];
         return YES;

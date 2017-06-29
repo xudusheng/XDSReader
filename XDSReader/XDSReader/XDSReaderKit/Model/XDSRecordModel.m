@@ -68,8 +68,6 @@ NSString *const kRecordModelLocationEncodeKey = @"location";
             }
         }
     }
-
-    
     return page;
 }
 

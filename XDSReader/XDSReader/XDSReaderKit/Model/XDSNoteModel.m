@@ -39,12 +39,20 @@ NSString *const kNoteModelLocationEncodeKey = @"locationInChapterContent";
 
 - (NSInteger)page{
     XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapter];
-    for (int i = 0; i < chapterModel.pageArray.count; i ++) {
-        NSInteger pageLocation = [chapterModel.pageArray[i] integerValue];
-        if (pageLocation < self.locationInChapterContent) {
-            return (i < 1)?0:(i-1);
+    NSInteger page = 0;
+    if (chapterModel.pageArray.count < 1) {
+        page = 0;
+    }else if (self.locationInChapterContent >= [chapterModel.pageArray.lastObject integerValue]) {
+        page = chapterModel.pageArray.count - 1;
+    }else{
+        for (int i = 0; i < chapterModel.pageArray.count; i ++) {
+            NSInteger location = [chapterModel.pageArray[i] integerValue];
+            if (self.locationInChapterContent < location) {
+                page = (i > 0)? (i - 1):0;
+                break;
+            }
         }
     }
-    return 0;
+    return page;
 }
 @end
