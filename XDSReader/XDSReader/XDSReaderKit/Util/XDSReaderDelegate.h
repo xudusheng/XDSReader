@@ -9,25 +9,6 @@
 #ifndef XDSReaderDelegate_h
 #define XDSReaderDelegate_h
 
-@class XDSMenuBottomView;
-@class XDSMenuTopView;
-@class XDSMenuView;
-@protocol XDSMenuViewDelegate <NSObject>
-@optional
--(void)menuViewDidHidden:(XDSMenuView *)menu;
--(void)menuViewDidAppear:(XDSMenuView *)menu;
--(void)menuViewInvokeCatalog:(XDSMenuBottomView *)menuBottomView;
--(void)menuViewJumpChapter:(NSInteger)chapter page:(NSInteger)page;
--(void)menuViewFontSize:(XDSMenuBottomView *)menuBottomView;
--(void)menuViewMark:(XDSMenuTopView *)menuTopView;
-@end
-
-
-@class XDSReadViewController;
-@protocol XDSReadViewControllerDelegate <NSObject>
--(void)readViewEditeding:(XDSReadViewController *)readViewController;
--(void)readViewEndEdit:(XDSReadViewController *)readViewController;
-@end
 
 
 #endif /* XDSReaderDelegate_h */

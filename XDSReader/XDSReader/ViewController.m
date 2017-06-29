@@ -10,11 +10,11 @@
 
 #import "XDSWIFIFileTransferViewController.h"
 
-#import "LPPReadMenu.h"
+#import "XDSReadMenu.h"
 #import "XDSReadManager.h"
 @interface ViewController ()
 
-@property (strong, nonatomic) LPPReadMenu *readMenuView;
+@property (strong, nonatomic) XDSReadMenu *readMenuView;
 
 @end
 
@@ -63,9 +63,9 @@
 
 
 
-- (LPPReadMenu *)readMenuView{
+- (XDSReadMenu *)readMenuView{
     if (nil == _readMenuView) {
-        _readMenuView = [[LPPReadMenu alloc] initWithFrame:self.view.bounds];
+        _readMenuView = [[XDSReadMenu alloc] initWithFrame:self.view.bounds];
         _readMenuView.backgroundColor = [UIColor clearColor];
     }
     return _readMenuView;

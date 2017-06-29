@@ -25,19 +25,12 @@ UIKIT_EXTERN CGFloat const kReadViewMarginRight;
 
 //沙盒document路径
 #define APP_SANDBOX_DOCUMENT_PATH NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject
+
 //epub文件所在文件夹名称
 #define EPUB_FOLDER @"epub/"
 //epub解压包所在文件夹名称
 #define EPUB_EXTRACTION_FOLDER @"epubExtraction/"
 
 
-#define LSYNoteNotification @"LSYNoteNotification"
-#define LSYEditingNotification @"LSYEditingNotification"
-#define LSYEndEditNotification @"LSYEndEditNotification"
-
-#define KAnimationDelay 0.3f
-#define kMenuTopViewHeight 64.0f
-#define kMenuBottomViewHeight 200.0f
-
-#define MinFontSize 11.0f
-#define MaxFontSize 20.0f
+UIKIT_EXTERN CGFloat const kXDSReadViewMinFontSize;
+UIKIT_EXTERN CGFloat const kXDSReadViewMaxFontSize;

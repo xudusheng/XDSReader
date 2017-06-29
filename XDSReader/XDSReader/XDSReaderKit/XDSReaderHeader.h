@@ -36,9 +36,6 @@
 #import "XDSReadOperation.h"
 
 #import "XDSMagnifierView.h"
-#import "XDSMenuTopView.h"
-#import "XDSMenuBottomView.h"
-#import "XDSMenuView.h"
 #import "XDSReadView.h"
 #import "XDSReaderDelegate.h"
 

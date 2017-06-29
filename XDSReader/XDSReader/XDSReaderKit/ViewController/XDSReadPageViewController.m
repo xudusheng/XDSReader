@@ -11,7 +11,7 @@
 #import "XDSReadViewController.h"
 #import "UIImage+ImageEffects.h"
 
-#import "LPPReadMenu.h"
+#import "XDSReadMenu.h"
 @interface XDSReadPageViewController ()
 <UIPageViewControllerDelegate,
 UIPageViewControllerDataSource,
@@ -25,7 +25,7 @@ XDSReadViewControllerDelegate>
 }
 
 @property (nonatomic,strong) UIPageViewController *pageViewController;
-@property (strong, nonatomic) LPPReadMenu *readMenuView;//菜单
+@property (strong, nonatomic) XDSReadMenu *readMenuView;//菜单
 
 @end
 
@@ -211,9 +211,9 @@ XDSReadViewControllerDelegate>
     [self.view addSubview:self.readMenuView];
 }
 //MARK: - OTHER PRIVATE METHODS
-- (LPPReadMenu *)readMenuView{
+- (XDSReadMenu *)readMenuView{
     if (nil == _readMenuView) {
-        _readMenuView = [[LPPReadMenu alloc] initWithFrame:self.view.bounds];
+        _readMenuView = [[XDSReadMenu alloc] initWithFrame:self.view.bounds];
         _readMenuView.backgroundColor = [UIColor clearColor];
     }
     return _readMenuView;

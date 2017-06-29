@@ -118,12 +118,12 @@ static XDSReadManager *readManager;
 //MARK: - 设置字体
 - (void)configReadFontSize:(BOOL)plus{
     if (plus) {
-        if (floor([XDSReadConfig shareInstance].fontSize) == floor(MaxFontSize)) {
+        if (floor([XDSReadConfig shareInstance].fontSize) == floor(kXDSReadViewMaxFontSize)) {
             return;
         }
         [XDSReadConfig shareInstance].fontSize++;
     }else{
-        if (floor([XDSReadConfig shareInstance].fontSize) == floor(MinFontSize)){
+        if (floor([XDSReadConfig shareInstance].fontSize) == floor(kXDSReadViewMinFontSize)){
             return;
         }
         [XDSReadConfig shareInstance].fontSize--;
