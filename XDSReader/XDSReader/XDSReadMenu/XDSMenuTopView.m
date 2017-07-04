@@ -60,10 +60,13 @@
     [[XDSReadManager sharedManager] closeReadView];
 }
 - (void)markButtonClick:(UIButton *)button{
-   self.markButton.selected = [[XDSReadManager sharedManager] addBookMark];
+    [[XDSReadManager sharedManager] addBookMark];
+    [self updateMarkButtonState];
 }
 //MARK: - OTHER PRIVATE METHODS 私有方法
-
+- (void)updateMarkButtonState{
+    self.markButton.selected = [CURRENT_RECORD.chapterModel isMarkAtPage:CURRENT_RECORD.currentPage];
+}
 //MARK: - ABOUT MEMERY 内存管理
 - (void)dataInit{
     

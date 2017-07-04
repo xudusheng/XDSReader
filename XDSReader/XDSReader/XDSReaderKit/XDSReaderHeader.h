@@ -29,9 +29,9 @@
 #import "XDSReadParser.h"
 
 #import "XDSNoteModel.h"
+#import "XDSMarkModel.h"
 #import "XDSChapterModel.h"
 #import "XDSRecordModel.h"
-#import "XDSMarkModel.h"
 #import "XDSBookModel.h"
 #import "XDSReadOperation.h"
 

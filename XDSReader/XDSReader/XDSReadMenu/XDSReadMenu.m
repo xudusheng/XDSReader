@@ -321,6 +321,7 @@ XDSCatalogueViewDelegate
 - (void)updateReadRecord{//更新进度
     CGFloat programe = (CURRENT_RECORD.currentPage + 1)*1.0f/CURRENT_RECORD.chapterModel.pageCount;
     [self.bottomView setReadProgram:programe];
+    [self.topView updateMarkButtonState];
 }
 - (void)didMoveToSuperview{
     [super didMoveToSuperview];

@@ -28,7 +28,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"细说明朝"withExtension:@"epub"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"每天懂一点好玩心理学"withExtension:@"epub"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 1){
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"mdjyml"withExtension:@"txt"];
@@ -54,8 +54,6 @@
             [[XDSReadManager sharedManager] setResourceURL:fileURL];//文件位置
             [[XDSReadManager sharedManager] setBookModel:bookModel];
             [[XDSReadManager sharedManager] setRmDelegate:pageView];
-//            pageView.bookModel = bookModel;
-//            pageView.resourceURL = fileURL;    //文件位置
             [self presentViewController:pageView animated:YES completion:nil];
         });
     });

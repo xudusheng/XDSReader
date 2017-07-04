@@ -190,28 +190,16 @@ static XDSReadManager *readManager;
 }
 
 //MARK: - 添加或删除书签
-- (BOOL)addBookMark{
-    NSString * key = [NSString stringWithFormat:@"%zd_%zd",_bookModel.record.currentChapter,_bookModel.record.currentPage];
-    id state = _bookModel.marksRecord[key];
-    if (state) {
-        //如果存在移除书签信息
-        [_bookModel.marksRecord removeObjectForKey:key];
-        [[_bookModel mutableArrayValueForKey:@"marks"] removeObject:state];
-        return NO;
-    }else{
-        //记录书签信息
-        XDSMarkModel *markModel = [[XDSMarkModel alloc] init];
-        XDSChapterModel *chapterModel = _bookModel.record.chapterModel;
-        NSInteger currentPage = _bookModel.record.currentPage;
-        NSInteger currentChapter = _bookModel.record.currentChapter;
-        markModel.date = [NSDate date];
-        markModel.content = [chapterModel stringOfPage:currentPage];
-        markModel.chapter = currentChapter;
-        markModel.locationInChapterContent = [chapterModel.pageArray[currentPage] integerValue];
-        [[_bookModel mutableArrayValueForKey:@"marks"] addObject:markModel];
-        [_bookModel.marksRecord setObject:markModel forKey:key];
-        return YES;
-    }
+- (void)addBookMark{
+    XDSMarkModel *markModel = [[XDSMarkModel alloc] init];
+    XDSChapterModel *currentChapterModel = _bookModel.record.chapterModel;
+    NSInteger currentPage = _bookModel.record.currentPage;
+    NSInteger currentChapter = _bookModel.record.currentChapter;
+    markModel.date = [NSDate date];
+    markModel.content = [currentChapterModel stringOfPage:currentPage];
+    markModel.chapter = currentChapter;
+    markModel.locationInChapterContent = [currentChapterModel.pageArray[currentPage] integerValue];
+    [CURRENT_BOOK_MODEL addMark:markModel];
 }
 
 - (void)addNoteModel:(XDSNoteModel *)noteModel{

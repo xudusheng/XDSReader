@@ -10,4 +10,6 @@
 
 @interface XDSMenuTopView : XDSReadRootView
 
+- (void)updateMarkButtonState;
+
 @end

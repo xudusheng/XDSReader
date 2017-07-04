@@ -10,6 +10,7 @@
 @protocol XDSReadViewControllerDelegate;
 
 @interface XDSReadViewController : UIViewController
+
 @property (nonatomic,strong) NSString *content; //显示的内容
 @property (nonatomic,strong) id epubFrameRef;  //epub显示内容
 @property (nonatomic,strong) NSArray *imageArray;  //epub显示的图片

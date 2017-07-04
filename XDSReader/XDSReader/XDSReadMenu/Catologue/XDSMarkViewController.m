@@ -27,18 +27,19 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-    if (CURRENT_BOOK_MODEL.marks.count) {
+    if (CURRENT_BOOK_MODEL.chapterContainMarks.count) {
         self.noDataView.hidden = YES;
     }else{
         self.noDataView.hidden = NO;
     }
 }
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return CURRENT_BOOK_MODEL.chapterContainMarks.count;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return CURRENT_BOOK_MODEL.marks.count;
+    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapterContainMarks[section];
+    return chapterModel.marks.count;
 }
 
 
@@ -48,15 +49,18 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    XDSMarkModel *markModel = CURRENT_BOOK_MODEL.marks[indexPath.row];
-    cell.textLabel.text = markModel.date.description;
+    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapterContainMarks[indexPath.section];
+    XDSMarkModel *markModel = chapterModel.marks[indexPath.row];
+    cell.textLabel.numberOfLines = 2;
+    cell.textLabel.text = [NSString stringWithFormat:@"第%zd章 第%zd页\n%@", markModel.chapter, markModel.page, markModel.content];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (_cvDelegate && [_cvDelegate respondsToSelector:@selector(catalogueViewDidSelectedMark:)]){
-        XDSMarkModel *markModel = CURRENT_BOOK_MODEL.marks[indexPath.row];
+        XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapterContainMarks[indexPath.section];
+        XDSMarkModel *markModel = chapterModel.marks[indexPath.row];
         [_cvDelegate catalogueViewDidSelectedMark:markModel];
     }
 }

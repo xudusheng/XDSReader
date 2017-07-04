@@ -33,7 +33,7 @@
 - (void)configReadTheme:(UIColor *)theme;//设置阅读背景
 - (void)updateReadModelWithChapter:(NSInteger)chapter page:(NSInteger)page;//更新阅读记录
 - (void)closeReadView;//关闭阅读器
-- (BOOL)addBookMark;//添加或删除书签，返回添加结果
+- (void)addBookMark;//添加或删除书签，返回添加结果
 - (void)addNoteModel:(XDSNoteModel *)noteModel;//添加笔记
 
 @end

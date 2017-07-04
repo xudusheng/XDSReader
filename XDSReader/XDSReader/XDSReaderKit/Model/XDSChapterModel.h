@@ -28,6 +28,7 @@ typedef  NS_ENUM(NSInteger,XDSEBookType){
 @interface XDSChapterModel : NSObject<NSCopying,NSCoding>
 
 @property (nonatomic,copy) NSArray<XDSNoteModel *>*notes;
+@property (nonatomic,copy) NSArray<XDSMarkModel *>*marks;
 @property (nonatomic,assign) XDSEBookType bookType;
 @property (nonatomic,strong) NSString *content;
 @property (nonatomic,strong) NSString *title;
@@ -45,8 +46,8 @@ typedef  NS_ENUM(NSInteger,XDSEBookType){
 
 - (NSString *)stringOfPage:(NSInteger)index;
 - (void)updateFontAndGetNewPageFromOldPage:(NSInteger *)oldPage;
-+(id)chapterWithEpub:(NSString *)chapterpath title:(NSString *)title imagePath:(NSString *)path;
--(void)parserEpubToDictionary;
--(void)paginateEpubWithBounds:(CGRect)bounds;
-
++ (id)chapterWithEpub:(NSString *)chapterpath title:(NSString *)title imagePath:(NSString *)path;
+- (void)parserEpubToDictionary;
+- (void)paginateEpubWithBounds:(CGRect)bounds;
+- (BOOL)isMarkAtPage:(NSInteger)page;
 @end
