@@ -133,7 +133,7 @@
 
 //MARK: - ABOUT MEMERY 内存管理
 - (void)dataInit{
-    self.funcIcons = @[@"read_bar_0",@"read_bar_1",@"read_bar_2",@"read_bar_3"];
+    self.funcIcons = @[@"read_bar_0",@"read_bar_1",@"read_bar_2"];
 }
 
 
