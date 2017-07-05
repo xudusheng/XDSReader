@@ -8,8 +8,9 @@
 
 #import "XDSBookModel.h"
 @interface XDSBookModel()
+@property (nonatomic,strong) NSMutableArray<XDSChapterModel*> *chapters;//章节
 @property (nonatomic,copy) NSArray <XDSChapterModel*> *chapterContainNotes;//包含笔记的章节
-@property (nonatomic,copy) NSMutableArray <XDSChapterModel *>*chapterContainMarks;//包含笔记的章节
+@property (nonatomic,copy) NSMutableArray <XDSChapterModel*> *chapterContainMarks;//包含笔记的章节
 @end
 @implementation XDSBookModel
 

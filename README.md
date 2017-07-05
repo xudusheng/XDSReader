@@ -42,12 +42,12 @@ XDSReader已经将Menu的UI显示与逻辑进行了剥离，使用时可以根�
 ```
 ##### 1、关闭阅读器
 ```objective-c
-    [[XDSReadManager sharedManager] closeReadView];
+[[XDSReadManager sharedManager] closeReadView];
 ```
 ##### 2、更换主题
 ```objective-c
 UIColor *theme = [UIColor whiteColor];
-    [[XDSReadManager sharedManager] configReadTheme:theme];
+[[XDSReadManager sharedManager] configReadTheme:theme];
 ```
 
 ##### 3、设置字体
@@ -86,9 +86,9 @@ model.locationInChapterContent = _selectRange.location + [chapterModel.pageArray
 ```
 ##### 8、跳转到指定章节
 ```objective-c	
-    NSInteger selectedChapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:chapterModel];
-    NSInteger page = 0;
-    [[XDSReadManager sharedManager] readViewJumpToChapter:&selectedChapter page:&page];   
+NSInteger selectedChapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:chapterModel];
+NSInteger page = 0;
+[[XDSReadManager sharedManager] readViewJumpToChapter:&selectedChapter page:&page];   
 ```
 ##### 9跳转到指定笔记位置
 ```objective-c
@@ -104,13 +104,13 @@ model.locationInChapterContent = _selectRange.location + [chapterModel.pageArray
 ##### 11、目录、笔记、书签列表的数据源（DataSource）  
 ```objective-c
 @interface XDSBookModel : NSObject <NSCoding>
-	@property (nonatomic,strong) NSMutableArray <XDSChapterModel *>*chapters;//全部章节
-	@property (nonatomic,readonly) NSArray <XDSChapterModel*> *chapterContainNotes;//包含笔记的章节
-	@property (nonatomic,readonly) NSArray <XDSChapterModel *>*chapterContainMarks;//包含书签的章节
+ @property (nonatomic,strong) NSMutableArray <XDSChapterModel *>*chapters;//全部章节
+ @property (nonatomic,readonly) NSArray <XDSChapterModel*> *chapterContainNotes;//包含笔记的章节
+ @property (nonatomic,readonly) NSArray <XDSChapterModel *>*chapterContainMarks;//包含书签的章节
 @end
 
 @interface XDSChapterModel : NSObject<NSCopying,NSCoding>
-	@property (nonatomic,copy) NSArray<XDSNoteModel *>*notes;
-	@property (nonatomic,copy) NSArray<XDSMarkModel *>*marks;
+ @property (nonatomic,copy) NSArray<XDSNoteModel *>*notes;
+ @property (nonatomic,copy) NSArray<XDSMarkModel *>*marks;
 @end
 ```

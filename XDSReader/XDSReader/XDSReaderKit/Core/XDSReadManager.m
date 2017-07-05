@@ -147,17 +147,10 @@ static XDSReadManager *readManager;
 
 - (void)configReadFontName:(NSString *)fontName{
     [[XDSReadConfig shareInstance] setFontName:fontName];
-    
-
-    NSInteger page =
-    (_bookModel.record.currentPage>_bookModel.record.chapterModel.pageCount-1)?
-    _bookModel.record.chapterModel.pageCount-1:
-    _bookModel.record.currentPage;
-    
     //优化，添加串行队列，遍历所有章节进行updateFont。如果目录需要显示页码。
     //更新字体信息并保存阅读记录
-    [_bookModel.record.chapterModel updateFontAndGetNewPageFromOldPage:&page];
-    [self updateReadModelWithChapter:_bookModel.record.currentChapter page:page];
+    NSInteger nonPage = 0;
+    [_bookModel.record.chapterModel updateFontAndGetNewPageFromOldPage:&nonPage];
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewFontDidChanged)]) {
         [self.rmDelegate readViewFontDidChanged];
