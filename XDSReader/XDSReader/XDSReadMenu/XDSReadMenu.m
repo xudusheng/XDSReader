@@ -149,7 +149,8 @@ XDSCatalogueViewDelegate
 - (void)menuBottomView:(XDSMenuBottomView *)bottomView didSelectedPreviousButton:(UIButton *)previousButton{
     NSInteger currentChapter = CURRENT_RECORD.currentChapter;
     currentChapter -= 1;
-    [[XDSReadManager sharedManager] readViewJumpToChapter:&currentChapter page:0];
+    NSInteger page = 0;
+    [[XDSReadManager sharedManager] readViewJumpToChapter:&currentChapter page:&page];
     CGFloat program = CURRENT_RECORD.currentPage/((float)(CURRENT_RECORD.chapterModel.pageCount-1))*100;
     [bottomView setReadProgram:program];
 }
@@ -158,8 +159,8 @@ XDSCatalogueViewDelegate
     if (currentChapter < CURRENT_RECORD.totalChapters - 1) {
         currentChapter += 1;
     }
-
-    [[XDSReadManager sharedManager] readViewJumpToChapter:&currentChapter page:0];
+    NSInteger page = 0;
+    [[XDSReadManager sharedManager] readViewJumpToChapter:&currentChapter page:&page];
     CGFloat program = CURRENT_RECORD.currentPage/((float)(CURRENT_RECORD.chapterModel.pageCount-1))*100;
     [bottomView setReadProgram:program];
 }

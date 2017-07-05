@@ -9,13 +9,8 @@
 #import "ViewController.h"
 
 #import "XDSWIFIFileTransferViewController.h"
-
-#import "XDSReadMenu.h"
 #import "XDSReadManager.h"
 @interface ViewController ()
-
-@property (strong, nonatomic) XDSReadMenu *readMenuView;
-
 @end
 
 @implementation ViewController
@@ -34,11 +29,8 @@
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"mdjyml"withExtension:@"txt"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 2){
-//        XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
-//        [self.navigationController pushViewController:wifiTransferVC animated:YES];
-        
-        [self.view addSubview:self.readMenuView];
-        
+        XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
+        [self.navigationController pushViewController:wifiTransferVC animated:YES];
     }
 }
 
@@ -59,13 +51,4 @@
     });
 }
 
-
-
-- (XDSReadMenu *)readMenuView{
-    if (nil == _readMenuView) {
-        _readMenuView = [[XDSReadMenu alloc] initWithFrame:self.view.bounds];
-        _readMenuView.backgroundColor = [UIColor clearColor];
-    }
-    return _readMenuView;
-}
 @end

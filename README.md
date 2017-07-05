@@ -5,10 +5,9 @@ XDSReader是一个支持epub与txt格式的电子书阅读器，支持目录、�
 工程配置：  
 1、将工程中的XDSReaderKit与XDSReadMenu两个文件夹add到工程中；  
 2、由于需要xml解析，需要添加相应的库支持  
-
-添加libz.tbd
-other link flag 添加  -lxml2
-Header Search Paths 添加  usr/include/libxml2
+	添加libz.tbd
+	other link flag 添加  -lxml2
+	Header Search Paths 添加  usr/include/libxml2
  	
 //.pch文件中
 //工程中引用第三方库ZipArchive进行文件解压，其中包含c代码，
@@ -37,9 +36,8 @@ dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [[XDSReadManager sharedManager] setBookModel:bookModel];
         [[XDSReadManager sharedManager] setRmDelegate:pageView];
         [self presentViewController:pageView animated:YES completion:nil];
-        });
     });
-
+});
 ```
 
 
@@ -135,17 +133,5 @@ NSInteger page = 0;
 @interface XDSChapterModel : NSObject<NSCopying,NSCoding>
   @property (nonatomic,copy) NSArray<XDSNoteModel *>*notes;
   @property (nonatomic,copy) NSArray<XDSMarkModel *>*marks;
-@end
-```
-#### 最后，pageViewController中必须实现XDSReadManagerDelegate协议方法
-```objective-c
-@protocol XDSReadManagerDelegate <NSObject>
-@optional
-- (void)readViewDidClickCloseButton;//点击关闭按钮
-- (void)readViewFontDidChanged;//字体改变
-- (void)readViewThemeDidChanged;//主题改变
-- (void)readViewEffectDidChanged;//翻页效果改变
-- (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到章节
-- (void)readViewDidUpdateReadRecord;//更新阅读进度
 @end
 ```

@@ -9,6 +9,7 @@
 #import "XDSMarkViewController.h"
 
 #import "XDSNoDataView.h"
+#import "XDSNoteCell.h"
 @interface XDSMarkViewController ()
 @property (nonatomic, strong) XDSNoDataView *noDataView;
 @end
@@ -23,6 +24,9 @@
     self.noDataView.contentLabel.text = @"在阅读时点击书签按钮可以添加书签";
     [self.view addSubview:self.noDataView];
     self.noDataView.hidden = YES;
+    
+    self.tableView.estimatedRowHeight = 100;  //  随便设个不那么离谱的值
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -44,15 +48,13 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    XDSNoteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XDSNoteCell"];
     if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[XDSNoteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"XDSNoteCell"];
     }
-    
     XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapterContainMarks[indexPath.section];
     XDSMarkModel *markModel = chapterModel.marks[indexPath.row];
-    cell.textLabel.numberOfLines = 2;
-    cell.textLabel.text = [NSString stringWithFormat:@"第%zd章 第%zd页\n%@", markModel.chapter, markModel.page, markModel.content];
+    cell.nontLabel.text = [NSString stringWithFormat:@"第%zd章 第%zd页\n%@", markModel.chapter, markModel.page, markModel.content];
     return cell;
 }
 

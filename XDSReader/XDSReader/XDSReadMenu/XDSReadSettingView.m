@@ -92,6 +92,7 @@ NSInteger const kSetingFontSizeButtonTag = 30;
         NSString *effect = _effectArray[i];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(tempX + buttonW*i, originY, buttonW, height);
+        button.showsTouchWhenHighlighted = YES;
         button.tag = kSetingEffectButtonTag + i;
         button.titleLabel.font = FONT_SYSTEM_XDS_12;
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -124,6 +125,7 @@ NSInteger const kSetingFontSizeButtonTag = 30;
         NSString *font = _fontArray[i][@"name"];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(tempX + buttonW*i, orginY, buttonW, height);
+        button.showsTouchWhenHighlighted = YES;
         button.tag = kSetingFontButtonTag + i;
         button.titleLabel.font = FONT_SYSTEM_XDS_12;
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -157,7 +159,8 @@ NSInteger const kSetingFontSizeButtonTag = 30;
     // left
     UIButton *reduceFontSizeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     reduceFontSizeButton.frame = CGRectMake(tempX, orginY, buttonW, height);
-    
+    reduceFontSizeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+
     reduceFontSizeButton.tag = kSetingFontSizeButtonTag + 0;
     reduceFontSizeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [reduceFontSizeButton setImage:[UIImage imageNamed:@"RM_15"] forState:UIControlStateNormal];
@@ -171,6 +174,7 @@ NSInteger const kSetingFontSizeButtonTag = 30;
                                           buttonW,
                                           height);
     
+    pulsFontSizeButton.showsTouchWhenHighlighted = YES;
     pulsFontSizeButton.tag = 1;
     pulsFontSizeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [pulsFontSizeButton setImage:[UIImage imageNamed:@"RM_16"] forState:UIControlStateNormal];

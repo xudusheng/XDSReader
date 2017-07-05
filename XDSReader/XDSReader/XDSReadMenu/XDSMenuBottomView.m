@@ -35,6 +35,7 @@
         CGRect frame = CGRectMake(0, kSpace_xds_10, 55, 32);
         UIButton *previousChapter = [UIButton buttonWithType:UIButtonTypeCustom];
         previousChapter.frame = frame;
+        previousChapter.showsTouchWhenHighlighted = YES;
         previousChapter.titleLabel.font = FONT_SYSTEM_XDS_12;
         previousChapter.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [previousChapter setTitle:@"上一章" forState:UIControlStateNormal];
@@ -52,6 +53,7 @@
                                   CGRectGetHeight(_previousChapter.frame));
         UIButton *nextChapter = [UIButton buttonWithType:UIButtonTypeCustom];
         nextChapter.frame = frame;
+        nextChapter.showsTouchWhenHighlighted = YES;
         nextChapter.titleLabel.font = FONT_SYSTEM_XDS_12;
         nextChapter.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [nextChapter setTitle:@"下一章" forState:UIControlStateNormal];
@@ -88,6 +90,7 @@
         CGRect frame = CGRectMake(buttonW * i, buttonY, buttonW, buttonH);
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = frame;
+        button.showsTouchWhenHighlighted = YES;
         [button setImage:[UIImage imageNamed:_funcIcons[i]] forState:UIControlStateNormal];
         button.tag = i;
         [button addTarget:self action:@selector(functionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
