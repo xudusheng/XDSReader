@@ -67,9 +67,14 @@ static XDSReadManager *readManager;
         
         chapterModel.content = [html stringByConvertingHTMLToPlainText];
         [chapterModel parserEpubToDictionary];
+
+    }else{
+        CGRect rect = CGRectMake(0,
+                                 0,
+                                 DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight,
+                                 DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom);
+        [chapterModel paginateEpubWithBounds:rect];
     }
-    [chapterModel paginateEpubWithBounds:CGRectMake(0,0, DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight, DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom)];
-    
 }
 
 
@@ -81,10 +86,12 @@ static XDSReadManager *readManager;
         [chapterModel updateFontAndGetNewPageFromOldPage:page];
     }
     
-    [self updateReadModelWithChapter:*chapter page:*page];
+    //跳转到指定章节
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewJumpToChapter:page:)]) {
         [self.rmDelegate readViewJumpToChapter:*chapter page:*page];
     }
+    //更新阅读记录
+    [self updateReadModelWithChapter:*chapter page:*page];
 }
 //MARK: - 跳转到指定笔记，因为是笔记是基于位置查找的，使用page查找可能出错
 - (void)readViewJumpToNote:(XDSNoteModel *)note{

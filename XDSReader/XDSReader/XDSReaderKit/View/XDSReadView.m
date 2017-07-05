@@ -288,18 +288,19 @@
             UIImage *image = [UIImage imageWithContentsOfFile:imageModel.url];
             CFRange range = CTFrameGetVisibleStringRange(_frameRef);
             
-            if (image&&(range.location<=imageModel.position&&imageModel.position<=(range.length + range.location))) {
+            if (image &&
+                (range.location<=imageModel.position &&
+                 imageModel.position <= (range.length + range.location))
+                ) {
+                    
                 [self fillImagePosition:imageModel];
+                CGRect effectRect = [self effectImageRect:image inRect:imageModel.imageRect];
                 if (imageModel.position==(range.length + range.location)) {
                     if ([self showImage]) {
-                        CGContextDrawImage(ctx, imageModel.imageRect, image.CGImage);
+                        CGContextDrawImage(ctx, effectRect, image.CGImage);
                     }
-                    else{
-                        
-                    }
-                }
-                else{
-                    CGContextDrawImage(ctx, imageModel.imageRect, image.CGImage);
+                }else{
+                    CGContextDrawImage(ctx, effectRect, image.CGImage);
                 }
             }
         }
@@ -308,6 +309,24 @@
     //绘制选中区域前后的大头针
     [self drawDotWithLeft:leftDot right:rightDot];
 }
+
+
+- (CGRect)effectImageRect:(UIImage *)image inRect:(CGRect)showRect{
+    CGRect effectRect = showRect;
+    CGFloat showAreaRate = CGRectGetWidth(showRect)/CGRectGetHeight(showRect);
+    CGFloat imageRate = image.size.width/image.size.height;
+    CGFloat midX = CGRectGetMidX(effectRect);
+    if (showAreaRate > imageRate) {
+        effectRect.size.width = imageRate * CGRectGetHeight(effectRect);
+        effectRect.origin.x = midX - CGRectGetWidth(effectRect)/2;
+    }else{
+        effectRect.size.height = CGRectGetWidth(effectRect)/imageRate;
+        effectRect.origin.x = midX - CGRectGetWidth(effectRect)/2;
+    }
+    
+    return effectRect;
+}
+
 -(BOOL)showImage{
     NSArray *lines = (NSArray *)CTFrameGetLines(self.frameRef);
     NSInteger lineCount = [lines count];
@@ -370,7 +389,15 @@
             
             CGRect delegateBounds = CGRectOffset(runBounds, colRect.origin.x, colRect.origin.y);
             imageModel.imageRect = delegateBounds;
-            break;
+            NSString *content = metaDic[@"content"];
+            NSLog(@"imageulr = %@", imageModel.url);
+            NSLog(@"rect = %@", NSStringFromCGRect(delegateBounds));
+            
+            if ([content isKindOfClass:[NSString class]] && [content isEqualToString:imageModel.url]) {
+                return;
+            }else{
+                break;
+            }
         }
     }
 }

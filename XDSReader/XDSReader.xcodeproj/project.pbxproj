@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC88A5181F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub in Resources */ = {isa = PBXBuildFile; fileRef = FC88A5171F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub */; };
+		FC88A51A1F0CCAE900BDF04A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FC88A5191F0CCAE900BDF04A /* README.md */; };
 		FCA78A521EF290F400114907 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A511EF290F400114907 /* main.m */; };
 		FCA78A551EF290F400114907 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A541EF290F400114907 /* AppDelegate.m */; };
 		FCA78A581EF290F400114907 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A571EF290F400114907 /* ViewController.m */; };
@@ -86,7 +88,6 @@
 		FCA78BBC1EF3770600114907 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BBB1EF3770600114907 /* XDSReadPageViewController.m */; };
 		FCA78BBF1EF3771400114907 /* XDSReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BBE1EF3771400114907 /* XDSReadViewController.m */; };
 		FCA78BC21EF39B6000114907 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */; };
-		FCA78BCF1EF3A2D600114907 /* 细说明朝.epub in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC41EF3A2D600114907 /* 细说明朝.epub */; };
 		FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */; };
 		FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC61EF3A2D600114907 /* mdjyml.txt */; };
 		FCA78BD21EF3A2D700114907 /* sale_discount_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */; };
@@ -127,6 +128,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC88A5171F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "走遍中国珍藏版(图说天下·国家地理系列).epub"; sourceTree = "<group>"; };
+		FC88A5191F0CCAE900BDF04A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		FCA78A4D1EF290F400114907 /* XDSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA78A511EF290F400114907 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FCA78A531EF290F400114907 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -283,7 +286,6 @@
 		FCA78BBE1EF3771400114907 /* XDSReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadViewController.m; sourceTree = "<group>"; };
 		FCA78BC01EF39B6000114907 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
-		FCA78BC41EF3A2D600114907 /* 细说明朝.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "细说明朝.epub"; sourceTree = "<group>"; };
 		FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "每天懂一点好玩心理学.epub"; sourceTree = "<group>"; };
 		FCA78BC61EF3A2D600114907 /* mdjyml.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdjyml.txt; sourceTree = "<group>"; };
 		FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sale_discount_yellow.png; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 		FCA78A4F1EF290F400114907 /* XDSReader */ = {
 			isa = PBXGroup;
 			children = (
+				FC88A5191F0CCAE900BDF04A /* README.md */,
 				FCA78C1B1EFA00DA00114907 /* 华文字体 */,
 				FCA78BE01EF5F40200114907 /* XDSReadMenu */,
 				FCA78AD61EF2916700114907 /* XDSReaderKit */,
@@ -727,7 +730,7 @@
 		FCA78BC31EF3A2CF00114907 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				FCA78BC41EF3A2D600114907 /* 细说明朝.epub */,
+				FC88A5171F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub */,
 				FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */,
 				FCA78BC61EF3A2D600114907 /* mdjyml.txt */,
 				FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */,
@@ -881,6 +884,7 @@
 				FCA78AD21EF2914F00114907 /* wifi.png in Resources */,
 				FCA78C2D1EFA00DB00114907 /* 华文隶书.ttf in Resources */,
 				FCA78C2C1EFA00DB00114907 /* 华文行楷.ttf in Resources */,
+				FC88A5181F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub in Resources */,
 				FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */,
 				FCA78A5D1EF290F400114907 /* Assets.xcassets in Resources */,
 				FCA78BD51EF3A2D700114907 /* bg_back_white.png in Resources */,
@@ -889,7 +893,6 @@
 				FCA78BD41EF3A2D700114907 /* reader_more@2x.png in Resources */,
 				FCA78C2A1EFA00DB00114907 /* 华文琥珀.ttf in Resources */,
 				FCA78BD61EF3A2D700114907 /* bg_back_white@2x.png in Resources */,
-				FCA78BCF1EF3A2D600114907 /* 细说明朝.epub in Resources */,
 				FCA78BD21EF3A2D700114907 /* sale_discount_yellow.png in Resources */,
 				FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */,
 				FCA78C2B1EFA00DB00114907 /* 华文细黑.ttf in Resources */,
@@ -978,6 +981,7 @@
 				FCA78B311EF2916700114907 /* XDSReaderGlobleConst.m in Sources */,
 				FCA78B861EF2DEB500114907 /* CXMLNode_PrivateExtensions.m in Sources */,
 				FCA78B9C1EF2E18100114907 /* ioapi.c in Sources */,
+				FC88A51A1F0CCAE900BDF04A /* README.md in Sources */,
 				FCA78BF51EF7B2FB00114907 /* XDSReadSettingView.m in Sources */,
 				FCA78B891EF2DEB500114907 /* CTidy.m in Sources */,
 				FCA78AC01EF2914F00114907 /* DDRange.m in Sources */,

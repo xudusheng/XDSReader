@@ -48,6 +48,6 @@ typedef  NS_ENUM(NSInteger,XDSEBookType){
 - (void)updateFontAndGetNewPageFromOldPage:(NSInteger *)oldPage;
 + (id)chapterWithEpub:(NSString *)chapterpath title:(NSString *)title imagePath:(NSString *)path;
 - (void)parserEpubToDictionary;
-- (void)paginateEpubWithBounds:(CGRect)bounds;
+-(void)paginateEpubWithBounds:(CGRect)bounds;
 - (BOOL)isMarkAtPage:(NSInteger)page;
 @end

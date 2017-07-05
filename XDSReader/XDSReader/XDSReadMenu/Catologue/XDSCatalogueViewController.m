@@ -43,11 +43,12 @@ CGFloat const kCatalogueTableViewCellHeight = 44.f;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (nil == cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
     }
     
     XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[indexPath.row];
     cell.textLabel.text = chapterModel.title;
-    cell.textLabel.textColor = TEXT_COLOR_XDS_1;
+    cell.textLabel.textColor = [UIColor darkGrayColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (CURRENT_RECORD.chapterModel == chapterModel) {
         cell.textLabel.textColor = TEXT_COLOR_XDS_2;

@@ -53,18 +53,14 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     model.html = html;
     model.content = [html stringByConvertingHTMLToPlainText];
     [model parserEpubToDictionary];
-    CGRect rect = CGRectMake(0,
-                             0,
-                             DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight,
-                             DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom);
-    [model paginateEpubWithBounds:rect];
     return model;
 }
 
 -(void)parserEpubToDictionary{
     NSMutableArray *array = [NSMutableArray array];
     NSMutableArray *imageArray = [NSMutableArray array];
-    NSScanner *scanner = [NSScanner scannerWithString:self.content];
+    NSString *content = [self.html stringByConvertingHTMLToPlainText];
+    NSScanner *scanner = [NSScanner scannerWithString:content];
     NSMutableString *newString = [[NSMutableString alloc] init];
     while (![scanner isAtEnd]) {
         if ([scanner scanString:@"<img>" intoString:NULL]) {
@@ -74,11 +70,16 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
             NSString *imageFullPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingPathComponent:imageRelativePath];
             
             UIImage *image = [UIImage imageWithContentsOfFile:imageFullPath];
-            CGSize size = CGSizeMake((DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight),
-                                     (DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight)/(DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom)*image.size.width);
-            if (size.height>(DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom-20)) {
-                size.height = DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom-20
-                ;
+            
+            CGFloat readViewWidth = DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight;
+            CGFloat readViewHeight = DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom;
+            
+            CGSize size = CGSizeMake(readViewWidth,
+                                     image.size.height/image.size.width*readViewWidth);
+            if (image.size.width < readViewWidth){
+                size.height = image.size.height;
+            }else if (size.height>(readViewHeight-20)) {
+                size.height = readViewHeight-20;
             }
             [array addObject:@{@"type":@"img",@"content":imageRelativePath?imageFullPath:@"",@"width":@(size.width),@"height":@(size.height)}];
             //存储图片信息
@@ -86,6 +87,10 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
             imageData.url = imageRelativePath?imageFullPath:@"";
             imageData.position = newString.length;
             [imageArray addObject:imageData];
+            
+            unichar objectReplacementChar = 0xFFFC;
+            NSString *placeholderString = [NSString stringWithCharacters:&objectReplacementChar length:1];
+            [newString appendString:placeholderString];
             [scanner scanString:@"</img>" intoString:NULL];
         }
         else{
@@ -99,18 +104,22 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     self.epubContent = [array copy];
     self.imageArray = [imageArray copy];
     //    self.content = [newString copy];
+    
+    CGRect rect = CGRectMake(0,
+                             0,
+                             DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight,
+                             DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom);
+    [self paginateEpubWithBounds:rect];
 }
 -(void)paginateEpubWithBounds:(CGRect)bounds{
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] init];
     for (NSDictionary *dic in _epubContent) {
         if ([dic[@"type"] isEqualToString:@"txt"]) {
             //解析文本
-            NSLog(@"--%.2f",[XDSReadConfig shareInstance].fontSize);
             NSDictionary *attr = [XDSReadParser parserAttribute:[XDSReadConfig shareInstance]];
             NSMutableAttributedString *subString = [[NSMutableAttributedString alloc] initWithString:dic[@"content"] attributes:attr];
             [attrString appendAttributedString:subString];
-        }
-        else if ([dic[@"type"] isEqualToString:@"img"]){
+        }else if ([dic[@"type"] isEqualToString:@"img"]){
             //解析图片
             NSAttributedString *subString = [XDSReadParser parserEpubImageWithSize:dic config:[XDSReadConfig shareInstance]];
             [attrString appendAttributedString:subString];
@@ -179,12 +188,7 @@ NSString *const kChapterModelEpubStringEncodeKey = @"epubString";
     
     
     if (XDSEBookTypeEpub == _bookType) {
-        CGRect rect = CGRectMake(0,
-                                 0,
-                                 DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight,
-                                 DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom);
-        [self paginateEpubWithBounds:rect];
-
+        [self parserEpubToDictionary];
     }else{
         CGRect rect = CGRectMake(kReadViewMarginLeft,
                                  kReadViewMarginTop,

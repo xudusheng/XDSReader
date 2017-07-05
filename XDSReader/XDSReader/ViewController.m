@@ -28,7 +28,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"每天懂一点好玩心理学"withExtension:@"epub"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"走遍中国珍藏版(图说天下·国家地理系列)"withExtension:@"epub"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 1){
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"mdjyml"withExtension:@"txt"];
