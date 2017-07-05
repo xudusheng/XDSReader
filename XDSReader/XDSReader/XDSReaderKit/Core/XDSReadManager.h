@@ -40,11 +40,11 @@
 
 
 @protocol XDSReadManagerDelegate <NSObject>
+@optional
 - (void)readViewDidClickCloseButton;//点击关闭按钮
 - (void)readViewFontDidChanged;//字体改变
 - (void)readViewThemeDidChanged;//主题改变
 - (void)readViewEffectDidChanged;//翻页效果改变
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到章节
 - (void)readViewDidUpdateReadRecord;//更新阅读进度
-
 @end

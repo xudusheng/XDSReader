@@ -2,7 +2,7 @@
 XDSReader是一个支持epub与txt格式的电子书阅读器，支持目录、添加笔记、添加书签、字体切换、章节切换等功能。epub目前仅支持显示查看文本与图片，后续将继续添加标注、图片点击、笔记点击等功能。
 
 ```objective-c 
-使用方法：  
+工程配置：  
 1、将工程中的XDSReaderKit与XDSReadMenu两个文件夹add到工程中；  
 2、由于需要xml解析，需要添加相应的库支持  
 
@@ -20,6 +20,29 @@ Header Search Paths 添加  usr/include/libxml2
 	#import "XDSReaderHeader.h"
 #endif
 ```	
+
+```objective-c
+主要入口代码：
+//TXT
+//NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"mdjyml"withExtension:@"txt"];
+
+//EPUB
+NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"走遍中国珍藏版(图说天下·国家地理系列)"withExtension:@"epub"];
+
+dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    XDSBookModel *bookModel = [XDSBookModel getLocalModelWithURL:fileURL];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
+        [[XDSReadManager sharedManager] setResourceURL:fileURL];//文件位置
+        [[XDSReadManager sharedManager] setBookModel:bookModel];
+        [[XDSReadManager sharedManager] setRmDelegate:pageView];
+        [self presentViewController:pageView animated:YES completion:nil];
+        });
+    });
+
+```
+
+
 
 XDSReader已经将Menu的UI显示与逻辑进行了剥离，使用时可以根据业务需要自行定义UI界面。  
 
@@ -104,13 +127,25 @@ NSInteger page = 0;
 ##### 11、目录、笔记、书签列表的数据源（DataSource）  
 ```objective-c
 @interface XDSBookModel : NSObject <NSCoding>
- @property (nonatomic,strong) NSMutableArray <XDSChapterModel *>*chapters;//全部章节
- @property (nonatomic,readonly) NSArray <XDSChapterModel*> *chapterContainNotes;//包含笔记的章节
- @property (nonatomic,readonly) NSArray <XDSChapterModel *>*chapterContainMarks;//包含书签的章节
+  @property (nonatomic,strong) NSMutableArray <XDSChapterModel *>*chapters;//全部章节
+  @property (nonatomic,readonly) NSArray <XDSChapterModel*> *chapterContainNotes;//包含笔记的章节
+  @property (nonatomic,readonly) NSArray <XDSChapterModel *>*chapterContainMarks;//包含书签的章节
 @end
 
 @interface XDSChapterModel : NSObject<NSCopying,NSCoding>
- @property (nonatomic,copy) NSArray<XDSNoteModel *>*notes;
- @property (nonatomic,copy) NSArray<XDSMarkModel *>*marks;
+  @property (nonatomic,copy) NSArray<XDSNoteModel *>*notes;
+  @property (nonatomic,copy) NSArray<XDSMarkModel *>*marks;
+@end
+```
+#### 最后，pageViewController中必须实现XDSReadManagerDelegate协议方法
+```objective-c
+@protocol XDSReadManagerDelegate <NSObject>
+@optional
+- (void)readViewDidClickCloseButton;//点击关闭按钮
+- (void)readViewFontDidChanged;//字体改变
+- (void)readViewThemeDidChanged;//主题改变
+- (void)readViewEffectDidChanged;//翻页效果改变
+- (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到章节
+- (void)readViewDidUpdateReadRecord;//更新阅读进度
 @end
 ```
