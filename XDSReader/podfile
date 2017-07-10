@@ -1,0 +1,9 @@
+
+target 'XDSReader' do
+
+pod 'ZipArchive', '~> 1.4.0'
+
+platform :ios
+pod 'DTCoreText'
+
+end

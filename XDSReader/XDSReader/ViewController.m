@@ -10,6 +10,7 @@
 
 #import "XDSWIFIFileTransferViewController.h"
 #import "XDSReadManager.h"
+#import "XDSDemoViewController.h"
 @interface ViewController ()
 @end
 
@@ -29,8 +30,12 @@
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"mdjyml"withExtension:@"txt"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 2){
-        XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
-        [self.navigationController pushViewController:wifiTransferVC animated:YES];
+//        XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
+//        [self.navigationController pushViewController:wifiTransferVC animated:YES];
+        
+        XDSDemoViewController *demoVC = [[XDSDemoViewController alloc] init];
+        [self.navigationController presentViewController:demoVC animated:YES completion:nil];
+//        [self.navigationController pushViewController:demoVC animated:YES];
     }
 }
 

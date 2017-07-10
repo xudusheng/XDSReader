@@ -114,6 +114,7 @@
             NSArray *path = [XDSReadParser parserRectsWithPoint:point range:&_selectRange frameRef:_frameRef paths:_pathArray direction:_direction];
             _pathArray = path;
             [self setNeedsDisplay];
+            
         }
         
     }
@@ -140,6 +141,7 @@
     if ([self.rvDelegate respondsToSelector:@selector(readViewEditeding:)]) {
         [self.rvDelegate readViewEditeding:nil];
     }
+    
     _pan.enabled = YES;
     CGMutablePathRef _path = CGPathCreateMutable();
     [[UIColor cyanColor]setFill];
