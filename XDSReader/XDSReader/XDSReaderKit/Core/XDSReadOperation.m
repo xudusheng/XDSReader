@@ -170,58 +170,123 @@
 + (NSMutableArray *)parseOPF:(NSString *)opfRelativePath{
     NSString *opfPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:opfRelativePath];
     CXMLDocument* document = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:opfPath] options:0 error:nil];
-    NSArray* itemsArray = [document nodesForXPath:@"//opf:item" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
+    
+    
+//    <title>:题名
+//    <creator>：责任者
+//    <subject>：主题词或关键词
+//    <description>：内容描述
+//    <contributor>：贡献者或其它次要责任者
+//    <date>：日期
+//    <type>：类型
+//    <format>：格式
+//    <identifier>：标识符
+//    <source>：来源
+//    <language>：语种
+//    <relation>：相关信息
+//    <coverage>：履盖范围
+//    <rights>：权限描述
+//    <x-metadata>，即扩展元素。如果有些信息在上述元素中无法描述，则在此元素中进行扩展。
+
+    NSString *title = [self readDCValueFromOPFForKey:@"title" document:document];
+    NSString *creator = [self readDCValueFromOPFForKey:@"creator" document:document];
+    NSString *subject = [self readDCValueFromOPFForKey:@"subject" document:document];
+    NSString *description = [self readDCValueFromOPFForKey:@"description" document:document];
+    NSString *date = [self readDCValueFromOPFForKey:@"date" document:document];
+    NSString *type = [self readDCValueFromOPFForKey:@"type" document:document];
+    NSString *format = [self readDCValueFromOPFForKey:@"format" document:document];
+    NSString *identifier = [self readDCValueFromOPFForKey:@"identifier" document:document];
+    NSString *source = [self readDCValueFromOPFForKey:@"source" document:document];
+    NSString *relation = [self readDCValueFromOPFForKey:@"relation" document:document];
+    NSString *coverage = [self readDCValueFromOPFForKey:@"coverage" document:document];
+    NSString *rights = [self readDCValueFromOPFForKey:@"rights" document:document];
+    
+    NSString *cover = [self readCoverImage:document];
+    
+    
+    CXMLElement *element = (CXMLElement *)[document nodeForXPath:@"//opf:item[@media-type='application/x-dtbncx+xml']" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
     //opf文件的命名空间 xmlns="http://www.idpf.org/2007/opf" 需要取到某个节点设置命名空间的键为opf 用opf:节点来获取节点
     NSString *ncxFile;
-    NSMutableDictionary* itemDictionary = [[NSMutableDictionary alloc] init];
-    for (CXMLElement* element in itemsArray){
-        [itemDictionary setValue:[[element attributeForName:@"href"] stringValue] forKey:[[element attributeForName:@"id"] stringValue]];
-        if([[[element attributeForName:@"media-type"] stringValue] isEqualToString:@"application/x-dtbncx+xml"]){
-            ncxFile = [[element attributeForName:@"href"] stringValue]; //获取ncx文件名称 根据ncx获取书的目录
-        }
+    if (element) {
+        ncxFile = [[element attributeForName:@"href"] stringValue];//获取ncx文件名称 根据ncx获取书的目录
     }
+    
+//    NSMutableDictionary* itemDictionary = [[NSMutableDictionary alloc] init];
+//    for (CXMLElement* element in itemsArray){
+//        [itemDictionary setValue:[[element attributeForName:@"href"] stringValue] forKey:[[element attributeForName:@"id"] stringValue]];
+//        if([[[element attributeForName:@"media-type"] stringValue] isEqualToString:@"application/x-dtbncx+xml"]){
+//            ncxFile = [[element attributeForName:@"href"] stringValue]; //获取ncx文件名称 根据ncx获取书的目录
+//            break;
+//        }
+//    }
     
     NSString *absolutePath = [opfPath stringByDeletingLastPathComponent];
     CXMLDocument *ncxDoc = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@", absolutePath,ncxFile]] options:0 error:nil];
-    NSMutableDictionary* titleDictionary = [[NSMutableDictionary alloc] init];
-    for (CXMLElement* element in itemsArray) {
-        NSString* href = [[element attributeForName:@"href"] stringValue];
-        
-        NSString* xpath = [NSString stringWithFormat:@"//ncx:content[@src='%@']/../ncx:navLabel/ncx:text", href];
-        //根据opf文件的href获取到ncx文件中的中对应的目录名称
-        NSArray* navPoints = [ncxDoc nodesForXPath:xpath namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.daisy.org/z3986/2005/ncx/" forKey:@"ncx"] error:nil];
-        if ([navPoints count] == 0) {
-            NSString *contentpath = @"//ncx:content";
-            NSArray *contents = [ncxDoc nodesForXPath:contentpath namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.daisy.org/z3986/2005/ncx/" forKey:@"ncx"] error:nil];
-            for (CXMLElement *element in contents) {
-                NSString *src = [[element attributeForName:@"src"] stringValue];
-                if ([src hasPrefix:href]) {
-                    xpath = [NSString stringWithFormat:@"//ncx:content[@src='%@']/../ncx:navLabel/ncx:text", src];
-                    navPoints = [ncxDoc nodesForXPath:xpath namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.daisy.org/z3986/2005/ncx/" forKey:@"ncx"] error:nil];
-                    break;
-                }
-            }
-        }
-        
-        if([navPoints count]!=0){
-            CXMLElement* titleElement = navPoints.firstObject;
-            [titleDictionary setValue:[titleElement stringValue] forKey:href];
-        }
-    }
     
-    NSString *chapterRelativeFolder = [opfRelativePath stringByDeletingLastPathComponent];
-    NSArray* itemRefsArray = [document nodesForXPath:@"//opf:itemref" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
-    NSMutableArray *chapters = [NSMutableArray array];
-    for (CXMLElement* element in itemRefsArray){
-        NSString* chapHref = [itemDictionary valueForKey:[[element attributeForName:@"idref"] stringValue]];
-
-        XDSChapterModel *model = [XDSChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",chapterRelativeFolder,chapHref]
-                                                            title:[titleDictionary valueForKey:chapHref]
-                                                        imagePath:[[[opfRelativePath stringByDeletingLastPathComponent]stringByAppendingPathComponent:chapHref] stringByDeletingLastPathComponent]];
-        [chapters addObject:model];
+    NSString *xpath = @"//ncx:content[@src]/../ncx:navLabel/ncx:text";
+    xpath = @"//ncx:navPoint";
+    //根据opf文件的href获取到ncx文件中的中对应的目录名称
+    NSArray *navPoints = [ncxDoc nodesForXPath:xpath namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.daisy.org/z3986/2005/ncx/" forKey:@"ncx"] error:nil];
+    
+    NSMutableArray *chapters = [NSMutableArray arrayWithCapacity:0];
+    for (CXMLElement *element in navPoints) {
+        NSArray *navLabels = [element elementsForName:@"navLabel"];
+        NSArray *contents = [element elementsForName:@"content"];
+        if (!navLabels.count || !contents) {
+            continue;
+        }
+        CXMLElement *navLabel = navLabels.firstObject;;
+        CXMLElement *content = contents.firstObject;
         
+        NSArray *texts = [navLabel elementsForName:@"text"];
+        
+        if (!texts.count) {
+            continue;
+        }
+        
+        CXMLElement *text = texts.firstObject;
+        
+        NSString *chapterName = text.stringValue;//章节名称
+        NSString *chapterSrc = [content attributeForName:@"src"].stringValue;//章节路径
+        NSLog(@"%@ = %@", chapterName, chapterSrc);
+        
+        LPPChapterModel *chapter = [[LPPChapterModel alloc] init];
+        chapter.chapterName = chapterName;
+        chapter.chapterSrc = chapterSrc;
+        
+        [chapters addObject:chapter];
     }
+//
+//        if([navPoints count]!=0){
+//            CXMLElement* titleElement = navPoints.firstObject;
+//            [titleDictionary setValue:[titleElement stringValue] forKey:href];
+//        }
+//    }
+//
+//    NSString *chapterRelativeFolder = [opfRelativePath stringByDeletingLastPathComponent];
+//    NSArray* itemRefsArray = [document nodesForXPath:@"//opf:itemref" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
+//    NSMutableArray *chapters = [NSMutableArray array];
+//    for (CXMLElement* element in itemRefsArray){
+//        NSString* chapHref = [itemDictionary valueForKey:[[element attributeForName:@"idref"] stringValue]];
+//
+//        XDSChapterModel *model = [XDSChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",chapterRelativeFolder,chapHref]
+//                                                            title:[titleDictionary valueForKey:chapHref]
+//                                                        imagePath:[[[opfRelativePath stringByDeletingLastPathComponent]stringByAppendingPathComponent:chapHref] stringByDeletingLastPathComponent]];
+//        [chapters addObject:model];
+//        
+//    }
     return chapters;
 }
 
+
++ (NSString *)readDCValueFromOPFForKey:(NSString *)key document:(CXMLDocument *)document{
+    NSString *xPath = [NSString stringWithFormat:@"//dc:%@[1]",key];
+    CXMLNode *node = [document nodeForXPath:xPath namespaceMappings:[NSDictionary dictionaryWithObject:@"http://purl.org/dc/elements/1.1/" forKey:@"dc"] error:nil];
+    return node?node.stringValue:nil;
+}
+
++ (NSString *)readCoverImage:(CXMLDocument *)document{
+    CXMLElement *element = (CXMLElement *)[document nodeForXPath:@"//opf:meta[@name='cover']" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
+    return [element attributeForName:@"content"].stringValue;
+}
 @end

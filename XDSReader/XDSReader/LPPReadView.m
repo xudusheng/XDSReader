@@ -8,7 +8,6 @@
 
 #import "LPPReadView.h"
 #import "LPPChapterModel.h"
-#import "LPPSelectedTextHightlightView.h"
 @interface LPPReadView () <DTAttributedTextContentViewDelegate>
 
 {
@@ -30,7 +29,6 @@
 @property (nonatomic,strong) XDSMagnifierView *magnifierView;
 
 @property (strong, nonatomic) DTAttributedTextView *readTextView;
-//@property (nonatomic,strong) LPPSelectedTextHightlightView *hightlightView;//文本选中时添加高亮背景
 
 @property (nonatomic, strong) NSMutableAttributedString *readAttributedContent;
 
@@ -252,8 +250,6 @@
 -(void)longPress:(UILongPressGestureRecognizer *)longPress{
     CGPoint point = [longPress locationInView:self.readTextView];
     [self hiddenMenu];
-    NSLog(@"state ==== %zd", longPress.state);
-
     if (longPress.state == UIGestureRecognizerStateBegan || longPress.state == UIGestureRecognizerStateChanged) {
         
         //传入手势坐标，返回选择文本的range和frame
@@ -282,8 +278,6 @@
     
     CGPoint point = [pan locationInView:self];
     [self hiddenMenu];
-    NSLog(@"state xxxxxx==== %zd", pan.state);
-
     if (pan.state == UIGestureRecognizerStateBegan || pan.state == UIGestureRecognizerStateChanged) {
         [self showMagnifier];
         self.magnifierView.touchPoint = point;

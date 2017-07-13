@@ -17,13 +17,16 @@
 + (XDSReadManager *)sharedManager;
 
 @property (nonatomic,strong) NSURL *resourceURL;
-@property (nonatomic,strong) XDSBookModel *bookModel;
+@property (nonatomic,strong) LPPBookModel *bookModel;
 @property (nonatomic,weak) id<XDSReadManagerDelegate> rmDelegate;
 
-//获取对于章节页码的radViewController，并为其设置代理对象
+//获取对于章节页码的radViewController
 - (XDSReadViewController *)readViewWithChapter:(NSInteger *)chapter
                                           page:(NSInteger *)page
                                       delegate:(id<XDSReadViewControllerDelegate>)rvDelegate;
+- (LPPReadViewController *)readViewWithChapter:(NSInteger *)chapter
+                                          page:(NSInteger *)page
+                                       pageUrl:(NSString *)pageUrl;
 
 - (void)readViewJumpToChapter:(NSInteger *)chapter page:(NSInteger *)page;//跳转到指定章节（上一章，下一章，slider，目录）
 - (void)readViewJumpToNote:(XDSNoteModel *)note;//跳转到指定笔记，因为是笔记是基于位置查找的，使用page查找可能出错

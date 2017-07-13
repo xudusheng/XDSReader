@@ -12,15 +12,9 @@
 @interface XDSDemoViewController () <DTAttributedTextContentViewDelegate>
 
 @property (strong, nonatomic) LPPReadView *readView;
-
-
 @property (strong, nonatomic) DTAttributedTextView *readTextView;
 @property (strong, nonatomic) LPPChapterModel *chapterModel;
-
 @property (assign, nonatomic) NSInteger pageNum;
-
-
-
 
 @end
 

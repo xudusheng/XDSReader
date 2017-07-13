@@ -47,7 +47,8 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return CURRENT_BOOK_MODEL.chapterContainNotes[section].title;
+    return nil;
+//    return CURRENT_BOOK_MODEL.chapterContainNotes[section].title;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     XDSNoteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XDSNoteCell"];

@@ -19,12 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"走遍中国珍藏版(图说天下·国家地理系列)"withExtension:@"epub"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"达芬奇密码"withExtension:@"epub"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 1){
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"mdjyml"withExtension:@"txt"];
@@ -33,9 +34,40 @@
 //        XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
 //        [self.navigationController pushViewController:wifiTransferVC animated:YES];
         
-        XDSDemoViewController *demoVC = [[XDSDemoViewController alloc] init];
-        [self.navigationController presentViewController:demoVC animated:YES completion:nil];
+//        XDSDemoViewController *demoVC = [[XDSDemoViewController alloc] init];
+//        [self.navigationController presentViewController:demoVC animated:YES completion:nil];
 //        [self.navigationController pushViewController:demoVC animated:YES];
+        
+//        LPPReadPageViewController *readPageVC = [[LPPReadPageViewController alloc] init];
+//        [self presentViewController:readPageVC animated:YES completion:nil];
+
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"XDSShareConfig.plist" ofType:nil];
+        NSArray *array = [NSArray arrayWithContentsOfFile:path];
+        
+        NSURL *url = [NSURL URLWithString:@"reader://share/home"];
+        
+        for (NSDictionary *dict in array) {
+            if ([dict[@"exact_url"] isEqualToString:url.absoluteString]) {
+                NSString *object = dict[@"object"];
+                if ([object hasPrefix:@"#"]) {
+                    object = [object substringFromIndex:1];
+                    Class class = NSClassFromString(object);
+                    if (class) {
+                        UIViewController *controller = [[class alloc] init];
+                        [controller.view setValue:[UIColor redColor] forKey:@"backgroundColor"];
+                        [controller setValuesForKeysWithDictionary:@{}];
+                        [self.navigationController pushViewController:controller animated:YES];
+//                        [self presentViewController:controller animated:YES completion:nil];
+                    }
+                    break;
+                }
+            }
+        }
+        
+
+        
+        NSLog(@"url = %@", url);
+        
     }
 }
 

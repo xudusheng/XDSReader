@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		607B6C6126EB56737488D902 /* libPods-XDSReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */; };
-		FC61F79B1F0F51C000DA83F4 /* LPPSelectedTextHightlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F79A1F0F51C000DA83F4 /* LPPSelectedTextHightlightView.m */; };
+		FC61F7A91F13767700DA83F4 /* LPPBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7A81F13767700DA83F4 /* LPPBookModel.m */; };
+		FC61F7AC1F138AC600DA83F4 /* LPPRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AB1F138AC600DA83F4 /* LPPRecordModel.m */; };
+		FC61F7AF1F14651600DA83F4 /* LPPReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AE1F14651600DA83F4 /* LPPReadPageViewController.m */; };
+		FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */; };
+		FC61F7B31F15265300DA83F4 /* 达芬奇密码.epub in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B21F15265300DA83F4 /* 达芬奇密码.epub */; };
 		FC88A5181F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub in Resources */ = {isa = PBXBuildFile; fileRef = FC88A5171F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub */; };
 		FC88A51A1F0CCAE900BDF04A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FC88A5191F0CCAE900BDF04A /* README.md */; };
 		FCA78A521EF290F400114907 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A511EF290F400114907 /* main.m */; };
@@ -567,8 +571,14 @@
 		39079157DFAB83B2A1877F23 /* Pods-XDSReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.release.xcconfig"; sourceTree = "<group>"; };
 		566644BA861A753275F3D3DE /* Pods-XDSReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.debug.xcconfig"; sourceTree = "<group>"; };
 		E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XDSReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC61F7991F0F51C000DA83F4 /* LPPSelectedTextHightlightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPSelectedTextHightlightView.h; sourceTree = "<group>"; };
-		FC61F79A1F0F51C000DA83F4 /* LPPSelectedTextHightlightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPSelectedTextHightlightView.m; sourceTree = "<group>"; };
+		FC61F7A71F13767700DA83F4 /* LPPBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPBookModel.h; sourceTree = "<group>"; };
+		FC61F7A81F13767700DA83F4 /* LPPBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPBookModel.m; sourceTree = "<group>"; };
+		FC61F7AA1F138AC600DA83F4 /* LPPRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPRecordModel.h; sourceTree = "<group>"; };
+		FC61F7AB1F138AC600DA83F4 /* LPPRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPRecordModel.m; sourceTree = "<group>"; };
+		FC61F7AD1F14651600DA83F4 /* LPPReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPReadPageViewController.h; sourceTree = "<group>"; };
+		FC61F7AE1F14651600DA83F4 /* LPPReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPReadPageViewController.m; sourceTree = "<group>"; };
+		FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = XDSShareConfig.plist; sourceTree = "<group>"; };
+		FC61F7B21F15265300DA83F4 /* 达芬奇密码.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "达芬奇密码.epub"; sourceTree = "<group>"; };
 		FC88A5171F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "走遍中国珍藏版(图说天下·国家地理系列).epub"; sourceTree = "<group>"; };
 		FC88A5191F0CCAE900BDF04A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		FCA78A4D1EF290F400114907 /* XDSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1270,8 +1280,7 @@
 				FCB225851F0DE37D007A0EA0 /* XDSDemoViewController.m */,
 				FCB229021F0F2AC6007A0EA0 /* LPPReadView.h */,
 				FCB229031F0F2AC6007A0EA0 /* LPPReadView.m */,
-				FC61F7991F0F51C000DA83F4 /* LPPSelectedTextHightlightView.h */,
-				FC61F79A1F0F51C000DA83F4 /* LPPSelectedTextHightlightView.m */,
+				FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */,
 				FCA78A591EF290F400114907 /* Main.storyboard */,
 				FCA78A5C1EF290F400114907 /* Assets.xcassets */,
 				FCB225911F0DE52A007A0EA0 /* helloworld */,
@@ -1515,6 +1524,8 @@
 				FCA78BBB1EF3770600114907 /* XDSReadPageViewController.m */,
 				FCB228FF1F0F19C3007A0EA0 /* LPPReadViewController.h */,
 				FCB229001F0F19C3007A0EA0 /* LPPReadViewController.m */,
+				FC61F7AD1F14651600DA83F4 /* LPPReadPageViewController.h */,
+				FC61F7AE1F14651600DA83F4 /* LPPReadPageViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2155,8 +2166,13 @@
 		FCB228FB1F0DFDCD007A0EA0 /* LPPModel */ = {
 			isa = PBXGroup;
 			children = (
+				FC61F7B21F15265300DA83F4 /* 达芬奇密码.epub */,
+				FC61F7A71F13767700DA83F4 /* LPPBookModel.h */,
+				FC61F7A81F13767700DA83F4 /* LPPBookModel.m */,
 				FCB228FC1F0DFDFC007A0EA0 /* LPPChapterModel.h */,
 				FCB228FD1F0DFDFC007A0EA0 /* LPPChapterModel.m */,
+				FC61F7AA1F138AC600DA83F4 /* LPPRecordModel.h */,
+				FC61F7AB1F138AC600DA83F4 /* LPPRecordModel.m */,
 			);
 			path = LPPModel;
 			sourceTree = "<group>";
@@ -2441,6 +2457,7 @@
 				FCB2283F1F0DE52C007A0EA0 /* 00247.jpeg in Resources */,
 				FCB228631F0DE52C007A0EA0 /* 00283.jpeg in Resources */,
 				FCB227C21F0DE52C007A0EA0 /* 00122.jpeg in Resources */,
+				FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */,
 				FCB2282B1F0DE52C007A0EA0 /* 00227.jpeg in Resources */,
 				FCB228F01F0DE52C007A0EA0 /* part0007.html in Resources */,
 				FCB228ED1F0DE52C007A0EA0 /* part0004.html in Resources */,
@@ -2560,6 +2577,7 @@
 				FCB2274F1F0DE52C007A0EA0 /* 00007.jpeg in Resources */,
 				FCB2275A1F0DE52C007A0EA0 /* 00018.jpeg in Resources */,
 				FCB228881F0DE52C007A0EA0 /* 00320.jpeg in Resources */,
+				FC61F7B31F15265300DA83F4 /* 达芬奇密码.epub in Resources */,
 				FCB228571F0DE52C007A0EA0 /* 00271.jpeg in Resources */,
 				FCB227501F0DE52C007A0EA0 /* 00008.jpeg in Resources */,
 				FCB227A61F0DE52C007A0EA0 /* 00094.jpeg in Resources */,
@@ -2754,10 +2772,13 @@
 				FCA78AC41EF2914F00114907 /* HTTPServer.m in Sources */,
 				FCA78AC71EF2914F00114907 /* MultipartMessageHeaderField.m in Sources */,
 				FCA78C171EF929BE00114907 /* XDSNoteViewController.m in Sources */,
+				FC61F7AC1F138AC600DA83F4 /* LPPRecordModel.m in Sources */,
 				FCA78AD41EF2914F00114907 /* XDSWIFIFileTransferViewController.m in Sources */,
+				FC61F7AF1F14651600DA83F4 /* LPPReadPageViewController.m in Sources */,
 				FCA78C111EF91F0800114907 /* XDSCatalogueTabBarController.m in Sources */,
 				FCA78B811EF2DEB500114907 /* CXMLElement.m in Sources */,
 				FCA78B851EF2DEB500114907 /* CXMLNode.m in Sources */,
+				FC61F7A91F13767700DA83F4 /* LPPBookModel.m in Sources */,
 				FCA78AC11EF2914F00114907 /* HTTPAuthenticationRequest.m in Sources */,
 				FCA78BA91EF362CA00114907 /* XDSMagnifierView.m in Sources */,
 				FCA78B7C1EF2DEB500114907 /* CXMLDocument_CreationExtensions.m in Sources */,
@@ -2770,7 +2791,6 @@
 				FCA78B881EF2DEB500114907 /* CXMLUnsupportedNode.m in Sources */,
 				FCA78BA61EF3603A00114907 /* XDSReadManager.m in Sources */,
 				FCA78C011EF7CEA200114907 /* UIView+YGPulseView.m in Sources */,
-				FC61F79B1F0F51C000DA83F4 /* LPPSelectedTextHightlightView.m in Sources */,
 				FCA78AC31EF2914F00114907 /* HTTPMessage.m in Sources */,
 				FCA78ACD1EF2914F00114907 /* HTTPRedirectResponse.m in Sources */,
 				FCA78B7F1EF2DEB500114907 /* CXMLDocument.m in Sources */,
