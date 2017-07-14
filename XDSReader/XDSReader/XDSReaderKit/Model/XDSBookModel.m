@@ -39,7 +39,7 @@ NSString *const kBookModelRecordEncodeKey = @"record";
 - (instancetype)initWithePub:(NSString *)ePubPath;{
     self = [super init];
     if (self) {
-        _chapters = [XDSReadOperation ePubFileHandle:ePubPath];
+        _chapters = [XDSReadOperation ePubFileHandle:ePubPath bookInfoModel:nil];
         _record = [[XDSRecordModel alloc] init];
         _record.chapterModel = _chapters.firstObject;
         _record.location = 0;

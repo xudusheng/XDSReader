@@ -7,7 +7,7 @@
 //
 
 #import "LPPChapterModel.h"
-
+#import "NSAttributedString+Encoding.h"
 @interface LPPChapterModel ()
 
 @property (nonatomic, copy) NSAttributedString *chapterAttributeContent;//全章的富文本
@@ -25,15 +25,10 @@
 @end
 @implementation LPPChapterModel
 
-NSString *const kLPPChapterModelChapterAttributeContentEncodeKey = @"chapterAttributeContent";
-NSString *const kLPPChapterModelChapterContentEncodeKey = @"chapterContent";
-NSString *const kLPPChapterModelPageAttributeStringsEncodeKey = @"pageAttributeStrings";
-NSString *const kLPPChapterModelPageStringssEncodeKey = @"pageStrings";
-NSString *const kLPPChapterModelPageLocationsEncodeKey = @"pageLocations";
-NSString *const kLPPChapterModelPageCountEncodeKey = @"pageCount";
+NSString *const kLPPChapterModelChapterNameEncodeKey = @"chapterName";
+NSString *const kLPPChapterModelChapterSrcEncodeKey = @"chapterSrc";
 NSString *const kLPPChapterModelNotesPathEncodeKey = @"notes";
 NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
-
 
 
 -(void)paginateEpubWithBounds:(CGRect)bounds{
@@ -41,7 +36,6 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     self.showBounds = bounds;
     // Load HTML data
     NSAttributedString *chapterAttributeContent = [self attributedStringForSnippet];
-
 
     NSMutableArray *pageAttributeStrings = [NSMutableArray arrayWithCapacity:0];//每一页的富文本
     NSMutableArray *pageStrings = [NSMutableArray arrayWithCapacity:0];//每一页的普通文本
@@ -75,17 +69,19 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
 
 
 - (NSAttributedString *)attributedStringForSnippet{
-    NSString *fileName = @"part0005.html";
+    NSString *OEBPSUrl = CURRENT_BOOK_MODEL.bookBasicInfo.OEBPSUrl;
+    OEBPSUrl = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:OEBPSUrl];
+    NSString *fileName = [NSString stringWithFormat:@"%@/%@", OEBPSUrl, self.chapterSrc];
 //    // Load HTML data
-    NSString *readmePath = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
+//    NSString *readmePath = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
+    NSString *readmePath = fileName;
     NSLog(@"path = %@", readmePath);
     NSString *html = [NSString stringWithContentsOfFile:readmePath encoding:NSUTF8StringEncoding error:NULL];
-    html = [html stringByReplacingOccurrencesOfString:@"../images/" withString:@""];
-
     
-//    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"mdjyml" withExtension:@"txt"];
-//    NSString *readmePath = fileURL.absoluteString;
-//    NSString *html = [XDSReaderUtil encodeWithURL:fileURL];
+    NSString *imagePath = [@"img src=\"" stringByAppendingString:OEBPSUrl];
+    html = [html stringByReplacingOccurrencesOfString:@"img src=\".." withString:imagePath];
+    html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
+
 
     NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -110,6 +106,7 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     };
     
     NSDictionary *dic = @{NSTextSizeMultiplierDocumentOption:@1.2,
+                          DTDefaultLineHeightMultiplier:@1.5,
                           DTMaxImageSize:[NSValue valueWithCGSize:maxImageSize],
                           DTDefaultLinkColor:@"purple",
                           DTDefaultLinkHighlightColor:@"red",
@@ -158,6 +155,12 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
  *  update font and get new page number from old page
  */
 - (void)updateFontAndGetNewPageFromOldPage:(NSInteger *)oldPage{
+    if (nil == self.chapterAttributeContent) {//如果阅读记录中的chapterModel没有内容，则先加载内容
+        [self paginateEpubWithBounds:[XDSReadManager readViewBounds]];
+        *oldPage = 0;
+        return;
+    }
+    
     
 }
 
@@ -179,6 +182,8 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
 
 -(id)copyWithZone:(NSZone *)zone{
     LPPChapterModel *model = [[LPPChapterModel allocWithZone:zone] init];
+    model.chapterName = self.chapterName;
+    model.chapterSrc = self.chapterSrc;
     model.chapterAttributeContent = self.chapterAttributeContent;
     model.chapterContent = self.chapterContent;
     model.pageAttributeStrings = self.pageAttributeStrings;
@@ -188,30 +193,18 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     model.notes = self.notes;
     model.marks = self.marks;
     return model;
-    
 }
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    
-    [aCoder encodeObject:self.chapterAttributeContent forKey:kLPPChapterModelChapterAttributeContentEncodeKey];
-    [aCoder encodeObject:self.chapterContent forKey:kLPPChapterModelChapterContentEncodeKey];
-    [aCoder encodeObject:self.pageAttributeStrings forKey:kLPPChapterModelPageAttributeStringsEncodeKey];
-    [aCoder encodeObject:self.pageStrings forKey:kLPPChapterModelPageStringssEncodeKey];
-    [aCoder encodeObject:self.pageLocations forKey:kLPPChapterModelPageLocationsEncodeKey];
-    [aCoder encodeInteger:self.pageCount forKey:kLPPChapterModelPageCountEncodeKey];
+    [aCoder encodeObject:self.chapterName forKey:kLPPChapterModelChapterNameEncodeKey];
+    [aCoder encodeObject:self.chapterSrc forKey:kLPPChapterModelChapterSrcEncodeKey];
     [aCoder encodeObject:self.notes forKey:kLPPChapterModelNotesPathEncodeKey];
     [aCoder encodeObject:self.marks forKey:kLPPChapterModelMarksEncodeKey];
 }
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-
-        
-        self.chapterAttributeContent = [aDecoder decodeObjectForKey:kLPPChapterModelChapterAttributeContentEncodeKey];
-        self.chapterContent = [aDecoder decodeObjectForKey:kLPPChapterModelChapterContentEncodeKey];
-        self.pageAttributeStrings = [aDecoder decodeObjectForKey:kLPPChapterModelPageAttributeStringsEncodeKey];
-        self.pageStrings = [aDecoder decodeObjectForKey:kLPPChapterModelPageStringssEncodeKey];
-        self.pageLocations = [aDecoder decodeObjectForKey:kLPPChapterModelPageLocationsEncodeKey];
-        self.pageCount = [aDecoder decodeIntegerForKey:kLPPChapterModelPageCountEncodeKey];
+        self.chapterName = [aDecoder decodeObjectForKey:kLPPChapterModelChapterNameEncodeKey];
+        self.chapterSrc = [aDecoder decodeObjectForKey:kLPPChapterModelChapterSrcEncodeKey];
         self.notes = [aDecoder decodeObjectForKey:kLPPChapterModelNotesPathEncodeKey];
         self.marks = [aDecoder decodeObjectForKey:kLPPChapterModelMarksEncodeKey];
 

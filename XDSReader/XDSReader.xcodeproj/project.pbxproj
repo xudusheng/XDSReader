@@ -13,7 +13,11 @@
 		FC61F7AF1F14651600DA83F4 /* LPPReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AE1F14651600DA83F4 /* LPPReadPageViewController.m */; };
 		FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */; };
 		FC61F7B31F15265300DA83F4 /* 达芬奇密码.epub in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B21F15265300DA83F4 /* 达芬奇密码.epub */; };
-		FC88A5181F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub in Resources */ = {isa = PBXBuildFile; fileRef = FC88A5171F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub */; };
+		FC61F84C1F18764D00DA83F4 /* NSAttributedString+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F84B1F18764D00DA83F4 /* NSAttributedString+Encoding.m */; };
+		FC61F8551F18770700DA83F4 /* CoreText+Opetopic.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F84F1F18770700DA83F4 /* CoreText+Opetopic.m */; };
+		FC61F8561F18770700DA83F4 /* NSDictionary+OPCoreText.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F8511F18770700DA83F4 /* NSDictionary+OPCoreText.m */; };
+		FC61F8571F18770700DA83F4 /* UIFont+OPCoreText.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F8541F18770700DA83F4 /* UIFont+OPCoreText.m */; };
+		FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */ = {isa = PBXBuildFile; fileRef = FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */; };
 		FC88A51A1F0CCAE900BDF04A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FC88A5191F0CCAE900BDF04A /* README.md */; };
 		FCA78A521EF290F400114907 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A511EF290F400114907 /* main.m */; };
 		FCA78A551EF290F400114907 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A541EF290F400114907 /* AppDelegate.m */; };
@@ -85,9 +89,6 @@
 		FCA78BA31EF2E37200114907 /* XDSReaderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BA21EF2E37200114907 /* XDSReaderUtil.m */; };
 		FCA78BA61EF3603A00114907 /* XDSReadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BA51EF3603A00114907 /* XDSReadManager.m */; };
 		FCA78BA91EF362CA00114907 /* XDSMagnifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BA81EF362CA00114907 /* XDSMagnifierView.m */; };
-		FCA78BB91EF375D900114907 /* XDSReadView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BB81EF375D900114907 /* XDSReadView.m */; };
-		FCA78BBC1EF3770600114907 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BBB1EF3770600114907 /* XDSReadPageViewController.m */; };
-		FCA78BBF1EF3771400114907 /* XDSReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BBE1EF3771400114907 /* XDSReadViewController.m */; };
 		FCA78BC21EF39B6000114907 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */; };
 		FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */; };
 		FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC61EF3A2D600114907 /* mdjyml.txt */; };
@@ -579,7 +580,16 @@
 		FC61F7AE1F14651600DA83F4 /* LPPReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPReadPageViewController.m; sourceTree = "<group>"; };
 		FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = XDSShareConfig.plist; sourceTree = "<group>"; };
 		FC61F7B21F15265300DA83F4 /* 达芬奇密码.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "达芬奇密码.epub"; sourceTree = "<group>"; };
-		FC88A5171F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "走遍中国珍藏版(图说天下·国家地理系列).epub"; sourceTree = "<group>"; };
+		FC61F84A1F18764D00DA83F4 /* NSAttributedString+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Encoding.h"; sourceTree = "<group>"; };
+		FC61F84B1F18764D00DA83F4 /* NSAttributedString+Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Encoding.m"; sourceTree = "<group>"; };
+		FC61F84E1F18770700DA83F4 /* CoreText+Opetopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreText+Opetopic.h"; sourceTree = "<group>"; };
+		FC61F84F1F18770700DA83F4 /* CoreText+Opetopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreText+Opetopic.m"; sourceTree = "<group>"; };
+		FC61F8501F18770700DA83F4 /* NSDictionary+OPCoreText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+OPCoreText.h"; sourceTree = "<group>"; };
+		FC61F8511F18770700DA83F4 /* NSDictionary+OPCoreText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+OPCoreText.m"; sourceTree = "<group>"; };
+		FC61F8521F18770700DA83F4 /* OPCoreText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCoreText.h; sourceTree = "<group>"; };
+		FC61F8531F18770700DA83F4 /* UIFont+OPCoreText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+OPCoreText.h"; sourceTree = "<group>"; };
+		FC61F8541F18770700DA83F4 /* UIFont+OPCoreText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+OPCoreText.m"; sourceTree = "<group>"; };
+		FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = zoubianzhongguo.epub; sourceTree = "<group>"; };
 		FC88A5191F0CCAE900BDF04A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		FCA78A4D1EF290F400114907 /* XDSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA78A511EF290F400114907 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -718,12 +728,6 @@
 		FCA78BA71EF362CA00114907 /* XDSMagnifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMagnifierView.h; sourceTree = "<group>"; };
 		FCA78BA81EF362CA00114907 /* XDSMagnifierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMagnifierView.m; sourceTree = "<group>"; };
 		FCA78BAD1EF363DD00114907 /* XDSReaderDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSReaderDelegate.h; sourceTree = "<group>"; };
-		FCA78BB71EF375D900114907 /* XDSReadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadView.h; sourceTree = "<group>"; };
-		FCA78BB81EF375D900114907 /* XDSReadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadView.m; sourceTree = "<group>"; };
-		FCA78BBA1EF3770600114907 /* XDSReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadPageViewController.h; sourceTree = "<group>"; };
-		FCA78BBB1EF3770600114907 /* XDSReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadPageViewController.m; sourceTree = "<group>"; };
-		FCA78BBD1EF3771400114907 /* XDSReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadViewController.h; sourceTree = "<group>"; };
-		FCA78BBE1EF3771400114907 /* XDSReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadViewController.m; sourceTree = "<group>"; };
 		FCA78BC01EF39B6000114907 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "每天懂一点好玩心理学.epub"; sourceTree = "<group>"; };
@@ -1246,6 +1250,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FC61F84D1F18770700DA83F4 /* OPCoreText */ = {
+			isa = PBXGroup;
+			children = (
+				FC61F84E1F18770700DA83F4 /* CoreText+Opetopic.h */,
+				FC61F84F1F18770700DA83F4 /* CoreText+Opetopic.m */,
+				FC61F8501F18770700DA83F4 /* NSDictionary+OPCoreText.h */,
+				FC61F8511F18770700DA83F4 /* NSDictionary+OPCoreText.m */,
+				FC61F8521F18770700DA83F4 /* OPCoreText.h */,
+				FC61F8531F18770700DA83F4 /* UIFont+OPCoreText.h */,
+				FC61F8541F18770700DA83F4 /* UIFont+OPCoreText.m */,
+			);
+			path = OPCoreText;
+			sourceTree = "<group>";
+		};
 		FCA78A441EF290F400114907 = {
 			isa = PBXGroup;
 			children = (
@@ -1509,8 +1527,6 @@
 			children = (
 				FCA78BA71EF362CA00114907 /* XDSMagnifierView.h */,
 				FCA78BA81EF362CA00114907 /* XDSMagnifierView.m */,
-				FCA78BB71EF375D900114907 /* XDSReadView.h */,
-				FCA78BB81EF375D900114907 /* XDSReadView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1518,10 +1534,6 @@
 		FCA78B171EF2916700114907 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FCA78BBD1EF3771400114907 /* XDSReadViewController.h */,
-				FCA78BBE1EF3771400114907 /* XDSReadViewController.m */,
-				FCA78BBA1EF3770600114907 /* XDSReadPageViewController.h */,
-				FCA78BBB1EF3770600114907 /* XDSReadPageViewController.m */,
 				FCB228FF1F0F19C3007A0EA0 /* LPPReadViewController.h */,
 				FCB229001F0F19C3007A0EA0 /* LPPReadViewController.m */,
 				FC61F7AD1F14651600DA83F4 /* LPPReadPageViewController.h */,
@@ -1542,6 +1554,9 @@
 		FCA78B351EF2932200114907 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				FC61F84D1F18770700DA83F4 /* OPCoreText */,
+				FC61F84A1F18764D00DA83F4 /* NSAttributedString+Encoding.h */,
+				FC61F84B1F18764D00DA83F4 /* NSAttributedString+Encoding.m */,
 				FCA78B4F1EF2DEB500114907 /* TouchXML */,
 				FCA78B391EF2935200114907 /* GTMDefines.h */,
 				FCA78B3A1EF2935200114907 /* GTMNSString+HTML.h */,
@@ -1609,7 +1624,7 @@
 		FCA78BC31EF3A2CF00114907 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				FC88A5171F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub */,
+				FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */,
 				FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */,
 				FCA78BC61EF3A2D600114907 /* mdjyml.txt */,
 				FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */,
@@ -2301,7 +2316,7 @@
 				FCB227671F0DE52C007A0EA0 /* 00031.jpeg in Resources */,
 				FCB228981F0DE52C007A0EA0 /* 00336.jpeg in Resources */,
 				FCB228B81F0DE52C007A0EA0 /* 00368.jpeg in Resources */,
-				FC88A5181F0C932A00BDF04A /* 走遍中国珍藏版(图说天下·国家地理系列).epub in Resources */,
+				FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */,
 				FCB228411F0DE52C007A0EA0 /* 00249.jpeg in Resources */,
 				FCB227DD1F0DE52C007A0EA0 /* 00149.jpeg in Resources */,
 				FCB228AE1F0DE52C007A0EA0 /* 00358.jpeg in Resources */,
@@ -2768,6 +2783,7 @@
 			files = (
 				FCA78B801EF2DEB500114907 /* CXMLDocument_PrivateExtensions.m in Sources */,
 				FCA78AC91EF2914F00114907 /* HTTPDataResponse.m in Sources */,
+				FC61F84C1F18764D00DA83F4 /* NSAttributedString+Encoding.m in Sources */,
 				FCA78B7E1EF2DEB500114907 /* CXHTMLDocument.m in Sources */,
 				FCA78AC41EF2914F00114907 /* HTTPServer.m in Sources */,
 				FCA78AC71EF2914F00114907 /* MultipartMessageHeaderField.m in Sources */,
@@ -2782,6 +2798,7 @@
 				FCA78AC11EF2914F00114907 /* HTTPAuthenticationRequest.m in Sources */,
 				FCA78BA91EF362CA00114907 /* XDSMagnifierView.m in Sources */,
 				FCA78B7C1EF2DEB500114907 /* CXMLDocument_CreationExtensions.m in Sources */,
+				FC61F8571F18770700DA83F4 /* UIFont+OPCoreText.m in Sources */,
 				FCA78AB41EF2914F00114907 /* GCDAsyncSocket.m in Sources */,
 				FCA78BE31EF5F6AA00114907 /* XDSReadMenu.m in Sources */,
 				FCA78A581EF290F400114907 /* ViewController.m in Sources */,
@@ -2801,7 +2818,6 @@
 				FCA78B191EF2916700114907 /* XDSReadConfig.m in Sources */,
 				FCA78C3B1EFB793F00114907 /* XDSNoteCell.m in Sources */,
 				FCA78ACF1EF2914F00114907 /* MyHTTPConnection.m in Sources */,
-				FCA78BBF1EF3771400114907 /* XDSReadViewController.m in Sources */,
 				FCA78BE61EF6D6FE00114907 /* XDSMenuBottomView.m in Sources */,
 				FCA78BC21EF39B6000114907 /* UIImage+ImageEffects.m in Sources */,
 				FCA78C071EF8EE2E00114907 /* XDSMenuTopView.m in Sources */,
@@ -2813,7 +2829,6 @@
 				FCA78B7D1EF2DEB500114907 /* CXMLNode_CreationExtensions.m in Sources */,
 				FCA78C041EF81E1A00114907 /* XDSLightView.m in Sources */,
 				FCB229011F0F19C3007A0EA0 /* LPPReadViewController.m in Sources */,
-				FCA78BBC1EF3770600114907 /* XDSReadPageViewController.m in Sources */,
 				FCA78ABA1EF2914F00114907 /* DDTTYLogger.m in Sources */,
 				FCA78AB81EF2914F00114907 /* DDFileLogger.m in Sources */,
 				FCA78B381EF2933E00114907 /* NSString+HTML.m in Sources */,
@@ -2826,8 +2841,8 @@
 				FCA78B421EF2965C00114907 /* XDSRecordModel.m in Sources */,
 				FCA78B4E1EF2DD9200114907 /* XDSReadOperation.m in Sources */,
 				FCA78ACB1EF2914F00114907 /* HTTPErrorResponse.m in Sources */,
-				FCA78BB91EF375D900114907 /* XDSReadView.m in Sources */,
 				FCA78B311EF2916700114907 /* XDSReaderGlobleConst.m in Sources */,
+				FC61F8561F18770700DA83F4 /* NSDictionary+OPCoreText.m in Sources */,
 				FCA78B861EF2DEB500114907 /* CXMLNode_PrivateExtensions.m in Sources */,
 				FC88A51A1F0CCAE900BDF04A /* README.md in Sources */,
 				FCA78BF51EF7B2FB00114907 /* XDSReadSettingView.m in Sources */,
@@ -2842,6 +2857,7 @@
 				FCA78B3C1EF2935200114907 /* GTMNSString+HTML.m in Sources */,
 				FCA78AC81EF2914F00114907 /* HTTPAsyncFileResponse.m in Sources */,
 				FCA78ABF1EF2914F00114907 /* DDNumber.m in Sources */,
+				FC61F8551F18770700DA83F4 /* CoreText+Opetopic.m in Sources */,
 				FCA78B451EF2986800114907 /* XDSMarkModel.m in Sources */,
 				FCA78BF81EF7B67700114907 /* XDSReadRootView.m in Sources */,
 				FCA78ABE1EF2914F00114907 /* DDData.m in Sources */,

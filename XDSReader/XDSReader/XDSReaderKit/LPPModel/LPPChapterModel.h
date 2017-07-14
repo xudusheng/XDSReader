@@ -23,12 +23,12 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
 @property (nonatomic, readonly) NSArray *pageAttributeStrings;//每一页的富文本
 @property (nonatomic, readonly) NSArray *pageStrings;//每一页的普通文本
 @property (nonatomic, readonly) NSArray *pageLocations;//每一页在章节中的位置
-
 @property (nonatomic, readonly) NSInteger pageCount;//章节总页数
+
 @property (nonatomic, readonly) NSArray<XDSNoteModel *>*notes;
 @property (nonatomic, readonly) NSArray<XDSMarkModel *>*marks;
 
--(void)paginateEpubWithBounds:(CGRect)bounds;
+- (void)paginateEpubWithBounds:(CGRect)bounds;
 - (void)addNote:(XDSNoteModel *)noteModel;//insert a book note into chapter 向该章节中插入一条笔记
 - (void)addOrDeleteABookmark:(XDSMarkModel *)markModel;//insert a bookmark into chapter 向该章节中插入一条书签
 

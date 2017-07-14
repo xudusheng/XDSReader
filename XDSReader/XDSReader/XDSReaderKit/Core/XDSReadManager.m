@@ -27,22 +27,28 @@ static XDSReadManager *readManager;
     return readManager;
 }
 
-
++ (CGRect)readViewBounds {
+    CGRect bounds = CGRectMake(0,
+                             0,
+                             DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight,
+                             DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom);
+    return bounds;
+}
 //MARK: - //获取对于章节页码的radViewController
-- (LPPReadViewController *)readViewWithChapter:(NSInteger *)chapter
-                                          page:(NSInteger *)page
+- (LPPReadViewController *)readViewWithChapter:(NSInteger)chapter
+                                          page:(NSInteger)page
                                        pageUrl:(NSString *)pageUrl{
-    if (_bookModel.record.currentChapter != *chapter) {
-        //新的一章需要先更新字体以获取正确的章节数据
-//        [_bookModel.chapters[*chapter] updateFontAndGetNewPageFromOldPage:page];
-//        if (_bookModel.bookType == XDSEBookTypeEpub) {
-//            [self readChapterContent:*chapter];
-//        }
+    if (nil == _bookModel.record.chapterModel.chapterAttributeContent) {//如果阅读记录中的chapterModel没有内容，则先加载内容
+        LPPChapterModel *currentChapterModel = _bookModel.chapters[CURRENT_RECORD.currentChapter];
+        [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];        
+        CURRENT_RECORD.chapterModel = currentChapterModel;
+        page = CURRENT_RECORD.currentPage;
+        [LPPBookModel updateLocalModel:_bookModel url:self.resourceURL];
     }
     
     LPPReadViewController *readView = [[LPPReadViewController alloc] init];
-    readView.chapterNum = *chapter;
-    readView.pageNum = *page;
+    readView.chapterNum = chapter;
+    readView.pageNum = page;
     readView.pageUrl = pageUrl;
     return readView;
 }

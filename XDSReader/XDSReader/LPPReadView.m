@@ -63,7 +63,8 @@
 
 //MARK: - ABOUT UI UI相关
 - (void)createUI{
-    [self setBackgroundColor:[UIColor yellowColor]];
+    [self setBackgroundColor:[UIColor whiteColor]];
+    self.clipsToBounds = NO;
     [self addGestureRecognizer:({
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
         longPress;

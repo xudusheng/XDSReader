@@ -41,13 +41,10 @@
 #import "XDSReadOperation.h"
 
 #import "XDSMagnifierView.h"
-#import "XDSReadView.h"
 #import "XDSReaderDelegate.h"
 
 #import "LPPReadViewController.h"
 #import "LPPReadPageViewController.h"
-#import "XDSReadViewController.h"
-#import "XDSReadPageViewController.h"
 #import "XDSReadManager.h"
 
 #endif /* XDSReaderHeader_h */

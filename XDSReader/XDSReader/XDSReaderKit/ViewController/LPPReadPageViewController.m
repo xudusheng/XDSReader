@@ -44,8 +44,8 @@ UIGestureRecognizerDelegate
     _chapter = CURRENT_RECORD.currentChapter;
     _page = CURRENT_RECORD.currentPage;
     
-    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&_chapter
-                                                                                   page:&_page
+    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:_chapter
+                                                                                   page:_page
                                                                                 pageUrl:nil];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -79,8 +79,8 @@ UIGestureRecognizerDelegate
 - (void)readViewFontDidChanged {
     _chapter = CURRENT_RECORD.currentChapter;
     _page = CURRENT_RECORD.currentPage;
-    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&_chapter
-                                                                                   page:&_page
+    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:_chapter
+                                                                                   page:_page
                                                                                 pageUrl:nil];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -88,13 +88,13 @@ UIGestureRecognizerDelegate
                                  completion:nil];
 }
 - (void)readViewThemeDidChanged{
-    XDSReadViewController *readView = _pageViewController.viewControllers.firstObject;
+    LPPReadViewController *readView = _pageViewController.viewControllers.firstObject;
     readView.view.backgroundColor = [XDSReadConfig shareInstance].theme;
 }
 - (void)readViewEffectDidChanged{}
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page{
-    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&chapter
-                                                                                   page:&page
+    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:chapter
+                                                                                   page:page
                                                                                 pageUrl:nil];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -107,32 +107,12 @@ UIGestureRecognizerDelegate
     _page = CURRENT_RECORD.currentPage;
 }
 
-//TODO: XDSReadViewControllerDelegate
-- (void)readViewEditeding:(XDSReadViewController *)readViewController{
-    for (UIGestureRecognizer *ges in self.pageViewController.view.gestureRecognizers) {
-        if ([ges isKindOfClass:[UIPanGestureRecognizer class]]) {
-            ges.enabled = YES;
-            break;
-        }
-        
-    }
-}
-- (void)readViewEndEdit:(XDSReadViewController *)readViewController{
-    for (UIGestureRecognizer *ges in self.pageViewController.view.gestureRecognizers) {
-        if ([ges isKindOfClass:[UIPanGestureRecognizer class]]) {
-            ges.enabled = NO;
-            break;
-        }
-    }
-}
-
-
 //TODO: UIGestureRecognizerDelegate
 //解决TabView与Tap手势冲突
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    if ([NSStringFromClass([touch.view class]) isEqualToString:NSStringFromClass([XDSReadView class])]) {
-        return YES;
-    }
+//    if ([NSStringFromClass([touch.view class]) isEqualToString:NSStringFromClass([LPPReadView class])]) {
+//        return YES;
+//    }
     return  NO;
 }
 
@@ -148,15 +128,15 @@ UIGestureRecognizerDelegate
     }
     if (_pageChange == 0) {
         _chapterChange--;
-        XDSChapterModel *chapter = CURRENT_BOOK_MODEL.chapters[_chapterChange];
+        LPPChapterModel *chapter = CURRENT_BOOK_MODEL.chapters[_chapterChange];
         _pageChange = chapter.pageCount-1;
     }
     else{
         _pageChange--;
     }
     
-    return [[XDSReadManager sharedManager] readViewWithChapter:&_chapterChange
-                                                          page:&_pageChange
+    return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
+                                                          page:_pageChange
                                                        pageUrl:nil];
 }
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
@@ -175,14 +155,15 @@ UIGestureRecognizerDelegate
     else{
         _pageChange++;
     }
-    return [[XDSReadManager sharedManager] readViewWithChapter:&_chapterChange
-                                                          page:&_pageChange
+    return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
+                                                          page:_pageChange
                                                        pageUrl:nil];
 }
 
 #pragma mark -PageViewController Delegate
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers{
-    
+    _chapter = _chapterChange;
+    _page = _pageChange;
 }
 - (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished
@@ -196,14 +177,14 @@ UIGestureRecognizerDelegate
     else{
         _chapter = _chapterChange;
         _page = _pageChange;
-//        [[XDSReadManager sharedManager] updateReadModelWithChapter:_chapter page:_page];
+        [[XDSReadManager sharedManager] updateReadModelWithChapter:_chapter page:_page];
     }
 }
 //MARK: - ABOUT REQUEST
 //MARK: - ABOUT EVENTS
 -(void)showToolMenu{
-    XDSReadViewController *readView = _pageViewController.viewControllers.firstObject;
-    [readView.readView cancelSelected];
+    LPPReadViewController *readView = _pageViewController.viewControllers.firstObject;
+//    [readView.readView cancelSelected];
     [self.view addSubview:self.readMenuView];
 }
 //MARK: - OTHER PRIVATE METHODS

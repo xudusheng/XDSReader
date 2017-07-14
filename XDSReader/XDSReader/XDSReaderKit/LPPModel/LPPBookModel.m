@@ -7,6 +7,69 @@
 //
 
 #import "LPPBookModel.h"
+@implementation LPPBookInfoModel
+
+NSString *const kLPPBookInfoModelRootDocumentUrlEncodeKey = @"rootDocumentUrl";
+NSString *const kLPPBookInfoModelOEBPSUrlEncodeKey = @"OEBPSUrl";
+NSString *const kLPPBookInfoModelCoverEncodeKey = @"cover";
+NSString *const kLPPBookInfoModelTitleEncodeKey = @"title";
+NSString *const kLPPBookInfoModelCreatorEncodeKey = @"creator";
+NSString *const kLPPBookInfoModelSubjectEncodeKey = @"subject";
+NSString *const kLPPBookInfoModelDescripEncodeKey = @"descrip";
+NSString *const kLPPBookInfoModelDateEncodeKey = @"date";
+NSString *const kLPPBookInfoModelTypeEncodeKey = @"type";
+NSString *const kLPPBookInfoModelFormatEncodeKey = @"format";
+NSString *const kLPPBookInfoModelIdentifierEncodeKey = @"identifier";
+NSString *const kLPPBookInfoModelSourceEncodeKey = @"source";
+NSString *const kLPPBookInfoModelRelationEncodeKey = @"relation";
+NSString *const kLPPBookInfoModelCoverageEncodeKey = @"coverage";
+NSString *const kLPPBookInfoModelRightsEncodeKey = @"rights";
+
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.rootDocumentUrl forKey:kLPPBookInfoModelRootDocumentUrlEncodeKey];
+    [aCoder encodeObject:self.OEBPSUrl forKey:kLPPBookInfoModelOEBPSUrlEncodeKey];
+    [aCoder encodeObject:self.cover forKey:kLPPBookInfoModelCoverEncodeKey];
+    [aCoder encodeObject:self.title forKey:kLPPBookInfoModelTitleEncodeKey];
+    [aCoder encodeObject:self.creator forKey:kLPPBookInfoModelCreatorEncodeKey];
+    [aCoder encodeObject:self.subject forKey:kLPPBookInfoModelSubjectEncodeKey];
+    [aCoder encodeObject:self.descrip forKey:kLPPBookInfoModelDescripEncodeKey];
+    [aCoder encodeObject:self.date forKey:kLPPBookInfoModelDateEncodeKey];
+    [aCoder encodeObject:self.type forKey:kLPPBookInfoModelTypeEncodeKey];
+    [aCoder encodeObject:self.format forKey:kLPPBookInfoModelFormatEncodeKey];
+    [aCoder encodeObject:self.identifier forKey:kLPPBookInfoModelIdentifierEncodeKey];
+    [aCoder encodeObject:self.source forKey:kLPPBookInfoModelSourceEncodeKey];
+    [aCoder encodeObject:self.relation forKey:kLPPBookInfoModelRelationEncodeKey];
+    [aCoder encodeObject:self.coverage forKey:kLPPBookInfoModelCoverageEncodeKey];
+    [aCoder encodeObject:self.rights forKey:kLPPBookInfoModelRightsEncodeKey];
+}
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if (self) {
+        self.rootDocumentUrl = [aDecoder decodeObjectForKey:kLPPBookInfoModelRootDocumentUrlEncodeKey];
+        self.OEBPSUrl = [aDecoder decodeObjectForKey:kLPPBookInfoModelOEBPSUrlEncodeKey];
+        self.cover = [aDecoder decodeObjectForKey:kLPPBookInfoModelCoverEncodeKey];
+        self.title = [aDecoder decodeObjectForKey:kLPPBookInfoModelTitleEncodeKey];
+        self.creator = [aDecoder decodeObjectForKey:kLPPBookInfoModelCreatorEncodeKey];
+        self.subject = [aDecoder decodeObjectForKey:kLPPBookInfoModelSubjectEncodeKey];
+        self.descrip = [aDecoder decodeObjectForKey:kLPPBookInfoModelDescripEncodeKey];
+        self.date = [aDecoder decodeObjectForKey:kLPPBookInfoModelDateEncodeKey];
+        self.type = [aDecoder decodeObjectForKey:kLPPBookInfoModelTypeEncodeKey];
+        self.format = [aDecoder decodeObjectForKey:kLPPBookInfoModelFormatEncodeKey];
+        self.identifier = [aDecoder decodeObjectForKey:kLPPBookInfoModelIdentifierEncodeKey];
+        self.source = [aDecoder decodeObjectForKey:kLPPBookInfoModelSourceEncodeKey];
+        self.relation = [aDecoder decodeObjectForKey:kLPPBookInfoModelRelationEncodeKey];
+        self.coverage = [aDecoder decodeObjectForKey:kLPPBookInfoModelCoverageEncodeKey];
+        self.rights = [aDecoder decodeObjectForKey:kLPPBookInfoModelRightsEncodeKey];        
+    }
+    return self;
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    
+}
+
+@end
+
 @interface LPPBookModel()
 @property (nonatomic,strong) NSMutableArray<LPPChapterModel*> *chapters;//章节
 @property (nonatomic,copy) NSArray <LPPChapterModel*> *chapterContainNotes;//包含笔记的章节
@@ -14,6 +77,7 @@
 @end
 @implementation LPPBookModel
 
+NSString *const kLPPBookModelBookBasicInfoEncodeKey = @"bookBasicInfo";
 NSString *const kLPPBookModelResourceEncodeKey = @"resource";
 NSString *const kLPPBookModelContentEncodeKey = @"content";
 NSString *const kLPPBookModelBookTypeEncodeKey = @"bookType";
@@ -37,7 +101,8 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
 - (instancetype)initWithePub:(NSString *)ePubPath{
     self = [super init];
     if (self) {
-        _chapters = [XDSReadOperation ePubFileHandle:ePubPath];
+        _bookBasicInfo = [[LPPBookInfoModel alloc] init];
+        _chapters = [XDSReadOperation ePubFileHandle:ePubPath bookInfoModel:_bookBasicInfo];
         _record = [[LPPRecordModel alloc] init];
         _record.chapterModel = _chapters.firstObject;
         _record.location = 0;
@@ -45,7 +110,12 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     }
     return self;
 }
++ (void)showCoverPage {
+    
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.bookBasicInfo forKey:kLPPBookModelBookBasicInfoEncodeKey];
     [aCoder encodeObject:self.content forKey:kLPPBookModelContentEncodeKey];
     [aCoder encodeObject:self.chapters forKey:kLPPBookModelChaptersEncodeKey];
     [aCoder encodeObject:self.record forKey:kLPPBookModelRecordEncodeKey];
@@ -55,6 +125,7 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
+        self.bookBasicInfo = [aDecoder decodeObjectForKey:kLPPBookModelBookBasicInfoEncodeKey];
         self.content = [aDecoder decodeObjectForKey:kLPPBookModelContentEncodeKey];
         self.chapters = [aDecoder decodeObjectForKey:kLPPBookModelChaptersEncodeKey];
         self.record = [aDecoder decodeObjectForKey:kLPPBookModelRecordEncodeKey];
@@ -99,6 +170,23 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     LPPBookModel *model = [unarchive decodeObjectForKey:key];
     return model;
 }
+
+- (void)loadContentInChapter:(LPPChapterModel *)chapterModel {
+    //load content for current chapter first
+    [chapterModel paginateEpubWithBounds:[XDSReadManager readViewBounds]];
+    
+    //then load content for the other chapters in an async thread.
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_async(queue, ^{
+        for (LPPChapterModel *theChapterModel in self.chapters) {
+            if (![theChapterModel.chapterSrc isEqualToString:chapterModel.chapterSrc]) {
+                [theChapterModel paginateEpubWithBounds:[XDSReadManager readViewBounds]];
+            }
+        }
+    });
+    
+}
+
 
 //TODO: Notes
 - (void)deleteNote:(XDSNoteModel *)noteModel{
