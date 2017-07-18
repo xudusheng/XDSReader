@@ -174,19 +174,32 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
 - (void)loadContentInChapter:(LPPChapterModel *)chapterModel {
     //load content for current chapter first
     [chapterModel paginateEpubWithBounds:[XDSReadManager readViewBounds]];
+}
+
+- (void)loadContentForAllChapters {
+    if (![[XDSReadConfig shareInstance] isReadConfigChanged]) {
+        return;
+    }
+    NSInteger index = [self.chapters indexOfObject:CURRENT_RECORD.chapterModel];
+    if (index == 0 || index + 1 >= self.chapters.count) {
+        return;
+    }
     
-    //then load content for the other chapters in an async thread.
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(queue, ^{
-        for (LPPChapterModel *theChapterModel in self.chapters) {
-            if (![theChapterModel.chapterSrc isEqualToString:chapterModel.chapterSrc]) {
-                [theChapterModel paginateEpubWithBounds:[XDSReadManager readViewBounds]];
-            }
+        for (NSInteger i = index + 1; i < self.chapters.count; i ++) {
+            LPPChapterModel *theChapterModel = self.chapters[i];
+            [self loadContentInChapter:theChapterModel];
         }
     });
     
+    dispatch_async(queue, ^{
+        for (NSInteger i = index - 1; i >= 0; i --) {
+            LPPChapterModel *theChapterModel = self.chapters[i];
+            [self loadContentInChapter:theChapterModel];
+        }
+    });
 }
-
 
 //TODO: Notes
 - (void)deleteNote:(XDSNoteModel *)noteModel{
@@ -201,7 +214,7 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
 
 - (void)devideChaptersContainNotes{
     NSMutableArray *chapterContainNotes = [NSMutableArray arrayWithCapacity:0];
-    for (XDSChapterModel *chapterModel in self.chapters) {
+    for (LPPChapterModel *chapterModel in self.chapters) {
         if (chapterModel.notes.count) {
             [chapterContainNotes addObject:chapterModel];
         }
@@ -235,7 +248,7 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
 
 - (void)devideChaptersContainMarks{
     NSMutableArray *chapterContainMarks = [NSMutableArray arrayWithCapacity:0];
-    for (XDSChapterModel *chapterModel in self.chapters) {
+    for (LPPChapterModel *chapterModel in self.chapters) {
         if (chapterModel.marks.count) {
             [chapterContainMarks addObject:chapterModel];
         }

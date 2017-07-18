@@ -27,7 +27,7 @@
                                           page:(NSInteger)page
                                        pageUrl:(NSString *)pageUrl;
 
-- (void)readViewJumpToChapter:(NSInteger *)chapter page:(NSInteger *)page;//跳转到指定章节（上一章，下一章，slider，目录）
+- (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到指定章节（上一章，下一章，slider，目录）
 - (void)readViewJumpToNote:(XDSNoteModel *)note;//跳转到指定笔记，因为是笔记是基于位置查找的，使用page查找可能出错
 - (void)readViewJumpToMark:(XDSMarkModel *)mark;//跳转到指定书签，因为是书签是基于位置查找的，使用page查找可能出错
 - (void)configReadFontSize:(BOOL)plus;//设置字体大小;

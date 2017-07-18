@@ -8,15 +8,23 @@
 
 #import "XDSReadConfig.h"
 
+@interface XDSReadConfig ()
+
+@property (nonatomic, assign) CGFloat cachefontSize;
+@property (nonatomic, copy) NSString *cacheFontName;
+@property (nonatomic) CGFloat cacheLineSpace;
+@property (nonatomic,strong) UIColor *cacheTextColor;
+@property (nonatomic,strong) UIColor *cacheTheme;
+
+@end
 @implementation XDSReadConfig
 
 NSString *const kReadConfigEncodeKey = @"ReadConfig";
-NSString *const kReadConfigFontSizeEncodeKey = @"fontSize";
-NSString *const kReadConfigFontNameEncodeKey = @"fontName";
-NSString *const kReadConfigLineSpaceEncodeKey = @"lineSpace";
-NSString *const kReadConfigTextColorEncodeKey = @"textColor";
-NSString *const kReadConfigThemeEncodeKey = @"theme";
-
+NSString *const kReadConfigFontSizeEncodeKey = @"cacheFontSize";
+NSString *const kReadConfigFontNameEncodeKey = @"cacheFontName";
+NSString *const kReadConfigLineSpaceEncodeKey = @"cacheLineSpace";
+NSString *const kReadConfigTextColorEncodeKey = @"cacheTextColor";
+NSString *const kReadConfigThemeEncodeKey = @"cacheTheme";
 
 
 + (instancetype)shareInstance{
@@ -24,7 +32,6 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         readConfig = [[self alloc] init];
-        
     });
     return readConfig;
 }
@@ -35,33 +42,17 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
         if (data) {
             NSKeyedUnarchiver *unarchive = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
             XDSReadConfig *config = [unarchive decodeObjectForKey:kReadConfigEncodeKey];
-            [config addObserver:config forKeyPath:@"fontSize" options:NSKeyValueObservingOptionNew context:NULL];
-            [config addObserver:config forKeyPath:@"fontName" options:NSKeyValueObservingOptionNew context:NULL];
-            [config addObserver:config forKeyPath:@"lineSpace" options:NSKeyValueObservingOptionNew context:NULL];
-            [config addObserver:config forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:NULL];
-            [config addObserver:config forKeyPath:@"theme" options:NSKeyValueObservingOptionNew context:NULL];
             return config;
         }
-        _lineSpace = 10.0f;
-        _fontSize = 14.0f;
-        _fontName = @"";
-        _textColor = [UIColor blackColor];
-        _theme = [UIColor whiteColor];
-        [self addObserver:self forKeyPath:@"fontSize" options:NSKeyValueObservingOptionNew context:NULL];
-        [self addObserver:self forKeyPath:@"fontName" options:NSKeyValueObservingOptionNew context:NULL];
-        [self addObserver:self forKeyPath:@"lineSpace" options:NSKeyValueObservingOptionNew context:NULL];
-        [self addObserver:self forKeyPath:@"textColor" options:NSKeyValueObservingOptionNew context:NULL];
-        [self addObserver:self forKeyPath:@"theme" options:NSKeyValueObservingOptionNew context:NULL];
+        self.cachefontSize = 14.0f;
+        self.cacheFontName = @"";
+        self.cacheLineSpace = 10.0f;
+        self.cacheTextColor = [UIColor blackColor];
+        self.cacheTheme = [UIColor whiteColor];
         [XDSReadConfig updateLocalConfig:self];
+        
     }
     return self;
-}
-
--(void)observeValueForKeyPath:(NSString *)keyPath
-                     ofObject:(id)object
-                       change:(NSDictionary<NSString *,id> *)change
-                      context:(void *)context{
-    [XDSReadConfig updateLocalConfig:self];
 }
 + (void)updateLocalConfig:(XDSReadConfig *)config{
     NSMutableData *data=[[NSMutableData alloc]init];
@@ -72,30 +63,56 @@ NSString *const kReadConfigThemeEncodeKey = @"theme";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeDouble:self.fontSize forKey:kReadConfigFontSizeEncodeKey];
-    [aCoder encodeObject:self.fontName forKey:kReadConfigFontNameEncodeKey];
-    [aCoder encodeDouble:self.lineSpace forKey:kReadConfigLineSpaceEncodeKey];
-    [aCoder encodeObject:self.textColor forKey:kReadConfigTextColorEncodeKey];
-    [aCoder encodeObject:self.theme forKey:kReadConfigThemeEncodeKey];
+    [aCoder encodeDouble:self.cachefontSize forKey:kReadConfigFontSizeEncodeKey];
+    [aCoder encodeObject:self.cacheFontName forKey:kReadConfigFontNameEncodeKey];
+    [aCoder encodeDouble:self.cacheLineSpace forKey:kReadConfigLineSpaceEncodeKey];
+    [aCoder encodeObject:self.cacheTextColor forKey:kReadConfigTextColorEncodeKey];
+    [aCoder encodeObject:self.cacheTheme forKey:kReadConfigThemeEncodeKey];
 }
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        self.fontSize = [aDecoder decodeDoubleForKey:kReadConfigFontSizeEncodeKey];
-        self.fontName = [aDecoder decodeObjectForKey:kReadConfigFontNameEncodeKey];
-        self.lineSpace = [aDecoder decodeDoubleForKey:kReadConfigLineSpaceEncodeKey];
-        self.textColor = [aDecoder decodeObjectForKey:kReadConfigTextColorEncodeKey];
-        self.theme = [aDecoder decodeObjectForKey:kReadConfigThemeEncodeKey];
+        self.cachefontSize = [aDecoder decodeDoubleForKey:kReadConfigFontSizeEncodeKey];
+        self.cacheFontName = [aDecoder decodeObjectForKey:kReadConfigFontNameEncodeKey];
+        self.cacheLineSpace = [aDecoder decodeDoubleForKey:kReadConfigLineSpaceEncodeKey];
+        self.cacheTextColor = [aDecoder decodeObjectForKey:kReadConfigTextColorEncodeKey];
+        self.cacheTheme = [aDecoder decodeObjectForKey:kReadConfigThemeEncodeKey];
     }
     return self;
 }
 
-- (void)setFontName:(NSString *)fontName{
-    if (fontName.length < 1) {
-        _fontName = @"";
+- (void)setCacheFontName:(NSString *)cacheFontName{
+    if (cacheFontName.length < 1) {
+        _cacheFontName = @"";
         return;
     }
-    _fontName = fontName;
+    _cacheFontName = cacheFontName;
+}
+
+
+
+- (BOOL)isReadConfigChanged {
+    BOOL isReadConfigNotChanged = (_cachefontSize == _currentFontSize &&
+                                   _cacheFontName == _currentFontName &&
+                                   _cacheLineSpace == _currentLineSpace &&
+                                   _cacheTextColor == _currentTextColor &&
+                                   _cacheTheme == _currentTheme);
+    if (!isReadConfigNotChanged) {
+        _currentFontSize>0?(_cachefontSize = _currentFontSize):0;
+        _currentFontName?(_cacheFontName = _currentFontName):0;
+        _currentLineSpace>0?(_cacheLineSpace = _currentLineSpace):0;
+        _currentTextColor?(_cacheTextColor = _currentTextColor):0;
+        _currentTheme?(_cacheTheme = _currentTheme):0;
+        [XDSReadConfig updateLocalConfig:self];
+    }
+    
+    _currentFontSize = _cachefontSize;
+    _currentFontName = _cacheFontName;
+    _currentLineSpace = _cacheLineSpace;
+    _currentTextColor = _cacheTextColor;
+    _currentTheme = _cacheTheme;
+    
+    return !isReadConfigNotChanged;
 }
 
 @end

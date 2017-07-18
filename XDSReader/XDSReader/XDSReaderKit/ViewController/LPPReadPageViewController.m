@@ -41,11 +41,9 @@ UIGestureRecognizerDelegate
 //MARK: - ABOUT UI
 - (void)createReadPageViewControllerUI{
     [self addChildViewController:self.pageViewController];
-    _chapter = CURRENT_RECORD.currentChapter;
-    _page = CURRENT_RECORD.currentPage;
     
-    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:_chapter
-                                                                                   page:_page
+    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:CURRENT_RECORD.currentChapter
+                                                                                   page:CURRENT_RECORD.currentPage
                                                                                 pageUrl:nil];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -56,6 +54,9 @@ UIGestureRecognizerDelegate
         tap.delegate = self;
         tap;
     })];
+    
+    _chapter = CURRENT_RECORD.currentChapter;
+    _page = CURRENT_RECORD.currentPage;
 }
 
 #pragma mark - init
@@ -89,7 +90,8 @@ UIGestureRecognizerDelegate
 }
 - (void)readViewThemeDidChanged{
     LPPReadViewController *readView = _pageViewController.viewControllers.firstObject;
-    readView.view.backgroundColor = [XDSReadConfig shareInstance].theme;
+    UIColor *theme = [XDSReadConfig shareInstance].currentTheme?[XDSReadConfig shareInstance].currentTheme:[XDSReadConfig shareInstance].cacheTheme;
+    readView.view.backgroundColor = theme;
 }
 - (void)readViewEffectDidChanged{}
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page{
@@ -110,9 +112,9 @@ UIGestureRecognizerDelegate
 //TODO: UIGestureRecognizerDelegate
 //解决TabView与Tap手势冲突
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-//    if ([NSStringFromClass([touch.view class]) isEqualToString:NSStringFromClass([LPPReadView class])]) {
-//        return YES;
-//    }
+    if ([NSStringFromClass([touch.view class]) isEqualToString:NSStringFromClass([DTAttributedTextContentView class])]) {
+        return YES;
+    }
     return  NO;
 }
 
@@ -146,13 +148,13 @@ UIGestureRecognizerDelegate
     _chapterChange = _chapter;
     if (_pageChange == CURRENT_BOOK_MODEL.chapters.lastObject.pageCount-1 && _chapterChange == CURRENT_BOOK_MODEL.chapters.count-1) {
         //最后一页，这里可以处理一下，添加已读完页面。
+        [self showToolMenu];//已经是最后一页了，显示菜单准备返回
         return nil;
     }
     if (_pageChange == CURRENT_RECORD.totalPage-1) {
         _chapterChange++;
         _pageChange = 0;
-    }
-    else{
+    }else{
         _pageChange++;
     }
     return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
@@ -184,7 +186,7 @@ UIGestureRecognizerDelegate
 //MARK: - ABOUT EVENTS
 -(void)showToolMenu{
     LPPReadViewController *readView = _pageViewController.viewControllers.firstObject;
-//    [readView.readView cancelSelected];
+    [readView.readView cancelSelected];
     [self.view addSubview:self.readMenuView];
 }
 //MARK: - OTHER PRIVATE METHODS

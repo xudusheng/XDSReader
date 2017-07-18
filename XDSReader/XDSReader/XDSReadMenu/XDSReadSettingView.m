@@ -67,7 +67,7 @@ NSInteger const kSetingFontSizeButtonTag = 30;
         button.imageView.backgroundColor = color;
         [button addTarget:self action:@selector(themeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
-        if (CGColorEqualToColor([XDSReadConfig shareInstance].theme.CGColor, color.CGColor)) {
+        if (CGColorEqualToColor([XDSReadConfig shareInstance].cacheTheme.CGColor, color.CGColor)) {
             button.selected = YES;
         }
     }
@@ -134,7 +134,7 @@ NSInteger const kSetingFontSizeButtonTag = 30;
         [button setTitleColor:TEXT_COLOR_XDS_2 forState:UIControlStateSelected];
         [button addTarget:self action:@selector(fontButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
-        if ([[XDSReadConfig shareInstance].fontName isEqualToString:_fontArray[i][@"font"]]) {
+        if ([[XDSReadConfig shareInstance].cacheFontName isEqualToString:_fontArray[i][@"font"]]) {
             button.selected = YES;
         }
     }

@@ -30,7 +30,7 @@
 
 @property (strong, nonatomic) DTAttributedTextView *readTextView;
 
-@property (nonatomic, strong) NSMutableAttributedString *readAttributedContent;
+@property (nonatomic, strong) NSAttributedString *readAttributedContent;
 
 @property (nonatomic, copy) NSString *content;
 
@@ -41,6 +41,7 @@
 - (instancetype)initWithFrame:(CGRect)frame readAttributedContent:(NSAttributedString *)readAttributedContent{
     if (self = [super initWithFrame:frame]) {
         self.readAttributedContent = [[NSMutableAttributedString alloc] initWithAttributedString:readAttributedContent];
+        self.content = readAttributedContent.string;
         [self createUI];
     }
     return self;
@@ -349,8 +350,8 @@
         model.content = [_content substringWithRange:_selectRange];
         model.note = alertController.textFields.firstObject.text;
         model.date = [NSDate date];
-        XDSChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
-        model.locationInChapterContent = _selectRange.location + [chapterModel.pageArray[CURRENT_RECORD.currentPage] integerValue];
+        LPPChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
+        model.locationInChapterContent = _selectRange.location + [chapterModel.pageLocations[CURRENT_RECORD.currentPage] integerValue];
         [[XDSReadManager sharedManager] addNoteModel:model];
     }];
     [alertController addAction:cancel];
@@ -551,4 +552,5 @@
         return pathArray;
     }
 }
+
 @end

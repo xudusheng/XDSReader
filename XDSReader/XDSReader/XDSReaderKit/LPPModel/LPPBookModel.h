@@ -62,6 +62,7 @@
 + (id)getLocalModelWithURL:(NSURL *)url;
 
 - (void)loadContentInChapter:(LPPChapterModel *)chapterModel;
+- (void)loadContentForAllChapters;
 
 - (void)deleteNote:(XDSNoteModel *)noteModel;
 - (void)addNote:(XDSNoteModel *)noteModel;

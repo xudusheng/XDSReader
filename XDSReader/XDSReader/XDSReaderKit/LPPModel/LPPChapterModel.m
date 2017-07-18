@@ -80,6 +80,14 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     
     NSString *imagePath = [@"img src=\"" stringByAppendingString:OEBPSUrl];
     html = [html stringByReplacingOccurrencesOfString:@"img src=\".." withString:imagePath];
+    
+//    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:
+//                                              @"<p></p>" options:0 error:nil];
+//    html  = [regularExpression stringByReplacingMatchesInString:html
+//                                                        options:0
+//                                                          range:NSMakeRange(0, html.length)
+//                                                   withTemplate:@""];
+    
     html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
 
 
@@ -105,17 +113,26 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
         }
     };
     
-    NSDictionary *dic = @{NSTextSizeMultiplierDocumentOption:@1.2,
+    
+    XDSReadConfig *config = [XDSReadConfig shareInstance];
+    
+    NSLog(@"config = ========%@", config);
+    CGFloat fontSize = (config.currentFontSize > 1)?config.currentFontSize:config.cachefontSize;
+    UIColor *textColor = config.currentTextColor?config.currentTextColor:config.cacheTextColor;
+    NSString *fontName = config.currentFontName?config.currentFontName:config.cacheFontName;
+    NSDictionary *dic = @{NSTextSizeMultiplierDocumentOption:@(fontSize/11.0),
                           DTDefaultLineHeightMultiplier:@1.5,
                           DTMaxImageSize:[NSValue valueWithCGSize:maxImageSize],
                           DTDefaultLinkColor:@"purple",
                           DTDefaultLinkHighlightColor:@"red",
+                          DTDefaultTextColor:textColor,
+                          DTDefaultFontName:fontName,
                           DTWillFlushBlockCallBack:callBackBlock
                           };
+    
+    NSLog(@"============== font = %f", fontSize);
     NSMutableDictionary *options = [NSMutableDictionary dictionaryWithDictionary:dic];
-    
     [options setObject:[NSURL fileURLWithPath:readmePath] forKey:NSBaseURLDocumentOption];
-    
     NSAttributedString *string = [[NSAttributedString alloc] initWithHTMLData:data options:options documentAttributes:NULL];
     
     return string;

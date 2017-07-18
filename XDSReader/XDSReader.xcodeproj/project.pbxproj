@@ -61,16 +61,12 @@
 		FCA78AD41EF2914F00114907 /* XDSWIFIFileTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78AB11EF2914F00114907 /* XDSWIFIFileTransferViewController.m */; };
 		FCA78AD51EF2914F00114907 /* XDSWIFIFileTransferViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA78AB21EF2914F00114907 /* XDSWIFIFileTransferViewController.xib */; };
 		FCA78B191EF2916700114907 /* XDSReadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78AD91EF2916700114907 /* XDSReadConfig.m */; };
-		FCA78B301EF2916700114907 /* XDSChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B121EF2916700114907 /* XDSChapterModel.m */; };
 		FCA78B311EF2916700114907 /* XDSReaderGlobleConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B151EF2916700114907 /* XDSReaderGlobleConst.m */; };
 		FCA78B341EF2918000114907 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA78B331EF2918000114907 /* libz.tbd */; };
 		FCA78B381EF2933E00114907 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B371EF2933E00114907 /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FCA78B3C1EF2935200114907 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B3B1EF2935200114907 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FCA78B3F1EF293F300114907 /* XDSReadParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B3E1EF293F300114907 /* XDSReadParser.m */; };
-		FCA78B421EF2965C00114907 /* XDSRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B411EF2965C00114907 /* XDSRecordModel.m */; };
 		FCA78B451EF2986800114907 /* XDSMarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B441EF2986800114907 /* XDSMarkModel.m */; };
 		FCA78B481EF2994200114907 /* XDSNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B471EF2994200114907 /* XDSNoteModel.m */; };
-		FCA78B4B1EF29A3C00114907 /* XDSBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B4A1EF29A3C00114907 /* XDSBookModel.m */; };
 		FCA78B4E1EF2DD9200114907 /* XDSReadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B4D1EF2DD9200114907 /* XDSReadOperation.m */; };
 		FCA78B7C1EF2DEB500114907 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B521EF2DEB500114907 /* CXMLDocument_CreationExtensions.m */; };
 		FCA78B7D1EF2DEB500114907 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B541EF2DEB500114907 /* CXMLNode_CreationExtensions.m */; };
@@ -669,8 +665,6 @@
 		FCA78AB21EF2914F00114907 /* XDSWIFIFileTransferViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XDSWIFIFileTransferViewController.xib; sourceTree = "<group>"; };
 		FCA78AD81EF2916700114907 /* XDSReadConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadConfig.h; sourceTree = "<group>"; };
 		FCA78AD91EF2916700114907 /* XDSReadConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadConfig.m; sourceTree = "<group>"; };
-		FCA78B111EF2916700114907 /* XDSChapterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSChapterModel.h; sourceTree = "<group>"; };
-		FCA78B121EF2916700114907 /* XDSChapterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSChapterModel.m; sourceTree = "<group>"; };
 		FCA78B141EF2916700114907 /* XDSReaderGlobleConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderGlobleConst.h; sourceTree = "<group>"; };
 		FCA78B151EF2916700114907 /* XDSReaderGlobleConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReaderGlobleConst.m; sourceTree = "<group>"; };
 		FCA78B181EF2916700114907 /* XDSReaderHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderHeader.h; sourceTree = "<group>"; };
@@ -680,16 +674,10 @@
 		FCA78B391EF2935200114907 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		FCA78B3A1EF2935200114907 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		FCA78B3B1EF2935200114907 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
-		FCA78B3D1EF293F300114907 /* XDSReadParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadParser.h; sourceTree = "<group>"; };
-		FCA78B3E1EF293F300114907 /* XDSReadParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadParser.m; sourceTree = "<group>"; };
-		FCA78B401EF2965C00114907 /* XDSRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSRecordModel.h; sourceTree = "<group>"; };
-		FCA78B411EF2965C00114907 /* XDSRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSRecordModel.m; sourceTree = "<group>"; };
 		FCA78B431EF2986800114907 /* XDSMarkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMarkModel.h; sourceTree = "<group>"; };
 		FCA78B441EF2986800114907 /* XDSMarkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMarkModel.m; sourceTree = "<group>"; };
 		FCA78B461EF2994200114907 /* XDSNoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSNoteModel.h; sourceTree = "<group>"; };
 		FCA78B471EF2994200114907 /* XDSNoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSNoteModel.m; sourceTree = "<group>"; };
-		FCA78B491EF29A3C00114907 /* XDSBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSBookModel.h; sourceTree = "<group>"; };
-		FCA78B4A1EF29A3C00114907 /* XDSBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSBookModel.m; sourceTree = "<group>"; };
 		FCA78B4C1EF2DD9200114907 /* XDSReadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadOperation.h; sourceTree = "<group>"; };
 		FCA78B4D1EF2DD9200114907 /* XDSReadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadOperation.m; sourceTree = "<group>"; };
 		FCA78B511EF2DEB500114907 /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
@@ -1483,8 +1471,6 @@
 			children = (
 				FCA78AD81EF2916700114907 /* XDSReadConfig.h */,
 				FCA78AD91EF2916700114907 /* XDSReadConfig.m */,
-				FCA78B3D1EF293F300114907 /* XDSReadParser.h */,
-				FCA78B3E1EF293F300114907 /* XDSReadParser.m */,
 				FCA78B4C1EF2DD9200114907 /* XDSReadOperation.h */,
 				FCA78B4D1EF2DD9200114907 /* XDSReadOperation.m */,
 				FCA78BA41EF3603A00114907 /* XDSReadManager.h */,
@@ -1496,16 +1482,10 @@
 		FCA78B101EF2916700114907 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FCA78B111EF2916700114907 /* XDSChapterModel.h */,
-				FCA78B121EF2916700114907 /* XDSChapterModel.m */,
-				FCA78B401EF2965C00114907 /* XDSRecordModel.h */,
-				FCA78B411EF2965C00114907 /* XDSRecordModel.m */,
 				FCA78B431EF2986800114907 /* XDSMarkModel.h */,
 				FCA78B441EF2986800114907 /* XDSMarkModel.m */,
 				FCA78B461EF2994200114907 /* XDSNoteModel.h */,
 				FCA78B471EF2994200114907 /* XDSNoteModel.m */,
-				FCA78B491EF29A3C00114907 /* XDSBookModel.h */,
-				FCA78B4A1EF29A3C00114907 /* XDSBookModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2804,7 +2784,6 @@
 				FCA78A581EF290F400114907 /* ViewController.m in Sources */,
 				FCA78B481EF2994200114907 /* XDSNoteModel.m in Sources */,
 				FCA78ACC1EF2914F00114907 /* HTTPFileResponse.m in Sources */,
-				FCA78B4B1EF29A3C00114907 /* XDSBookModel.m in Sources */,
 				FCA78B881EF2DEB500114907 /* CXMLUnsupportedNode.m in Sources */,
 				FCA78BA61EF3603A00114907 /* XDSReadManager.m in Sources */,
 				FCA78C011EF7CEA200114907 /* UIView+YGPulseView.m in Sources */,
@@ -2838,7 +2817,6 @@
 				FCA78C1A1EF929CE00114907 /* XDSMarkViewController.m in Sources */,
 				FCA78ABC1EF2914F00114907 /* DispatchQueueLogFormatter.m in Sources */,
 				FCA78ACE1EF2914F00114907 /* WebSocket.m in Sources */,
-				FCA78B421EF2965C00114907 /* XDSRecordModel.m in Sources */,
 				FCA78B4E1EF2DD9200114907 /* XDSReadOperation.m in Sources */,
 				FCA78ACB1EF2914F00114907 /* HTTPErrorResponse.m in Sources */,
 				FCA78B311EF2916700114907 /* XDSReaderGlobleConst.m in Sources */,
@@ -2863,8 +2841,6 @@
 				FCA78ABE1EF2914F00114907 /* DDData.m in Sources */,
 				FCB228FE1F0DFDFC007A0EA0 /* LPPChapterModel.m in Sources */,
 				FCA78A521EF290F400114907 /* main.m in Sources */,
-				FCA78B301EF2916700114907 /* XDSChapterModel.m in Sources */,
-				FCA78B3F1EF293F300114907 /* XDSReadParser.m in Sources */,
 				FCA78C141EF929AA00114907 /* XDSCatalogueViewController.m in Sources */,
 				FCA78AB61EF2914F00114907 /* DDAbstractDatabaseLogger.m in Sources */,
 				FCA78B841EF2DEB500114907 /* CXMLNamespaceNode.m in Sources */,

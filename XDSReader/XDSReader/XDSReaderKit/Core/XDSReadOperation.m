@@ -27,32 +27,32 @@
             NSRange range = [obj range];
             NSInteger local = range.location;
             if (idx == 0) {
-                XDSChapterModel *model = [[XDSChapterModel alloc] init];
-                model.title = @"开始";
+                LPPChapterModel *model = [[LPPChapterModel alloc] init];
+                model.chapterName = @"开始";
                 NSUInteger len = local;
-                model.content = [content substringWithRange:NSMakeRange(0, len)];
+//                model.content = [content substringWithRange:NSMakeRange(0, len)];
                 [*chapters addObject:model];
                 
             }
             if (idx > 0 ) {
-                XDSChapterModel *model = [[XDSChapterModel alloc] init];
-                model.title = [content substringWithRange:lastRange];
+                LPPChapterModel *model = [[LPPChapterModel alloc] init];
+                model.chapterName = [content substringWithRange:lastRange];
                 NSUInteger len = local-lastRange.location;
-                model.content = [content substringWithRange:NSMakeRange(lastRange.location, len)];
+//                model.content = [content substringWithRange:NSMakeRange(lastRange.location, len)];
                 [*chapters addObject:model];
                 
             }
             if (idx == match.count-1) {
-                XDSChapterModel *model = [[XDSChapterModel alloc] init];
-                model.title = [content substringWithRange:range];
-                model.content = [content substringWithRange:NSMakeRange(local, content.length-local)];
+                LPPChapterModel *model = [[LPPChapterModel alloc] init];
+                model.chapterName = [content substringWithRange:range];
+//                model.content = [content substringWithRange:NSMakeRange(local, content.length-local)];
                 [*chapters addObject:model];
             }
             lastRange = range;
         }];
     }else{
-        XDSChapterModel *model = [[XDSChapterModel alloc] init];
-        model.content = content;
+        LPPChapterModel *model = [[LPPChapterModel alloc] init];
+//        model.content = content;
         [*chapters addObject:model];
     }
     
@@ -97,7 +97,7 @@
 }
 
 #pragma mark - ePub处理
-+ (NSMutableArray *)ePubFileHandle:(NSString *)path bookInfoModel:(LPPBookInfoModel *)bookInfoModel{
++ (NSArray *)ePubFileHandle:(NSString *)path bookInfoModel:(LPPBookInfoModel *)bookInfoModel{
     //解压epub文件并返回解压文件夹的相对路径(根路径为document路径)
     NSString *ePubPath = [self unZip:path];
     if (!ePubPath) {
@@ -156,23 +156,6 @@
 + (NSArray *)parseOPF:(NSString *)opfRelativePath bookInfoModel:(LPPBookInfoModel *)bookInfoModel{
     NSString *opfPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:opfRelativePath];
     CXMLDocument *opfDocument = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:opfPath] options:0 error:nil];
-    
-    
-//    <title>:题名
-//    <creator>：责任者
-//    <subject>：主题词或关键词
-//    <description>：内容描述
-//    <contributor>：贡献者或其它次要责任者
-//    <date>：日期
-//    <type>：类型
-//    <format>：格式
-//    <identifier>：标识符
-//    <source>：来源
-//    <language>：语种
-//    <relation>：相关信息
-//    <coverage>：履盖范围
-//    <rights>：权限描述
-//    <x-metadata>，即扩展元素。如果有些信息在上述元素中无法描述，则在此元素中进行扩展。
 
     NSString *title = [self readDCValueFromOPFForKey:@"title" document:opfDocument];
     NSString *creator = [self readDCValueFromOPFForKey:@"creator" document:opfDocument];
@@ -192,7 +175,6 @@
     NSDictionary *bookInfo = NSDictionaryOfVariableBindings(title, creator, subject, descrip, date, type, format, identifier, source, relation, coverage, rights, cover);
     [bookInfoModel setValuesForKeysWithDictionary:bookInfo];
     
-    
     CXMLElement *element = (CXMLElement *)[opfDocument nodeForXPath:@"//opf:item[@media-type='application/x-dtbncx+xml']" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
     //opf文件的命名空间 xmlns="http://www.idpf.org/2007/opf" 需要取到某个节点设置命名空间的键为opf 用opf:节点来获取节点
     NSString *ncxFile;
@@ -206,8 +188,6 @@
     
     
     return [self readCarologueFromOPF:opfDocument ncxDoc:ncxDoc];
-    
-    
     
     //read carologue from ncx file 从ncx读取书籍目录（需优化，需要处理章节内链接问题）
     return [self readCarologueFromNCX:ncxDoc];
@@ -247,7 +227,7 @@
         chapter.chapterName = chapterName;
         chapter.chapterSrc = chapHref;
         
-//        XDSChapterModel *model = [XDSChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",chapterRelativeFolder,chapHref]
+//        LPPChapterModel *model = [LPPChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",chapterRelativeFolder,chapHref]
 //                                                            title:[titleDictionary valueForKey:chapHref]
 //                                                        imagePath:[[[opfRelativePath stringByDeletingLastPathComponent]stringByAppendingPathComponent:chapHref] stringByDeletingLastPathComponent]];
         [chapters addObject:chapter];
@@ -296,6 +276,23 @@
 
 
 + (NSString *)readDCValueFromOPFForKey:(NSString *)key document:(CXMLDocument *)document{
+    
+    //    <title>:题名
+    //    <creator>：责任者
+    //    <subject>：主题词或关键词
+    //    <description>：内容描述
+    //    <contributor>：贡献者或其它次要责任者
+    //    <date>：日期
+    //    <type>：类型
+    //    <format>：格式
+    //    <identifier>：标识符
+    //    <source>：来源
+    //    <language>：语种
+    //    <relation>：相关信息
+    //    <coverage>：履盖范围
+    //    <rights>：权限描述
+    //    <x-metadata>，即扩展元素。如果有些信息在上述元素中无法描述，则在此元素中进行扩展。
+    
     NSString *xPath = [NSString stringWithFormat:@"//dc:%@[1]",key];
     CXMLNode *node = [document nodeForXPath:xPath namespaceMappings:[NSDictionary dictionaryWithObject:@"http://purl.org/dc/elements/1.1/" forKey:@"dc"] error:nil];
     NSString *value = node.stringValue;

@@ -10,19 +10,24 @@
 #import "LPPReadView.h"
 @interface LPPReadViewController ()
 
-@property (strong, nonatomic) LPPReadView *readView;
 @property (strong, nonatomic) DTAttributedTextView *readTextView;
 @property (strong, nonatomic) LPPChapterModel *chapterModel;
 
 @end
 
 @implementation LPPReadViewController
-
+- (instancetype)initWithChapterNumber:(NSInteger)chapterNum pageNumber:(NSInteger)pageNum {
+    if (self = [super init]) {
+        self.chapterNum = chapterNum;
+        self.pageNum = pageNum;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.navigationController.navigationBarHidden = YES;
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [XDSReadConfig shareInstance].currentTheme?[XDSReadConfig shareInstance].currentTheme:[XDSReadConfig shareInstance].cacheTheme;
     self.chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapterNum];
     NSAttributedString *pageAttributeString = self.chapterModel.pageAttributeStrings[self.pageNum];
     CGRect frame = CGRectMake(20,

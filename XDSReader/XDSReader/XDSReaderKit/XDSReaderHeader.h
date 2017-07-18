@@ -26,7 +26,6 @@
 #import "NSString+HTML.h"
 #import "XDSReaderUtil.h"
 #import "XDSReadConfig.h"
-#import "XDSReadParser.h"
 
 #import "XDSNoteModel.h"
 #import "XDSMarkModel.h"
@@ -34,13 +33,10 @@
 #import "LPPRecordModel.h"
 #import "LPPBookModel.h"
 
-#import "XDSChapterModel.h"
-#import "XDSRecordModel.h"
-#import "XDSBookModel.h"
-
 #import "XDSReadOperation.h"
 
 #import "XDSMagnifierView.h"
+#import "LPPReadView.h"
 #import "XDSReaderDelegate.h"
 
 #import "LPPReadViewController.h"

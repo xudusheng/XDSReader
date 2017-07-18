@@ -150,7 +150,7 @@ XDSCatalogueViewDelegate
     NSInteger currentChapter = CURRENT_RECORD.currentChapter;
     currentChapter -= 1;
     NSInteger page = 0;
-    [[XDSReadManager sharedManager] readViewJumpToChapter:&currentChapter page:&page];
+    [[XDSReadManager sharedManager] readViewJumpToChapter:currentChapter page:page];
     CGFloat program = CURRENT_RECORD.currentPage/((float)(CURRENT_RECORD.chapterModel.pageCount-1))*100;
     [bottomView setReadProgram:program];
 }
@@ -160,7 +160,7 @@ XDSCatalogueViewDelegate
         currentChapter += 1;
     }
     NSInteger page = 0;
-    [[XDSReadManager sharedManager] readViewJumpToChapter:&currentChapter page:&page];
+    [[XDSReadManager sharedManager] readViewJumpToChapter:currentChapter page:page];
     CGFloat program = CURRENT_RECORD.currentPage/((float)(CURRENT_RECORD.chapterModel.pageCount-1))*100;
     [bottomView setReadProgram:program];
 }
@@ -168,7 +168,7 @@ XDSCatalogueViewDelegate
     
     NSInteger page =ceil((CURRENT_RECORD.chapterModel.pageCount-1)*slider.value);
     NSInteger chapter = CURRENT_RECORD.currentChapter;
-    [[XDSReadManager sharedManager] readViewJumpToChapter:&chapter page:&page];
+    [[XDSReadManager sharedManager] readViewJumpToChapter:chapter page:page];
 }
 
 //TODO: XDSReadSettingViewDelegatge
@@ -187,10 +187,10 @@ XDSCatalogueViewDelegate
 }
 
 //TODO:XDSCatalogueViewDelegate
-- (void)catalogueViewDidSelectedChapter:(XDSChapterModel *)chapterModel{
+- (void)catalogueViewDidSelectedChapter:(LPPChapterModel *)chapterModel{
     NSInteger selectedChapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:chapterModel];
     NSInteger page = 0;
-    [[XDSReadManager sharedManager] readViewJumpToChapter:&selectedChapter page:&page];
+    [[XDSReadManager sharedManager] readViewJumpToChapter:selectedChapter page:page];
     [self hideReadMenu];
 }
 
@@ -289,6 +289,9 @@ XDSCatalogueViewDelegate
                               DEVICE_MAIN_SCREEN_HEIGHT_XDSR);
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     if (CGRectGetMinY(self.readSettingView.frame) < DEVICE_MAIN_SCREEN_HEIGHT_XDSR) {
+        //设置页面隐藏时，刷新一遍全文章节
+        [CURRENT_BOOK_MODEL loadContentForAllChapters];
+        
         [UIView animateWithDuration:kXDSReadMenuAnimateDuration animations:^{
             self.readSettingView.frame = settingViewFrame;
             self.topView.frame = topFrame;
