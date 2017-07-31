@@ -19,6 +19,7 @@
 		FC61F8571F18770700DA83F4 /* UIFont+OPCoreText.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F8541F18770700DA83F4 /* UIFont+OPCoreText.m */; };
 		FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */ = {isa = PBXBuildFile; fileRef = FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */; };
 		FC88A51A1F0CCAE900BDF04A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FC88A5191F0CCAE900BDF04A /* README.md */; };
+		FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */; };
 		FCA78A521EF290F400114907 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A511EF290F400114907 /* main.m */; };
 		FCA78A551EF290F400114907 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A541EF290F400114907 /* AppDelegate.m */; };
 		FCA78A581EF290F400114907 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A571EF290F400114907 /* ViewController.m */; };
@@ -587,6 +588,7 @@
 		FC61F8541F18770700DA83F4 /* UIFont+OPCoreText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+OPCoreText.m"; sourceTree = "<group>"; };
 		FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = zoubianzhongguo.epub; sourceTree = "<group>"; };
 		FC88A5191F0CCAE900BDF04A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
+		FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "妖神记.txt"; sourceTree = "<group>"; };
 		FCA78A4D1EF290F400114907 /* XDSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XDSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA78A511EF290F400114907 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FCA78A531EF290F400114907 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1604,6 +1606,7 @@
 		FCA78BC31EF3A2CF00114907 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */,
 				FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */,
 				FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */,
 				FCA78BC61EF3A2D600114907 /* mdjyml.txt */,
@@ -2455,6 +2458,7 @@
 				FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */,
 				FCB2282B1F0DE52C007A0EA0 /* 00227.jpeg in Resources */,
 				FCB228F01F0DE52C007A0EA0 /* part0007.html in Resources */,
+				FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */,
 				FCB228ED1F0DE52C007A0EA0 /* part0004.html in Resources */,
 				FCB2275E1F0DE52C007A0EA0 /* 00022.jpeg in Resources */,
 				FCB228041F0DE52C007A0EA0 /* 00188.jpeg in Resources */,

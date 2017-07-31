@@ -27,13 +27,14 @@
 
 NSString *const kLPPChapterModelChapterNameEncodeKey = @"chapterName";
 NSString *const kLPPChapterModelChapterSrcEncodeKey = @"chapterSrc";
+NSString *const kLPPChapterModelOriginContentEncodeKey = @"originContent";
 NSString *const kLPPChapterModelNotesPathEncodeKey = @"notes";
 NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
 
 
 -(void)paginateEpubWithBounds:(CGRect)bounds{
     @autoreleasepool {
-        bounds.size.height = bounds.size.height - 20;
+//        bounds.size.height = bounds.size.height - 20;
         self.showBounds = bounds;
         // Load HTML data
         NSAttributedString *chapterAttributeContent = [self attributedStringForSnippet];
@@ -73,20 +74,33 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
 
 - (NSAttributedString *)attributedStringForSnippet{
     NSLog(@"====%@", self.chapterName);
-    NSString *OEBPSUrl = CURRENT_BOOK_MODEL.bookBasicInfo.OEBPSUrl;
-    OEBPSUrl = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:OEBPSUrl];
-    NSString *fileName = [NSString stringWithFormat:@"%@/%@", OEBPSUrl, self.chapterSrc];
-//    // Load HTML data
-    NSString *readmePath = fileName;
-    NSString *html = [NSString stringWithContentsOfFile:readmePath encoding:NSUTF8StringEncoding error:NULL];
-    
-    NSString *imagePath = [@"img src=\"" stringByAppendingString:OEBPSUrl];
-    html = [html stringByReplacingOccurrencesOfString:@"img src=\".." withString:imagePath];
-    html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
+
+    NSString *html = @"";
+    NSString *readmePath = @"";
+    if (self.chapterSrc.length) {
+        //load epub
+        NSString *OEBPSUrl = CURRENT_BOOK_MODEL.bookBasicInfo.OEBPSUrl;
+        OEBPSUrl = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:OEBPSUrl];
+        NSString *fileName = [NSString stringWithFormat:@"%@/%@", OEBPSUrl, self.chapterSrc];
+        //    // Load HTML data
+        readmePath = fileName;
+        html = [NSString stringWithContentsOfFile:readmePath encoding:NSUTF8StringEncoding error:NULL];
+        
+        NSString *imagePath = [@"img src=\"" stringByAppendingString:OEBPSUrl];
+        html = [html stringByReplacingOccurrencesOfString:@"img src=\".." withString:imagePath];
+        html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
+    }else if (self.originContent.length) {
+        //load txt content
+        html = self.originContent;
+        html = [@"<p>" stringByAppendingString:html];
+        html = [html stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"];
+        html = [html stringByReplacingOccurrencesOfString:@"\n" withString:@"</p><p>"];
+        html = [html stringByAppendingString:@"</p>"];
+        html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
+    }
     NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
     
     // Create attributed string from HTML
-    CGSize maxImageSize = CGSizeMake(_showBounds.size.width - 20.0, _showBounds.size.height - 20.0);
     
     // example for setting a willFlushCallback, that gets called before elements are written to the generated attributed string
     void (^callBackBlock)(DTHTMLElement *element) = ^(DTHTMLElement *element) {
@@ -109,6 +123,16 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     CGFloat fontSize = (config.currentFontSize > 1)?config.currentFontSize:config.cachefontSize;
     UIColor *textColor = config.currentTextColor?config.currentTextColor:config.cacheTextColor;
     NSString *fontName = config.currentFontName?config.currentFontName:config.cacheFontName;
+
+    NSString *header = @"你好";
+    CGRect headerFrame = [header boundingRectWithSize:CGSizeMake(100, 100)
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]}
+                                              context:nil];
+    CGFloat headIndent = CGRectGetWidth(headerFrame);
+    
+    CGSize maxImageSize = CGSizeMake(_showBounds.size.width - headIndent*2, _showBounds.size.height - headIndent);
+    
     NSDictionary *dic = @{NSTextSizeMultiplierDocumentOption:@(fontSize/11.0),
                           DTDefaultLineHeightMultiplier:@1.5,
                           DTMaxImageSize:[NSValue valueWithCGSize:maxImageSize],
@@ -116,11 +140,14 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
                           DTDefaultLinkHighlightColor:@"red",
                           DTDefaultTextColor:textColor,
                           DTDefaultFontName:fontName,
-                          DTWillFlushBlockCallBack:callBackBlock
+                          DTWillFlushBlockCallBack:callBackBlock,
+                          DTDefaultFirstLineHeadIndent:@(headIndent),
                           };
     
     NSMutableDictionary *options = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [options setObject:[NSURL fileURLWithPath:readmePath] forKey:NSBaseURLDocumentOption];
+    if (readmePath.length) {
+        [options setObject:[NSURL fileURLWithPath:readmePath] forKey:NSBaseURLDocumentOption];
+    }
     NSAttributedString *string = [[NSAttributedString alloc] initWithHTMLData:data options:options documentAttributes:NULL];
     
     return string;
@@ -198,6 +225,7 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     LPPChapterModel *model = [[LPPChapterModel allocWithZone:zone] init];
     model.chapterName = self.chapterName;
     model.chapterSrc = self.chapterSrc;
+    model.originContent = self.originContent;
     model.chapterAttributeContent = self.chapterAttributeContent;
     model.chapterContent = self.chapterContent;
     model.pageAttributeStrings = self.pageAttributeStrings;
@@ -211,6 +239,7 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
 -(void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.chapterName forKey:kLPPChapterModelChapterNameEncodeKey];
     [aCoder encodeObject:self.chapterSrc forKey:kLPPChapterModelChapterSrcEncodeKey];
+    [aCoder encodeObject:self.originContent forKey:kLPPChapterModelOriginContentEncodeKey];
     [aCoder encodeObject:self.notes forKey:kLPPChapterModelNotesPathEncodeKey];
     [aCoder encodeObject:self.marks forKey:kLPPChapterModelMarksEncodeKey];
 }
@@ -219,6 +248,7 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     if (self) {
         self.chapterName = [aDecoder decodeObjectForKey:kLPPChapterModelChapterNameEncodeKey];
         self.chapterSrc = [aDecoder decodeObjectForKey:kLPPChapterModelChapterSrcEncodeKey];
+        self.originContent = [aDecoder decodeObjectForKey:kLPPChapterModelOriginContentEncodeKey];
         self.notes = [aDecoder decodeObjectForKey:kLPPChapterModelNotesPathEncodeKey];
         self.marks = [aDecoder decodeObjectForKey:kLPPChapterModelMarksEncodeKey];
 

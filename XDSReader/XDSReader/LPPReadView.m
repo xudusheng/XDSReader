@@ -65,7 +65,6 @@
 //MARK: - ABOUT UI UI相关
 - (void)createUI{
     [self setBackgroundColor:[UIColor whiteColor]];
-    self.clipsToBounds = NO;
     [self addGestureRecognizer:({
         UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
         longPress;
@@ -87,7 +86,6 @@
     self.readTextView.backgroundColor = [UIColor clearColor];
     [self addSubview:self.readTextView];
     self.readTextView.attributedString = self.readAttributedContent;
-    
 }
 
 //TODO: docs
@@ -133,7 +131,9 @@
 }
 //MARK: - DELEGATE METHODS 代理方法
 //TODO: DTAttributedTextContentViewDelegate
-- (UIView *)attributedTextContentView:(DTAttributedTextContentView *)attributedTextContentView viewForAttributedString:(NSAttributedString *)string frame:(CGRect)frame
+- (UIView *)attributedTextContentView:(DTAttributedTextContentView *)attributedTextContentView
+              viewForAttributedString:(NSAttributedString *)string
+                                frame:(CGRect)frame
 {
     NSDictionary *attributes = [string attributesAtIndex:0 effectiveRange:NULL];
     
@@ -152,6 +152,7 @@
     
     // get image for highlighted link text
     UIImage *highlightImage = [attributedTextContentView contentImageWithBounds:frame options:DTCoreTextLayoutFrameDrawingDrawLinksHighlighted];
+
     [button setImage:highlightImage forState:UIControlStateHighlighted];
     
     // use normal push action for opening URL
@@ -164,17 +165,30 @@
     return button;
 }
 
-- (UIView *)attributedTextContentView:(DTAttributedTextContentView *)attributedTextContentView viewForAttachment:(DTTextAttachment *)attachment frame:(CGRect)frame
-{
+- (UIView *)attributedTextContentView:(DTAttributedTextContentView *)attributedTextContentView
+                    viewForAttachment:(DTTextAttachment *)attachment
+                                frame:(CGRect)frame{
+    
     if ([attachment isKindOfClass:[DTImageTextAttachment class]])
     {
+        XDSReadConfig *config = [XDSReadConfig shareInstance];
+        CGFloat fontSize = (config.currentFontSize > 1)?config.currentFontSize:config.cachefontSize;
+        NSString *header = @"你好";
+        CGRect headerFrame = [header boundingRectWithSize:CGSizeMake(100, 100)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]}
+                                                  context:nil];
+        CGFloat headIndent = CGRectGetWidth(headerFrame);
+        
+        frame.origin.x -= headIndent;
+        
+        
         // if the attachment has a hyperlinkURL then this is currently ignored
         DTLazyImageView *imageView = [[DTLazyImageView alloc] initWithFrame:frame];
 //        imageView.delegate = self;
         
         // sets the image if there is one
         imageView.image = [(DTImageTextAttachment *)attachment image];
-        
         // url for deferred loading
         imageView.url = attachment.contentURL;
         
@@ -221,8 +235,11 @@
     return nil;
 }
 
-- (BOOL)attributedTextContentView:(DTAttributedTextContentView *)attributedTextContentView shouldDrawBackgroundForTextBlock:(DTTextBlock *)textBlock frame:(CGRect)frame context:(CGContextRef)context forLayoutFrame:(DTCoreTextLayoutFrame *)layoutFrame
-{
+- (BOOL)attributedTextContentView:(DTAttributedTextContentView *)attributedTextContentView
+ shouldDrawBackgroundForTextBlock:(DTTextBlock *)textBlock
+                            frame:(CGRect)frame
+                          context:(CGContextRef)context
+                   forLayoutFrame:(DTCoreTextLayoutFrame *)layoutFrame {
     UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(frame,1,1) cornerRadius:10];
     
     //    CGColorRef color = [textBlock.backgroundColor CGColor];

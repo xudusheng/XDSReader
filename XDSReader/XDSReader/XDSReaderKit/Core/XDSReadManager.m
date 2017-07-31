@@ -28,29 +28,32 @@ static XDSReadManager *readManager;
 }
 
 + (CGRect)readViewBounds {
-    CGRect bounds = CGRectMake(0,
-                             0,
-                             DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight,
-                             DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom);
+    CGRect bounds = CGRectMake(kReadViewMarginTop,
+                               kReadViewMarginLeft,
+                               DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight,
+                               DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom);
     return bounds;
 }
 //MARK: - //获取对于章节页码的radViewController
-- (LPPReadViewController *)readViewWithChapter:(NSInteger)chapter
-                                          page:(NSInteger)page
+- (LPPReadViewController *)readViewWithChapter:(NSInteger *)chapter
+                                          page:(NSInteger *)page
                                        pageUrl:(NSString *)pageUrl{
     
-    LPPChapterModel *currentChapterModel = _bookModel.chapters[chapter];
+    LPPChapterModel *currentChapterModel = _bookModel.chapters[*chapter];
     if (currentChapterModel.isReadConfigChanged) {
         [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
         if (currentChapterModel == CURRENT_RECORD.chapterModel) {
-            page = CURRENT_RECORD.currentPage;
+            *page = CURRENT_RECORD.currentPage;
         }
     }
     
+    if (*page < 0){
+        *page = currentChapterModel.pageCount - 1;
+    }
     
     LPPReadViewController *readView = [[LPPReadViewController alloc] init];
-    readView.chapterNum = chapter;
-    readView.pageNum = page;
+    readView.chapterNum = *chapter;
+    readView.pageNum = *page;
     readView.pageUrl = pageUrl;
     return readView;
 }

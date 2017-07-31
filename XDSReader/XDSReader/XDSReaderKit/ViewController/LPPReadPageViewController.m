@@ -42,8 +42,11 @@ UIGestureRecognizerDelegate
 - (void)createReadPageViewControllerUI{
     [self addChildViewController:self.pageViewController];
     
-    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:CURRENT_RECORD.currentChapter
-                                                                                   page:CURRENT_RECORD.currentPage
+    _chapter = CURRENT_RECORD.currentChapter;
+    _page = CURRENT_RECORD.currentPage;
+    
+    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&_chapter
+                                                                                   page:&_page
                                                                                 pageUrl:nil];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -55,8 +58,7 @@ UIGestureRecognizerDelegate
         tap;
     })];
     
-    _chapter = CURRENT_RECORD.currentChapter;
-    _page = CURRENT_RECORD.currentPage;
+
 }
 
 #pragma mark - init
@@ -80,8 +82,8 @@ UIGestureRecognizerDelegate
 - (void)readViewFontDidChanged {
     _chapter = CURRENT_RECORD.currentChapter;
     _page = CURRENT_RECORD.currentPage;
-    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:_chapter
-                                                                                   page:_page
+    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&_chapter
+                                                                                   page:&_page
                                                                                 pageUrl:nil];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -95,8 +97,8 @@ UIGestureRecognizerDelegate
 }
 - (void)readViewEffectDidChanged{}
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page{
-    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:chapter
-                                                                                   page:page
+    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&chapter
+                                                                                   page:&page
                                                                                 pageUrl:nil];
     [_pageViewController setViewControllers:@[readVC]
                                   direction:UIPageViewControllerNavigationDirectionForward
@@ -128,17 +130,15 @@ UIGestureRecognizerDelegate
         [self showToolMenu];//已经是第一页了，显示菜单准备返回
         return nil;
     }
+    
+    
     if (_pageChange == 0) {
         _chapterChange--;
-        LPPChapterModel *chapter = CURRENT_BOOK_MODEL.chapters[_chapterChange];
-        _pageChange = chapter.pageCount-1;
     }
-    else{
-        _pageChange--;
-    }
+    _pageChange--;
     
-    return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
-                                                          page:_pageChange
+    return [[XDSReadManager sharedManager] readViewWithChapter:&_chapterChange
+                                                          page:&_pageChange
                                                        pageUrl:nil];
 }
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
@@ -157,8 +157,8 @@ UIGestureRecognizerDelegate
     }else{
         _pageChange++;
     }
-    return [[XDSReadManager sharedManager] readViewWithChapter:_chapterChange
-                                                          page:_pageChange
+    return [[XDSReadManager sharedManager] readViewWithChapter:&_chapterChange
+                                                          page:&_pageChange
                                                        pageUrl:nil];
 }
 

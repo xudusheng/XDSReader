@@ -26,10 +26,12 @@
     self.navigationController.navigationBarHidden = YES;
     self.chapterModel = [[LPPChapterModel alloc] init];
     
-    CGRect frame = CGRectMake(20,
-                              20,
-                              DEVICE_MAIN_SCREEN_WIDTH_XDSR - 40,
-                              DEVICE_MAIN_SCREEN_HEIGHT_XDSR - 40);
+//    CGRect frame = CGRectMake(20,
+//                              20,
+//                              DEVICE_MAIN_SCREEN_WIDTH_XDSR - 40,
+//                              DEVICE_MAIN_SCREEN_HEIGHT_XDSR - 40);
+    
+    CGRect frame = [XDSReadManager readViewBounds];
     [self.chapterModel paginateEpubWithBounds:frame];
     
     self.readView = [[LPPReadView alloc] initWithFrame:frame readAttributedContent:self.chapterModel.pageAttributeStrings[0]];

@@ -15,9 +15,9 @@
 + (void)separateChapter:(NSMutableArray **)chapters content:(NSString *)content {
 
     [*chapters removeAllObjects];
-    NSString *parten = @"第[0-9一二三四五六七八九十百千]*[章回].*";
+    NSString *regPattern = @"第[0-9一二三四五六七八九十百千]*[章回].*";
     NSError* error = NULL;
-    NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:parten options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:regPattern options:NSRegularExpressionCaseInsensitive error:&error];
     
     NSArray* match = [reg matchesInString:content options:NSMatchingReportCompletion range:NSMakeRange(0, [content length])];
     
@@ -30,7 +30,7 @@
                 LPPChapterModel *model = [[LPPChapterModel alloc] init];
                 model.chapterName = @"开始";
                 NSUInteger len = local;
-//                model.content = [content substringWithRange:NSMakeRange(0, len)];
+                model.originContent = [content substringWithRange:NSMakeRange(0, len)];
                 [*chapters addObject:model];
                 
             }
@@ -38,21 +38,21 @@
                 LPPChapterModel *model = [[LPPChapterModel alloc] init];
                 model.chapterName = [content substringWithRange:lastRange];
                 NSUInteger len = local-lastRange.location;
-//                model.content = [content substringWithRange:NSMakeRange(lastRange.location, len)];
+                model.originContent = [content substringWithRange:NSMakeRange(lastRange.location, len)];
                 [*chapters addObject:model];
                 
             }
             if (idx == match.count-1) {
                 LPPChapterModel *model = [[LPPChapterModel alloc] init];
                 model.chapterName = [content substringWithRange:range];
-//                model.content = [content substringWithRange:NSMakeRange(local, content.length-local)];
+                model.originContent = [content substringWithRange:NSMakeRange(local, content.length-local)];
                 [*chapters addObject:model];
             }
             lastRange = range;
         }];
     }else{
         LPPChapterModel *model = [[LPPChapterModel alloc] init];
-//        model.content = content;
+        model.originContent = content;
         [*chapters addObject:model];
     }
     

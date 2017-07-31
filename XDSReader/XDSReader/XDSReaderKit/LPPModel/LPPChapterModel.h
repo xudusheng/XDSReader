@@ -17,9 +17,10 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
 
 @property (nonatomic, copy) XDSReadConfig *currentConfig;
 
-@property (nonatomic, copy) NSString *chapterName;//章节名称
-@property (nonatomic, copy) NSString *chapterSrc;//章节路径
+@property (nonatomic, copy) NSString *chapterSrc;//epub章节路径，加载epub内容时使用该字段
+@property (nonatomic, copy) NSString *originContent;//txt原始内容，加载txt内容时使用该字段
 
+@property (nonatomic, copy) NSString *chapterName;//章节名称
 @property (nonatomic, readonly) NSAttributedString *chapterAttributeContent;//全章的富文本
 @property (nonatomic, readonly) NSString *chapterContent;//全章的out文本
 @property (nonatomic, readonly) NSArray *pageAttributeStrings;//每一页的富文本

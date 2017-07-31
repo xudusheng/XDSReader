@@ -23,8 +23,8 @@
 @property (nonatomic,weak) id<XDSReadManagerDelegate> rmDelegate;
 
 //获取对于章节页码的radViewController
-- (LPPReadViewController *)readViewWithChapter:(NSInteger)chapter
-                                          page:(NSInteger)page
+- (LPPReadViewController *)readViewWithChapter:(NSInteger *)chapter
+                                          page:(NSInteger *)page
                                        pageUrl:(NSString *)pageUrl;
 
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到指定章节（上一章，下一章，slider，目录）

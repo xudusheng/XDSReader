@@ -28,11 +28,11 @@
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"zoubianzhongguo"withExtension:@"epub"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 1){
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"mdjyml"withExtension:@"txt"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"妖神记"withExtension:@"txt"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 2){
-//        XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
-//        [self.navigationController pushViewController:wifiTransferVC animated:YES];
+        XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
+        [self.navigationController pushViewController:wifiTransferVC animated:YES];
         
 //        XDSDemoViewController *demoVC = [[XDSDemoViewController alloc] init];
 //        [self.navigationController presentViewController:demoVC animated:YES completion:nil];
@@ -41,32 +41,32 @@
 //        LPPReadPageViewController *readPageVC = [[LPPReadPageViewController alloc] init];
 //        [self presentViewController:readPageVC animated:YES completion:nil];
 
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"XDSShareConfig.plist" ofType:nil];
-        NSArray *array = [NSArray arrayWithContentsOfFile:path];
-        
-        NSURL *url = [NSURL URLWithString:@"reader://share/home"];
-        
-        for (NSDictionary *dict in array) {
-            if ([dict[@"exact_url"] isEqualToString:url.absoluteString]) {
-                NSString *object = dict[@"object"];
-                if ([object hasPrefix:@"#"]) {
-                    object = [object substringFromIndex:1];
-                    Class class = NSClassFromString(object);
-                    if (class) {
-                        UIViewController *controller = [[class alloc] init];
-                        [controller.view setValue:[UIColor redColor] forKey:@"backgroundColor"];
-                        [controller setValuesForKeysWithDictionary:@{}];
-                        [self.navigationController pushViewController:controller animated:YES];
-//                        [self presentViewController:controller animated:YES completion:nil];
-                    }
-                    break;
-                }
-            }
-        }
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"XDSShareConfig.plist" ofType:nil];
+//        NSArray *array = [NSArray arrayWithContentsOfFile:path];
+//        
+//        NSURL *url = [NSURL URLWithString:@"reader://share/home"];
+//        
+//        for (NSDictionary *dict in array) {
+//            if ([dict[@"exact_url"] isEqualToString:url.absoluteString]) {
+//                NSString *object = dict[@"object"];
+//                if ([object hasPrefix:@"#"]) {
+//                    object = [object substringFromIndex:1];
+//                    Class class = NSClassFromString(object);
+//                    if (class) {
+//                        UIViewController *controller = [[class alloc] init];
+//                        [controller.view setValue:[UIColor redColor] forKey:@"backgroundColor"];
+//                        [controller setValuesForKeysWithDictionary:@{}];
+//                        [self.navigationController pushViewController:controller animated:YES];
+////                        [self presentViewController:controller animated:YES completion:nil];
+//                    }
+//                    break;
+//                }
+//            }
+//        }
         
 
         
-        NSLog(@"url = %@", url);
+//        NSLog(@"url = %@", url);
         
     }
 }
