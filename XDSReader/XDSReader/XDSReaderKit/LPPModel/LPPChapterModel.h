@@ -15,6 +15,8 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
 
 @interface LPPChapterModel : NSObject <NSCopying,NSCoding>
 
+@property (nonatomic, copy) XDSReadConfig *currentConfig;
+
 @property (nonatomic, copy) NSString *chapterName;//章节名称
 @property (nonatomic, copy) NSString *chapterSrc;//章节路径
 
@@ -35,4 +37,5 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
 - (void)updateFontAndGetNewPageFromOldPage:(NSInteger *)oldPage;
 - (BOOL)isMarkAtPage:(NSInteger)page;
 
+- (BOOL)isReadConfigChanged;
 @end

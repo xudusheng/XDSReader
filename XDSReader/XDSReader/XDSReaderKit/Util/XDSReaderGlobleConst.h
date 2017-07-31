@@ -34,3 +34,4 @@ UIKIT_EXTERN CGFloat const kReadViewMarginRight;
 
 UIKIT_EXTERN CGFloat const kXDSReadViewMinFontSize;
 UIKIT_EXTERN CGFloat const kXDSReadViewMaxFontSize;
+UIKIT_EXTERN CGFloat const kXDSReadViewDefaultFontSize;

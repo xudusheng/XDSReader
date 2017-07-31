@@ -32,65 +32,57 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
 
 
 -(void)paginateEpubWithBounds:(CGRect)bounds{
-    bounds.size.height = bounds.size.height - 20;
-    self.showBounds = bounds;
-    // Load HTML data
-    NSAttributedString *chapterAttributeContent = [self attributedStringForSnippet];
-
-    NSMutableArray *pageAttributeStrings = [NSMutableArray arrayWithCapacity:0];//每一页的富文本
-    NSMutableArray *pageStrings = [NSMutableArray arrayWithCapacity:0];//每一页的普通文本
-    NSMutableArray *pageLocations = [NSMutableArray arrayWithCapacity:0];//每一页在章节中的位置
-    
-    DTCoreTextLayouter *layouter = [[DTCoreTextLayouter alloc] initWithAttributedString:chapterAttributeContent];
-    NSRange visibleStringRang;
-    DTCoreTextLayoutFrame *visibleframe;
-    NSInteger rangeOffset = 0;
-    do {
-        visibleframe = [layouter layoutFrameWithRect:bounds range:NSMakeRange(rangeOffset, 0)];
-        visibleStringRang = [visibleframe visibleStringRange];
-
-        [pageAttributeStrings addObject:[chapterAttributeContent attributedSubstringFromRange:NSMakeRange(visibleStringRang.location, visibleStringRang.length)]];
-        [pageStrings addObject:[[chapterAttributeContent string] substringWithRange:NSMakeRange(visibleStringRang.location, visibleStringRang.length)]];
-        [pageLocations addObject:@(visibleStringRang.location)];
-        rangeOffset += visibleStringRang.length;
-
-    } while (visibleStringRang.location + visibleStringRang.length < chapterAttributeContent.string.length);
-    
-    visibleframe = nil;
-    layouter = nil;
-
-    self.chapterAttributeContent = chapterAttributeContent;
-    self.chapterContent = chapterAttributeContent.string;
-    self.pageAttributeStrings = pageAttributeStrings;
-    self.pageStrings = pageStrings;
-    self.pageLocations = pageLocations;
-    self.pageCount = self.pageLocations.count;
+    @autoreleasepool {
+        bounds.size.height = bounds.size.height - 20;
+        self.showBounds = bounds;
+        // Load HTML data
+        NSAttributedString *chapterAttributeContent = [self attributedStringForSnippet];
+        
+        NSMutableArray *pageAttributeStrings = [NSMutableArray arrayWithCapacity:0];//每一页的富文本
+        NSMutableArray *pageStrings = [NSMutableArray arrayWithCapacity:0];//每一页的普通文本
+        NSMutableArray *pageLocations = [NSMutableArray arrayWithCapacity:0];//每一页在章节中的位置
+        
+        DTCoreTextLayouter *layouter = [[DTCoreTextLayouter alloc] initWithAttributedString:chapterAttributeContent];
+        NSRange visibleStringRang;
+        DTCoreTextLayoutFrame *visibleframe;
+        NSInteger rangeOffset = 0;
+        do {
+            visibleframe = [layouter layoutFrameWithRect:bounds range:NSMakeRange(rangeOffset, 0)];
+            visibleStringRang = [visibleframe visibleStringRange];
+            
+            [pageAttributeStrings addObject:[chapterAttributeContent attributedSubstringFromRange:NSMakeRange(visibleStringRang.location, visibleStringRang.length)]];
+            [pageStrings addObject:[[chapterAttributeContent string] substringWithRange:NSMakeRange(visibleStringRang.location, visibleStringRang.length)]];
+            [pageLocations addObject:@(visibleStringRang.location)];
+            rangeOffset += visibleStringRang.length;
+            
+        } while (visibleStringRang.location + visibleStringRang.length < chapterAttributeContent.string.length);
+        
+        visibleframe = nil;
+        layouter = nil;
+        
+        self.chapterAttributeContent = chapterAttributeContent;
+        self.chapterContent = chapterAttributeContent.string;
+        self.pageAttributeStrings = pageAttributeStrings;
+        self.pageStrings = pageStrings;
+        self.pageLocations = pageLocations;
+        self.pageCount = self.pageLocations.count;
+        
+    }
 }
 
 
 - (NSAttributedString *)attributedStringForSnippet{
+    NSLog(@"====%@", self.chapterName);
     NSString *OEBPSUrl = CURRENT_BOOK_MODEL.bookBasicInfo.OEBPSUrl;
     OEBPSUrl = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:OEBPSUrl];
     NSString *fileName = [NSString stringWithFormat:@"%@/%@", OEBPSUrl, self.chapterSrc];
 //    // Load HTML data
-//    NSString *readmePath = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
     NSString *readmePath = fileName;
-    NSLog(@"path = %@", readmePath);
     NSString *html = [NSString stringWithContentsOfFile:readmePath encoding:NSUTF8StringEncoding error:NULL];
     
     NSString *imagePath = [@"img src=\"" stringByAppendingString:OEBPSUrl];
     html = [html stringByReplacingOccurrencesOfString:@"img src=\".." withString:imagePath];
-    
-//    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:
-//                                              @"<p></p>" options:0 error:nil];
-//    html  = [regularExpression stringByReplacingMatchesInString:html
-//                                                        options:0
-//                                                          range:NSMakeRange(0, html.length)
-//                                                   withTemplate:@""];
-    
     html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
-
-
     NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
     
     // Create attributed string from HTML
@@ -101,8 +93,7 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
         
         // the block is being called for an entire paragraph, so we check the individual elements
         
-        for (DTHTMLElement *oneChildElement in element.childNodes)
-        {
+        for (DTHTMLElement *oneChildElement in element.childNodes) {
             // if an element is larger than twice the font size put it in it's own block
             if (oneChildElement.displayStyle == DTHTMLElementDisplayStyleInline && oneChildElement.textAttachment.displaySize.height > 2.0 * oneChildElement.fontDescriptor.pointSize)
             {
@@ -114,9 +105,7 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     };
     
     
-    XDSReadConfig *config = [XDSReadConfig shareInstance];
-    
-    NSLog(@"config = ========%@", config);
+    XDSReadConfig *config = self.currentConfig;
     CGFloat fontSize = (config.currentFontSize > 1)?config.currentFontSize:config.cachefontSize;
     UIColor *textColor = config.currentTextColor?config.currentTextColor:config.cacheTextColor;
     NSString *fontName = config.currentFontName?config.currentFontName:config.cacheFontName;
@@ -130,7 +119,6 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
                           DTWillFlushBlockCallBack:callBackBlock
                           };
     
-    NSLog(@"============== font = %f", fontSize);
     NSMutableDictionary *options = [NSMutableDictionary dictionaryWithDictionary:dic];
     [options setObject:[NSURL fileURLWithPath:readmePath] forKey:NSBaseURLDocumentOption];
     NSAttributedString *string = [[NSAttributedString alloc] initWithHTMLData:data options:options documentAttributes:NULL];
@@ -160,6 +148,7 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
         for (XDSMarkModel *mark in marks) {
             if (mark.page == markModel.page) {
                 [marks removeObject:mark];
+                break;
             }
         }
     }else{// doesn't contain mark 记录书签信息
@@ -196,6 +185,14 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     return NO;
 }
 
+- (BOOL)isReadConfigChanged {
+    XDSReadConfig *shareConfig = [XDSReadConfig shareInstance];
+    BOOL isReadConfigChanged = ![_currentConfig isEqual:shareConfig];
+    if (isReadConfigChanged) {
+        self.currentConfig = shareConfig;
+    }
+    return isReadConfigChanged;
+}
 
 -(id)copyWithZone:(NSZone *)zone{
     LPPChapterModel *model = [[LPPChapterModel allocWithZone:zone] init];

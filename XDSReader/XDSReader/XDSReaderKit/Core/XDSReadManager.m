@@ -39,14 +39,14 @@ static XDSReadManager *readManager;
                                           page:(NSInteger)page
                                        pageUrl:(NSString *)pageUrl{
     
-    if (nil == CURRENT_RECORD.chapterModel.chapterAttributeContent) {//如果阅读记录中的chapterModel没有内容，则先加载内容
-        LPPChapterModel *currentChapterModel = _bookModel.chapters[CURRENT_RECORD.currentChapter];
+    LPPChapterModel *currentChapterModel = _bookModel.chapters[chapter];
+    if (currentChapterModel.isReadConfigChanged) {
         [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
-        [CURRENT_BOOK_MODEL loadContentForAllChapters];
-        CURRENT_RECORD.chapterModel = currentChapterModel;
-        page = CURRENT_RECORD.currentPage;
-        [LPPBookModel updateLocalModel:_bookModel url:self.resourceURL];
+        if (currentChapterModel == CURRENT_RECORD.chapterModel) {
+            page = CURRENT_RECORD.currentPage;
+        }
     }
+    
     
     LPPReadViewController *readView = [[LPPReadViewController alloc] init];
     readView.chapterNum = chapter;
@@ -55,6 +55,12 @@ static XDSReadManager *readManager;
     return readView;
 }
 
+- (void)loadContentInChapter:(NSInteger)chapter{
+    LPPChapterModel *chapterModel = _bookModel.chapters[chapter];
+    if (!chapterModel.chapterAttributeContent) {
+        [CURRENT_BOOK_MODEL loadContentInChapter:chapterModel];
+    }
+}
 //MARK: - 跳转到指定章节（上一章，下一章，slider，目录）
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page{
     //跳转到指定章节
@@ -66,40 +72,43 @@ static XDSReadManager *readManager;
 }
 //MARK: - 跳转到指定笔记，因为是笔记是基于位置查找的，使用page查找可能出错
 - (void)readViewJumpToNote:(XDSNoteModel *)note{
+    LPPChapterModel *currentChapterModel = _bookModel.chapters[note.chapter];
+    if (currentChapterModel.isReadConfigChanged) {
+        [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
+    }
     [self readViewJumpToChapter:note.chapter page:note.page];
 }
 
 //MARK: - 跳转到指定书签，因为是书签是基于位置查找的，使用page查找可能出错
 - (void)readViewJumpToMark:(XDSMarkModel *)mark{
-    if (_bookModel.record.currentChapter != mark.chapter) {
-        //新的一章需要先更新字体以获取正确的章节数据x
-        LPPChapterModel *chapterModel = _bookModel.chapters[mark.chapter];
-        NSInteger page = 0;
-        [chapterModel updateFontAndGetNewPageFromOldPage:&page];
+    
+    LPPChapterModel *currentChapterModel = _bookModel.chapters[mark.chapter];
+    if (currentChapterModel.isReadConfigChanged) {
+        [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
     }
     
-    [self updateReadModelWithChapter:mark.chapter page:mark.page];
-    if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewJumpToChapter:page:)]) {
-        [self.rmDelegate readViewJumpToChapter:mark.chapter page:mark.page];
-    }
+    [self readViewJumpToChapter:mark.chapter page:mark.page];
 }
 //MARK: - 设置字体
 - (void)configReadFontSize:(BOOL)plus{
+    if ([XDSReadConfig shareInstance].currentFontSize < 1) {
+        [XDSReadConfig shareInstance].currentFontSize = [XDSReadConfig shareInstance].cachefontSize;
+    }
     if (plus) {
-        if (floor([XDSReadConfig shareInstance].currentFontSize) == floor(kXDSReadViewMaxFontSize)) {
-            return;
-        }
         [XDSReadConfig shareInstance].currentFontSize++;
-    }else{
-        if (floor([XDSReadConfig shareInstance].currentFontSize) == floor(kXDSReadViewMinFontSize)){
-            return;
+        if (floor([XDSReadConfig shareInstance].currentFontSize) >= floor(kXDSReadViewMaxFontSize)) {
+            [XDSReadConfig shareInstance].currentFontSize = kXDSReadViewMaxFontSize;
         }
+    }else{
         [XDSReadConfig shareInstance].currentFontSize--;
+        if (floor([XDSReadConfig shareInstance].currentFontSize) <= floor(kXDSReadViewMinFontSize)){
+            [XDSReadConfig shareInstance].currentFontSize = kXDSReadViewMinFontSize;
+        }
     }
     
-    //更新字体，主要是更新pageArray，其他的不需要处理
-    LPPChapterModel *currentChapterModel = _bookModel.chapters[CURRENT_RECORD.currentChapter];
-    [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
+    if (CURRENT_RECORD.chapterModel.isReadConfigChanged) {
+        [CURRENT_BOOK_MODEL loadContentInChapter:CURRENT_RECORD.chapterModel];
+    }
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewFontDidChanged)]) {
         [self.rmDelegate readViewFontDidChanged];
@@ -107,10 +116,12 @@ static XDSReadManager *readManager;
 }
 
 - (void)configReadFontName:(NSString *)fontName{
+    
+    //更新字体信息
     [[XDSReadConfig shareInstance] setCurrentFontName:fontName];
-    //优化，添加串行队列，遍历所有章节进行updateFont。如果目录需要显示页码。
-    //更新字体信息并保存阅读记录
-    LPPChapterModel *currentChapterModel = _bookModel.chapters[CURRENT_RECORD.currentChapter];
+    
+    //重新加载章节内容
+    LPPChapterModel *currentChapterModel = CURRENT_RECORD.chapterModel;
     [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewFontDidChanged)]) {
@@ -121,7 +132,7 @@ static XDSReadManager *readManager;
 - (void)configReadTheme:(UIColor *)theme{
     [XDSReadConfig shareInstance].currentTheme = theme;
     
-    LPPChapterModel *currentChapterModel = _bookModel.chapters[CURRENT_RECORD.currentChapter];
+    LPPChapterModel *currentChapterModel = CURRENT_RECORD.chapterModel;
     [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewThemeDidChanged)]) {
@@ -149,6 +160,11 @@ static XDSReadManager *readManager;
 
 //MARK: - 关闭阅读器
 - (void)closeReadView{
+    
+    //release memery 释放内存
+    self.bookModel = nil;
+    self.resourceURL = nil;
+    
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewDidClickCloseButton)]) {
         [self.rmDelegate readViewDidClickCloseButton];
     }

@@ -69,4 +69,5 @@
 
 - (void)deleteMark:(XDSMarkModel *)markModel;
 - (void)addMark:(XDSMarkModel *)markModel;
+
 @end

@@ -73,7 +73,7 @@ NSString *const kLPPBookInfoModelRightsEncodeKey = @"rights";
 @interface LPPBookModel()
 @property (nonatomic,strong) NSMutableArray<LPPChapterModel*> *chapters;//章节
 @property (nonatomic,copy) NSArray <LPPChapterModel*> *chapterContainNotes;//包含笔记的章节
-@property (nonatomic,copy) NSMutableArray <LPPChapterModel*> *chapterContainMarks;//包含笔记的章节
+@property (nonatomic,copy) NSArray <LPPChapterModel*> *chapterContainMarks;//包含笔记的章节
 @end
 @implementation LPPBookModel
 
@@ -185,20 +185,22 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
         return;
     }
     
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    dispatch_async(queue, ^{
-        for (NSInteger i = index + 1; i < self.chapters.count; i ++) {
-            LPPChapterModel *theChapterModel = self.chapters[i];
+    dispatch_queue_t queue = dispatch_queue_create("loadContentForAllChapters", DISPATCH_QUEUE_SERIAL);
+    for (NSInteger i = index + 1; i < self.chapters.count; i ++) {
+        LPPChapterModel *theChapterModel = self.chapters[i];
+        dispatch_async(queue, ^{
             [self loadContentInChapter:theChapterModel];
-        }
-    });
+        });
+        
+    }
     
-    dispatch_async(queue, ^{
-        for (NSInteger i = index - 1; i >= 0; i --) {
-            LPPChapterModel *theChapterModel = self.chapters[i];
+    for (NSInteger i = index - 1; i >= 0; i --) {
+        LPPChapterModel *theChapterModel = self.chapters[i];
+        dispatch_async(queue, ^{
             [self loadContentInChapter:theChapterModel];
-        }
-    });
+        });
+    }
+    
 }
 
 //TODO: Notes
@@ -263,5 +265,9 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     return _chapterContainMarks;
 }
 
+
+- (void)dealloc {
+    NSLog(@"bookModel dealloc");
+}
 
 @end

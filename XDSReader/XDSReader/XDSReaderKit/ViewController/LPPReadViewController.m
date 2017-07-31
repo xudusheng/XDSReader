@@ -40,5 +40,8 @@
     
 }
 
+- (void)dealloc{
+    NSLog(@"LPPReadViewController dealloc");
+}
 
 @end

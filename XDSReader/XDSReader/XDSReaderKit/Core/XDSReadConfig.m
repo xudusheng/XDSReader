@@ -44,7 +44,7 @@ NSString *const kReadConfigThemeEncodeKey = @"cacheTheme";
             XDSReadConfig *config = [unarchive decodeObjectForKey:kReadConfigEncodeKey];
             return config;
         }
-        self.cachefontSize = 14.0f;
+        self.cachefontSize = kXDSReadViewDefaultFontSize;
         self.cacheFontName = @"";
         self.cacheLineSpace = 10.0f;
         self.cacheTextColor = [UIColor blackColor];
@@ -81,6 +81,22 @@ NSString *const kReadConfigThemeEncodeKey = @"cacheTheme";
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    XDSReadConfig *config = [[XDSReadConfig alloc] init];
+    config.cachefontSize = self.cachefontSize;
+    config.cacheFontName = self.cacheFontName;
+    config.cacheLineSpace = self.cacheLineSpace;
+    config.cacheTextColor = self.cacheTextColor;
+    config.cacheTheme = self.cacheTheme;
+    
+    config.currentFontSize = self.currentFontSize;
+    config.currentFontName = self.currentFontName;
+    config.currentLineSpace = self.currentLineSpace;
+    config.currentTextColor = self.currentTextColor;
+    config.currentTheme = self.currentTheme;
+    return config;
+}
+
 - (void)setCacheFontName:(NSString *)cacheFontName{
     if (cacheFontName.length < 1) {
         _cacheFontName = @"";
@@ -115,4 +131,20 @@ NSString *const kReadConfigThemeEncodeKey = @"cacheTheme";
     return !isReadConfigNotChanged;
 }
 
+
+
+
+- (BOOL)isEqual:(XDSReadConfig *)config {
+    return (self.cachefontSize == config.cachefontSize &&
+            self.cacheFontName == config.cacheFontName &&
+            self.cacheTextColor == config.cacheTextColor &&
+            self.cacheLineSpace == config.cacheLineSpace &&
+            self.cacheTheme == config.cacheTheme &&
+            
+            self.currentFontSize == config.currentFontSize &&
+            self.currentFontName == config.currentFontName &&
+            self.currentTextColor == config.currentTextColor &&
+            self.currentLineSpace == config.currentLineSpace &&
+            self.currentTheme == config.currentTheme);
+}
 @end

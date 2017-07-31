@@ -290,7 +290,9 @@ XDSCatalogueViewDelegate
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     if (CGRectGetMinY(self.readSettingView.frame) < DEVICE_MAIN_SCREEN_HEIGHT_XDSR) {
         //设置页面隐藏时，刷新一遍全文章节
-        [CURRENT_BOOK_MODEL loadContentForAllChapters];
+        if ([[XDSReadConfig shareInstance] isReadConfigChanged]) {
+            [CURRENT_BOOK_MODEL loadContentForAllChapters];
+        }
         
         [UIView animateWithDuration:kXDSReadMenuAnimateDuration animations:^{
             self.readSettingView.frame = settingViewFrame;

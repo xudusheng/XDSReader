@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface XDSReadConfig : NSObject <NSCoding>
+@interface XDSReadConfig : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, readonly) CGFloat cachefontSize;
 @property (nonatomic, readonly) NSString *cacheFontName;

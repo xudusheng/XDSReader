@@ -32,6 +32,7 @@
 - (void)readViewJumpToMark:(XDSMarkModel *)mark;//跳转到指定书签，因为是书签是基于位置查找的，使用page查找可能出错
 - (void)configReadFontSize:(BOOL)plus;//设置字体大小;
 - (void)configReadFontName:(NSString *)fontName;//设置字体;
+
 - (void)configReadTheme:(UIColor *)theme;//设置阅读背景
 - (void)updateReadModelWithChapter:(NSInteger)chapter page:(NSInteger)page;//更新阅读记录
 - (void)closeReadView;//关闭阅读器
