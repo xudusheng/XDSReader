@@ -40,7 +40,6 @@
 @implementation LPPReadView
 
 //MARK: -  override super method
-
 - (instancetype)initWithFrame:(CGRect)frame chapterNum:(NSInteger)chapterNum pageNum:(NSInteger)pageNum {
     if (self = [super initWithFrame:frame]) {
         self.chapterNum = chapterNum;
@@ -335,7 +334,9 @@
         UIMenuItem *menuItemShare = [[UIMenuItem alloc] initWithTitle:@"分享" action:@selector(menuShare:)];
         NSArray *menus = @[menuItemCopy,menuItemNote,menuItemShare];
         [menuController setMenuItems:menus];
-        [menuController setTargetRect:CGRectMake(CGRectGetMidX(_menuRect), CGRectGetHeight(self.frame)-CGRectGetMidY(_menuRect), CGRectGetHeight(_menuRect), CGRectGetWidth(_menuRect)) inView:self];
+        CGRect targetRect = _menuRect;
+        
+        [menuController setTargetRect:targetRect inView:self];
         [menuController setMenuVisible:YES animated:YES];
         
     }
