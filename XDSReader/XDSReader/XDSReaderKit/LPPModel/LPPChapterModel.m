@@ -38,6 +38,7 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
         self.showBounds = bounds;
         // Load HTML data
         NSAttributedString *chapterAttributeContent = [self attributedStringForSnippet];
+        chapterAttributeContent = [self addLineForNotes:chapterAttributeContent];
         
         NSMutableArray *pageAttributeStrings = [NSMutableArray arrayWithCapacity:0];//每一页的富文本
         NSMutableArray *pageStrings = [NSMutableArray arrayWithCapacity:0];//每一页的普通文本
@@ -51,8 +52,11 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
             visibleframe = [layouter layoutFrameWithRect:bounds range:NSMakeRange(rangeOffset, 0)];
             visibleStringRang = [visibleframe visibleStringRange];
             
-            [pageAttributeStrings addObject:[chapterAttributeContent attributedSubstringFromRange:NSMakeRange(visibleStringRang.location, visibleStringRang.length)]];
-            [pageStrings addObject:[[chapterAttributeContent string] substringWithRange:NSMakeRange(visibleStringRang.location, visibleStringRang.length)]];
+            NSAttributedString *subAttStr = [chapterAttributeContent attributedSubstringFromRange:NSMakeRange(visibleStringRang.location, visibleStringRang.length)];
+            
+            NSMutableAttributedString *mutableAttStr = [[NSMutableAttributedString alloc] initWithAttributedString:subAttStr];
+            [pageAttributeStrings addObject:mutableAttStr];
+            [pageStrings addObject:subAttStr.string];
             [pageLocations addObject:@(visibleStringRang.location)];
             rangeOffset += visibleStringRang.length;
             
@@ -71,6 +75,25 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     }
 }
 
+//TODO:add underline for notes 为笔记添加下划虚线
+- (NSAttributedString *)addLineForNotes:(NSAttributedString *)chapterAttributeContent{
+    NSMutableAttributedString * mAttribute = [[NSMutableAttributedString alloc] initWithAttributedString:chapterAttributeContent];
+
+    for (XDSNoteModel *noteModel in _notes) {
+        NSRange range = NSMakeRange(noteModel.locationInChapterContent, noteModel.content.length);
+        NSMutableDictionary *attibutes = [NSMutableDictionary dictionary];
+        //虚线
+        //[attibutes setObject:@(NSUnderlinePatternDot|NSUnderlineStyleSingle) forKey:NSUnderlineStyleAttributeName];
+        [attibutes setObject:@(NSUnderlinePatternSolid|NSUnderlineStyleSingle) forKey:NSUnderlineStyleAttributeName];
+        [attibutes setObject:[UIColor redColor] forKey:NSUnderlineColorAttributeName];
+        
+        [attibutes setObject:[noteModel getNoteURL] forKey:NSLinkAttributeName];
+        
+        [mAttribute addAttributes:attibutes range:range];
+    }
+    
+    return mAttribute;
+}
 
 - (NSAttributedString *)attributedStringForSnippet{
     NSLog(@"====%@", self.chapterName);
@@ -141,7 +164,7 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
                           DTDefaultTextColor:textColor,
                           DTDefaultFontName:fontName,
                           DTWillFlushBlockCallBack:callBackBlock,
-                          DTDefaultFirstLineHeadIndent:@(headIndent),
+//                          DTDefaultFirstLineHeadIndent:@(headIndent),
                           };
     
     NSMutableDictionary *options = [NSMutableDictionary dictionaryWithDictionary:dic];
@@ -184,22 +207,8 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     self.marks = marks;
 }
 
-/*
- *  update font and get new page number from old page
- */
-- (void)updateFontAndGetNewPageFromOldPage:(NSInteger *)oldPage{
-    if (nil == self.chapterAttributeContent) {//如果阅读记录中的chapterModel没有内容，则先加载内容
-        [self paginateEpubWithBounds:[XDSReadManager readViewBounds]];
-        *oldPage = 0;
-        return;
-    }
-    
-    
-}
 
-/*
- *  does this page contains a bookMark?
- */
+//TODO: does this page contains a bookMark?
 - (BOOL)isMarkAtPage:(NSInteger)page{
     if (page >= self.pageCount) {
         return NO;
@@ -212,6 +221,27 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     return NO;
 }
 
+- (NSArray *)notesAtPage:(NSInteger)page {
+    NSInteger location = [_pageLocations[page] integerValue];
+    NSInteger length = [_pageStrings[page] length];
+    
+    NSMutableArray *notes = [NSMutableArray arrayWithCapacity:0];
+    for (int i = 0; i < _notes.count; i ++) {
+        XDSNoteModel *noteModel = _notes[i];
+        NSInteger noteLocation = noteModel.locationInChapterContent;
+        NSInteger noteLenght = noteModel.content.length;
+        if (noteLocation >= location && noteLocation < location + length) {
+            //note location 在page内部
+            [notes addObject:noteModel];
+            
+        }else if (noteLocation < location && noteLocation + noteLenght > location){
+            //note location 在page之前
+            [notes addObject:noteModel];
+        }
+    }
+    
+    return notes;
+}
 - (BOOL)isReadConfigChanged {
     XDSReadConfig *shareConfig = [XDSReadConfig shareInstance];
     BOOL isReadConfigChanged = ![_currentConfig isEqual:shareConfig];

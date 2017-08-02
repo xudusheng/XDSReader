@@ -12,11 +12,11 @@
 
 @interface LPPReadView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame readAttributedContent:(NSAttributedString *)readAttributedContent;
+- (instancetype)initWithFrame:(CGRect)frame chapterNum:(NSInteger)chapterNum pageNum:(NSInteger)pageNum;
 
-- (void)setReadAttributedString:(NSAttributedString *)readAttributedString;
+//- (void)setReadAttributedString:(NSAttributedString *)readAttributedString;
 
--(void)cancelSelected;
+- (void)cancelSelected;
 
 
 @property (nonatomic,strong) id<XDSReadViewControllerDelegate> rvDelegate;

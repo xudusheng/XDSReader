@@ -124,7 +124,6 @@
 		FCA78C3B1EFB793F00114907 /* XDSNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C3A1EFB793F00114907 /* XDSNoteCell.m */; };
 		FCA78C3E1EFCA92C00114907 /* XDSNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C3D1EFCA92C00114907 /* XDSNoDataView.m */; };
 		FCA78C401EFCA96800114907 /* XDSNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C3F1EFCA96800114907 /* XDSNoDataView.xib */; };
-		FCB225861F0DE37D007A0EA0 /* XDSDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB225851F0DE37D007A0EA0 /* XDSDemoViewController.m */; };
 		FCB227481F0DE52C007A0EA0 /* content.opf in Resources */ = {isa = PBXBuildFile; fileRef = FCB225921F0DE52A007A0EA0 /* content.opf */; };
 		FCB227491F0DE52C007A0EA0 /* cover.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FCB225931F0DE52A007A0EA0 /* cover.jpeg */; };
 		FCB2274A1F0DE52C007A0EA0 /* 00002.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FCB225951F0DE52A007A0EA0 /* 00002.jpeg */; };
@@ -773,8 +772,6 @@
 		FCA78C3C1EFCA92C00114907 /* XDSNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSNoDataView.h; sourceTree = "<group>"; };
 		FCA78C3D1EFCA92C00114907 /* XDSNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSNoDataView.m; sourceTree = "<group>"; };
 		FCA78C3F1EFCA96800114907 /* XDSNoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XDSNoDataView.xib; sourceTree = "<group>"; };
-		FCB225841F0DE37D007A0EA0 /* XDSDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSDemoViewController.h; sourceTree = "<group>"; };
-		FCB225851F0DE37D007A0EA0 /* XDSDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSDemoViewController.m; sourceTree = "<group>"; };
 		FCB225921F0DE52A007A0EA0 /* content.opf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = content.opf; sourceTree = "<group>"; };
 		FCB225931F0DE52A007A0EA0 /* cover.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover.jpeg; sourceTree = "<group>"; };
 		FCB225951F0DE52A007A0EA0 /* 00002.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 00002.jpeg; sourceTree = "<group>"; };
@@ -1284,8 +1281,6 @@
 				FCA78A541EF290F400114907 /* AppDelegate.m */,
 				FCA78A561EF290F400114907 /* ViewController.h */,
 				FCA78A571EF290F400114907 /* ViewController.m */,
-				FCB225841F0DE37D007A0EA0 /* XDSDemoViewController.h */,
-				FCB225851F0DE37D007A0EA0 /* XDSDemoViewController.m */,
 				FCB229021F0F2AC6007A0EA0 /* LPPReadView.h */,
 				FCB229031F0F2AC6007A0EA0 /* LPPReadView.m */,
 				FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */,
@@ -2797,7 +2792,6 @@
 				FCA78B831EF2DEB500114907 /* CXMLElement_ElementTreeExtensions.m in Sources */,
 				FCA78C3E1EFCA92C00114907 /* XDSNoDataView.m in Sources */,
 				FCA78AB71EF2914F00114907 /* DDASLLogger.m in Sources */,
-				FCB225861F0DE37D007A0EA0 /* XDSDemoViewController.m in Sources */,
 				FCA78B191EF2916700114907 /* XDSReadConfig.m in Sources */,
 				FCA78C3B1EFB793F00114907 /* XDSNoteCell.m in Sources */,
 				FCA78ACF1EF2914F00114907 /* MyHTTPConnection.m in Sources */,

@@ -28,12 +28,10 @@
 
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [XDSReadConfig shareInstance].currentTheme?[XDSReadConfig shareInstance].currentTheme:[XDSReadConfig shareInstance].cacheTheme;
-    self.chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapterNum];
-    NSAttributedString *pageAttributeString = self.chapterModel.pageAttributeStrings[self.pageNum];
+
     CGRect frame = [XDSReadManager readViewBounds];
-    self.readView = [[LPPReadView alloc] initWithFrame:frame readAttributedContent:pageAttributeString];
-    self.readView.backgroundColor = [UIColor redColor];
-    self.readView.clipsToBounds = NO;
+    self.readView = [[LPPReadView alloc] initWithFrame:frame chapterNum:self.chapterNum pageNum:self.pageNum];
+    self.readView.backgroundColor = self.view.backgroundColor;
     [self.view addSubview:self.readView];
     
 }

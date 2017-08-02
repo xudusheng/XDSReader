@@ -189,6 +189,12 @@ static XDSReadManager *readManager;
 - (void)addNoteModel:(XDSNoteModel *)noteModel{
     noteModel.chapter = CURRENT_RECORD.currentChapter;
     [CURRENT_BOOK_MODEL addNote:noteModel];
-    [XDSReaderUtil showAlertWithTitle:nil message:@"保存笔记成功"];
+
+//    //绘制笔记下划线
+//    [CURRENT_BOOK_MODEL loadContentInChapter:_bookModel.record.chapterModel];
+
+//    if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewDidAddNoteSuccess)]) {
+//        [self.rmDelegate readViewDidAddNoteSuccess];
+//    }
 }
 @end

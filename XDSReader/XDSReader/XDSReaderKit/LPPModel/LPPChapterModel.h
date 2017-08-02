@@ -35,8 +35,10 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
 - (void)addNote:(XDSNoteModel *)noteModel;//insert a book note into chapter 向该章节中插入一条笔记
 - (void)addOrDeleteABookmark:(XDSMarkModel *)markModel;//insert a bookmark into chapter 向该章节中插入一条书签
 
-- (void)updateFontAndGetNewPageFromOldPage:(NSInteger *)oldPage;
 - (BOOL)isMarkAtPage:(NSInteger)page;
+- (NSArray *)notesAtPage:(NSInteger)page;
 
 - (BOOL)isReadConfigChanged;
+
+
 @end

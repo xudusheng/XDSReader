@@ -238,11 +238,10 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
 }
 - (void)addMark:(XDSMarkModel *)markModel{
     LPPChapterModel *chapterModel = self.chapters[markModel.chapter];
-    if (self.record.currentChapter != markModel.chapter) {//如果章节不同，先更新更加信息
-        NSInteger pageNon = 0;
-        [chapterModel updateFontAndGetNewPageFromOldPage:&pageNon];
+    
+    if (chapterModel.isReadConfigChanged) {
+        [CURRENT_BOOK_MODEL loadContentInChapter:chapterModel];
     }
-
     [chapterModel addOrDeleteABookmark:markModel];
     [LPPBookModel updateLocalModel:self url:self.resource]; //本地保存
     [self devideChaptersContainMarks];

@@ -10,7 +10,6 @@
 
 #import "XDSWIFIFileTransferViewController.h"
 #import "XDSReadManager.h"
-#import "XDSDemoViewController.h"
 @interface ViewController ()
 @end
 

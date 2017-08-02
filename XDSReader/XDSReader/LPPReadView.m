@@ -30,18 +30,26 @@
 
 @property (strong, nonatomic) DTAttributedTextView *readTextView;
 
-@property (nonatomic, strong) NSAttributedString *readAttributedContent;
+@property (nonatomic, strong) NSMutableAttributedString *readAttributedContent;
 
 @property (nonatomic, copy) NSString *content;
 
+@property (assign, nonatomic) NSInteger chapterNum;//
+@property (assign, nonatomic) NSInteger pageNum;
 @end
 @implementation LPPReadView
 
 //MARK: -  override super method
-- (instancetype)initWithFrame:(CGRect)frame readAttributedContent:(NSAttributedString *)readAttributedContent{
+
+- (instancetype)initWithFrame:(CGRect)frame chapterNum:(NSInteger)chapterNum pageNum:(NSInteger)pageNum {
     if (self = [super initWithFrame:frame]) {
-        self.readAttributedContent = [[NSMutableAttributedString alloc] initWithAttributedString:readAttributedContent];
-        self.content = readAttributedContent.string;
+        self.chapterNum = chapterNum;
+        self.pageNum = pageNum;
+        LPPChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapterNum];
+        NSMutableAttributedString *pageAttributeString = chapterModel.pageAttributeStrings[self.pageNum];
+        _readAttributedContent = pageAttributeString;
+        self.content = pageAttributeString.string;
+
         [self createUI];
     }
     return self;
@@ -140,7 +148,6 @@
     NSURL *URL = [attributes objectForKey:DTLinkAttribute];
     NSString *identifier = [attributes objectForKey:DTGUIDAttribute];
     
-    
     DTLinkButton *button = [[DTLinkButton alloc] initWithFrame:frame];
     button.URL = URL;
     button.minimumHitSize = CGSizeMake(25, 25); // adjusts it's bounds so that button is always large enough
@@ -171,18 +178,7 @@
     
     if ([attachment isKindOfClass:[DTImageTextAttachment class]])
     {
-        XDSReadConfig *config = [XDSReadConfig shareInstance];
-        CGFloat fontSize = (config.currentFontSize > 1)?config.currentFontSize:config.cachefontSize;
-        NSString *header = @"你好";
-        CGRect headerFrame = [header boundingRectWithSize:CGSizeMake(100, 100)
-                                                  options:NSStringDrawingUsesLineFragmentOrigin
-                                               attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]}
-                                                  context:nil];
-        CGFloat headIndent = CGRectGetWidth(headerFrame);
-        
-        frame.origin.x -= headIndent;
-        
-        
+
         // if the attachment has a hyperlinkURL then this is currently ignored
         DTLazyImageView *imageView = [[DTLazyImageView alloc] initWithFrame:frame];
 //        imageView.delegate = self;
@@ -263,7 +259,12 @@
 
 //MARK: - ABOUT EVENTS 事件响应
 - (void)linkPushed:(DTLinkButton *)button{
-    NSLog(@"xxxxxxxxxxxxxxx");
+    XDSNoteModel *noteModel = [XDSNoteModel getNoteFromURL:button.URL];
+    if (noteModel) {
+        [XDSReaderUtil showAlertWithTitle:@"笔记内容" message:noteModel.content];
+    }else{
+        NSLog(@"xxxxxxxxxxxxxxx");
+    }
 }
 
 -(void)longPress:(UILongPressGestureRecognizer *)longPress{
@@ -357,20 +358,28 @@
 }
 -(void)menuNote:(id)sender{
     [self hiddenMenu];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"笔记" message:[_content substringWithRange:_selectRange]  preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"笔记"
+                                                                             message:[_content substringWithRange:_selectRange]
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = @"输入内容";
     }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        XDSNoteModel *model = [[XDSNoteModel alloc] init];
-        model.content = [_content substringWithRange:_selectRange];
-        model.note = alertController.textFields.firstObject.text;
-        model.date = [NSDate date];
-        LPPChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
-        model.locationInChapterContent = _selectRange.location + [chapterModel.pageLocations[CURRENT_RECORD.currentPage] integerValue];
-        [[XDSReadManager sharedManager] addNoteModel:model];
-    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消"
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:nil];
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认"
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:^(UIAlertAction * _Nonnull action) {
+                                                        XDSNoteModel *model = [[XDSNoteModel alloc] init];
+                                                        model.content = [_content substringWithRange:_selectRange];
+                                                        model.note = alertController.textFields.firstObject.text;
+                                                        model.date = [NSDate date];
+                                                        LPPChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
+                                                        model.locationInChapterContent = _selectRange.location + [chapterModel.pageLocations[CURRENT_RECORD.currentPage] integerValue];
+                                                        [[XDSReadManager sharedManager] addNoteModel:model];
+                                                        [self addLineForNote:model];
+                                                        [self cancelSelected];
+                                                    }];
     [alertController addAction:cancel];
     [alertController addAction:confirm];
     for (UIView* next = [self superview]; next; next = next.superview) {
@@ -423,12 +432,28 @@
         [self setNeedsDisplay];
     }
 }
+
+//TODO:add underline for notes 为笔记添加下划虚线
+- (void)addLineForNote:(XDSNoteModel *)noteModel{
+    NSMutableDictionary *attibutes = [NSMutableDictionary dictionary];
+    //虚线
+    //[attibutes setObject:@(NSUnderlinePatternDot|NSUnderlineStyleSingle) forKey:NSUnderlineStyleAttributeName];
+    [attibutes setObject:@(NSUnderlinePatternSolid|NSUnderlineStyleSingle) forKey:NSUnderlineStyleAttributeName];
+    [attibutes setObject:[UIColor redColor] forKey:NSUnderlineColorAttributeName];
+    [attibutes setObject:[noteModel getNoteURL] forKey:NSLinkAttributeName];
+    
+    [_readAttributedContent addAttributes:attibutes range:_selectRange];
+    self.readAttributedContent = _readAttributedContent;
+}
+
+
 //MARK: - ABOUT MEMERY 内存管理
-- (void)setReadAttributedString:(NSAttributedString *)readAttributedString{
-    _readAttributedContent = [[NSMutableAttributedString alloc] initWithAttributedString:readAttributedString];
-    self.readTextView.attributedString = self.readAttributedContent;
+- (void)setReadAttributedContent:(NSMutableAttributedString *)readAttributedContent {
+    _readAttributedContent = readAttributedContent;
+    self.readTextView.attributedString = [_readAttributedContent copy];
     self.content = _readAttributedContent.string;
 }
+
 - (void)dataInit{
     
 }

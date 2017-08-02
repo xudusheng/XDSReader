@@ -18,4 +18,9 @@
 
 @property (nonatomic,readonly) NSInteger page;//根据locationInChapterContent获取笔记在章节中所在的页码
 
+
+- (NSURL *)getNoteURL;
+
++ (XDSNoteModel *)getNoteFromURL:(NSURL *)noteUrl ;
+
 @end

@@ -11,7 +11,8 @@
 @interface LPPReadPageViewController ()
 <UIPageViewControllerDelegate,
 UIPageViewControllerDataSource,
-UIGestureRecognizerDelegate
+UIGestureRecognizerDelegate,
+XDSReadManagerDelegate
 >
 {
     NSInteger _chapter;    //当前显示的章节
@@ -109,6 +110,11 @@ UIGestureRecognizerDelegate
     [self.readMenuView updateReadRecord];
     _chapter = CURRENT_RECORD.currentChapter;
     _page = CURRENT_RECORD.currentPage;
+}
+
+- (void)readViewDidAddNoteSuccess {
+    [XDSReaderUtil showAlertWithTitle:nil message:@"保存笔记成功"];
+    [self readViewFontDidChanged];
 }
 
 //TODO: UIGestureRecognizerDelegate

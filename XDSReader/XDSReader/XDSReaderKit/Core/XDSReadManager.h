@@ -48,6 +48,7 @@
 - (void)readViewFontDidChanged;//字体改变
 - (void)readViewThemeDidChanged;//主题改变
 - (void)readViewEffectDidChanged;//翻页效果改变
+- (void)readViewDidAddNoteSuccess;//添加笔记
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到章节
 - (void)readViewDidUpdateReadRecord;//更新阅读进度
 @end
