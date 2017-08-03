@@ -101,7 +101,7 @@ XDSNoteModel *model = [[XDSNoteModel alloc] init];
 model.content = [_content substringWithRange:_selectRange];
 model.note = alertController.textFields.firstObject.text;
 model.date = [NSDate date];
-LPPChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
+XDSChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
 model.locationInChapterContent = _selectRange.location + [chapterModel.pageArray[CURRENT_RECORD.currentPage] integerValue];
 [[XDSReadManager sharedManager] addNoteModel:model];
 ```
@@ -125,12 +125,12 @@ NSInteger page = 0;
 ##### 11、目录、笔记、书签列表的数据源（DataSource）  
 ```objective-c
 @interface XDSBookModel : NSObject <NSCoding>
-  @property (nonatomic,strong) NSMutableArray <LPPChapterModel *>*chapters;//全部章节
-  @property (nonatomic,readonly) NSArray <LPPChapterModel*> *chapterContainNotes;//包含笔记的章节
-  @property (nonatomic,readonly) NSArray <LPPChapterModel *>*chapterContainMarks;//包含书签的章节
+  @property (nonatomic,strong) NSMutableArray <XDSChapterModel *>*chapters;//全部章节
+  @property (nonatomic,readonly) NSArray <XDSChapterModel*> *chapterContainNotes;//包含笔记的章节
+  @property (nonatomic,readonly) NSArray <XDSChapterModel *>*chapterContainMarks;//包含书签的章节
 @end
 
-@interface LPPChapterModel : NSObject<NSCopying,NSCoding>
+@interface XDSChapterModel : NSObject<NSCopying,NSCoding>
   @property (nonatomic,copy) NSArray<XDSNoteModel *>*notes;
   @property (nonatomic,copy) NSArray<XDSMarkModel *>*marks;
 @end

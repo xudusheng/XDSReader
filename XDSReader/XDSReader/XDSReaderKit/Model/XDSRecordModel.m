@@ -1,28 +1,28 @@
 //
-//  LPPRecordModel.m
+//  XDSRecordModel.m
 //  XDSReader
 //
 //  Created by dusheng.xu on 2017/6/15.
 //  Copyright © 2017年 macos. All rights reserved.
 //
 
-#import "LPPRecordModel.h"
+#import "XDSRecordModel.h"
 
-@interface LPPRecordModel ()
+@interface XDSRecordModel ()
 @property (nonatomic, assign) NSInteger currentPage;    //阅读的页数
 @property (nonatomic, assign) NSInteger totalPage;  //该章总页数
 @property (nonatomic, assign) NSInteger totalChapters;  //总章节数
 
 @end
 
-@implementation LPPRecordModel
+@implementation XDSRecordModel
 
-NSString *const kLPPRecordModelChapterModelEncodeKey = @"chapterModel";
-NSString *const kLPPRecordModelCurrentChapterEncodeKey = @"currentChapter";
-NSString *const kLPPRecordModelLocationEncodeKey = @"location";
+NSString *const kXDSRecordModelChapterModelEncodeKey = @"chapterModel";
+NSString *const kXDSRecordModelCurrentChapterEncodeKey = @"currentChapter";
+NSString *const kXDSRecordModelLocationEncodeKey = @"location";
 
 -(id)copyWithZone:(NSZone *)zone{
-    LPPRecordModel *recordModel = [[LPPRecordModel allocWithZone:zone]init];
+    XDSRecordModel *recordModel = [[XDSRecordModel allocWithZone:zone]init];
     recordModel.chapterModel = [self.chapterModel copy];
     recordModel.location = self.location;
     recordModel.currentChapter = self.currentChapter;
@@ -30,16 +30,16 @@ NSString *const kLPPRecordModelLocationEncodeKey = @"location";
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self.chapterModel forKey:kLPPRecordModelChapterModelEncodeKey];
-    [aCoder encodeInteger:self.location forKey:kLPPRecordModelLocationEncodeKey];
-    [aCoder encodeInteger:self.currentChapter forKey:kLPPRecordModelCurrentChapterEncodeKey];
+    [aCoder encodeObject:self.chapterModel forKey:kXDSRecordModelChapterModelEncodeKey];
+    [aCoder encodeInteger:self.location forKey:kXDSRecordModelLocationEncodeKey];
+    [aCoder encodeInteger:self.currentChapter forKey:kXDSRecordModelCurrentChapterEncodeKey];
 }
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        self.chapterModel = [aDecoder decodeObjectForKey:kLPPRecordModelChapterModelEncodeKey];
-        self.currentChapter = [aDecoder decodeIntegerForKey:kLPPRecordModelCurrentChapterEncodeKey];
-        self.location = [aDecoder decodeIntegerForKey:kLPPRecordModelLocationEncodeKey];
+        self.chapterModel = [aDecoder decodeObjectForKey:kXDSRecordModelChapterModelEncodeKey];
+        self.currentChapter = [aDecoder decodeIntegerForKey:kXDSRecordModelCurrentChapterEncodeKey];
+        self.location = [aDecoder decodeIntegerForKey:kXDSRecordModelLocationEncodeKey];
     }
     return self;
 }

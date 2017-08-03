@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		607B6C6126EB56737488D902 /* libPods-XDSReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */; };
-		FC61F7A91F13767700DA83F4 /* LPPBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7A81F13767700DA83F4 /* LPPBookModel.m */; };
-		FC61F7AC1F138AC600DA83F4 /* LPPRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AB1F138AC600DA83F4 /* LPPRecordModel.m */; };
-		FC61F7AF1F14651600DA83F4 /* LPPReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AE1F14651600DA83F4 /* LPPReadPageViewController.m */; };
+		FC61F7AF1F14651600DA83F4 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */; };
 		FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */; };
-		FC61F7B31F15265300DA83F4 /* 达芬奇密码.epub in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B21F15265300DA83F4 /* 达芬奇密码.epub */; };
 		FC61F84C1F18764D00DA83F4 /* NSAttributedString+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F84B1F18764D00DA83F4 /* NSAttributedString+Encoding.m */; };
 		FC61F8551F18770700DA83F4 /* CoreText+Opetopic.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F84F1F18770700DA83F4 /* CoreText+Opetopic.m */; };
 		FC61F8561F18770700DA83F4 /* NSDictionary+OPCoreText.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F8511F18770700DA83F4 /* NSDictionary+OPCoreText.m */; };
 		FC61F8571F18770700DA83F4 /* UIFont+OPCoreText.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F8541F18770700DA83F4 /* UIFont+OPCoreText.m */; };
+		FC6D956D1F3378AC006A0583 /* XDSBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D95681F3378AC006A0583 /* XDSBookModel.m */; };
+		FC6D956E1F3378AC006A0583 /* XDSChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D956A1F3378AC006A0583 /* XDSChapterModel.m */; };
+		FC6D956F1F3378AC006A0583 /* XDSRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D956C1F3378AC006A0583 /* XDSRecordModel.m */; };
+		FC6D95721F337938006A0583 /* XDSReadView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D95711F337938006A0583 /* XDSReadView.m */; };
 		FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */ = {isa = PBXBuildFile; fileRef = FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */; };
 		FC88A51A1F0CCAE900BDF04A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FC88A5191F0CCAE900BDF04A /* README.md */; };
 		FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */; };
@@ -559,23 +560,16 @@
 		FCB228F81F0DE52C007A0EA0 /* part0015.html in Resources */ = {isa = PBXBuildFile; fileRef = FCB227451F0DE52B007A0EA0 /* part0015.html */; };
 		FCB228F91F0DE52C007A0EA0 /* titlepage.xhtml in Resources */ = {isa = PBXBuildFile; fileRef = FCB227461F0DE52B007A0EA0 /* titlepage.xhtml */; };
 		FCB228FA1F0DE52C007A0EA0 /* toc.ncx in Resources */ = {isa = PBXBuildFile; fileRef = FCB227471F0DE52B007A0EA0 /* toc.ncx */; };
-		FCB228FE1F0DFDFC007A0EA0 /* LPPChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB228FD1F0DFDFC007A0EA0 /* LPPChapterModel.m */; };
-		FCB229011F0F19C3007A0EA0 /* LPPReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB229001F0F19C3007A0EA0 /* LPPReadViewController.m */; };
-		FCB229041F0F2AC6007A0EA0 /* LPPReadView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB229031F0F2AC6007A0EA0 /* LPPReadView.m */; };
+		FCB229011F0F19C3007A0EA0 /* XDSReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB229001F0F19C3007A0EA0 /* XDSReadViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		39079157DFAB83B2A1877F23 /* Pods-XDSReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.release.xcconfig"; sourceTree = "<group>"; };
 		566644BA861A753275F3D3DE /* Pods-XDSReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.debug.xcconfig"; sourceTree = "<group>"; };
 		E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XDSReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC61F7A71F13767700DA83F4 /* LPPBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPBookModel.h; sourceTree = "<group>"; };
-		FC61F7A81F13767700DA83F4 /* LPPBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPBookModel.m; sourceTree = "<group>"; };
-		FC61F7AA1F138AC600DA83F4 /* LPPRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPRecordModel.h; sourceTree = "<group>"; };
-		FC61F7AB1F138AC600DA83F4 /* LPPRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPRecordModel.m; sourceTree = "<group>"; };
-		FC61F7AD1F14651600DA83F4 /* LPPReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPReadPageViewController.h; sourceTree = "<group>"; };
-		FC61F7AE1F14651600DA83F4 /* LPPReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPReadPageViewController.m; sourceTree = "<group>"; };
+		FC61F7AD1F14651600DA83F4 /* XDSReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadPageViewController.h; sourceTree = "<group>"; };
+		FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadPageViewController.m; sourceTree = "<group>"; };
 		FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = XDSShareConfig.plist; sourceTree = "<group>"; };
-		FC61F7B21F15265300DA83F4 /* 达芬奇密码.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "达芬奇密码.epub"; sourceTree = "<group>"; };
 		FC61F84A1F18764D00DA83F4 /* NSAttributedString+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Encoding.h"; sourceTree = "<group>"; };
 		FC61F84B1F18764D00DA83F4 /* NSAttributedString+Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Encoding.m"; sourceTree = "<group>"; };
 		FC61F84E1F18770700DA83F4 /* CoreText+Opetopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreText+Opetopic.h"; sourceTree = "<group>"; };
@@ -585,6 +579,14 @@
 		FC61F8521F18770700DA83F4 /* OPCoreText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCoreText.h; sourceTree = "<group>"; };
 		FC61F8531F18770700DA83F4 /* UIFont+OPCoreText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+OPCoreText.h"; sourceTree = "<group>"; };
 		FC61F8541F18770700DA83F4 /* UIFont+OPCoreText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+OPCoreText.m"; sourceTree = "<group>"; };
+		FC6D95671F3378AC006A0583 /* XDSBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSBookModel.h; sourceTree = "<group>"; };
+		FC6D95681F3378AC006A0583 /* XDSBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSBookModel.m; sourceTree = "<group>"; };
+		FC6D95691F3378AC006A0583 /* XDSChapterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSChapterModel.h; sourceTree = "<group>"; };
+		FC6D956A1F3378AC006A0583 /* XDSChapterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSChapterModel.m; sourceTree = "<group>"; };
+		FC6D956B1F3378AC006A0583 /* XDSRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSRecordModel.h; sourceTree = "<group>"; };
+		FC6D956C1F3378AC006A0583 /* XDSRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSRecordModel.m; sourceTree = "<group>"; };
+		FC6D95701F337938006A0583 /* XDSReadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadView.h; sourceTree = "<group>"; };
+		FC6D95711F337938006A0583 /* XDSReadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadView.m; sourceTree = "<group>"; };
 		FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = zoubianzhongguo.epub; sourceTree = "<group>"; };
 		FC88A5191F0CCAE900BDF04A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "妖神记.txt"; sourceTree = "<group>"; };
@@ -1207,12 +1209,8 @@
 		FCB227451F0DE52B007A0EA0 /* part0015.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = part0015.html; sourceTree = "<group>"; };
 		FCB227461F0DE52B007A0EA0 /* titlepage.xhtml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = titlepage.xhtml; sourceTree = "<group>"; };
 		FCB227471F0DE52B007A0EA0 /* toc.ncx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = toc.ncx; sourceTree = "<group>"; };
-		FCB228FC1F0DFDFC007A0EA0 /* LPPChapterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPChapterModel.h; sourceTree = "<group>"; };
-		FCB228FD1F0DFDFC007A0EA0 /* LPPChapterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPChapterModel.m; sourceTree = "<group>"; };
-		FCB228FF1F0F19C3007A0EA0 /* LPPReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPReadViewController.h; sourceTree = "<group>"; };
-		FCB229001F0F19C3007A0EA0 /* LPPReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPReadViewController.m; sourceTree = "<group>"; };
-		FCB229021F0F2AC6007A0EA0 /* LPPReadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPReadView.h; sourceTree = "<group>"; };
-		FCB229031F0F2AC6007A0EA0 /* LPPReadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPReadView.m; sourceTree = "<group>"; };
+		FCB228FF1F0F19C3007A0EA0 /* XDSReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadViewController.h; sourceTree = "<group>"; };
+		FCB229001F0F19C3007A0EA0 /* XDSReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1281,8 +1279,6 @@
 				FCA78A541EF290F400114907 /* AppDelegate.m */,
 				FCA78A561EF290F400114907 /* ViewController.h */,
 				FCA78A571EF290F400114907 /* ViewController.m */,
-				FCB229021F0F2AC6007A0EA0 /* LPPReadView.h */,
-				FCB229031F0F2AC6007A0EA0 /* LPPReadView.m */,
 				FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */,
 				FCA78A591EF290F400114907 /* Main.storyboard */,
 				FCA78A5C1EF290F400114907 /* Assets.xcassets */,
@@ -1450,7 +1446,6 @@
 		FCA78AD61EF2916700114907 /* XDSReaderKit */ = {
 			isa = PBXGroup;
 			children = (
-				FCB228FB1F0DFDCD007A0EA0 /* LPPModel */,
 				FCA78BC31EF3A2CF00114907 /* Resource */,
 				FCA78B351EF2932200114907 /* External */,
 				FCA78AD71EF2916700114907 /* Core */,
@@ -1479,6 +1474,12 @@
 		FCA78B101EF2916700114907 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FC6D95671F3378AC006A0583 /* XDSBookModel.h */,
+				FC6D95681F3378AC006A0583 /* XDSBookModel.m */,
+				FC6D95691F3378AC006A0583 /* XDSChapterModel.h */,
+				FC6D956A1F3378AC006A0583 /* XDSChapterModel.m */,
+				FC6D956B1F3378AC006A0583 /* XDSRecordModel.h */,
+				FC6D956C1F3378AC006A0583 /* XDSRecordModel.m */,
 				FCA78B431EF2986800114907 /* XDSMarkModel.h */,
 				FCA78B441EF2986800114907 /* XDSMarkModel.m */,
 				FCA78B461EF2994200114907 /* XDSNoteModel.h */,
@@ -1502,6 +1503,8 @@
 		FCA78B161EF2916700114907 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC6D95701F337938006A0583 /* XDSReadView.h */,
+				FC6D95711F337938006A0583 /* XDSReadView.m */,
 				FCA78BA71EF362CA00114907 /* XDSMagnifierView.h */,
 				FCA78BA81EF362CA00114907 /* XDSMagnifierView.m */,
 			);
@@ -1511,10 +1514,10 @@
 		FCA78B171EF2916700114907 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FCB228FF1F0F19C3007A0EA0 /* LPPReadViewController.h */,
-				FCB229001F0F19C3007A0EA0 /* LPPReadViewController.m */,
-				FC61F7AD1F14651600DA83F4 /* LPPReadPageViewController.h */,
-				FC61F7AE1F14651600DA83F4 /* LPPReadPageViewController.m */,
+				FCB228FF1F0F19C3007A0EA0 /* XDSReadViewController.h */,
+				FCB229001F0F19C3007A0EA0 /* XDSReadViewController.m */,
+				FC61F7AD1F14651600DA83F4 /* XDSReadPageViewController.h */,
+				FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2156,20 +2159,6 @@
 			path = text;
 			sourceTree = "<group>";
 		};
-		FCB228FB1F0DFDCD007A0EA0 /* LPPModel */ = {
-			isa = PBXGroup;
-			children = (
-				FC61F7B21F15265300DA83F4 /* 达芬奇密码.epub */,
-				FC61F7A71F13767700DA83F4 /* LPPBookModel.h */,
-				FC61F7A81F13767700DA83F4 /* LPPBookModel.m */,
-				FCB228FC1F0DFDFC007A0EA0 /* LPPChapterModel.h */,
-				FCB228FD1F0DFDFC007A0EA0 /* LPPChapterModel.m */,
-				FC61F7AA1F138AC600DA83F4 /* LPPRecordModel.h */,
-				FC61F7AB1F138AC600DA83F4 /* LPPRecordModel.m */,
-			);
-			path = LPPModel;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2571,7 +2560,6 @@
 				FCB2274F1F0DE52C007A0EA0 /* 00007.jpeg in Resources */,
 				FCB2275A1F0DE52C007A0EA0 /* 00018.jpeg in Resources */,
 				FCB228881F0DE52C007A0EA0 /* 00320.jpeg in Resources */,
-				FC61F7B31F15265300DA83F4 /* 达芬奇密码.epub in Resources */,
 				FCB228571F0DE52C007A0EA0 /* 00271.jpeg in Resources */,
 				FCB227501F0DE52C007A0EA0 /* 00008.jpeg in Resources */,
 				FCB227A61F0DE52C007A0EA0 /* 00094.jpeg in Resources */,
@@ -2762,18 +2750,18 @@
 			files = (
 				FCA78B801EF2DEB500114907 /* CXMLDocument_PrivateExtensions.m in Sources */,
 				FCA78AC91EF2914F00114907 /* HTTPDataResponse.m in Sources */,
+				FC6D95721F337938006A0583 /* XDSReadView.m in Sources */,
 				FC61F84C1F18764D00DA83F4 /* NSAttributedString+Encoding.m in Sources */,
 				FCA78B7E1EF2DEB500114907 /* CXHTMLDocument.m in Sources */,
 				FCA78AC41EF2914F00114907 /* HTTPServer.m in Sources */,
 				FCA78AC71EF2914F00114907 /* MultipartMessageHeaderField.m in Sources */,
+				FC6D956F1F3378AC006A0583 /* XDSRecordModel.m in Sources */,
 				FCA78C171EF929BE00114907 /* XDSNoteViewController.m in Sources */,
-				FC61F7AC1F138AC600DA83F4 /* LPPRecordModel.m in Sources */,
 				FCA78AD41EF2914F00114907 /* XDSWIFIFileTransferViewController.m in Sources */,
-				FC61F7AF1F14651600DA83F4 /* LPPReadPageViewController.m in Sources */,
+				FC61F7AF1F14651600DA83F4 /* XDSReadPageViewController.m in Sources */,
 				FCA78C111EF91F0800114907 /* XDSCatalogueTabBarController.m in Sources */,
 				FCA78B811EF2DEB500114907 /* CXMLElement.m in Sources */,
 				FCA78B851EF2DEB500114907 /* CXMLNode.m in Sources */,
-				FC61F7A91F13767700DA83F4 /* LPPBookModel.m in Sources */,
 				FCA78AC11EF2914F00114907 /* HTTPAuthenticationRequest.m in Sources */,
 				FCA78BA91EF362CA00114907 /* XDSMagnifierView.m in Sources */,
 				FCA78B7C1EF2DEB500114907 /* CXMLDocument_CreationExtensions.m in Sources */,
@@ -2800,12 +2788,12 @@
 				FCA78C071EF8EE2E00114907 /* XDSMenuTopView.m in Sources */,
 				FCA78ACA1EF2914F00114907 /* HTTPDynamicFileResponse.m in Sources */,
 				FCA78ABB1EF2914F00114907 /* ContextFilterLogFormatter.m in Sources */,
+				FC6D956D1F3378AC006A0583 /* XDSBookModel.m in Sources */,
 				FCA78BA31EF2E37200114907 /* XDSReaderUtil.m in Sources */,
-				FCB229041F0F2AC6007A0EA0 /* LPPReadView.m in Sources */,
 				FCA78C0E1EF91EDA00114907 /* XDSCatalogueView.m in Sources */,
 				FCA78B7D1EF2DEB500114907 /* CXMLNode_CreationExtensions.m in Sources */,
 				FCA78C041EF81E1A00114907 /* XDSLightView.m in Sources */,
-				FCB229011F0F19C3007A0EA0 /* LPPReadViewController.m in Sources */,
+				FCB229011F0F19C3007A0EA0 /* XDSReadViewController.m in Sources */,
 				FCA78ABA1EF2914F00114907 /* DDTTYLogger.m in Sources */,
 				FCA78AB81EF2914F00114907 /* DDFileLogger.m in Sources */,
 				FCA78B381EF2933E00114907 /* NSString+HTML.m in Sources */,
@@ -2827,6 +2815,7 @@
 				FCA78AC51EF2914F00114907 /* MultipartFormDataParser.m in Sources */,
 				FCA78BFD1EF7CA5A00114907 /* XDSHaloButton.m in Sources */,
 				FCA78B821EF2DEB500114907 /* CXMLElement_CreationExtensions.m in Sources */,
+				FC6D956E1F3378AC006A0583 /* XDSChapterModel.m in Sources */,
 				FCA78AC21EF2914F00114907 /* HTTPConnection.m in Sources */,
 				FCA78AC61EF2914F00114907 /* MultipartMessageHeader.m in Sources */,
 				FCA78AD31EF2914F00114907 /* XDSIPHelper.m in Sources */,
@@ -2837,7 +2826,6 @@
 				FCA78B451EF2986800114907 /* XDSMarkModel.m in Sources */,
 				FCA78BF81EF7B67700114907 /* XDSReadRootView.m in Sources */,
 				FCA78ABE1EF2914F00114907 /* DDData.m in Sources */,
-				FCB228FE1F0DFDFC007A0EA0 /* LPPChapterModel.m in Sources */,
 				FCA78A521EF290F400114907 /* main.m in Sources */,
 				FCA78C141EF929AA00114907 /* XDSCatalogueViewController.m in Sources */,
 				FCA78AB61EF2914F00114907 /* DDAbstractDatabaseLogger.m in Sources */,

@@ -35,11 +35,11 @@ static XDSReadManager *readManager;
     return bounds;
 }
 //MARK: - //获取对于章节页码的radViewController
-- (LPPReadViewController *)readViewWithChapter:(NSInteger *)chapter
+- (XDSReadViewController *)readViewWithChapter:(NSInteger *)chapter
                                           page:(NSInteger *)page
                                        pageUrl:(NSString *)pageUrl{
     
-    LPPChapterModel *currentChapterModel = _bookModel.chapters[*chapter];
+    XDSChapterModel *currentChapterModel = _bookModel.chapters[*chapter];
     if (currentChapterModel.isReadConfigChanged) {
         [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
         if (currentChapterModel == CURRENT_RECORD.chapterModel) {
@@ -51,7 +51,7 @@ static XDSReadManager *readManager;
         *page = currentChapterModel.pageCount - 1;
     }
     
-    LPPReadViewController *readView = [[LPPReadViewController alloc] init];
+    XDSReadViewController *readView = [[XDSReadViewController alloc] init];
     readView.chapterNum = *chapter;
     readView.pageNum = *page;
     readView.pageUrl = pageUrl;
@@ -59,7 +59,7 @@ static XDSReadManager *readManager;
 }
 
 - (void)loadContentInChapter:(NSInteger)chapter{
-    LPPChapterModel *chapterModel = _bookModel.chapters[chapter];
+    XDSChapterModel *chapterModel = _bookModel.chapters[chapter];
     if (!chapterModel.chapterAttributeContent) {
         [CURRENT_BOOK_MODEL loadContentInChapter:chapterModel];
     }
@@ -75,7 +75,7 @@ static XDSReadManager *readManager;
 }
 //MARK: - 跳转到指定笔记，因为是笔记是基于位置查找的，使用page查找可能出错
 - (void)readViewJumpToNote:(XDSNoteModel *)note{
-    LPPChapterModel *currentChapterModel = _bookModel.chapters[note.chapter];
+    XDSChapterModel *currentChapterModel = _bookModel.chapters[note.chapter];
     if (currentChapterModel.isReadConfigChanged) {
         [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
     }
@@ -85,7 +85,7 @@ static XDSReadManager *readManager;
 //MARK: - 跳转到指定书签，因为是书签是基于位置查找的，使用page查找可能出错
 - (void)readViewJumpToMark:(XDSMarkModel *)mark{
     
-    LPPChapterModel *currentChapterModel = _bookModel.chapters[mark.chapter];
+    XDSChapterModel *currentChapterModel = _bookModel.chapters[mark.chapter];
     if (currentChapterModel.isReadConfigChanged) {
         [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
     }
@@ -124,7 +124,7 @@ static XDSReadManager *readManager;
     [[XDSReadConfig shareInstance] setCurrentFontName:fontName];
     
     //重新加载章节内容
-    LPPChapterModel *currentChapterModel = CURRENT_RECORD.chapterModel;
+    XDSChapterModel *currentChapterModel = CURRENT_RECORD.chapterModel;
     [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewFontDidChanged)]) {
@@ -135,7 +135,7 @@ static XDSReadManager *readManager;
 - (void)configReadTheme:(UIColor *)theme{
     [XDSReadConfig shareInstance].currentTheme = theme;
     
-    LPPChapterModel *currentChapterModel = CURRENT_RECORD.chapterModel;
+    XDSChapterModel *currentChapterModel = CURRENT_RECORD.chapterModel;
     [CURRENT_BOOK_MODEL loadContentInChapter:currentChapterModel];
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewThemeDidChanged)]) {
@@ -153,7 +153,7 @@ static XDSReadManager *readManager;
     _bookModel.record.chapterModel = _bookModel.chapters[chapter];
     _bookModel.record.location = [_bookModel.record.chapterModel.pageLocations[page] integerValue];
     _bookModel.record.currentChapter = chapter;
-    [LPPBookModel updateLocalModel:_bookModel url:_resourceURL];
+    [XDSBookModel updateLocalModel:_bookModel url:_resourceURL];
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewDidUpdateReadRecord)]) {
         [self.rmDelegate readViewDidUpdateReadRecord];
@@ -176,7 +176,7 @@ static XDSReadManager *readManager;
 //MARK: - 添加或删除书签
 - (void)addBookMark{
     XDSMarkModel *markModel = [[XDSMarkModel alloc] init];
-    LPPChapterModel *currentChapterModel = _bookModel.record.chapterModel;
+    XDSChapterModel *currentChapterModel = _bookModel.record.chapterModel;
     NSInteger currentPage = _bookModel.record.currentPage;
     NSInteger currentChapter = _bookModel.record.currentChapter;
     markModel.date = [NSDate date];

@@ -187,7 +187,7 @@ XDSCatalogueViewDelegate
 }
 
 //TODO:XDSCatalogueViewDelegate
-- (void)catalogueViewDidSelectedChapter:(LPPChapterModel *)chapterModel{
+- (void)catalogueViewDidSelectedChapter:(XDSChapterModel *)chapterModel{
     NSInteger selectedChapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:chapterModel];
     NSInteger page = 0;
     [[XDSReadManager sharedManager] readViewJumpToChapter:selectedChapter page:page];

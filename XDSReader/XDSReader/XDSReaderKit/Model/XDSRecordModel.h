@@ -1,5 +1,5 @@
 //
-//  LPPRecordModel.h
+//  XDSRecordModel.h
 //  XDSReader
 //
 //  Created by dusheng.xu on 2017/6/15.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LPPRecordModel : NSObject<NSCopying,NSCoding>
-@property (nonatomic,strong) LPPChapterModel *chapterModel;  //阅读的章节
+@interface XDSRecordModel : NSObject<NSCopying,NSCoding>
+@property (nonatomic,strong) XDSChapterModel *chapterModel;  //阅读的章节
 @property (nonatomic) NSInteger location;    //章节中的位置
 @property (nonatomic, assign) NSInteger currentChapter; //阅读的章节
 

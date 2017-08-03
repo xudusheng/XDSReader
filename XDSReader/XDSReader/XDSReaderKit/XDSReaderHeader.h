@@ -29,18 +29,18 @@
 
 #import "XDSNoteModel.h"
 #import "XDSMarkModel.h"
-#import "LPPChapterModel.h"
-#import "LPPRecordModel.h"
-#import "LPPBookModel.h"
+#import "XDSChapterModel.h"
+#import "XDSRecordModel.h"
+#import "XDSBookModel.h"
 
 #import "XDSReadOperation.h"
 
 #import "XDSMagnifierView.h"
-#import "LPPReadView.h"
+#import "XDSReadView.h"
 #import "XDSReaderDelegate.h"
 
-#import "LPPReadViewController.h"
-#import "LPPReadPageViewController.h"
+#import "XDSReadViewController.h"
+#import "XDSReadPageViewController.h"
 #import "XDSReadManager.h"
 
 #endif /* XDSReaderHeader_h */

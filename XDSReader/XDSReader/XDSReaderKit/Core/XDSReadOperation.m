@@ -27,7 +27,7 @@
             NSRange range = [obj range];
             NSInteger local = range.location;
             if (idx == 0) {
-                LPPChapterModel *model = [[LPPChapterModel alloc] init];
+                XDSChapterModel *model = [[XDSChapterModel alloc] init];
                 model.chapterName = @"开始";
                 NSUInteger len = local;
                 model.originContent = [content substringWithRange:NSMakeRange(0, len)];
@@ -35,7 +35,7 @@
                 
             }
             if (idx > 0 ) {
-                LPPChapterModel *model = [[LPPChapterModel alloc] init];
+                XDSChapterModel *model = [[XDSChapterModel alloc] init];
                 model.chapterName = [content substringWithRange:lastRange];
                 NSUInteger len = local-lastRange.location;
                 model.originContent = [content substringWithRange:NSMakeRange(lastRange.location, len)];
@@ -43,7 +43,7 @@
                 
             }
             if (idx == match.count-1) {
-                LPPChapterModel *model = [[LPPChapterModel alloc] init];
+                XDSChapterModel *model = [[XDSChapterModel alloc] init];
                 model.chapterName = [content substringWithRange:range];
                 model.originContent = [content substringWithRange:NSMakeRange(local, content.length-local)];
                 [*chapters addObject:model];
@@ -51,7 +51,7 @@
             lastRange = range;
         }];
     }else{
-        LPPChapterModel *model = [[LPPChapterModel alloc] init];
+        XDSChapterModel *model = [[XDSChapterModel alloc] init];
         model.originContent = content;
         [*chapters addObject:model];
     }
@@ -223,11 +223,11 @@
         if (!chapterName.length) {
             continue;
         }
-        LPPChapterModel *chapter = [[LPPChapterModel alloc] init];
+        XDSChapterModel *chapter = [[XDSChapterModel alloc] init];
         chapter.chapterName = chapterName;
         chapter.chapterSrc = chapHref;
         
-//        LPPChapterModel *model = [LPPChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",chapterRelativeFolder,chapHref]
+//        XDSChapterModel *model = [XDSChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",chapterRelativeFolder,chapHref]
 //                                                            title:[titleDictionary valueForKey:chapHref]
 //                                                        imagePath:[[[opfRelativePath stringByDeletingLastPathComponent]stringByAppendingPathComponent:chapHref] stringByDeletingLastPathComponent]];
         [chapters addObject:chapter];
@@ -265,7 +265,7 @@
         NSString *chapterSrc = [content attributeForName:@"src"].stringValue;//章节路径
         NSLog(@"%@ = %@", chapterName, chapterSrc);
         
-        LPPChapterModel *chapter = [[LPPChapterModel alloc] init];
+        XDSChapterModel *chapter = [[XDSChapterModel alloc] init];
         chapter.chapterName = chapterName;
         chapter.chapterSrc = chapterSrc;
         

@@ -1,5 +1,5 @@
 //
-//  LPPReadView.h
+//  XDSReadView.h
 //  XDSReader
 //
 //  Created by dusheng.xu on 07/07/2017.
@@ -10,11 +10,9 @@
 
 @protocol XDSReadViewControllerDelegate;
 
-@interface LPPReadView : UIView
+@interface XDSReadView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame chapterNum:(NSInteger)chapterNum pageNum:(NSInteger)pageNum;
-
-//- (void)setReadAttributedString:(NSAttributedString *)readAttributedString;
 
 - (void)cancelSelected;
 

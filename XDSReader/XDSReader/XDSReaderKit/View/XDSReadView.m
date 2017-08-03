@@ -1,14 +1,14 @@
 //
-//  LPPReadView.m
+//  XDSReadView.m
 //  XDSReader
 //
 //  Created by dusheng.xu on 07/07/2017.
 //  Copyright © 2017 macos. All rights reserved.
 //
 
-#import "LPPReadView.h"
-#import "LPPChapterModel.h"
-@interface LPPReadView () <DTAttributedTextContentViewDelegate>
+#import "XDSReadView.h"
+#import "XDSChapterModel.h"
+@interface XDSReadView () <DTAttributedTextContentViewDelegate>
 
 {
     NSRange _selectRange;
@@ -37,14 +37,14 @@
 @property (assign, nonatomic) NSInteger chapterNum;//
 @property (assign, nonatomic) NSInteger pageNum;
 @end
-@implementation LPPReadView
+@implementation XDSReadView
 
 //MARK: -  override super method
 - (instancetype)initWithFrame:(CGRect)frame chapterNum:(NSInteger)chapterNum pageNum:(NSInteger)pageNum {
     if (self = [super initWithFrame:frame]) {
         self.chapterNum = chapterNum;
         self.pageNum = pageNum;
-        LPPChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapterNum];
+        XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapterNum];
         NSMutableAttributedString *pageAttributeString = chapterModel.pageAttributeStrings[self.pageNum];
         _readAttributedContent = pageAttributeString;
         self.content = pageAttributeString.string;
@@ -375,7 +375,7 @@
                                                         model.content = [_content substringWithRange:_selectRange];
                                                         model.note = alertController.textFields.firstObject.text;
                                                         model.date = [NSDate date];
-                                                        LPPChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
+                                                        XDSChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
                                                         model.locationInChapterContent = _selectRange.location + [chapterModel.pageLocations[CURRENT_RECORD.currentPage] integerValue];
                                                         [[XDSReadManager sharedManager] addNoteModel:model];
                                                         [self addLineForNote:model];
@@ -451,8 +451,10 @@
 //MARK: - ABOUT MEMERY 内存管理
 - (void)setReadAttributedContent:(NSMutableAttributedString *)readAttributedContent {
     _readAttributedContent = readAttributedContent;
-    self.readTextView.attributedString = [_readAttributedContent copy];
+    self.readTextView.attributedString = _readAttributedContent;
     self.content = _readAttributedContent.string;
+    
+    [self.readTextView relayoutText];
 }
 
 - (void)dataInit{

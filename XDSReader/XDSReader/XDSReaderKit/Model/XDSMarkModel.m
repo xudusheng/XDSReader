@@ -33,7 +33,7 @@ NSString *const kMarkModelLocationEncodeKey = @"locationInChapterContent";
 }
 
 - (NSInteger)page{
-    LPPChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapter];
+    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapter];
     NSInteger page = 0;
     if (chapterModel.pageLocations.count < 1) {
         page = 0;

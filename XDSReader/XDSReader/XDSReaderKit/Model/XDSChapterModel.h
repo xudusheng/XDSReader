@@ -1,5 +1,5 @@
 //
-//  LPPChapterModel.h
+//  XDSChapterModel.h
 //  XDSReader
 //
 //  Created by dusheng.xu on 06/07/2017.
@@ -13,7 +13,7 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
     LPPEBookTypeEpub,
 };
 
-@interface LPPChapterModel : NSObject <NSCopying,NSCoding>
+@interface XDSChapterModel : NSObject <NSCopying,NSCoding>
 
 @property (nonatomic, copy) XDSReadConfig *currentConfig;
 

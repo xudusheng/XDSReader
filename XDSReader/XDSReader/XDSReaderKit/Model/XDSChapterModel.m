@@ -1,14 +1,14 @@
 //
-//  LPPChapterModel.m
+//  XDSChapterModel.m
 //  XDSReader
 //
 //  Created by dusheng.xu on 06/07/2017.
 //  Copyright © 2017 macos. All rights reserved.
 //
 
-#import "LPPChapterModel.h"
+#import "XDSChapterModel.h"
 #import "NSAttributedString+Encoding.h"
-@interface LPPChapterModel ()
+@interface XDSChapterModel ()
 
 @property (nonatomic, copy) NSAttributedString *chapterAttributeContent;//全章的富文本
 @property (nonatomic, copy) NSString *chapterContent;//全章的纯文本
@@ -23,13 +23,13 @@
 
 @property (assign, nonatomic) CGRect showBounds;
 @end
-@implementation LPPChapterModel
+@implementation XDSChapterModel
 
-NSString *const kLPPChapterModelChapterNameEncodeKey = @"chapterName";
-NSString *const kLPPChapterModelChapterSrcEncodeKey = @"chapterSrc";
-NSString *const kLPPChapterModelOriginContentEncodeKey = @"originContent";
-NSString *const kLPPChapterModelNotesPathEncodeKey = @"notes";
-NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
+NSString *const kXDSChapterModelChapterNameEncodeKey = @"chapterName";
+NSString *const kXDSChapterModelChapterSrcEncodeKey = @"chapterSrc";
+NSString *const kXDSChapterModelOriginContentEncodeKey = @"originContent";
+NSString *const kXDSChapterModelNotesPathEncodeKey = @"notes";
+NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
 
 
 -(void)paginateEpubWithBounds:(CGRect)bounds{
@@ -252,7 +252,7 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
 }
 
 -(id)copyWithZone:(NSZone *)zone{
-    LPPChapterModel *model = [[LPPChapterModel allocWithZone:zone] init];
+    XDSChapterModel *model = [[XDSChapterModel allocWithZone:zone] init];
     model.chapterName = self.chapterName;
     model.chapterSrc = self.chapterSrc;
     model.originContent = self.originContent;
@@ -267,20 +267,20 @@ NSString *const kLPPChapterModelMarksEncodeKey = @"marks";
     return model;
 }
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self.chapterName forKey:kLPPChapterModelChapterNameEncodeKey];
-    [aCoder encodeObject:self.chapterSrc forKey:kLPPChapterModelChapterSrcEncodeKey];
-    [aCoder encodeObject:self.originContent forKey:kLPPChapterModelOriginContentEncodeKey];
-    [aCoder encodeObject:self.notes forKey:kLPPChapterModelNotesPathEncodeKey];
-    [aCoder encodeObject:self.marks forKey:kLPPChapterModelMarksEncodeKey];
+    [aCoder encodeObject:self.chapterName forKey:kXDSChapterModelChapterNameEncodeKey];
+    [aCoder encodeObject:self.chapterSrc forKey:kXDSChapterModelChapterSrcEncodeKey];
+    [aCoder encodeObject:self.originContent forKey:kXDSChapterModelOriginContentEncodeKey];
+    [aCoder encodeObject:self.notes forKey:kXDSChapterModelNotesPathEncodeKey];
+    [aCoder encodeObject:self.marks forKey:kXDSChapterModelMarksEncodeKey];
 }
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        self.chapterName = [aDecoder decodeObjectForKey:kLPPChapterModelChapterNameEncodeKey];
-        self.chapterSrc = [aDecoder decodeObjectForKey:kLPPChapterModelChapterSrcEncodeKey];
-        self.originContent = [aDecoder decodeObjectForKey:kLPPChapterModelOriginContentEncodeKey];
-        self.notes = [aDecoder decodeObjectForKey:kLPPChapterModelNotesPathEncodeKey];
-        self.marks = [aDecoder decodeObjectForKey:kLPPChapterModelMarksEncodeKey];
+        self.chapterName = [aDecoder decodeObjectForKey:kXDSChapterModelChapterNameEncodeKey];
+        self.chapterSrc = [aDecoder decodeObjectForKey:kXDSChapterModelChapterSrcEncodeKey];
+        self.originContent = [aDecoder decodeObjectForKey:kXDSChapterModelOriginContentEncodeKey];
+        self.notes = [aDecoder decodeObjectForKey:kXDSChapterModelNotesPathEncodeKey];
+        self.marks = [aDecoder decodeObjectForKey:kXDSChapterModelMarksEncodeKey];
 
     }
     return self;

@@ -37,7 +37,7 @@
 //        [self.navigationController presentViewController:demoVC animated:YES completion:nil];
 //        [self.navigationController pushViewController:demoVC animated:YES];
         
-//        LPPReadPageViewController *readPageVC = [[LPPReadPageViewController alloc] init];
+//        XDSReadPageViewController *readPageVC = [[XDSReadPageViewController alloc] init];
 //        [self presentViewController:readPageVC animated:YES completion:nil];
 
 //        NSString *path = [[NSBundle mainBundle] pathForResource:@"XDSShareConfig.plist" ofType:nil];
@@ -76,9 +76,9 @@
     }
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        LPPBookModel *bookModel = [LPPBookModel getLocalModelWithURL:fileURL];
+        XDSBookModel *bookModel = [XDSBookModel getLocalModelWithURL:fileURL];
         dispatch_async(dispatch_get_main_queue(), ^{
-            LPPReadPageViewController *pageView = [[LPPReadPageViewController alloc] init];
+            XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
             [[XDSReadManager sharedManager] setResourceURL:fileURL];//文件位置
             [[XDSReadManager sharedManager] setBookModel:bookModel];
             [[XDSReadManager sharedManager] setRmDelegate:pageView];

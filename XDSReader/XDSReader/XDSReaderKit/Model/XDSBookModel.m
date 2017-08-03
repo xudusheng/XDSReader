@@ -1,12 +1,12 @@
 //
-//  LPPBookModel.m
+//  XDSBookModel.m
 //  XDSReader
 //
 //  Created by dusheng.xu on 2017/6/15.
 //  Copyright © 2017年 macos. All rights reserved.
 //
 
-#import "LPPBookModel.h"
+#import "XDSBookModel.h"
 @implementation LPPBookInfoModel
 
 NSString *const kLPPBookInfoModelRootDocumentUrlEncodeKey = @"rootDocumentUrl";
@@ -70,19 +70,19 @@ NSString *const kLPPBookInfoModelRightsEncodeKey = @"rights";
 
 @end
 
-@interface LPPBookModel()
-@property (nonatomic,strong) NSMutableArray<LPPChapterModel*> *chapters;//章节
-@property (nonatomic,copy) NSArray <LPPChapterModel*> *chapterContainNotes;//包含笔记的章节
-@property (nonatomic,copy) NSArray <LPPChapterModel*> *chapterContainMarks;//包含笔记的章节
+@interface XDSBookModel()
+@property (nonatomic,strong) NSMutableArray<XDSChapterModel*> *chapters;//章节
+@property (nonatomic,copy) NSArray <XDSChapterModel*> *chapterContainNotes;//包含笔记的章节
+@property (nonatomic,copy) NSArray <XDSChapterModel*> *chapterContainMarks;//包含笔记的章节
 @end
-@implementation LPPBookModel
+@implementation XDSBookModel
 
-NSString *const kLPPBookModelBookBasicInfoEncodeKey = @"bookBasicInfo";
-NSString *const kLPPBookModelResourceEncodeKey = @"resource";
-NSString *const kLPPBookModelContentEncodeKey = @"content";
-NSString *const kLPPBookModelBookTypeEncodeKey = @"bookType";
-NSString *const kLPPBookModelChaptersEncodeKey = @"chapters";
-NSString *const kLPPBookModelRecordEncodeKey = @"record";
+NSString *const kXDSBookModelBookBasicInfoEncodeKey = @"bookBasicInfo";
+NSString *const kXDSBookModelResourceEncodeKey = @"resource";
+NSString *const kXDSBookModelContentEncodeKey = @"content";
+NSString *const kXDSBookModelBookTypeEncodeKey = @"bookType";
+NSString *const kXDSBookModelChaptersEncodeKey = @"chapters";
+NSString *const kXDSBookModelRecordEncodeKey = @"record";
 
 - (instancetype)initWithContent:(NSString *)content{
     self = [super init];
@@ -91,7 +91,7 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
         NSMutableArray *charpter = [NSMutableArray array];
         [XDSReadOperation separateChapter:&charpter content:content];
         _chapters = charpter;
-        _record = [[LPPRecordModel alloc] init];
+        _record = [[XDSRecordModel alloc] init];
         _record.chapterModel = charpter.firstObject;
         _record.location = 0;
         _bookType = LPPEBookTypeTxt;
@@ -103,7 +103,7 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     if (self) {
         _bookBasicInfo = [[LPPBookInfoModel alloc] init];
         _chapters = [XDSReadOperation ePubFileHandle:ePubPath bookInfoModel:_bookBasicInfo];
-        _record = [[LPPRecordModel alloc] init];
+        _record = [[XDSRecordModel alloc] init];
         _record.chapterModel = _chapters.firstObject;
         _record.location = 0;
         _bookType = LPPEBookTypeEpub;
@@ -115,26 +115,26 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self.bookBasicInfo forKey:kLPPBookModelBookBasicInfoEncodeKey];
-    [aCoder encodeObject:self.content forKey:kLPPBookModelContentEncodeKey];
-    [aCoder encodeObject:self.chapters forKey:kLPPBookModelChaptersEncodeKey];
-    [aCoder encodeObject:self.record forKey:kLPPBookModelRecordEncodeKey];
-    [aCoder encodeObject:self.resource forKey:kLPPBookModelResourceEncodeKey];
-    [aCoder encodeObject:@(self.bookType) forKey:kLPPBookModelBookTypeEncodeKey];
+    [aCoder encodeObject:self.bookBasicInfo forKey:kXDSBookModelBookBasicInfoEncodeKey];
+    [aCoder encodeObject:self.content forKey:kXDSBookModelContentEncodeKey];
+    [aCoder encodeObject:self.chapters forKey:kXDSBookModelChaptersEncodeKey];
+    [aCoder encodeObject:self.record forKey:kXDSBookModelRecordEncodeKey];
+    [aCoder encodeObject:self.resource forKey:kXDSBookModelResourceEncodeKey];
+    [aCoder encodeObject:@(self.bookType) forKey:kXDSBookModelBookTypeEncodeKey];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
-        self.bookBasicInfo = [aDecoder decodeObjectForKey:kLPPBookModelBookBasicInfoEncodeKey];
-        self.content = [aDecoder decodeObjectForKey:kLPPBookModelContentEncodeKey];
-        self.chapters = [aDecoder decodeObjectForKey:kLPPBookModelChaptersEncodeKey];
-        self.record = [aDecoder decodeObjectForKey:kLPPBookModelRecordEncodeKey];
-        self.resource = [aDecoder decodeObjectForKey:kLPPBookModelResourceEncodeKey];
-        self.bookType = [[aDecoder decodeObjectForKey:kLPPBookModelBookTypeEncodeKey] integerValue];
+        self.bookBasicInfo = [aDecoder decodeObjectForKey:kXDSBookModelBookBasicInfoEncodeKey];
+        self.content = [aDecoder decodeObjectForKey:kXDSBookModelContentEncodeKey];
+        self.chapters = [aDecoder decodeObjectForKey:kXDSBookModelChaptersEncodeKey];
+        self.record = [aDecoder decodeObjectForKey:kXDSBookModelRecordEncodeKey];
+        self.resource = [aDecoder decodeObjectForKey:kXDSBookModelResourceEncodeKey];
+        self.bookType = [[aDecoder decodeObjectForKey:kXDSBookModelBookTypeEncodeKey] integerValue];
     }
     return self;
 }
-+ (void)updateLocalModel:(LPPBookModel *)readModel url:(NSURL *)url{
++ (void)updateLocalModel:(XDSBookModel *)readModel url:(NSURL *)url{
     NSString *key = [url.path lastPathComponent];
     NSMutableData *data=[[NSMutableData alloc]init];
     NSKeyedArchiver *archiver=[[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
@@ -148,16 +148,16 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     if (!data) {
         if ([[key pathExtension] isEqualToString:@"txt"]) {
-            LPPBookModel *model = [[LPPBookModel alloc] initWithContent:[XDSReaderUtil encodeWithURL:url]];
+            XDSBookModel *model = [[XDSBookModel alloc] initWithContent:[XDSReaderUtil encodeWithURL:url]];
             model.resource = url;
-            [LPPBookModel updateLocalModel:model url:url];
+            [XDSBookModel updateLocalModel:model url:url];
             return model;
         }
         else if ([[key pathExtension] isEqualToString:@"epub"]){
             NSLog(@"this is epub");
-            LPPBookModel *model = [[LPPBookModel alloc] initWithePub:url.path];
+            XDSBookModel *model = [[XDSBookModel alloc] initWithePub:url.path];
             model.resource = url;
-            [LPPBookModel updateLocalModel:model url:url];
+            [XDSBookModel updateLocalModel:model url:url];
             return model;
         }
         else{
@@ -167,11 +167,11 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     }
     NSKeyedUnarchiver *unarchive = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
     //主线程操作
-    LPPBookModel *model = [unarchive decodeObjectForKey:key];
+    XDSBookModel *model = [unarchive decodeObjectForKey:key];
     return model;
 }
 
-- (void)loadContentInChapter:(LPPChapterModel *)chapterModel {
+- (void)loadContentInChapter:(XDSChapterModel *)chapterModel {
     //load content for current chapter first
     [chapterModel paginateEpubWithBounds:[XDSReadManager readViewBounds]];
 }
@@ -187,7 +187,7 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     
     dispatch_queue_t queue = dispatch_queue_create("loadContentForAllChapters", DISPATCH_QUEUE_SERIAL);
     for (NSInteger i = index + 1; i < self.chapters.count; i ++) {
-        LPPChapterModel *theChapterModel = self.chapters[i];
+        XDSChapterModel *theChapterModel = self.chapters[i];
         dispatch_async(queue, ^{
             [self loadContentInChapter:theChapterModel];
         });
@@ -195,7 +195,7 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     }
     
     for (NSInteger i = index - 1; i >= 0; i --) {
-        LPPChapterModel *theChapterModel = self.chapters[i];
+        XDSChapterModel *theChapterModel = self.chapters[i];
         dispatch_async(queue, ^{
             [self loadContentInChapter:theChapterModel];
         });
@@ -208,15 +208,15 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     
 }
 - (void)addNote:(XDSNoteModel *)noteModel{
-    LPPChapterModel *chapterModel = self.chapters[noteModel.chapter];
+    XDSChapterModel *chapterModel = self.chapters[noteModel.chapter];
     [chapterModel addNote:noteModel];
-    [LPPBookModel updateLocalModel:self url:self.resource]; //本地保存
+    [XDSBookModel updateLocalModel:self url:self.resource]; //本地保存
     [self devideChaptersContainNotes];
 }
 
 - (void)devideChaptersContainNotes{
     NSMutableArray *chapterContainNotes = [NSMutableArray arrayWithCapacity:0];
-    for (LPPChapterModel *chapterModel in self.chapters) {
+    for (XDSChapterModel *chapterModel in self.chapters) {
         if (chapterModel.notes.count) {
             [chapterContainNotes addObject:chapterModel];
         }
@@ -224,7 +224,7 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     self.chapterContainNotes = chapterContainNotes;
 }
 
-- (NSArray<LPPChapterModel *> *)chapterContainNotes{
+- (NSArray<XDSChapterModel *> *)chapterContainNotes{
     if (nil == _chapterContainNotes) {
         [self devideChaptersContainNotes];
     }
@@ -237,19 +237,19 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     [self addMark:markModel];
 }
 - (void)addMark:(XDSMarkModel *)markModel{
-    LPPChapterModel *chapterModel = self.chapters[markModel.chapter];
+    XDSChapterModel *chapterModel = self.chapters[markModel.chapter];
     
     if (chapterModel.isReadConfigChanged) {
         [CURRENT_BOOK_MODEL loadContentInChapter:chapterModel];
     }
     [chapterModel addOrDeleteABookmark:markModel];
-    [LPPBookModel updateLocalModel:self url:self.resource]; //本地保存
+    [XDSBookModel updateLocalModel:self url:self.resource]; //本地保存
     [self devideChaptersContainMarks];
 }
 
 - (void)devideChaptersContainMarks{
     NSMutableArray *chapterContainMarks = [NSMutableArray arrayWithCapacity:0];
-    for (LPPChapterModel *chapterModel in self.chapters) {
+    for (XDSChapterModel *chapterModel in self.chapters) {
         if (chapterModel.marks.count) {
             [chapterContainMarks addObject:chapterModel];
         }
@@ -257,7 +257,7 @@ NSString *const kLPPBookModelRecordEncodeKey = @"record";
     self.chapterContainMarks = chapterContainMarks;
 }
 
-- (NSArray<LPPChapterModel *> *)chapterContainMarks{
+- (NSArray<XDSChapterModel *> *)chapterContainMarks{
     if (nil == _chapterContainMarks) {
         [self devideChaptersContainMarks];
     }

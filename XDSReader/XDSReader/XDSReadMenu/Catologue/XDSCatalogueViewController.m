@@ -46,7 +46,7 @@ CGFloat const kCatalogueTableViewCellHeight = 44.f;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
     }
     
-    LPPChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[indexPath.row];
+    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[indexPath.row];
     cell.textLabel.text = chapterModel.chapterName;
     cell.textLabel.textColor = [UIColor darkGrayColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -59,7 +59,7 @@ CGFloat const kCatalogueTableViewCellHeight = 44.f;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (_cvDelegate && [_cvDelegate respondsToSelector:@selector(catalogueViewDidSelectedChapter:)]){
-        LPPChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[indexPath.row];
+        XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[indexPath.row];
         [_cvDelegate catalogueViewDidSelectedChapter:chapterModel];
     }
 }

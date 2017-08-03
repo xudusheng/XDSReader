@@ -1,5 +1,5 @@
 //
-//  LPPReadViewController.h
+//  XDSReadViewController.h
 //  XDSReader
 //
 //  Created by dusheng.xu on 07/07/2017.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LPPReadViewController : UIViewController
+@interface XDSReadViewController : UIViewController
 
-@property (strong, nonatomic) LPPReadView *readView;
+@property (strong, nonatomic) XDSReadView *readView;
 
 @property (assign, nonatomic) NSInteger chapterNum;//
 @property (assign, nonatomic) NSInteger pageNum;

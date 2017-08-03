@@ -56,7 +56,7 @@ UIKIT_EXTERN CGFloat const kStatusBarHeight;// StatusBar高度
 
 
 @protocol XDSCatalogueViewDelegate <NSObject>
-- (void)catalogueViewDidSelectedChapter:(LPPChapterModel *)chapterModel;
+- (void)catalogueViewDidSelectedChapter:(XDSChapterModel *)chapterModel;
 - (void)catalogueViewDidSelectedNote:(XDSNoteModel *)NodeModel;
 - (void)catalogueViewDidSelectedMark:(XDSMarkModel *)markModel;
 @end

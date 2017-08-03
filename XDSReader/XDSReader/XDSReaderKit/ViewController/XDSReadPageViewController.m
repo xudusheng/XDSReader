@@ -1,14 +1,14 @@
 //
-//  LPPReadPageViewController.m
+//  XDSReadPageViewController.m
 //  XDSReader
 //
 //  Created by dusheng.xu on 11/07/2017.
 //  Copyright © 2017 macos. All rights reserved.
 //
 
-#import "LPPReadPageViewController.h"
+#import "XDSReadPageViewController.h"
 #import "XDSReadMenu.h"
-@interface LPPReadPageViewController ()
+@interface XDSReadPageViewController ()
 <UIPageViewControllerDelegate,
 UIPageViewControllerDataSource,
 UIGestureRecognizerDelegate,
@@ -26,7 +26,7 @@ XDSReadManagerDelegate
 
 @end
 
-@implementation LPPReadPageViewController
+@implementation XDSReadPageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,7 +46,7 @@ XDSReadManagerDelegate
     _chapter = CURRENT_RECORD.currentChapter;
     _page = CURRENT_RECORD.currentPage;
     
-    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&_chapter
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&_chapter
                                                                                    page:&_page
                                                                                 pageUrl:nil];
     [_pageViewController setViewControllers:@[readVC]
@@ -83,7 +83,7 @@ XDSReadManagerDelegate
 - (void)readViewFontDidChanged {
     _chapter = CURRENT_RECORD.currentChapter;
     _page = CURRENT_RECORD.currentPage;
-    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&_chapter
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&_chapter
                                                                                    page:&_page
                                                                                 pageUrl:nil];
     [_pageViewController setViewControllers:@[readVC]
@@ -92,13 +92,13 @@ XDSReadManagerDelegate
                                  completion:nil];
 }
 - (void)readViewThemeDidChanged{
-    LPPReadViewController *readView = _pageViewController.viewControllers.firstObject;
+    XDSReadViewController *readView = _pageViewController.viewControllers.firstObject;
     UIColor *theme = [XDSReadConfig shareInstance].currentTheme?[XDSReadConfig shareInstance].currentTheme:[XDSReadConfig shareInstance].cacheTheme;
     readView.view.backgroundColor = theme;
 }
 - (void)readViewEffectDidChanged{}
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page{
-    LPPReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&chapter
+    XDSReadViewController *readVC = [[XDSReadManager sharedManager] readViewWithChapter:&chapter
                                                                                    page:&page
                                                                                 pageUrl:nil];
     [_pageViewController setViewControllers:@[readVC]
@@ -120,7 +120,8 @@ XDSReadManagerDelegate
 //TODO: UIGestureRecognizerDelegate
 //解决TabView与Tap手势冲突
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    if ([NSStringFromClass([touch.view class]) isEqualToString:NSStringFromClass([DTAttributedTextContentView class])]) {
+    if ([touch.view isKindOfClass:[DTAttributedTextContentView class]] ||
+        [touch.view isKindOfClass:[XDSReadView class]]) {
         return YES;
     }
     return  NO;
@@ -178,7 +179,7 @@ XDSReadManagerDelegate
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed{
     if (!completed) {
-        LPPReadViewController *readView = previousViewControllers.firstObject;
+        XDSReadViewController *readView = previousViewControllers.firstObject;
         _page = readView.pageNum;
         _chapter = readView.chapterNum;
     }
@@ -191,7 +192,7 @@ XDSReadManagerDelegate
 //MARK: - ABOUT REQUEST
 //MARK: - ABOUT EVENTS
 -(void)showToolMenu{
-    LPPReadViewController *readView = _pageViewController.viewControllers.firstObject;
+    XDSReadViewController *readView = _pageViewController.viewControllers.firstObject;
     [readView.readView cancelSelected];
     [self.view addSubview:self.readMenuView];
 }

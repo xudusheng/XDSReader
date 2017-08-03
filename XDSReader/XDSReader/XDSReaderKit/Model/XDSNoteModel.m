@@ -38,7 +38,7 @@ NSString *const kNoteModelLocationEncodeKey = @"locationInChapterContent";
 }
 
 - (NSInteger)page{
-    LPPChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapter];
+    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapter];
     NSInteger page = 0;
     if (chapterModel.pageLocations.count < 1) {
         page = 0;
@@ -82,7 +82,7 @@ NSString *const kNoteModelLocationEncodeKey = @"locationInChapterContent";
     NSInteger chapter = [parametersDic[@"chapter"] integerValue];
     NSInteger location = [parametersDic[@"location"] integerValue];
     NSInteger length = [parametersDic[@"length"] integerValue];
-    LPPChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[chapter];
+    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[chapter];
     for (XDSNoteModel *noteModel in chapterModel.notes) {
         if (noteModel.locationInChapterContent == location && noteModel.content.length == length) {
             return noteModel;

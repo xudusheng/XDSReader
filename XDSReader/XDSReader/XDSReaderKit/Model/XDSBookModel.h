@@ -1,5 +1,5 @@
 //
-//  LPPBookModel.h
+//  XDSBookModel.h
 //  XDSReader
 //
 //  Created by dusheng.xu on 2017/6/15.
@@ -42,26 +42,26 @@
 @property (nonatomic,copy) NSString *rights;
 @end
 
-@interface LPPBookModel : NSObject <NSCoding>
+@interface XDSBookModel : NSObject <NSCoding>
 
 @property (nonatomic,strong) NSURL *resource;//资源路径
 @property (nonatomic, strong) LPPBookInfoModel *bookBasicInfo;//书籍基本信息
 @property (nonatomic,copy) NSString *content;//电子书文本内容
 @property (nonatomic,assign) LPPEBookType bookType;//电子书类型（txt, epub）
-@property (nonatomic,readonly) NSArray <LPPChapterModel*> *chapters;//章节
-@property (nonatomic,readonly) NSArray <LPPChapterModel*> *chapterContainNotes;//包含笔记的章节
-@property (nonatomic,readonly) NSArray <LPPChapterModel*> *chapterContainMarks;//包含书签的章节
+@property (nonatomic,readonly) NSArray <XDSChapterModel*> *chapters;//章节
+@property (nonatomic,readonly) NSArray <XDSChapterModel*> *chapterContainNotes;//包含笔记的章节
+@property (nonatomic,readonly) NSArray <XDSChapterModel*> *chapterContainMarks;//包含书签的章节
 
-@property (nonatomic,strong) LPPRecordModel *record;//阅读进度
+@property (nonatomic,strong) XDSRecordModel *record;//阅读进度
 
 
 
 - (instancetype)initWithContent:(NSString *)content;
 - (instancetype)initWithePub:(NSString *)ePubPath;
-+ (void)updateLocalModel:(LPPBookModel *)bookModel url:(NSURL *)url;
++ (void)updateLocalModel:(XDSBookModel *)bookModel url:(NSURL *)url;
 + (id)getLocalModelWithURL:(NSURL *)url;
 
-- (void)loadContentInChapter:(LPPChapterModel *)chapterModel;
+- (void)loadContentInChapter:(XDSChapterModel *)chapterModel;
 - (void)loadContentForAllChapters;
 
 - (void)deleteNote:(XDSNoteModel *)noteModel;
