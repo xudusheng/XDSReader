@@ -18,6 +18,8 @@
 		FC6D956E1F3378AC006A0583 /* XDSChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D956A1F3378AC006A0583 /* XDSChapterModel.m */; };
 		FC6D956F1F3378AC006A0583 /* XDSRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D956C1F3378AC006A0583 /* XDSRecordModel.m */; };
 		FC6D95721F337938006A0583 /* XDSReadView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D95711F337938006A0583 /* XDSReadView.m */; };
+		FC6D95741F33FF53006A0583 /* 11处特工皇妃.epub in Resources */ = {isa = PBXBuildFile; fileRef = FC6D95731F33FF53006A0583 /* 11处特工皇妃.epub */; };
+		FC6D95761F340B25006A0583 /* 11处特工王妃.TXT in Resources */ = {isa = PBXBuildFile; fileRef = FC6D95751F340B25006A0583 /* 11处特工王妃.TXT */; };
 		FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */ = {isa = PBXBuildFile; fileRef = FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */; };
 		FC88A51A1F0CCAE900BDF04A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FC88A5191F0CCAE900BDF04A /* README.md */; };
 		FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */; };
@@ -587,6 +589,8 @@
 		FC6D956C1F3378AC006A0583 /* XDSRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSRecordModel.m; sourceTree = "<group>"; };
 		FC6D95701F337938006A0583 /* XDSReadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadView.h; sourceTree = "<group>"; };
 		FC6D95711F337938006A0583 /* XDSReadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadView.m; sourceTree = "<group>"; };
+		FC6D95731F33FF53006A0583 /* 11处特工皇妃.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "11处特工皇妃.epub"; sourceTree = "<group>"; };
+		FC6D95751F340B25006A0583 /* 11处特工王妃.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "11处特工王妃.TXT"; sourceTree = "<group>"; };
 		FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = zoubianzhongguo.epub; sourceTree = "<group>"; };
 		FC88A5191F0CCAE900BDF04A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "妖神记.txt"; sourceTree = "<group>"; };
@@ -1607,6 +1611,8 @@
 				FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */,
 				FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */,
 				FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */,
+				FC6D95731F33FF53006A0583 /* 11处特工皇妃.epub */,
+				FC6D95751F340B25006A0583 /* 11处特工王妃.TXT */,
 				FCA78BC61EF3A2D600114907 /* mdjyml.txt */,
 				FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */,
 				FCA78BC81EF3A2D600114907 /* ic_add.png */,
@@ -2253,6 +2259,7 @@
 				FCB2289C1F0DE52C007A0EA0 /* 00340.jpeg in Resources */,
 				FCB228F31F0DE52C007A0EA0 /* part0010.html in Resources */,
 				FCB228B91F0DE52C007A0EA0 /* 00369.jpeg in Resources */,
+				FC6D95741F33FF53006A0583 /* 11处特工皇妃.epub in Resources */,
 				FCB2281B1F0DE52C007A0EA0 /* 00211.jpeg in Resources */,
 				FCB228961F0DE52C007A0EA0 /* 00334.jpeg in Resources */,
 				FCB227971F0DE52C007A0EA0 /* 00079.jpeg in Resources */,
@@ -2445,6 +2452,7 @@
 				FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */,
 				FCB228ED1F0DE52C007A0EA0 /* part0004.html in Resources */,
 				FCB2275E1F0DE52C007A0EA0 /* 00022.jpeg in Resources */,
+				FC6D95761F340B25006A0583 /* 11处特工王妃.TXT in Resources */,
 				FCB228041F0DE52C007A0EA0 /* 00188.jpeg in Resources */,
 				FCB227C41F0DE52C007A0EA0 /* 00124.jpeg in Resources */,
 				FCB228C31F0DE52C007A0EA0 /* 00379.jpeg in Resources */,

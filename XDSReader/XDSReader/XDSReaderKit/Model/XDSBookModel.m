@@ -147,20 +147,18 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
     NSString *key = [url.path lastPathComponent];
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     if (!data) {
-        if ([[key pathExtension] isEqualToString:@"txt"]) {
+        if ([[key pathExtension].lowercaseString isEqualToString:@"txt"]) {
             XDSBookModel *model = [[XDSBookModel alloc] initWithContent:[XDSReaderUtil encodeWithURL:url]];
             model.resource = url;
             [XDSBookModel updateLocalModel:model url:url];
             return model;
-        }
-        else if ([[key pathExtension] isEqualToString:@"epub"]){
+        }else if ([[key pathExtension].lowercaseString isEqualToString:@"epub"]){
             NSLog(@"this is epub");
             XDSBookModel *model = [[XDSBookModel alloc] initWithePub:url.path];
             model.resource = url;
             [XDSBookModel updateLocalModel:model url:url];
             return model;
-        }
-        else{
+        }else{
             @throw [NSException exceptionWithName:@"FileException" reason:@"文件格式错误" userInfo:nil];
         }
         

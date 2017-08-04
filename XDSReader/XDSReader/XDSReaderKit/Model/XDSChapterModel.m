@@ -49,16 +49,19 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         DTCoreTextLayoutFrame *visibleframe;
         NSInteger rangeOffset = 0;
         do {
-            visibleframe = [layouter layoutFrameWithRect:bounds range:NSMakeRange(rangeOffset, 0)];
-            visibleStringRang = [visibleframe visibleStringRange];
-            
-            NSAttributedString *subAttStr = [chapterAttributeContent attributedSubstringFromRange:NSMakeRange(visibleStringRang.location, visibleStringRang.length)];
-            
-            NSMutableAttributedString *mutableAttStr = [[NSMutableAttributedString alloc] initWithAttributedString:subAttStr];
-            [pageAttributeStrings addObject:mutableAttStr];
-            [pageStrings addObject:subAttStr.string];
-            [pageLocations addObject:@(visibleStringRang.location)];
-            rangeOffset += visibleStringRang.length;
+            @autoreleasepool {
+                visibleframe = [layouter layoutFrameWithRect:bounds range:NSMakeRange(rangeOffset, 0)];
+                visibleStringRang = [visibleframe visibleStringRange];
+                NSAttributedString *subAttStr = [chapterAttributeContent attributedSubstringFromRange:NSMakeRange(visibleStringRang.location, visibleStringRang.length)];
+                
+                NSMutableAttributedString *mutableAttStr = [[NSMutableAttributedString alloc] initWithAttributedString:subAttStr];
+                [pageAttributeStrings addObject:mutableAttStr];
+
+                [pageStrings addObject:subAttStr.string];
+                [pageLocations addObject:@(visibleStringRang.location)];
+                rangeOffset += visibleStringRang.length;
+
+            }
             
         } while (visibleStringRang.location + visibleStringRang.length < chapterAttributeContent.string.length);
         
