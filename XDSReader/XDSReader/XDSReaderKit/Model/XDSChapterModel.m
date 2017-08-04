@@ -111,7 +111,8 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         //    // Load HTML data
         readmePath = fileName;
         html = [NSString stringWithContentsOfFile:readmePath encoding:NSUTF8StringEncoding error:NULL];
-        
+        html = [html stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"];
+        html = [html stringByReplacingOccurrencesOfString:@"\n" withString:@"</p><p>"];
         NSString *imagePath = [@"img src=\"" stringByAppendingString:OEBPSUrl];
         html = [html stringByReplacingOccurrencesOfString:@"img src=\".." withString:imagePath];
         html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
