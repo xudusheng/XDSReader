@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		607B6C6126EB56737488D902 /* libPods-XDSReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */; };
+		A29AA3F21F5A6D6300FB24EE /* UIControl+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F11F5A6D6300FB24EE /* UIControl+XDSHyperLink.m */; };
+		A29AA3F51F5A6D8000FB24EE /* UIView+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F41F5A6D8000FB24EE /* UIView+XDSHyperLink.m */; };
+		A29AA3FB1F5A8E3D00FB24EE /* XDSPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */; };
 		FC2669641F511D4500A01A1A /* NSString+HTML_XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2669631F511D4500A01A1A /* NSString+HTML_XDSReader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FC61F7AF1F14651600DA83F4 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */; };
 		FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */; };
@@ -762,6 +765,12 @@
 /* Begin PBXFileReference section */
 		39079157DFAB83B2A1877F23 /* Pods-XDSReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.release.xcconfig"; sourceTree = "<group>"; };
 		566644BA861A753275F3D3DE /* Pods-XDSReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.debug.xcconfig"; sourceTree = "<group>"; };
+		A29AA3F01F5A6D6300FB24EE /* UIControl+XDSHyperLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+XDSHyperLink.h"; sourceTree = "<group>"; };
+		A29AA3F11F5A6D6300FB24EE /* UIControl+XDSHyperLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+XDSHyperLink.m"; sourceTree = "<group>"; };
+		A29AA3F31F5A6D8000FB24EE /* UIView+XDSHyperLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XDSHyperLink.h"; sourceTree = "<group>"; };
+		A29AA3F41F5A6D8000FB24EE /* UIView+XDSHyperLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XDSHyperLink.m"; sourceTree = "<group>"; };
+		A29AA3F91F5A8E3D00FB24EE /* XDSPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSPhotoBrowser.h; sourceTree = "<group>"; };
+		A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSPhotoBrowser.m; sourceTree = "<group>"; };
 		E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XDSReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC2669621F511D4500A01A1A /* NSString+HTML_XDSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML_XDSReader.h"; sourceTree = "<group>"; };
 		FC2669631F511D4500A01A1A /* NSString+HTML_XDSReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML_XDSReader.m"; sourceTree = "<group>"; };
@@ -2132,6 +2141,8 @@
 				FC6D95711F337938006A0583 /* XDSReadView.m */,
 				FCA78BA71EF362CA00114907 /* XDSMagnifierView.h */,
 				FCA78BA81EF362CA00114907 /* XDSMagnifierView.m */,
+				A29AA3F01F5A6D6300FB24EE /* UIControl+XDSHyperLink.h */,
+				A29AA3F11F5A6D6300FB24EE /* UIControl+XDSHyperLink.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2143,6 +2154,8 @@
 				FCB229001F0F19C3007A0EA0 /* XDSReadViewController.m */,
 				FC61F7AD1F14651600DA83F4 /* XDSReadPageViewController.h */,
 				FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */,
+				A29AA3F91F5A8E3D00FB24EE /* XDSPhotoBrowser.h */,
+				A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2172,6 +2185,8 @@
 				FC2669631F511D4500A01A1A /* NSString+HTML_XDSReader.m */,
 				FCA78BC01EF39B6000114907 /* UIImage+ImageEffects.h */,
 				FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */,
+				A29AA3F31F5A6D8000FB24EE /* UIView+XDSHyperLink.h */,
+				A29AA3F41F5A6D8000FB24EE /* UIView+XDSHyperLink.m */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -3585,6 +3600,7 @@
 				FCA78AD41EF2914F00114907 /* XDSWIFIFileTransferViewController.m in Sources */,
 				FC61F7AF1F14651600DA83F4 /* XDSReadPageViewController.m in Sources */,
 				FCA78C111EF91F0800114907 /* XDSCatalogueTabBarController.m in Sources */,
+				A29AA3FB1F5A8E3D00FB24EE /* XDSPhotoBrowser.m in Sources */,
 				FCA78B811EF2DEB500114907 /* CXMLElement.m in Sources */,
 				FCA78B851EF2DEB500114907 /* CXMLNode.m in Sources */,
 				FCA78AC11EF2914F00114907 /* HTTPAuthenticationRequest.m in Sources */,
@@ -3629,6 +3645,7 @@
 				FCA78ABC1EF2914F00114907 /* DispatchQueueLogFormatter.m in Sources */,
 				FCA78ACE1EF2914F00114907 /* WebSocket.m in Sources */,
 				FCA78B4E1EF2DD9200114907 /* XDSReadOperation.m in Sources */,
+				A29AA3F51F5A6D8000FB24EE /* UIView+XDSHyperLink.m in Sources */,
 				FCA78ACB1EF2914F00114907 /* HTTPErrorResponse.m in Sources */,
 				FCA78B311EF2916700114907 /* XDSReaderGlobleConst.m in Sources */,
 				FC61F8561F18770700DA83F4 /* NSDictionary+OPCoreText.m in Sources */,
@@ -3656,6 +3673,7 @@
 				FCA78C141EF929AA00114907 /* XDSCatalogueViewController.m in Sources */,
 				FCA78AB61EF2914F00114907 /* DDAbstractDatabaseLogger.m in Sources */,
 				FCA78B841EF2DEB500114907 /* CXMLNamespaceNode.m in Sources */,
+				A29AA3F21F5A6D6300FB24EE /* UIControl+XDSHyperLink.m in Sources */,
 				FCA78BEB1EF75CB300114907 /* XDSReadViewConst.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

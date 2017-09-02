@@ -121,6 +121,7 @@ XDSReadManagerDelegate
 //解决TabView与Tap手势冲突
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if ([touch.view isKindOfClass:[DTAttributedTextContentView class]] ||
+        [touch.view isKindOfClass:[DTAttributedTextView class]] ||
         [touch.view isKindOfClass:[XDSReadView class]]) {
         return YES;
     }

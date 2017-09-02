@@ -8,7 +8,9 @@
 
 #import "XDSReadView.h"
 #import "XDSChapterModel.h"
-@interface XDSReadView () <DTAttributedTextContentViewDelegate>
+#import "UIView+XDSHyperLink.h"
+#import "XDSPhotoBrowser.h"
+@interface XDSReadView () <DTAttributedTextContentViewDelegate, MWPhotoBrowserDelegate>
 
 {
     NSRange _selectRange;
@@ -181,37 +183,24 @@
         // if the attachment has a hyperlinkURL then this is currently ignored
         DTLazyImageView *imageView = [[DTLazyImageView alloc] initWithFrame:frame];
 //        imageView.delegate = self;
-        
+        imageView.userInteractionEnabled = YES;
         // sets the image if there is one
         imageView.image = [(DTImageTextAttachment *)attachment image];
         // url for deferred loading
         imageView.url = attachment.contentURL;
-        
-        // if there is a hyperlink then add a link button on top of this image
-        if (attachment.hyperLinkURL){
-            // NOTE: this is a hack, you probably want to use your own image view and touch handling
-            // also, this treats an image with a hyperlink by itself because we don't have the GUID of the link parts
-            imageView.userInteractionEnabled = YES;
-            
-            DTLinkButton *button = [[DTLinkButton alloc] initWithFrame:imageView.bounds];
-            button.URL = attachment.hyperLinkURL;
-            button.minimumHitSize = CGSizeMake(25, 25); // adjusts it's bounds so that button is always large enough
-            button.GUID = attachment.hyperLinkGUID;
-            
-//            // use normal push action for opening URL
-//            [button addTarget:self action:@selector(linkPushed:) forControlEvents:UIControlEventTouchUpInside];
-//            
-//            // demonstrate combination with long press
-//            UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(linkLongPressed:)];
-//            [button addGestureRecognizer:longPress];
-//            
-            [imageView addSubview:button];
+        if (attachment.contentURL || attachment.hyperLinkURL) {
+            [imageView addGestureRecognizer:({
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];
+                tap;
+            })];
         }
         
+        if (attachment.hyperLinkURL) {
+            imageView.hyperLinkURL = attachment.hyperLinkURL;// if there is a hyperlink
+        }
+
         return imageView;
-    }
-    else if ([attachment isKindOfClass:[DTObjectTextAttachment class]])
-    {
+    }else if ([attachment isKindOfClass:[DTObjectTextAttachment class]]) {
         // somecolorparameter has a HTML color
         NSString *colorName = [attachment.attributes objectForKey:@"somecolorparameter"];
         UIColor *someColor = DTColorCreateWithHTMLName(colorName);
@@ -239,8 +228,7 @@
     
     //    CGColorRef color = [textBlock.backgroundColor CGColor];
     CGColorRef color = [[UIColor blueColor] CGColor];
-    if (color)
-    {
+    if (color) {
         CGContextSetFillColorWithColor(context, color);
         CGContextAddPath(context, [roundedRect CGPath]);
         CGContextFillPath(context);
@@ -257,6 +245,16 @@
 //MARK: - ABOUT REQUEST 网络请求
 
 //MARK: - ABOUT EVENTS 事件响应
+- (void)handleImageTap:(UITapGestureRecognizer *)tap {
+    DTLazyImageView *imageView = (DTLazyImageView *)tap.view;
+    if (imageView.url && imageView.hyperLinkURL) {
+#warning show action sheet
+        
+    }else if (imageView.url){
+#warning show image browser
+        [self showPhotoBrowserWithImage:imageView.url.path];
+    }
+}
 - (void)linkPushed:(DTLinkButton *)button{
     XDSNoteModel *noteModel = [XDSNoteModel getNoteFromURL:button.URL];
     if (noteModel) {
@@ -348,6 +346,50 @@
 -(void)hiddenMenu{
     [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
 }
+
+#pragma mark - MJPhotoBrowser库关键代码
+- (void)showPhotoBrowserWithImage:(NSString *)imageurl {
+    //显示大图
+    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
+    // 2.显示相册
+    XDSPhotoBrowser *browser = [[XDSPhotoBrowser alloc] initWithDelegate:self];
+    
+    // Set options
+    browser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
+    browser.displayNavArrows = YES; // Whether to display left and right nav arrows on toolbar (defaults to NO)
+    browser.displaySelectionButtons = NO; // Whether selection buttons are shown on each image (defaults to NO)
+    browser.zoomPhotosToFill = YES; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
+    browser.alwaysShowControls = YES; // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
+    browser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
+    browser.startOnGrid = YES; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
+    browser.autoPlayOnAppear = YES; // Auto-play first video
+    browser.enableSwipeToDismiss = YES;
+    
+    browser.currentPhotoIndex = [imageSrcArray containsObject:imageurl]?[imageSrcArray indexOfObject:imageurl]:0; // 弹出相册时显示第几张图片
+    [browser showNextPhotoAnimated:YES];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:browser];
+    [[UIViewController xds_visiableViewController] presentViewController:nav animated:YES completion:nil];
+}
+
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
+
+    return imageSrcArray.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
+
+    if (index < imageSrcArray.count) {
+        NSString *scr = imageSrcArray[index];
+        MWPhoto *photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:scr]];
+        return photo;
+    }
+    return nil;
+}
+
 #pragma mark Menu Function
 -(void)menuCopy:(id)sender{
     [self hiddenMenu];

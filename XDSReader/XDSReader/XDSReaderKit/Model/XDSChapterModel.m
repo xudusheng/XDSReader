@@ -17,8 +17,9 @@
 @property (nonatomic, copy) NSArray *pageLocations;//每一页在章节中的位置
 @property (nonatomic, assign) NSInteger pageCount;//章节总页数
 
-@property (nonatomic,copy) NSArray<XDSNoteModel *>*notes;
-@property (nonatomic,copy) NSArray<XDSMarkModel *>*marks;
+@property (nonatomic, copy) NSArray<NSString *> *imageSrcArray;//本章所有图片的链接
+@property (nonatomic, copy) NSArray<XDSNoteModel *>*notes;
+@property (nonatomic, copy) NSArray<XDSMarkModel *>*marks;
 
 
 @property (assign, nonatomic) CGRect showBounds;
@@ -28,7 +29,8 @@
 NSString *const kXDSChapterModelChapterNameEncodeKey = @"chapterName";
 NSString *const kXDSChapterModelChapterSrcEncodeKey = @"chapterSrc";
 NSString *const kXDSChapterModelOriginContentEncodeKey = @"originContent";
-NSString *const kXDSChapterModelNotesPathEncodeKey = @"notes";
+NSString *const kXDSChapterModelImageSrcArrayEncodeKey = @"imageSrcArray";
+NSString *const kXDSChapterModelNotesEncodeKey = @"notes";
 NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
 
 
@@ -113,8 +115,8 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         html = [NSString stringWithContentsOfFile:readmePath encoding:NSUTF8StringEncoding error:NULL];
         html = [html stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"];
         html = [html stringByReplacingOccurrencesOfString:@"\n" withString:@"<p></p>"];
-        NSString *imagePath = [@"img src=\"" stringByAppendingString:OEBPSUrl];
-        html = [html stringByReplacingOccurrencesOfString:@"img src=\".." withString:imagePath];
+        NSString *imagePath = [@"src=\"" stringByAppendingString:OEBPSUrl];
+        html = [html stringByReplacingOccurrencesOfString:@"src=\".." withString:imagePath];
         html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
     }else if (self.originContent.length) {
         //load txt content
@@ -126,10 +128,11 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
     }
     
+    //get image resources
+    [self separatePicturesFromHtml:html];
+    
     NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
-    
     // Create attributed string from HTML
-    
     // example for setting a willFlushCallback, that gets called before elements are written to the generated attributed string
     void (^callBackBlock)(DTHTMLElement *element) = ^(DTHTMLElement *element) {
         
@@ -152,13 +155,14 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     UIColor *textColor = config.currentTextColor?config.currentTextColor:config.cacheTextColor;
     NSString *fontName = config.currentFontName?config.currentFontName:config.cacheFontName;
 
-    NSString *header = @"你好";
-    CGRect headerFrame = [header boundingRectWithSize:CGSizeMake(100, 100)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]}
-                                              context:nil];
-    CGFloat headIndent = CGRectGetWidth(headerFrame);
-    
+//    NSString *header = @"你好";
+//    CGRect headerFrame = [header boundingRectWithSize:CGSizeMake(100, 100)
+//                                              options:NSStringDrawingUsesLineFragmentOrigin
+//                                           attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]}
+//                                              context:nil];
+//    CGFloat headIndent = CGRectGetWidth(headerFrame);
+
+    CGFloat headIndent = 0.f;
     CGSize maxImageSize = CGSizeMake(_showBounds.size.width - headIndent*2, _showBounds.size.height - headIndent);
     
     NSDictionary *dic = @{NSTextSizeMultiplierDocumentOption:@(fontSize/11.0),
@@ -181,6 +185,38 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     return string;
 }
 
+//TODO:Separate pictures from html 从html中分离出图片
+- (void)separatePicturesFromHtml:(NSString *)html {
+    NSMutableArray *picSrcArray = [NSMutableArray arrayWithCapacity:0];
+    NSString *regex = @"(<img)([^>]+)";
+    NSRange range = NSMakeRange(0, html.length);
+    range = [html rangeOfString:regex options:NSRegularExpressionSearch range:range];
+    
+    while (range.location != NSNotFound){
+        
+        @autoreleasepool {
+            
+            NSString *imgDoc = [html substringWithRange:range];
+            NSString *srcRegex = @"(src=)('|\")([^'\"]+)(['\"])";
+            NSRange srcRange = [imgDoc rangeOfString:srcRegex options:NSRegularExpressionSearch];
+            NSString *srcString = [imgDoc substringWithRange:srcRange];
+            
+            NSString *picSrc = [srcString componentsSeparatedByString:@"="].lastObject;
+            picSrc = [picSrc stringByReplacingOccurrencesOfString:@"'" withString:@""];
+            picSrc = [picSrc stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+            
+            NSLog(@"picSrc = %@",picSrc);
+            if (picSrc.length) {
+                [picSrcArray addObject:picSrc];
+            }
+            range.location = range.location + range.length;
+            range.length = html.length - range.location;
+            range = [html rangeOfString:regex options:NSRegularExpressionSearch range:range];
+        }
+    }
+    
+    self.imageSrcArray = picSrcArray;
+}
 
 //TODO:insert a book note into chapter 向该章节中插入一条笔记
 - (void)addNote:(XDSNoteModel *)noteModel{
@@ -267,6 +303,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     model.pageStrings = self.pageStrings;
     model.pageLocations = self.pageLocations;
     model.pageCount = self.pageCount;
+    model.imageSrcArray = self.imageSrcArray;
     model.notes = self.notes;
     model.marks = self.marks;
     return model;
@@ -275,7 +312,8 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     [aCoder encodeObject:self.chapterName forKey:kXDSChapterModelChapterNameEncodeKey];
     [aCoder encodeObject:self.chapterSrc forKey:kXDSChapterModelChapterSrcEncodeKey];
     [aCoder encodeObject:self.originContent forKey:kXDSChapterModelOriginContentEncodeKey];
-    [aCoder encodeObject:self.notes forKey:kXDSChapterModelNotesPathEncodeKey];
+    [aCoder encodeObject:self.imageSrcArray forKey:kXDSChapterModelImageSrcArrayEncodeKey];
+    [aCoder encodeObject:self.notes forKey:kXDSChapterModelNotesEncodeKey];
     [aCoder encodeObject:self.marks forKey:kXDSChapterModelMarksEncodeKey];
 }
 -(id)initWithCoder:(NSCoder *)aDecoder{
@@ -284,7 +322,8 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         self.chapterName = [aDecoder decodeObjectForKey:kXDSChapterModelChapterNameEncodeKey];
         self.chapterSrc = [aDecoder decodeObjectForKey:kXDSChapterModelChapterSrcEncodeKey];
         self.originContent = [aDecoder decodeObjectForKey:kXDSChapterModelOriginContentEncodeKey];
-        self.notes = [aDecoder decodeObjectForKey:kXDSChapterModelNotesPathEncodeKey];
+        self.imageSrcArray = [aDecoder decodeObjectForKey:kXDSChapterModelImageSrcArrayEncodeKey];
+        self.notes = [aDecoder decodeObjectForKey:kXDSChapterModelNotesEncodeKey];
         self.marks = [aDecoder decodeObjectForKey:kXDSChapterModelMarksEncodeKey];
 
     }

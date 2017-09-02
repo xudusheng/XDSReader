@@ -28,6 +28,7 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
 @property (nonatomic, readonly) NSArray *pageLocations;//每一页在章节中的位置
 @property (nonatomic, readonly) NSInteger pageCount;//章节总页数
 
+@property (nonatomic, readonly) NSArray<NSString *> *imageSrcArray;//本章所有图片的链接
 @property (nonatomic, readonly) NSArray<XDSNoteModel *>*notes;
 @property (nonatomic, readonly) NSArray<XDSMarkModel *>*marks;
 
