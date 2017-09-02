@@ -24,7 +24,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"11处特工皇妃"withExtension:@"epub"];
+//        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"11处特工皇妃"withExtension:@"epub"];//包含长章节，注意内存警告
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"zoubianzhongguo"withExtension:@"epub"];
+
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 1){
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"11处特工王妃"withExtension:@"TXT"];
@@ -63,7 +65,7 @@
 //            }
 //        }
         
-
+        
         
 //        NSLog(@"url = %@", url);
         

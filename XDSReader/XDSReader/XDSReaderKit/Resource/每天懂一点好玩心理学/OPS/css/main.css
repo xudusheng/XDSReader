@@ -1,0 +1,111 @@
+@font-face {
+	font-family:"zw";
+	src:url(res:///opt/sony/ebook/FONT/zw.ttf),
+	url(res:///Data/FONT/zw.ttf),
+	url(res:///opt/sony/ebook/FONT/tt0011m_.ttf)
+	url(res:///fonts/ttf/zw.ttf),
+	url(res:///../../media/mmcblk0p1/fonts/zw.ttf),
+	url(res:///DK_System/system/font/zw.ttf),
+	url(res:///abook/fonts/zw.ttf),
+	url(res:///system/fonts/zw.ttf),
+	url(res:///system/media/sdcard/fonts/zw.ttf),
+	url(res:///media/fonts/zw.ttf),
+	url(res:///sdcard/fonts/zw.ttf),
+	url(res:///system/fonts/DroidSansFallback.ttf),
+	url(res:///mnt/MOVIFAT/font/zw.ttf),
+	url(fonts/zw.ttf);
+}
+
+body {
+	padding: 0%;
+	margin-top: 0%;
+	margin-bottom: 0%;
+	margin-left: 1%;
+	margin-right: 1%;
+	line-height:130%;
+	text-align: justify;
+	font-family:"zw";
+}
+div {
+	margin:0px;
+	padding:0px;
+	line-height:130%;
+	text-align: justify;
+	font-family:"zw";
+}
+p {
+	text-align: justify;
+	text-indent: 2em;
+	line-height:130%;
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+}
+.cover {
+	width:100%;
+	padding:0px;
+}
+.center {
+	text-align: center;
+	margin-left: 0%;
+	margin-right: 0%;
+}
+.left {
+	text-align: center;
+	margin-left: 0%;
+	margin-right: 0%;
+}
+.right {
+	text-align: right;
+	margin-left: 0%;
+	margin-right: 0%;
+}
+.quote {
+	margin-top: 0%;
+	margin-bottom: 0%;
+	margin-left: 1em;
+	margin-right: 1em;
+	text-align: justify;
+	font-family:"cnepub", serif;
+}
+h1 {
+	line-height:130%;
+	text-align: center;
+	font-weight:bold;
+	font-size:xx-large;
+}
+h2 {
+	line-height:130%;
+	text-align: center;
+	font-weight:bold;
+	font-size:x-large;
+}
+h3 {
+	line-height:130%;
+	text-align: center;
+	font-weight:bold;
+	font-size:large;
+	background-color: #f5f0ca;
+	padding-bottom:0.2em;
+	padding-top:0.2em;
+	margin-top:5pt;
+}
+h4 {
+	line-height:130%;
+	text-align: center;
+	font-weight:bold;
+	font-size:medium;
+}
+h5 {
+	line-height:130%;
+	text-align: center;
+	font-weight: normal;
+	font-size:small;
+	margin-top: 2pt;
+	margin-bottom: 5pt;
+}
+h6 {
+	line-height:130%;
+	text-align: center;
+	font-weight:bold;
+	font-size:x-small;
+}

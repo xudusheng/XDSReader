@@ -112,7 +112,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         readmePath = fileName;
         html = [NSString stringWithContentsOfFile:readmePath encoding:NSUTF8StringEncoding error:NULL];
         html = [html stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"];
-        html = [html stringByReplacingOccurrencesOfString:@"\n" withString:@"</p><p>"];
+        html = [html stringByReplacingOccurrencesOfString:@"\n" withString:@"<p></p>"];
         NSString *imagePath = [@"img src=\"" stringByAppendingString:OEBPSUrl];
         html = [html stringByReplacingOccurrencesOfString:@"img src=\".." withString:imagePath];
         html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
@@ -125,6 +125,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         html = [html stringByAppendingString:@"</p>"];
         html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
     }
+    
     NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
     
     // Create attributed string from HTML
@@ -168,7 +169,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
                           DTDefaultTextColor:textColor,
                           DTDefaultFontName:fontName,
                           DTWillFlushBlockCallBack:callBackBlock,
-//                          DTDefaultFirstLineHeadIndent:@(headIndent),
+                          DTIgnoreInlineStylesOption:@(YES),
                           };
     
     NSMutableDictionary *options = [NSMutableDictionary dictionaryWithDictionary:dic];

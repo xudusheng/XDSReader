@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<package version="2.0" unique-identifier="PrimaryID" xmlns="http://www.idpf.org/2007/opf">
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+<dc:title>每天懂一点好玩心理学</dc:title>
+<dc:identifier opf:scheme="ISBN"></dc:identifier>
+<dc:language>zh-CN</dc:language>
+<dc:creator>（日)原田玲仁</dc:creator>
+<dc:publisher>epub掌上书苑</dc:publisher>
+<dc:description>这是一本超级实用的好玩心理学。一见钟情的秘密、恋爱达人的秘诀、没有长性的心理原因、做梦的男女差别、为什么偏有人喜欢排队、拍马屁的高明方法、识破丈夫谎言的高招、夫妻间防止吵架的技巧、为什么英雄多是孤胆英雄、为何乘电梯时大家都喜欢往上看、价格尾数的促销作用、星期四是事故多发日……希望这些新颖有趣的案例能带给您与其他心理学读物不一样的新鲜感！</dc:description>
+<dc:coverage></dc:coverage>
+<dc:source>http://www.cnepub.com</dc:source>
+<dc:date>2012-08-17</dc:date>
+<dc:rights>本电子书由epubBuilder制作生成，欢迎访问http://www.cnepub.com分享交流海量电子书。
+epubBuilder仅供交流使用，未经授权，不得用于商业用途。</dc:rights>
+<dc:subject>科普书籍</dc:subject>
+<dc:contributor></dc:contributor>
+<dc:type>[type]</dc:type>
+<dc:format></dc:format>
+<dc:relation></dc:relation>
+<dc:builder>epubBuilder</dc:builder>
+<dc:builder_version>3.4.06.30</dc:builder_version>
+<meta name="cover" content="cover-image"/>
+</metadata>
+<manifest>
+<!-- Content Documents -->
+<item id="main-css" href="css/main.css" media-type="text/css"/>
+<item id="coverpage"  href="coverpage.html"  media-type="application/xhtml+xml"/>
+<item id="chapter1"  href="chapter1.html"  media-type="application/xhtml+xml"/>
+<item id="chapter2"  href="chapter2.html"  media-type="application/xhtml+xml"/>
+<item id="chapter3"  href="chapter3.html"  media-type="application/xhtml+xml"/>
+<item id="chapter4"  href="chapter4.html"  media-type="application/xhtml+xml"/>
+<item id="chapter5"  href="chapter5.html"  media-type="application/xhtml+xml"/>
+<item id="chapter6"  href="chapter6.html"  media-type="application/xhtml+xml"/>
+<item id="chapter7"  href="chapter7.html"  media-type="application/xhtml+xml"/>
+<item id="chapter8"  href="chapter8.html"  media-type="application/xhtml+xml"/>
+<item id="chapter9"  href="chapter9.html"  media-type="application/xhtml+xml"/>
+<item id="chapter10"  href="chapter10.html"  media-type="application/xhtml+xml"/>
+<item id="chapter11"  href="chapter11.html"  media-type="application/xhtml+xml"/>
+<item id="chapter12"  href="chapter12.html"  media-type="application/xhtml+xml"/>
+<item id="chapter18"  href="chapter18.html"  media-type="application/xhtml+xml"/>
+<item id="chapter19"  href="chapter19.html"  media-type="application/xhtml+xml"/>
+<item id="chapter20"  href="chapter20.html"  media-type="application/xhtml+xml"/>
+<item id="chapter21"  href="chapter21.html"  media-type="application/xhtml+xml"/>
+<item id="chapter22"  href="chapter22.html"  media-type="application/xhtml+xml"/>
+<item id="chapter23"  href="chapter23.html"  media-type="application/xhtml+xml"/>
+<item id="chapter24"  href="chapter24.html"  media-type="application/xhtml+xml"/>
+<item id="chapter25"  href="chapter25.html"  media-type="application/xhtml+xml"/>
+<item id="chapter26"  href="chapter26.html"  media-type="application/xhtml+xml"/>
+<item id="chapter27"  href="chapter27.html"  media-type="application/xhtml+xml"/>
+<item id="chapter28"  href="chapter28.html"  media-type="application/xhtml+xml"/>
+<item id="chapter29"  href="chapter29.html"  media-type="application/xhtml+xml"/>
+<item id="chapter30"  href="chapter30.html"  media-type="application/xhtml+xml"/>
+<item id="chapter31"  href="chapter31.html"  media-type="application/xhtml+xml"/>
+<item id="chapter32"  href="chapter32.html"  media-type="application/xhtml+xml"/>
+<item id="chapter33"  href="chapter33.html"  media-type="application/xhtml+xml"/>
+<item id="chapter34"  href="chapter34.html"  media-type="application/xhtml+xml"/>
+<item id="chapter35"  href="chapter35.html"  media-type="application/xhtml+xml"/>
+<item id="chapter36"  href="chapter36.html"  media-type="application/xhtml+xml"/>
+<item id="chapter37"  href="chapter37.html"  media-type="application/xhtml+xml"/>
+<item id="chapter38"  href="chapter38.html"  media-type="application/xhtml+xml"/>
+<item id="chapter39"  href="chapter39.html"  media-type="application/xhtml+xml"/>
+<item id="chapter40"  href="chapter40.html"  media-type="application/xhtml+xml"/>
+<item id="chapter41"  href="chapter41.html"  media-type="application/xhtml+xml"/>
+<item id="chapter42"  href="chapter42.html"  media-type="application/xhtml+xml"/>
+<item id="chapter43"  href="chapter43.html"  media-type="application/xhtml+xml"/>
+<item id="chapter44"  href="chapter44.html"  media-type="application/xhtml+xml"/>
+<item id="chapter45"  href="chapter45.html"  media-type="application/xhtml+xml"/>
+<item id="chapter46"  href="chapter46.html"  media-type="application/xhtml+xml"/>
+<item id="chapter47"  href="chapter47.html"  media-type="application/xhtml+xml"/>
+<item id="chapter48"  href="chapter48.html"  media-type="application/xhtml+xml"/>
+<item id="chapter49"  href="chapter49.html"  media-type="application/xhtml+xml"/>
+<item id="chapter50"  href="chapter50.html"  media-type="application/xhtml+xml"/>
+<item id="chapter51"  href="chapter51.html"  media-type="application/xhtml+xml"/>
+<item id="chapter52"  href="chapter52.html"  media-type="application/xhtml+xml"/>
+<item id="chapter53"  href="chapter53.html"  media-type="application/xhtml+xml"/>
+<item id="chapter54"  href="chapter54.html"  media-type="application/xhtml+xml"/>
+<item id="chapter55"  href="chapter55.html"  media-type="application/xhtml+xml"/>
+<item id="chapter56"  href="chapter56.html"  media-type="application/xhtml+xml"/>
+<item id="chapter57"  href="chapter57.html"  media-type="application/xhtml+xml"/>
+<item id="chapter58"  href="chapter58.html"  media-type="application/xhtml+xml"/>
+<item id="chapter59"  href="chapter59.html"  media-type="application/xhtml+xml"/>
+<item id="chapter60"  href="chapter60.html"  media-type="application/xhtml+xml"/>
+<item id="chapter61"  href="chapter61.html"  media-type="application/xhtml+xml"/>
+<item id="chapter62"  href="chapter62.html"  media-type="application/xhtml+xml"/>
+<item id="chapter63"  href="chapter63.html"  media-type="application/xhtml+xml"/>
+<item id="chapter64"  href="chapter64.html"  media-type="application/xhtml+xml"/>
+<item id="chapter65"  href="chapter65.html"  media-type="application/xhtml+xml"/>
+<item id="chapter66"  href="chapter66.html"  media-type="application/xhtml+xml"/>
+<item id="chapter67"  href="chapter67.html"  media-type="application/xhtml+xml"/>
+<item id="chapter68"  href="chapter68.html"  media-type="application/xhtml+xml"/>
+<item id="chapter69"  href="chapter69.html"  media-type="application/xhtml+xml"/>
+<item id="chapter70"  href="chapter70.html"  media-type="application/xhtml+xml"/>
+<item id="chapter71"  href="chapter71.html"  media-type="application/xhtml+xml"/>
+<item id="chapter72"  href="chapter72.html"  media-type="application/xhtml+xml"/>
+<item id="chapter73"  href="chapter73.html"  media-type="application/xhtml+xml"/>
+<item id="chapter74"  href="chapter74.html"  media-type="application/xhtml+xml"/>
+<item id="chapter81"  href="chapter81.html"  media-type="application/xhtml+xml"/>
+<item id="chapter84"  href="chapter84.html"  media-type="application/xhtml+xml"/>
+<item id="chapter85"  href="chapter85.html"  media-type="application/xhtml+xml"/>
+<item id="chapter86"  href="chapter86.html"  media-type="application/xhtml+xml"/>
+<item id="chapter87"  href="chapter87.html"  media-type="application/xhtml+xml"/>
+
+<item id="ncx"  href="fb.ncx" media-type="application/x-dtbncx+xml"/>
+<item id="css" href="css/main.css" media-type="text/css"/>
+<item id="cover-image" href="images/cover.jpg" media-type="image/jpeg"/>
+</manifest>
+<spine toc="ncx">
+<itemref idref="coverpage" linear="yes"/>
+<itemref idref="chapter1" linear="yes"/>
+<itemref idref="chapter2" linear="yes"/>
+<itemref idref="chapter3" linear="yes"/>
+<itemref idref="chapter4" linear="yes"/>
+<itemref idref="chapter5" linear="yes"/>
+<itemref idref="chapter6" linear="yes"/>
+<itemref idref="chapter7" linear="yes"/>
+<itemref idref="chapter8" linear="yes"/>
+<itemref idref="chapter9" linear="yes"/>
+<itemref idref="chapter10" linear="yes"/>
+<itemref idref="chapter11" linear="yes"/>
+<itemref idref="chapter12" linear="yes"/>
+<itemref idref="chapter18" linear="yes"/>
+<itemref idref="chapter19" linear="yes"/>
+<itemref idref="chapter20" linear="yes"/>
+<itemref idref="chapter21" linear="yes"/>
+<itemref idref="chapter22" linear="yes"/>
+<itemref idref="chapter23" linear="yes"/>
+<itemref idref="chapter24" linear="yes"/>
+<itemref idref="chapter25" linear="yes"/>
+<itemref idref="chapter26" linear="yes"/>
+<itemref idref="chapter27" linear="yes"/>
+<itemref idref="chapter28" linear="yes"/>
+<itemref idref="chapter29" linear="yes"/>
+<itemref idref="chapter30" linear="yes"/>
+<itemref idref="chapter31" linear="yes"/>
+<itemref idref="chapter32" linear="yes"/>
+<itemref idref="chapter33" linear="yes"/>
+<itemref idref="chapter34" linear="yes"/>
+<itemref idref="chapter35" linear="yes"/>
+<itemref idref="chapter36" linear="yes"/>
+<itemref idref="chapter37" linear="yes"/>
+<itemref idref="chapter38" linear="yes"/>
+<itemref idref="chapter39" linear="yes"/>
+<itemref idref="chapter40" linear="yes"/>
+<itemref idref="chapter41" linear="yes"/>
+<itemref idref="chapter42" linear="yes"/>
+<itemref idref="chapter43" linear="yes"/>
+<itemref idref="chapter44" linear="yes"/>
+<itemref idref="chapter45" linear="yes"/>
+<itemref idref="chapter46" linear="yes"/>
+<itemref idref="chapter47" linear="yes"/>
+<itemref idref="chapter48" linear="yes"/>
+<itemref idref="chapter49" linear="yes"/>
+<itemref idref="chapter50" linear="yes"/>
+<itemref idref="chapter51" linear="yes"/>
+<itemref idref="chapter52" linear="yes"/>
+<itemref idref="chapter53" linear="yes"/>
+<itemref idref="chapter54" linear="yes"/>
+<itemref idref="chapter55" linear="yes"/>
+<itemref idref="chapter56" linear="yes"/>
+<itemref idref="chapter57" linear="yes"/>
+<itemref idref="chapter58" linear="yes"/>
+<itemref idref="chapter59" linear="yes"/>
+<itemref idref="chapter60" linear="yes"/>
+<itemref idref="chapter61" linear="yes"/>
+<itemref idref="chapter62" linear="yes"/>
+<itemref idref="chapter63" linear="yes"/>
+<itemref idref="chapter64" linear="yes"/>
+<itemref idref="chapter65" linear="yes"/>
+<itemref idref="chapter66" linear="yes"/>
+<itemref idref="chapter67" linear="yes"/>
+<itemref idref="chapter68" linear="yes"/>
+<itemref idref="chapter69" linear="yes"/>
+<itemref idref="chapter70" linear="yes"/>
+<itemref idref="chapter71" linear="yes"/>
+<itemref idref="chapter72" linear="yes"/>
+<itemref idref="chapter73" linear="yes"/>
+<itemref idref="chapter74" linear="yes"/>
+<itemref idref="chapter81" linear="yes"/>
+<itemref idref="chapter84" linear="yes"/>
+<itemref idref="chapter85" linear="yes"/>
+<itemref idref="chapter86" linear="yes"/>
+<itemref idref="chapter87" linear="yes"/>
+
+</spine>
+<guide>
+<reference type="cover" title="封面"  href="coverpage.html"/>
+
+</guide>
+</package>
