@@ -187,7 +187,7 @@
     
     
     
-    return [self readCarologueFromOPF:opfDocument ncxDoc:ncxDoc];
+//    return [self readCarologueFromOPF:opfDocument ncxDoc:ncxDoc];
     
     //read carologue from ncx file 从ncx读取书籍目录（需优化，需要处理章节内链接问题）
     return [self readCarologueFromNCX:ncxDoc];
@@ -244,6 +244,9 @@
     NSArray *navPoints = [ncxDoc nodesForXPath:xpath namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.daisy.org/z3986/2005/ncx/" forKey:@"ncx"] error:nil];
     
     NSMutableArray *chapters = [NSMutableArray arrayWithCapacity:0];
+    XDSChapterModel *chapter;
+    NSMutableArray *catalogueModelArrayInChapter;
+    
     for (CXMLElement *element in navPoints) {
         NSArray *navLabels = [element elementsForName:@"navLabel"];
         NSArray *contents = [element elementsForName:@"content"];
@@ -265,11 +268,24 @@
         NSString *chapterSrc = [content attributeForName:@"src"].stringValue;//章节路径
         NSLog(@"%@ = %@", chapterName, chapterSrc);
         
-        XDSChapterModel *chapter = [[XDSChapterModel alloc] init];
-        chapter.chapterName = chapterName;
-        chapter.chapterSrc = chapterSrc;
+        XDSCatalogueModel *catalogueModel = [[XDSCatalogueModel alloc] init];
+        catalogueModel.catalogueName = chapterName;
+        catalogueModel.link = chapterSrc;
         
-        [chapters addObject:chapter];
+        NSArray *links = [chapterSrc componentsSeparatedByString:@"#"];
+        if (links.count == 1) {
+            catalogueModelArrayInChapter = [NSMutableArray arrayWithCapacity:0];
+            chapter = [[XDSChapterModel alloc] init];
+            chapter.chapterName = chapterName;
+            chapter.chapterSrc = chapterSrc;
+            [chapter setCatalogueModelArray:catalogueModelArrayInChapter];
+            [chapters addObject:chapter];
+
+        }else {
+            catalogueModel.catalogueId = links.lastObject;
+        }
+        [catalogueModelArrayInChapter addObject:catalogueModel];
+
     }
     return chapters;
 }

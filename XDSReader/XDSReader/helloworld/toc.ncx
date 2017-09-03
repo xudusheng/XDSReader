@@ -1,1065 +1,1065 @@
 <?xml version='1.0' encoding='utf-8'?>
 <ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="zho">
-  <head>
-    <meta content="0d881f0c-d0aa-4f06-880a-86c6d16c25c8" name="dtb:uid"/>
-    <meta content="4" name="dtb:depth"/>
-    <meta content="calibre (0.9.16)" name="dtb:generator"/>
-    <meta content="0" name="dtb:totalPageCount"/>
-    <meta content="0" name="dtb:maxPageNumber"/>
-  </head>
-  <docTitle>
-    <text>走遍中国(珍藏版) (图说天下·国家地理系列)</text>
-  </docTitle>
-  <navMap>
-    <navPoint class="chapter" id="44987728-bebd-45c2-a8be-b8408373eac3" playOrder="1">
-      <navLabel>
-        <text>目录</text>
-      </navLabel>
-      <content src="text/part0000.html"/>
-    </navPoint>
-    <navPoint class="chapter" id="cf7aadc7-929f-4e5f-abbf-f090ef08702b" playOrder="2">
-      <navLabel>
-        <text>扉页</text>
-      </navLabel>
-      <content src="text/part0001.html"/>
-    </navPoint>
-    <navPoint class="chapter" id="85b8a67a-7cd4-473d-a402-c33e6376905e" playOrder="3">
-      <navLabel>
-        <text>版权页</text>
-      </navLabel>
-      <content src="text/part0002.html"/>
-    </navPoint>
-    <navPoint class="chapter" id="b46e230a-3008-49f5-998b-b6f217500c6e" playOrder="4">
-      <navLabel>
-        <text>前言</text>
-      </navLabel>
-      <content src="text/part0003.html"/>
-    </navPoint>
-    <navPoint class="chapter" id="69832a63-0068-417d-a97d-e4c41c3fa30c" playOrder="5">
-      <navLabel>
-        <text>Chapter-1　京津漫步·朝向最经典的方向</text>
-      </navLabel>
-      <content src="text/part0004.html"/>
-      <navPoint class="chapter" id="c3719be4-a930-4962-b7ee-372d8f9727c2" playOrder="6">
-        <navLabel>
-          <text>北京</text>
-        </navLabel>
-        <content src="text/part0004.html#mllj4-1"/>
-        <navPoint class="chapter" id="e794a934-610c-4601-a896-1baa8e982224" playOrder="7">
-          <navLabel>
-            <text>故宫</text>
-          </navLabel>
-          <content src="text/part0004.html#mllj4-1-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="c2140ba0-3f82-40cc-b20f-cded11cda39d" playOrder="8">
-          <navLabel>
-            <text>颐和园</text>
-          </navLabel>
-          <content src="text/part0004.html#mllj4-1-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="99161dbc-54e1-4666-bd9f-123ca2c8bae0" playOrder="9">
-          <navLabel>
-            <text>专题：触摸北京的历史印迹</text>
-          </navLabel>
-          <content src="text/part0004.html#mllj4-1-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="fa4ef709-cf8d-43ab-bf55-1afbbb35577a" playOrder="10">
-          <navLabel>
-            <text>北京国家体育场</text>
-          </navLabel>
-          <content src="text/part0004.html#mllj4-1-4"/>
-        </navPoint>
-        <navPoint class="chapter" id="84bf8a1b-6861-450c-83ae-e62378297a05" playOrder="11">
-          <navLabel>
-            <text>北京的胡同</text>
-          </navLabel>
-          <content src="text/part0004.html#mllj4-1-5"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="33b3a11d-b11c-44a5-9d5d-25cb5db63dee" playOrder="12">
-        <navLabel>
-          <text>天津</text>
-        </navLabel>
-        <content src="text/part0004.html#mllj4-2"/>
-        <navPoint class="chapter" id="68868070-90b5-493b-a224-c1cfc5a5add9" playOrder="13">
-          <navLabel>
-            <text>海河</text>
-          </navLabel>
-          <content src="text/part0004.html#mllj4-2-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="9e40dacf-5b23-4790-ab4d-26622ea9729d" playOrder="14">
-          <navLabel>
-            <text>古文化街</text>
-          </navLabel>
-          <content src="text/part0004.html#mllj4-2-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="9fea5d02-b71b-40d0-9a6e-82c7822ce944" playOrder="15">
-          <navLabel>
-            <text>大沽炮台</text>
-          </navLabel>
-          <content src="text/part0004.html#mllj4-2-3"/>
-        </navPoint>
-      </navPoint>
-    </navPoint>
-    <navPoint class="chapter" id="b03fece6-d169-485b-a294-6a5d4e4e1498" playOrder="16">
-      <navLabel>
-        <text>Chapter-2　中原巡礼·寻一曲，流转不息的华夏之歌</text>
-      </navLabel>
-      <content src="text/part0005.html"/>
-      <navPoint class="chapter" id="eaac915c-c3c7-4b8f-829a-9bff9b516ea1" playOrder="17">
-        <navLabel>
-          <text>山东</text>
-        </navLabel>
-        <content src="text/part0005.html#mllj5-1"/>
-        <navPoint class="chapter" id="a3f1f9f4-6722-4287-91fe-f273c80d5e76" playOrder="18">
-          <navLabel>
-            <text>泰山</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-1-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="a2326006-7391-4191-b10b-ba4d629897ed" playOrder="19">
-          <navLabel>
-            <text>曲阜孔庙</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-1-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="22e01742-f84d-40e0-a607-7a128b3cdd18" playOrder="20">
-          <navLabel>
-            <text>专题：避暑胜地话山东</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-1-3"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="7b35fb42-673b-4820-84f3-748b2e8109f0" playOrder="21">
-        <navLabel>
-          <text>河北</text>
-        </navLabel>
-        <content src="text/part0005.html#mllj5-2"/>
-        <navPoint class="chapter" id="bda827a7-3fb6-4db6-b154-9db0e06446a9" playOrder="22">
-          <navLabel>
-            <text>白洋淀</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-2-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="8bb1d847-5731-4cfe-a9ee-be302c760d3f" playOrder="23">
-          <navLabel>
-            <text>坝上草原</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-2-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="1d5a790b-32ac-43ee-ba16-8839566bd9ff" playOrder="24">
-          <navLabel>
-            <text>承德避暑山庄</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-2-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="79488c3a-0969-4171-9481-ee0c053d4640" playOrder="25">
-          <navLabel>
-            <text>清东陵</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-2-4"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="d53c02ba-199d-4e57-9cb1-5ab339eb34ba" playOrder="26">
-        <navLabel>
-          <text>河南</text>
-        </navLabel>
-        <content src="text/part0005.html#mllj5-3"/>
-        <navPoint class="chapter" id="bd5eaacc-e7d5-4823-950c-ca51e80f4e26" playOrder="27">
-          <navLabel>
-            <text>龙门石窟</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-3-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="80e3be8f-9ca3-4bb0-9e14-f7257d2a5974" playOrder="28">
-          <navLabel>
-            <text>少林寺</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-3-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="6495d123-4452-4a47-b9c8-b9aa7ef4ec9d" playOrder="29">
-          <navLabel>
-            <text>专题：千年韶华——河南的古都</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-3-3"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="9c415fc8-6691-499f-95d3-d3a3ae234673" playOrder="30">
-        <navLabel>
-          <text>山西</text>
-        </navLabel>
-        <content src="text/part0005.html#mllj5-4"/>
-        <navPoint class="chapter" id="cce100a0-7238-4c39-8d20-1d677e7721ea" playOrder="31">
-          <navLabel>
-            <text>五台山</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-4-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="0e9d47ed-13aa-4665-909a-c31d3f16b5c5" playOrder="32">
-          <navLabel>
-            <text>恒山</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-4-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="a68d1934-fbd3-4039-82b5-9af239a37c78" playOrder="33">
-          <navLabel>
-            <text>平遥古城</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-4-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="0e78fb53-afbd-46b2-876e-5061ec52f231" playOrder="34">
-          <navLabel>
-            <text>专题：“大院”拾零</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-4-4"/>
-        </navPoint>
-        <navPoint class="chapter" id="9a127e3e-29be-44a3-a9e0-29f3148e4668" playOrder="35">
-          <navLabel>
-            <text>壶口瀑布</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-4-5"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="dd36f288-9ce4-49cc-9cab-9019e86f3c1b" playOrder="36">
-        <navLabel>
-          <text>陕西</text>
-        </navLabel>
-        <content src="text/part0005.html#mllj5-5"/>
-        <navPoint class="chapter" id="bd5cb434-b7dd-419f-b6eb-1bc4d2ebfb85" playOrder="37">
-          <navLabel>
-            <text>华山</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-5-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="ac231590-dce6-4f92-bcc7-119da22b0dfa" playOrder="38">
-          <navLabel>
-            <text>西安</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-5-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="690ead42-dd02-4c5d-a6c5-536b8be0923c" playOrder="39">
-          <navLabel>
-            <text>秦始皇陵兵马俑</text>
-          </navLabel>
-          <content src="text/part0005.html#mllj5-5-3"/>
-        </navPoint>
-      </navPoint>
-    </navPoint>
-    <navPoint class="chapter" id="9e51b71d-fede-4a29-90a7-9328f5219e24" playOrder="40">
-      <navLabel>
-        <text>Chapter-3　东三省拾趣·林海雪原的变奏</text>
-      </navLabel>
-      <content src="text/part0006.html"/>
-      <navPoint class="chapter" id="4ab2486a-5304-4519-8cdb-9dbe8fde1a24" playOrder="41">
-        <navLabel>
-          <text>辽宁</text>
-        </navLabel>
-        <content src="text/part0006.html#mllj6-1"/>
-        <navPoint class="chapter" id="8e8528d0-1a5c-4fa0-be42-7426fcffa100" playOrder="42">
-          <navLabel>
-            <text>大连</text>
-          </navLabel>
-          <content src="text/part0006.html#mllj6-1-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="e8de0e1a-0f99-49b0-bd4e-fd84a7b24279" playOrder="43">
-          <navLabel>
-            <text>沈阳故宫</text>
-          </navLabel>
-          <content src="text/part0006.html#mllj6-1-2"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="4aa4ce58-fb13-4437-8be8-7a659ede923d" playOrder="44">
-        <navLabel>
-          <text>吉林</text>
-        </navLabel>
-        <content src="text/part0006.html#mllj6-2"/>
-        <navPoint class="chapter" id="12bf5562-c03b-40ef-aeb3-2b9e0e8ee393" playOrder="45">
-          <navLabel>
-            <text>长白山天池</text>
-          </navLabel>
-          <content src="text/part0006.html#mllj6-2-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="68587673-2e1a-4145-b0f8-b0fc227c3a93" playOrder="46">
-          <navLabel>
-            <text>高句丽王城</text>
-          </navLabel>
-          <content src="text/part0006.html#mllj6-2-2"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="d7e60ab8-9d42-4f05-a7d7-0039ae2fd4e2" playOrder="47">
-        <navLabel>
-          <text>黑龙江</text>
-        </navLabel>
-        <content src="text/part0006.html#mllj6-3"/>
-        <navPoint class="chapter" id="dbe47baa-3b52-41c0-a5ec-ecbb41dfb986" playOrder="48">
-          <navLabel>
-            <text>大兴安岭</text>
-          </navLabel>
-          <content src="text/part0006.html#mllj6-3-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="00255f8e-5fe6-4278-8434-a948aac8779a" playOrder="49">
-          <navLabel>
-            <text>五大连池</text>
-          </navLabel>
-          <content src="text/part0006.html#mllj6-3-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="dabb9ea6-d844-4717-84da-b242a417602a" playOrder="50">
-          <navLabel>
-            <text>哈尔滨</text>
-          </navLabel>
-          <content src="text/part0006.html#mllj6-3-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="e742c2be-8c94-4c26-8186-281e9f2aa806" playOrder="51">
-          <navLabel>
-            <text>专题：“冰城”的冰雪之趣</text>
-          </navLabel>
-          <content src="text/part0006.html#mllj6-3-4"/>
-        </navPoint>
-        <navPoint class="chapter" id="fe55733c-0ee4-46ec-aff6-d208c9653d36" playOrder="52">
-          <navLabel>
-            <text>漠河</text>
-          </navLabel>
-          <content src="text/part0006.html#mllj6-3-5"/>
-        </navPoint>
-      </navPoint>
-    </navPoint>
-    <navPoint class="chapter" id="2c577595-ae5e-4814-a41e-e4284d0a6382" playOrder="53">
-      <navLabel>
-        <text>Chapter-4　塞外风光·长风万里且放歌</text>
-      </navLabel>
-      <content src="text/part0007.html"/>
-      <navPoint class="chapter" id="254b5397-82d2-498c-9dcc-7ccb0b0e94f9" playOrder="54">
-        <navLabel>
-          <text>内蒙古</text>
-        </navLabel>
-        <content src="text/part0007.html#mllj7-1"/>
-        <navPoint class="chapter" id="b8671a35-0cb5-4359-b707-79f65ece52ea" playOrder="55">
-          <navLabel>
-            <text>呼伦贝尔草原</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-1-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="26518501-0ae9-4c69-822a-3e2434c042d4" playOrder="56">
-          <navLabel>
-            <text>专题：草原风光览胜</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-1-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="0719d9d3-f3c7-4bdb-b9bf-3aa7d5e6b254" playOrder="57">
-          <navLabel>
-            <text>额济纳</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-1-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="807938d5-1783-46e7-b8ed-78834ea36e15" playOrder="58">
-          <navLabel>
-            <text>巴丹吉林沙漠</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-1-4"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="81fa712c-7de5-4c4e-a5f1-8a07d6e791ed" playOrder="59">
-        <navLabel>
-          <text>甘肃</text>
-        </navLabel>
-        <content src="text/part0007.html#mllj7-2"/>
-        <navPoint class="chapter" id="ab203734-ef42-43f3-b3b9-4ce45acc2c94" playOrder="60">
-          <navLabel>
-            <text>敦煌莫高窟</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-2-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="5a06e565-a359-4a4b-b653-affe030e8f77" playOrder="61">
-          <navLabel>
-            <text>鸣沙山与月牙泉</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-2-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="39fb3e8c-7371-4bf2-85a3-19a3c041ef21" playOrder="62">
-          <navLabel>
-            <text>玉门关</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-2-3"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="4639f104-6bcf-468d-afd0-b48060f752c5" playOrder="63">
-        <navLabel>
-          <text>宁夏</text>
-        </navLabel>
-        <content src="text/part0007.html#mllj7-3"/>
-        <navPoint class="chapter" id="4758ac0a-5f3b-43b0-a8e4-15ed3ab111f7" playOrder="64">
-          <navLabel>
-            <text>贺兰山</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-3-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="0a6b2a5c-b64e-4a9d-bcb2-a38adb40d825" playOrder="65">
-          <navLabel>
-            <text>六盘山</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-3-2"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="2fc184d0-9b26-4dbf-8d89-9440f31ef7ad" playOrder="66">
-        <navLabel>
-          <text>新疆</text>
-        </navLabel>
-        <content src="text/part0007.html#mllj7-4"/>
-        <navPoint class="chapter" id="3dc67b7e-f585-43fb-950d-faafe55048c6" playOrder="67">
-          <navLabel>
-            <text>塔克拉玛干大沙漠</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-4-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="5d34a909-58d6-4f0e-8874-82c5b1895639" playOrder="68">
-          <navLabel>
-            <text>雅丹魔鬼城</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-4-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="afbe01d9-f594-408c-89a2-25dc9ee3e8a0" playOrder="69">
-          <navLabel>
-            <text>白哈巴</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-4-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="56a70700-ce52-446c-93f0-60e2bf98bf9b" playOrder="70">
-          <navLabel>
-            <text>喀纳斯湖</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-4-4"/>
-        </navPoint>
-        <navPoint class="chapter" id="7526e886-2cbb-43c5-b158-1eafba9baf94" playOrder="71">
-          <navLabel>
-            <text>伊犁草原</text>
-          </navLabel>
-          <content src="text/part0007.html#mllj7-4-5"/>
-        </navPoint>
-      </navPoint>
-    </navPoint>
-    <navPoint class="chapter" id="9f006821-2014-46a7-b649-a264edec31b8" playOrder="72">
-      <navLabel>
-        <text>Chapter-5　青藏高原之旅·迎接最纯粹的阳光</text>
-      </navLabel>
-      <content src="text/part0008.html"/>
-      <navPoint class="chapter" id="780b912f-b126-4ddb-9fcd-eaff909a9a44" playOrder="73">
-        <navLabel>
-          <text>青海</text>
-        </navLabel>
-        <content src="text/part0008.html#mllj8-1"/>
-        <navPoint class="chapter" id="6868dceb-8b51-4ff1-9429-54a0f3bb9683" playOrder="74">
-          <navLabel>
-            <text>可可西里</text>
-          </navLabel>
-          <content src="text/part0008.html#mllj8-1-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="7cecee96-d403-4fc3-af24-decfd24e9fa2" playOrder="75">
-          <navLabel>
-            <text>青海湖</text>
-          </navLabel>
-          <content src="text/part0008.html#mllj8-1-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="775df5b8-c3e8-47ee-a54f-be22d66b411f" playOrder="76">
-          <navLabel>
-            <text>三江源</text>
-          </navLabel>
-          <content src="text/part0008.html#mllj8-1-3"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="e9c65f3c-ef9a-43be-9238-84286b7d053f" playOrder="77">
-        <navLabel>
-          <text>西藏</text>
-        </navLabel>
-        <content src="text/part0008.html#mllj8-2"/>
-        <navPoint class="chapter" id="428a403c-f8cb-414e-ab55-787398210e49" playOrder="78">
-          <navLabel>
-            <text>珠穆朗玛峰</text>
-          </navLabel>
-          <content src="text/part0008.html#mllj8-2-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="ba48803d-967d-40e6-8066-b9a7f0897bd9" playOrder="79">
-          <navLabel>
-            <text>雅鲁藏布大峡谷</text>
-          </navLabel>
-          <content src="text/part0008.html#mllj8-2-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="3fb4d003-77f7-4595-ae85-c30042045377" playOrder="80">
-          <navLabel>
-            <text>阿里</text>
-          </navLabel>
-          <content src="text/part0008.html#mllj8-2-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="840e2e84-a204-47a8-9c6e-772db539d384" playOrder="81">
-          <navLabel>
-            <text>拉萨</text>
-          </navLabel>
-          <content src="text/part0008.html#mllj8-2-4"/>
-        </navPoint>
-        <navPoint class="chapter" id="613a8e96-bab2-48df-9956-720081d2074d" playOrder="82">
-          <navLabel>
-            <text>纳木措</text>
-          </navLabel>
-          <content src="text/part0008.html#mllj8-2-5"/>
-        </navPoint>
-      </navPoint>
-    </navPoint>
-    <navPoint class="chapter" id="9880e025-2ff6-4afe-8e41-61fbd07c60c0" playOrder="83">
-      <navLabel>
-        <text>Chapter-6　西南典藏下一站，天堂</text>
-      </navLabel>
-      <content src="text/part0009.html"/>
-      <navPoint class="chapter" id="cb135213-f2dc-4326-8fb8-0e0991ea793c" playOrder="84">
-        <navLabel>
-          <text>四川</text>
-        </navLabel>
-        <content src="text/part0009.html#mllj9-1"/>
-        <navPoint class="chapter" id="dc0828a6-6795-42b4-a76b-2c1ce2ac7443" playOrder="85">
-          <navLabel>
-            <text>九寨沟</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-1-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="8d7bb857-5362-46f9-84af-1597e727a551" playOrder="86">
-          <navLabel>
-            <text>稻城亚丁</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-1-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="ebeab4da-cab0-4a7a-86b9-491ed88e7b6f" playOrder="87">
-          <navLabel>
-            <text>卧龙</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-1-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="73ace0db-1868-4f81-b557-1658c036d46b" playOrder="88">
-          <navLabel>
-            <text>海螺沟</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-1-4"/>
-        </navPoint>
-        <navPoint class="chapter" id="7aba92a1-d1bb-4afd-8ee6-4abd20edd46c" playOrder="89">
-          <navLabel>
-            <text>峨眉山</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-1-5"/>
-        </navPoint>
-        <navPoint class="chapter" id="c11cf802-2063-4f81-9acc-5ee8a0a920d7" playOrder="90">
-          <navLabel>
-            <text>专题：天府之国的情趣生活</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-1-6"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="230620f6-8f45-4851-8a33-9aeaf67d4908" playOrder="91">
-        <navLabel>
-          <text>重庆</text>
-        </navLabel>
-        <content src="text/part0009.html#mllj9-2"/>
-        <navPoint class="chapter" id="5e4f673b-ccdb-4431-8630-65436f1b40f8" playOrder="92">
-          <navLabel>
-            <text>小寨天坑</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-2-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="20f23f3f-c152-4607-a2a8-b3b46b63f564" playOrder="93">
-          <navLabel>
-            <text>大足石刻</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-2-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="75ad84e4-dfc6-46a3-85c5-8cedb9320a31" playOrder="94">
-          <navLabel>
-            <text>长江三峡</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-2-3"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="f3a42811-a3a1-4ce5-902f-d929926b3a18" playOrder="95">
-        <navLabel>
-          <text>云南</text>
-        </navLabel>
-        <content src="text/part0009.html#mllj9-3"/>
-        <navPoint class="chapter" id="30ab6cbf-119a-49ed-9290-e5b3a28afc86" playOrder="96">
-          <navLabel>
-            <text>香格里拉</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-3-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="0c769497-440b-4bf0-9687-6b5205b11ef9" playOrder="97">
-          <navLabel>
-            <text>丽江</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-3-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="2d01bfac-70e0-4193-96a3-30a6aead54a3" playOrder="98">
-          <navLabel>
-            <text>大理</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-3-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="36a1477a-dbe3-4cae-bd8d-fba20984df3f" playOrder="99">
-          <navLabel>
-            <text>泸沽湖</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-3-4"/>
-        </navPoint>
-        <navPoint class="chapter" id="708e65ba-6021-485e-817a-312853b0d687" playOrder="100">
-          <navLabel>
-            <text>石林</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-3-5"/>
-        </navPoint>
-        <navPoint class="chapter" id="45ba3413-3dd4-4ba1-b774-e0db1084a82c" playOrder="101">
-          <navLabel>
-            <text>西双版纳</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-3-6"/>
-        </navPoint>
-        <navPoint class="chapter" id="a6db31ee-03ad-443c-b282-d6c45b058ff3" playOrder="102">
-          <navLabel>
-            <text>滇池</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-3-7"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="a25e93c0-78a8-4fd0-8e7c-03228752de08" playOrder="103">
-        <navLabel>
-          <text>贵州</text>
-        </navLabel>
-        <content src="text/part0009.html#mllj9-4"/>
-        <navPoint class="chapter" id="653d9fc4-8b10-4824-8fc9-ed5b0f079eba" playOrder="104">
-          <navLabel>
-            <text>黄果树瀑布</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-4-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="513b6af4-0d4f-4ef9-a80d-2b4e5313680b" playOrder="105">
-          <navLabel>
-            <text>梵净山</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-4-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="6b10d505-30ec-4771-9922-10c32ceef13c" playOrder="106">
-          <navLabel>
-            <text>织金洞</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-4-3"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="4d424709-cf7a-49f1-8722-a772b1ac14e7" playOrder="107">
-        <navLabel>
-          <text>广西</text>
-        </navLabel>
-        <content src="text/part0009.html#mllj9-5"/>
-        <navPoint class="chapter" id="017078f3-b223-432e-b643-0afc1008ec6d" playOrder="108">
-          <navLabel>
-            <text>漓江</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-5-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="125e55b7-a9cd-4b40-ae42-3ca9117d32c3" playOrder="109">
-          <navLabel>
-            <text>专题：桂林山水甲天下</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-5-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="5598e706-ac50-4c58-b03c-0419e75d67c7" playOrder="110">
-          <navLabel>
-            <text>黄姚</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-5-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="c370bda3-3675-497a-b4ad-b1bd479bbb9b" playOrder="111">
-          <navLabel>
-            <text>大圩</text>
-          </navLabel>
-          <content src="text/part0009.html#mllj9-5-4"/>
-        </navPoint>
-      </navPoint>
-    </navPoint>
-    <navPoint class="chapter" id="f5a05212-4d16-4f60-941b-1fda3fe2c8a3" playOrder="112">
-      <navLabel>
-        <text>Chapter-7　两湖山水·展开最美的水墨长卷</text>
-      </navLabel>
-      <content src="text/part0010.html"/>
-      <navPoint class="chapter" id="988b06ad-202e-4773-8ee8-17272eacda26" playOrder="113">
-        <navLabel>
-          <text>湖北</text>
-        </navLabel>
-        <content src="text/part0010.html#mllj10-1"/>
-        <navPoint class="chapter" id="baba7110-a82e-43e0-aede-4fc5f7cd78a8" playOrder="114">
-          <navLabel>
-            <text>神农架</text>
-          </navLabel>
-          <content src="text/part0010.html#mllj10-1-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="5ecf667e-ab8d-41aa-a165-96b41953e02f" playOrder="115">
-          <navLabel>
-            <text>武当山</text>
-          </navLabel>
-          <content src="text/part0010.html#mllj10-1-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="08553a4a-32f3-4036-b354-a9415eeea60b" playOrder="116">
-          <navLabel>
-            <text>黄鹤楼</text>
-          </navLabel>
-          <content src="text/part0010.html#mllj10-1-3"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="56f5c315-6ad4-40c7-b70b-0ba273540fcc" playOrder="117">
-        <navLabel>
-          <text>湖南</text>
-        </navLabel>
-        <content src="text/part0010.html#mllj10-2"/>
-        <navPoint class="chapter" id="9c0c197a-0d96-42cd-b6a8-e75b13ff39b7" playOrder="118">
-          <navLabel>
-            <text>洞庭湖</text>
-          </navLabel>
-          <content src="text/part0010.html#mllj10-2-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="ed4aac7e-d913-4e6d-b721-26088867a21c" playOrder="119">
-          <navLabel>
-            <text>张家界</text>
-          </navLabel>
-          <content src="text/part0010.html#mllj10-2-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="f6130350-6495-4c67-a50a-021805cab7bd" playOrder="120">
-          <navLabel>
-            <text>衡山</text>
-          </navLabel>
-          <content src="text/part0010.html#mllj10-2-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="f9496710-4704-4a75-bf0d-c6da4b862faa" playOrder="121">
-          <navLabel>
-            <text>凤凰古城</text>
-          </navLabel>
-          <content src="text/part0010.html#mllj10-2-4"/>
-        </navPoint>
-        <navPoint class="chapter" id="18a13276-fa38-43de-876f-b4d6229d6e99" playOrder="122">
-          <navLabel>
-            <text>德夯</text>
-          </navLabel>
-          <content src="text/part0010.html#mllj10-2-5"/>
-        </navPoint>
-      </navPoint>
-    </navPoint>
-    <navPoint class="chapter" id="d8c48dcc-e221-4df1-946a-386966fe6d5b" playOrder="123">
-      <navLabel>
-        <text>Chapter-8　烟波江南·与时光一起，在此终老</text>
-      </navLabel>
-      <content src="text/part0011.html"/>
-      <navPoint class="chapter" id="355684e5-4a6b-4f53-a05f-46b12b88f848" playOrder="124">
-        <navLabel>
-          <text>江苏</text>
-        </navLabel>
-        <content src="text/part0011.html#mllj11-1"/>
-        <navPoint class="chapter" id="374bc42e-5145-4901-9991-106db7f93860" playOrder="125">
-          <navLabel>
-            <text>太湖</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-1-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="6ee70813-fd26-46e1-9e4f-0428b4747ad9" playOrder="126">
-          <navLabel>
-            <text>苏州园林</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-1-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="bdcbc4b7-55e9-4f94-be1e-a7f63e208c10" playOrder="127">
-          <navLabel>
-            <text>专题：姑苏城的湖光山色</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-1-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="d2cff51d-b563-4304-8e93-886fb94a3c9e" playOrder="128">
-          <navLabel>
-            <text>扬州</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-1-4"/>
-        </navPoint>
-        <navPoint class="chapter" id="7d331da9-c8c7-45ba-9253-6ad657dbb7dd" playOrder="129">
-          <navLabel>
-            <text>专题：水乡的小镇</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-1-5"/>
-        </navPoint>
-        <navPoint class="chapter" id="214fbdac-e2c8-4007-bec5-c91cb06b6853" playOrder="130">
-          <navLabel>
-            <text>南京</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-1-6"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="26de3891-91c7-4092-b35e-5da4c336886d" playOrder="131">
-        <navLabel>
-          <text>上海</text>
-        </navLabel>
-        <content src="text/part0011.html#mllj11-2"/>
-        <navPoint class="chapter" id="3c26bcf1-d6b2-48d4-b3e8-adaf0ee90d40" playOrder="132">
-          <navLabel>
-            <text>夜上海</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-2-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="cc53adfd-9319-4d2e-9abf-7ae24f90784b" playOrder="133">
-          <navLabel>
-            <text>豫园</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-2-2"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="733508f3-87c6-408d-af6b-717aa0dec62a" playOrder="134">
-        <navLabel>
-          <text>浙江</text>
-        </navLabel>
-        <content src="text/part0011.html#mllj11-3"/>
-        <navPoint class="chapter" id="9aac217b-847f-4733-9a1e-c15cca5015db" playOrder="135">
-          <navLabel>
-            <text>普陀山</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-3-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="ddc54e9c-de9c-4ce8-b441-4ae2d4b945a9" playOrder="136">
-          <navLabel>
-            <text>西湖</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-3-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="8e0ac4bc-8263-438e-b8da-958c3718efdf" playOrder="137">
-          <navLabel>
-            <text>专题：钱塘自古繁华杭州</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-3-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="d668908b-52ee-4c32-a62c-13be3dd66942" playOrder="138">
-          <navLabel>
-            <text>嘉兴</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-3-4"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="1baff5fd-1aa9-4695-86c2-2d3a97cfec65" playOrder="139">
-        <navLabel>
-          <text>安徽</text>
-        </navLabel>
-        <content src="text/part0011.html#mllj11-4"/>
-        <navPoint class="chapter" id="5243aa9c-a23d-49f6-a76d-eb9ce0086ad3" playOrder="140">
-          <navLabel>
-            <text>黄山</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-4-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="092c1684-fe86-47c3-a1c2-b31f6b142b1a" playOrder="141">
-          <navLabel>
-            <text>九华山</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-4-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="1d794c90-7419-4bf0-a570-b81a19e29706" playOrder="142">
-          <navLabel>
-            <text>天柱山</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-4-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="eff6379f-55f0-4ca0-8524-3298a843e547" playOrder="143">
-          <navLabel>
-            <text>西递与宏村</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-4-4"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="3812efe5-c939-4f51-8d49-4f925efb1b64" playOrder="144">
-        <navLabel>
-          <text>江西</text>
-        </navLabel>
-        <content src="text/part0011.html#mllj11-5"/>
-        <navPoint class="chapter" id="bf911d7b-aa74-4ac6-9cbc-73cc3f0dd2f9" playOrder="145">
-          <navLabel>
-            <text>庐山</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-5-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="a10b07e1-890e-4328-8dcd-cde091a06c2c" playOrder="146">
-          <navLabel>
-            <text>三清山</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-5-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="00dff2e9-a8d0-471e-8dcf-22b66460b02c" playOrder="147">
-          <navLabel>
-            <text>婺源</text>
-          </navLabel>
-          <content src="text/part0011.html#mllj11-5-3"/>
-        </navPoint>
-      </navPoint>
-    </navPoint>
-    <navPoint class="chapter" id="0ca51dfa-7577-4670-8abe-94fbba6bf89e" playOrder="148">
-      <navLabel>
-        <text>Chapter-9　东南沿海行·伴着海风去呼吸</text>
-      </navLabel>
-      <content src="text/part0012.html"/>
-      <navPoint class="chapter" id="0aa48c95-c048-4bc3-a0af-5907554e9d2d" playOrder="149">
-        <navLabel>
-          <text>福建</text>
-        </navLabel>
-        <content src="text/part0012.html#mllj12-1"/>
-        <navPoint class="chapter" id="66900cc8-3b1d-4b78-9e3b-524d3e51fbdf" playOrder="150">
-          <navLabel>
-            <text>武夷山</text>
-          </navLabel>
-          <content src="text/part0012.html#mllj12-1-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="8debac84-3b93-4a31-9631-4a4935dc9bb0" playOrder="151">
-          <navLabel>
-            <text>福建土楼</text>
-          </navLabel>
-          <content src="text/part0012.html#mllj12-1-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="4534bff9-b265-4ff6-a358-c35026b80bec" playOrder="152">
-          <navLabel>
-            <text>鼓浪屿</text>
-          </navLabel>
-          <content src="text/part0012.html#mllj12-1-3"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="00d984f4-6c8d-4d72-a69f-744da219ea39" playOrder="153">
-        <navLabel>
-          <text>广东</text>
-        </navLabel>
-        <content src="text/part0012.html#mllj12-2"/>
-        <navPoint class="chapter" id="08f2ff2d-46a4-4b6a-abb1-3db4461821bd" playOrder="154">
-          <navLabel>
-            <text>丹霞山</text>
-          </navLabel>
-          <content src="text/part0012.html#mllj12-2-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="4b101b24-8338-4acf-977a-3ab976e78eea" playOrder="155">
-          <navLabel>
-            <text>七星岩</text>
-          </navLabel>
-          <content src="text/part0012.html#mllj12-2-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="4b84e0c9-52db-4bd0-9201-5a2e85f6a0cd" playOrder="156">
-          <navLabel>
-            <text>开平碉楼</text>
-          </navLabel>
-          <content src="text/part0012.html#mllj12-2-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="386cbe96-a1f8-48e7-97f5-58209f12bc34" playOrder="157">
-          <navLabel>
-            <text>广州</text>
-          </navLabel>
-          <content src="text/part0012.html#mllj12-2-4"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="c06d9a59-bc28-40f4-b24c-38f86140d3b2" playOrder="158">
-        <navLabel>
-          <text>海南</text>
-        </navLabel>
-        <content src="text/part0012.html#mllj12-3"/>
-        <navPoint class="chapter" id="086010cf-d5ea-4abc-bdb9-ec22b964a0b9" playOrder="159">
-          <navLabel>
-            <text>亚龙湾</text>
-          </navLabel>
-          <content src="text/part0012.html#mllj12-3-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="9b04a38e-2e6c-4811-9f2d-2d4baf149fbf" playOrder="160">
-          <navLabel>
-            <text>三亚</text>
-          </navLabel>
-          <content src="text/part0012.html#mllj12-3-2"/>
-        </navPoint>
-      </navPoint>
-    </navPoint>
-    <navPoint class="chapter" id="aad6de3f-1b05-47d1-a301-976df8a3ad47" playOrder="161">
-      <navLabel>
-        <text>Chapter-10　港澳台之旅·加入，这场永不落幕的繁华</text>
-      </navLabel>
-      <content src="text/part0013.html"/>
-      <navPoint class="chapter" id="c531fb32-f8df-4eeb-8d32-727df6678561" playOrder="162">
-        <navLabel>
-          <text>香港</text>
-        </navLabel>
-        <content src="text/part0013.html#mllj13-1"/>
-        <navPoint class="chapter" id="f4922c2d-c435-4f02-9d38-cde21f752def" playOrder="163">
-          <navLabel>
-            <text>港岛</text>
-          </navLabel>
-          <content src="text/part0013.html#mllj13-1-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="4e9ca066-3ae7-4760-b742-ef8cfbc4941a" playOrder="164">
-          <navLabel>
-            <text>九龙区</text>
-          </navLabel>
-          <content src="text/part0013.html#mllj13-1-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="12f57866-1241-4bf1-8bbc-41b829870a21" playOrder="165">
-          <navLabel>
-            <text>旺角</text>
-          </navLabel>
-          <content src="text/part0013.html#mllj13-1-3"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="f93c81ff-90af-4540-897a-7149f0a5a8a9" playOrder="166">
-        <navLabel>
-          <text>澳门</text>
-        </navLabel>
-        <content src="text/part0013.html#mllj13-2"/>
-        <navPoint class="chapter" id="a021888c-7caa-467a-bd72-71b2408033f5" playOrder="167">
-          <navLabel>
-            <text>大三巴牌坊</text>
-          </navLabel>
-          <content src="text/part0013.html#mllj13-2-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="82903031-9b68-4ba0-bc98-48015845a95d" playOrder="168">
-          <navLabel>
-            <text>妈阁庙</text>
-          </navLabel>
-          <content src="text/part0013.html#mllj13-2-2"/>
-        </navPoint>
-      </navPoint>
-      <navPoint class="chapter" id="a83f6c74-68ce-4a4d-96cd-e36fa94ef170" playOrder="169">
-        <navLabel>
-          <text>台湾</text>
-        </navLabel>
-        <content src="text/part0013.html#mllj13-3"/>
-        <navPoint class="chapter" id="9d14959a-6035-48b8-86bd-1d0d16cb1bd0" playOrder="170">
-          <navLabel>
-            <text>台北</text>
-          </navLabel>
-          <content src="text/part0013.html#mllj13-3-1"/>
-        </navPoint>
-        <navPoint class="chapter" id="0b9cff22-0f72-4fa8-a328-551805790cd3" playOrder="171">
-          <navLabel>
-            <text>日月潭</text>
-          </navLabel>
-          <content src="text/part0013.html#mllj13-3-2"/>
-        </navPoint>
-        <navPoint class="chapter" id="fa3d7570-cb12-4ec7-828b-d9cf1d755a17" playOrder="172">
-          <navLabel>
-            <text>阿里山</text>
-          </navLabel>
-          <content src="text/part0013.html#mllj13-3-3"/>
-        </navPoint>
-        <navPoint class="chapter" id="711943be-444a-41b1-88dd-86ead4fb5a10" playOrder="173">
-          <navLabel>
-            <text>野柳</text>
-          </navLabel>
-          <content src="text/part0013.html#mllj13-3-4"/>
-        </navPoint>
-      </navPoint>
-    </navPoint>
-    <navPoint class="chapter" id="da045873-0a52-4b39-8511-5507dce415a4" playOrder="174">
-      <navLabel>
-        <text>走遍中国</text>
-      </navLabel>
-      <content src="text/part0014.html"/>
-    </navPoint>
-    <navPoint class="chapter" id="37d126ae-c25e-4702-82c1-fd39f154ed55" playOrder="175">
-      <navLabel>
-        <text>绝美的旅程</text>
-      </navLabel>
-      <content src="text/part0015.html"/>
-    </navPoint>
-  </navMap>
+    <head>
+        <meta content="0d881f0c-d0aa-4f06-880a-86c6d16c25c8" name="dtb:uid"/>
+        <meta content="4" name="dtb:depth"/>
+        <meta content="calibre (0.9.16)" name="dtb:generator"/>
+        <meta content="0" name="dtb:totalPageCount"/>
+        <meta content="0" name="dtb:maxPageNumber"/>
+    </head>
+    <docTitle>
+        <text>走遍中国(珍藏版) (图说天下·国家地理系列)</text>
+    </docTitle>
+    <navMap>
+        <navPoint class="chapter" id="44987728-bebd-45c2-a8be-b8408373eac3" playOrder="1">
+            <navLabel>
+                <text>目录</text>
+            </navLabel>
+            <content src="text/part0000.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="cf7aadc7-929f-4e5f-abbf-f090ef08702b" playOrder="2">
+            <navLabel>
+                <text>扉页</text>
+            </navLabel>
+            <content src="text/part0001.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="85b8a67a-7cd4-473d-a402-c33e6376905e" playOrder="3">
+            <navLabel>
+                <text>版权页</text>
+            </navLabel>
+            <content src="text/part0002.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="b46e230a-3008-49f5-998b-b6f217500c6e" playOrder="4">
+            <navLabel>
+                <text>前言</text>
+            </navLabel>
+            <content src="text/part0003.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="69832a63-0068-417d-a97d-e4c41c3fa30c" playOrder="5">
+            <navLabel>
+                <text>Chapter-1　京津漫步·朝向最经典的方向</text>
+            </navLabel>
+            <content src="text/part0004.html"/>
+            <navPoint class="chapter" id="c3719be4-a930-4962-b7ee-372d8f9727c2" playOrder="6">
+                <navLabel>
+                    <text>北京</text>
+                </navLabel>
+                <content src="text/part0004.html#mllj4-1"/>
+                <navPoint class="chapter" id="e794a934-610c-4601-a896-1baa8e982224" playOrder="7">
+                    <navLabel>
+                        <text>故宫</text>
+                    </navLabel>
+                    <content src="text/part0004.html#mllj4-1-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="c2140ba0-3f82-40cc-b20f-cded11cda39d" playOrder="8">
+                    <navLabel>
+                        <text>颐和园</text>
+                    </navLabel>
+                    <content src="text/part0004.html#mllj4-1-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="99161dbc-54e1-4666-bd9f-123ca2c8bae0" playOrder="9">
+                    <navLabel>
+                        <text>专题：触摸北京的历史印迹</text>
+                    </navLabel>
+                    <content src="text/part0004.html#mllj4-1-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="fa4ef709-cf8d-43ab-bf55-1afbbb35577a" playOrder="10">
+                    <navLabel>
+                        <text>北京国家体育场</text>
+                    </navLabel>
+                    <content src="text/part0004.html#mllj4-1-4"/>
+                </navPoint>
+                <navPoint class="chapter" id="84bf8a1b-6861-450c-83ae-e62378297a05" playOrder="11">
+                    <navLabel>
+                        <text>北京的胡同</text>
+                    </navLabel>
+                    <content src="text/part0004.html#mllj4-1-5"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="33b3a11d-b11c-44a5-9d5d-25cb5db63dee" playOrder="12">
+                <navLabel>
+                    <text>天津</text>
+                </navLabel>
+                <content src="text/part0004.html#mllj4-2"/>
+                <navPoint class="chapter" id="68868070-90b5-493b-a224-c1cfc5a5add9" playOrder="13">
+                    <navLabel>
+                        <text>海河</text>
+                    </navLabel>
+                    <content src="text/part0004.html#mllj4-2-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="9e40dacf-5b23-4790-ab4d-26622ea9729d" playOrder="14">
+                    <navLabel>
+                        <text>古文化街</text>
+                    </navLabel>
+                    <content src="text/part0004.html#mllj4-2-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="9fea5d02-b71b-40d0-9a6e-82c7822ce944" playOrder="15">
+                    <navLabel>
+                        <text>大沽炮台</text>
+                    </navLabel>
+                    <content src="text/part0004.html#mllj4-2-3"/>
+                </navPoint>
+            </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="b03fece6-d169-485b-a294-6a5d4e4e1498" playOrder="16">
+            <navLabel>
+                <text>Chapter-2　中原巡礼·寻一曲，流转不息的华夏之歌</text>
+            </navLabel>
+            <content src="text/part0005.html"/>
+            <navPoint class="chapter" id="eaac915c-c3c7-4b8f-829a-9bff9b516ea1" playOrder="17">
+                <navLabel>
+                    <text>山东</text>
+                </navLabel>
+                <content src="text/part0005.html#mllj5-1"/>
+                <navPoint class="chapter" id="a3f1f9f4-6722-4287-91fe-f273c80d5e76" playOrder="18">
+                    <navLabel>
+                        <text>泰山</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-1-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="a2326006-7391-4191-b10b-ba4d629897ed" playOrder="19">
+                    <navLabel>
+                        <text>曲阜孔庙</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-1-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="22e01742-f84d-40e0-a607-7a128b3cdd18" playOrder="20">
+                    <navLabel>
+                        <text>专题：避暑胜地话山东</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-1-3"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="7b35fb42-673b-4820-84f3-748b2e8109f0" playOrder="21">
+                <navLabel>
+                    <text>河北</text>
+                </navLabel>
+                <content src="text/part0005.html#mllj5-2"/>
+                <navPoint class="chapter" id="bda827a7-3fb6-4db6-b154-9db0e06446a9" playOrder="22">
+                    <navLabel>
+                        <text>白洋淀</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-2-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="8bb1d847-5731-4cfe-a9ee-be302c760d3f" playOrder="23">
+                    <navLabel>
+                        <text>坝上草原</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-2-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="1d5a790b-32ac-43ee-ba16-8839566bd9ff" playOrder="24">
+                    <navLabel>
+                        <text>承德避暑山庄</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-2-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="79488c3a-0969-4171-9481-ee0c053d4640" playOrder="25">
+                    <navLabel>
+                        <text>清东陵</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-2-4"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="d53c02ba-199d-4e57-9cb1-5ab339eb34ba" playOrder="26">
+                <navLabel>
+                    <text>河南</text>
+                </navLabel>
+                <content src="text/part0005.html#mllj5-3"/>
+                <navPoint class="chapter" id="bd5eaacc-e7d5-4823-950c-ca51e80f4e26" playOrder="27">
+                    <navLabel>
+                        <text>龙门石窟</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-3-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="80e3be8f-9ca3-4bb0-9e14-f7257d2a5974" playOrder="28">
+                    <navLabel>
+                        <text>少林寺</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-3-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="6495d123-4452-4a47-b9c8-b9aa7ef4ec9d" playOrder="29">
+                    <navLabel>
+                        <text>专题：千年韶华——河南的古都</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-3-3"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="9c415fc8-6691-499f-95d3-d3a3ae234673" playOrder="30">
+                <navLabel>
+                    <text>山西</text>
+                </navLabel>
+                <content src="text/part0005.html#mllj5-4"/>
+                <navPoint class="chapter" id="cce100a0-7238-4c39-8d20-1d677e7721ea" playOrder="31">
+                    <navLabel>
+                        <text>五台山</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-4-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="0e9d47ed-13aa-4665-909a-c31d3f16b5c5" playOrder="32">
+                    <navLabel>
+                        <text>恒山</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-4-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="a68d1934-fbd3-4039-82b5-9af239a37c78" playOrder="33">
+                    <navLabel>
+                        <text>平遥古城</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-4-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="0e78fb53-afbd-46b2-876e-5061ec52f231" playOrder="34">
+                    <navLabel>
+                        <text>专题：“大院”拾零</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-4-4"/>
+                </navPoint>
+                <navPoint class="chapter" id="9a127e3e-29be-44a3-a9e0-29f3148e4668" playOrder="35">
+                    <navLabel>
+                        <text>壶口瀑布</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-4-5"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="dd36f288-9ce4-49cc-9cab-9019e86f3c1b" playOrder="36">
+                <navLabel>
+                    <text>陕西</text>
+                </navLabel>
+                <content src="text/part0005.html#mllj5-5"/>
+                <navPoint class="chapter" id="bd5cb434-b7dd-419f-b6eb-1bc4d2ebfb85" playOrder="37">
+                    <navLabel>
+                        <text>华山</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-5-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="ac231590-dce6-4f92-bcc7-119da22b0dfa" playOrder="38">
+                    <navLabel>
+                        <text>西安</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-5-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="690ead42-dd02-4c5d-a6c5-536b8be0923c" playOrder="39">
+                    <navLabel>
+                        <text>秦始皇陵兵马俑</text>
+                    </navLabel>
+                    <content src="text/part0005.html#mllj5-5-3"/>
+                </navPoint>
+            </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="9e51b71d-fede-4a29-90a7-9328f5219e24" playOrder="40">
+            <navLabel>
+                <text>Chapter-3　东三省拾趣·林海雪原的变奏</text>
+            </navLabel>
+            <content src="text/part0006.html"/>
+            <navPoint class="chapter" id="4ab2486a-5304-4519-8cdb-9dbe8fde1a24" playOrder="41">
+                <navLabel>
+                    <text>辽宁</text>
+                </navLabel>
+                <content src="text/part0006.html#mllj6-1"/>
+                <navPoint class="chapter" id="8e8528d0-1a5c-4fa0-be42-7426fcffa100" playOrder="42">
+                    <navLabel>
+                        <text>大连</text>
+                    </navLabel>
+                    <content src="text/part0006.html#mllj6-1-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="e8de0e1a-0f99-49b0-bd4e-fd84a7b24279" playOrder="43">
+                    <navLabel>
+                        <text>沈阳故宫</text>
+                    </navLabel>
+                    <content src="text/part0006.html#mllj6-1-2"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="4aa4ce58-fb13-4437-8be8-7a659ede923d" playOrder="44">
+                <navLabel>
+                    <text>吉林</text>
+                </navLabel>
+                <content src="text/part0006.html#mllj6-2"/>
+                <navPoint class="chapter" id="12bf5562-c03b-40ef-aeb3-2b9e0e8ee393" playOrder="45">
+                    <navLabel>
+                        <text>长白山天池</text>
+                    </navLabel>
+                    <content src="text/part0006.html#mllj6-2-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="68587673-2e1a-4145-b0f8-b0fc227c3a93" playOrder="46">
+                    <navLabel>
+                        <text>高句丽王城</text>
+                    </navLabel>
+                    <content src="text/part0006.html#mllj6-2-2"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="d7e60ab8-9d42-4f05-a7d7-0039ae2fd4e2" playOrder="47">
+                <navLabel>
+                    <text>黑龙江</text>
+                </navLabel>
+                <content src="text/part0006.html#mllj6-3"/>
+                <navPoint class="chapter" id="dbe47baa-3b52-41c0-a5ec-ecbb41dfb986" playOrder="48">
+                    <navLabel>
+                        <text>大兴安岭</text>
+                    </navLabel>
+                    <content src="text/part0006.html#mllj6-3-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="00255f8e-5fe6-4278-8434-a948aac8779a" playOrder="49">
+                    <navLabel>
+                        <text>五大连池</text>
+                    </navLabel>
+                    <content src="text/part0006.html#mllj6-3-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="dabb9ea6-d844-4717-84da-b242a417602a" playOrder="50">
+                    <navLabel>
+                        <text>哈尔滨</text>
+                    </navLabel>
+                    <content src="text/part0006.html#mllj6-3-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="e742c2be-8c94-4c26-8186-281e9f2aa806" playOrder="51">
+                    <navLabel>
+                        <text>专题：“冰城”的冰雪之趣</text>
+                    </navLabel>
+                    <content src="text/part0006.html#mllj6-3-4"/>
+                </navPoint>
+                <navPoint class="chapter" id="fe55733c-0ee4-46ec-aff6-d208c9653d36" playOrder="52">
+                    <navLabel>
+                        <text>漠河</text>
+                    </navLabel>
+                    <content src="text/part0006.html#mllj6-3-5"/>
+                </navPoint>
+            </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="2c577595-ae5e-4814-a41e-e4284d0a6382" playOrder="53">
+            <navLabel>
+                <text>Chapter-4　塞外风光·长风万里且放歌</text>
+            </navLabel>
+            <content src="text/part0007.html"/>
+            <navPoint class="chapter" id="254b5397-82d2-498c-9dcc-7ccb0b0e94f9" playOrder="54">
+                <navLabel>
+                    <text>内蒙古</text>
+                </navLabel>
+                <content src="text/part0007.html#mllj7-1"/>
+                <navPoint class="chapter" id="b8671a35-0cb5-4359-b707-79f65ece52ea" playOrder="55">
+                    <navLabel>
+                        <text>呼伦贝尔草原</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-1-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="26518501-0ae9-4c69-822a-3e2434c042d4" playOrder="56">
+                    <navLabel>
+                        <text>专题：草原风光览胜</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-1-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="0719d9d3-f3c7-4bdb-b9bf-3aa7d5e6b254" playOrder="57">
+                    <navLabel>
+                        <text>额济纳</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-1-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="807938d5-1783-46e7-b8ed-78834ea36e15" playOrder="58">
+                    <navLabel>
+                        <text>巴丹吉林沙漠</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-1-4"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="81fa712c-7de5-4c4e-a5f1-8a07d6e791ed" playOrder="59">
+                <navLabel>
+                    <text>甘肃</text>
+                </navLabel>
+                <content src="text/part0007.html#mllj7-2"/>
+                <navPoint class="chapter" id="ab203734-ef42-43f3-b3b9-4ce45acc2c94" playOrder="60">
+                    <navLabel>
+                        <text>敦煌莫高窟</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-2-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="5a06e565-a359-4a4b-b653-affe030e8f77" playOrder="61">
+                    <navLabel>
+                        <text>鸣沙山与月牙泉</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-2-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="39fb3e8c-7371-4bf2-85a3-19a3c041ef21" playOrder="62">
+                    <navLabel>
+                        <text>玉门关</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-2-3"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="4639f104-6bcf-468d-afd0-b48060f752c5" playOrder="63">
+                <navLabel>
+                    <text>宁夏</text>
+                </navLabel>
+                <content src="text/part0007.html#mllj7-3"/>
+                <navPoint class="chapter" id="4758ac0a-5f3b-43b0-a8e4-15ed3ab111f7" playOrder="64">
+                    <navLabel>
+                        <text>贺兰山</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-3-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="0a6b2a5c-b64e-4a9d-bcb2-a38adb40d825" playOrder="65">
+                    <navLabel>
+                        <text>六盘山</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-3-2"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="2fc184d0-9b26-4dbf-8d89-9440f31ef7ad" playOrder="66">
+                <navLabel>
+                    <text>新疆</text>
+                </navLabel>
+                <content src="text/part0007.html#mllj7-4"/>
+                <navPoint class="chapter" id="3dc67b7e-f585-43fb-950d-faafe55048c6" playOrder="67">
+                    <navLabel>
+                        <text>塔克拉玛干大沙漠</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-4-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="5d34a909-58d6-4f0e-8874-82c5b1895639" playOrder="68">
+                    <navLabel>
+                        <text>雅丹魔鬼城</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-4-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="afbe01d9-f594-408c-89a2-25dc9ee3e8a0" playOrder="69">
+                    <navLabel>
+                        <text>白哈巴</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-4-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="56a70700-ce52-446c-93f0-60e2bf98bf9b" playOrder="70">
+                    <navLabel>
+                        <text>喀纳斯湖</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-4-4"/>
+                </navPoint>
+                <navPoint class="chapter" id="7526e886-2cbb-43c5-b158-1eafba9baf94" playOrder="71">
+                    <navLabel>
+                        <text>伊犁草原</text>
+                    </navLabel>
+                    <content src="text/part0007.html#mllj7-4-5"/>
+                </navPoint>
+            </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="9f006821-2014-46a7-b649-a264edec31b8" playOrder="72">
+            <navLabel>
+                <text>Chapter-5　青藏高原之旅·迎接最纯粹的阳光</text>
+            </navLabel>
+            <content src="text/part0008.html"/>
+            <navPoint class="chapter" id="780b912f-b126-4ddb-9fcd-eaff909a9a44" playOrder="73">
+                <navLabel>
+                    <text>青海</text>
+                </navLabel>
+                <content src="text/part0008.html#mllj8-1"/>
+                <navPoint class="chapter" id="6868dceb-8b51-4ff1-9429-54a0f3bb9683" playOrder="74">
+                    <navLabel>
+                        <text>可可西里</text>
+                    </navLabel>
+                    <content src="text/part0008.html#mllj8-1-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="7cecee96-d403-4fc3-af24-decfd24e9fa2" playOrder="75">
+                    <navLabel>
+                        <text>青海湖</text>
+                    </navLabel>
+                    <content src="text/part0008.html#mllj8-1-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="775df5b8-c3e8-47ee-a54f-be22d66b411f" playOrder="76">
+                    <navLabel>
+                        <text>三江源</text>
+                    </navLabel>
+                    <content src="text/part0008.html#mllj8-1-3"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="e9c65f3c-ef9a-43be-9238-84286b7d053f" playOrder="77">
+                <navLabel>
+                    <text>西藏</text>
+                </navLabel>
+                <content src="text/part0008.html#mllj8-2"/>
+                <navPoint class="chapter" id="428a403c-f8cb-414e-ab55-787398210e49" playOrder="78">
+                    <navLabel>
+                        <text>珠穆朗玛峰</text>
+                    </navLabel>
+                    <content src="text/part0008.html#mllj8-2-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="ba48803d-967d-40e6-8066-b9a7f0897bd9" playOrder="79">
+                    <navLabel>
+                        <text>雅鲁藏布大峡谷</text>
+                    </navLabel>
+                    <content src="text/part0008.html#mllj8-2-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="3fb4d003-77f7-4595-ae85-c30042045377" playOrder="80">
+                    <navLabel>
+                        <text>阿里</text>
+                    </navLabel>
+                    <content src="text/part0008.html#mllj8-2-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="840e2e84-a204-47a8-9c6e-772db539d384" playOrder="81">
+                    <navLabel>
+                        <text>拉萨</text>
+                    </navLabel>
+                    <content src="text/part0008.html#mllj8-2-4"/>
+                </navPoint>
+                <navPoint class="chapter" id="613a8e96-bab2-48df-9956-720081d2074d" playOrder="82">
+                    <navLabel>
+                        <text>纳木措</text>
+                    </navLabel>
+                    <content src="text/part0008.html#mllj8-2-5"/>
+                </navPoint>
+            </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="9880e025-2ff6-4afe-8e41-61fbd07c60c0" playOrder="83">
+            <navLabel>
+                <text>Chapter-6　西南典藏下一站，天堂</text>
+            </navLabel>
+            <content src="text/part0009.html"/>
+            <navPoint class="chapter" id="cb135213-f2dc-4326-8fb8-0e0991ea793c" playOrder="84">
+                <navLabel>
+                    <text>四川</text>
+                </navLabel>
+                <content src="text/part0009.html#mllj9-1"/>
+                <navPoint class="chapter" id="dc0828a6-6795-42b4-a76b-2c1ce2ac7443" playOrder="85">
+                    <navLabel>
+                        <text>九寨沟</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-1-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="8d7bb857-5362-46f9-84af-1597e727a551" playOrder="86">
+                    <navLabel>
+                        <text>稻城亚丁</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-1-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="ebeab4da-cab0-4a7a-86b9-491ed88e7b6f" playOrder="87">
+                    <navLabel>
+                        <text>卧龙</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-1-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="73ace0db-1868-4f81-b557-1658c036d46b" playOrder="88">
+                    <navLabel>
+                        <text>海螺沟</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-1-4"/>
+                </navPoint>
+                <navPoint class="chapter" id="7aba92a1-d1bb-4afd-8ee6-4abd20edd46c" playOrder="89">
+                    <navLabel>
+                        <text>峨眉山</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-1-5"/>
+                </navPoint>
+                <navPoint class="chapter" id="c11cf802-2063-4f81-9acc-5ee8a0a920d7" playOrder="90">
+                    <navLabel>
+                        <text>专题：天府之国的情趣生活</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-1-6"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="230620f6-8f45-4851-8a33-9aeaf67d4908" playOrder="91">
+                <navLabel>
+                    <text>重庆</text>
+                </navLabel>
+                <content src="text/part0009.html#mllj9-2"/>
+                <navPoint class="chapter" id="5e4f673b-ccdb-4431-8630-65436f1b40f8" playOrder="92">
+                    <navLabel>
+                        <text>小寨天坑</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-2-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="20f23f3f-c152-4607-a2a8-b3b46b63f564" playOrder="93">
+                    <navLabel>
+                        <text>大足石刻</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-2-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="75ad84e4-dfc6-46a3-85c5-8cedb9320a31" playOrder="94">
+                    <navLabel>
+                        <text>长江三峡</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-2-3"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="f3a42811-a3a1-4ce5-902f-d929926b3a18" playOrder="95">
+                <navLabel>
+                    <text>云南</text>
+                </navLabel>
+                <content src="text/part0009.html#mllj9-3"/>
+                <navPoint class="chapter" id="30ab6cbf-119a-49ed-9290-e5b3a28afc86" playOrder="96">
+                    <navLabel>
+                        <text>香格里拉</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-3-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="0c769497-440b-4bf0-9687-6b5205b11ef9" playOrder="97">
+                    <navLabel>
+                        <text>丽江</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-3-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="2d01bfac-70e0-4193-96a3-30a6aead54a3" playOrder="98">
+                    <navLabel>
+                        <text>大理</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-3-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="36a1477a-dbe3-4cae-bd8d-fba20984df3f" playOrder="99">
+                    <navLabel>
+                        <text>泸沽湖</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-3-4"/>
+                </navPoint>
+                <navPoint class="chapter" id="708e65ba-6021-485e-817a-312853b0d687" playOrder="100">
+                    <navLabel>
+                        <text>石林</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-3-5"/>
+                </navPoint>
+                <navPoint class="chapter" id="45ba3413-3dd4-4ba1-b774-e0db1084a82c" playOrder="101">
+                    <navLabel>
+                        <text>西双版纳</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-3-6"/>
+                </navPoint>
+                <navPoint class="chapter" id="a6db31ee-03ad-443c-b282-d6c45b058ff3" playOrder="102">
+                    <navLabel>
+                        <text>滇池</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-3-7"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="a25e93c0-78a8-4fd0-8e7c-03228752de08" playOrder="103">
+                <navLabel>
+                    <text>贵州</text>
+                </navLabel>
+                <content src="text/part0009.html#mllj9-4"/>
+                <navPoint class="chapter" id="653d9fc4-8b10-4824-8fc9-ed5b0f079eba" playOrder="104">
+                    <navLabel>
+                        <text>黄果树瀑布</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-4-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="513b6af4-0d4f-4ef9-a80d-2b4e5313680b" playOrder="105">
+                    <navLabel>
+                        <text>梵净山</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-4-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="6b10d505-30ec-4771-9922-10c32ceef13c" playOrder="106">
+                    <navLabel>
+                        <text>织金洞</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-4-3"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="4d424709-cf7a-49f1-8722-a772b1ac14e7" playOrder="107">
+                <navLabel>
+                    <text>广西</text>
+                </navLabel>
+                <content src="text/part0009.html#mllj9-5"/>
+                <navPoint class="chapter" id="017078f3-b223-432e-b643-0afc1008ec6d" playOrder="108">
+                    <navLabel>
+                        <text>漓江</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-5-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="125e55b7-a9cd-4b40-ae42-3ca9117d32c3" playOrder="109">
+                    <navLabel>
+                        <text>专题：桂林山水甲天下</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-5-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="5598e706-ac50-4c58-b03c-0419e75d67c7" playOrder="110">
+                    <navLabel>
+                        <text>黄姚</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-5-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="c370bda3-3675-497a-b4ad-b1bd479bbb9b" playOrder="111">
+                    <navLabel>
+                        <text>大圩</text>
+                    </navLabel>
+                    <content src="text/part0009.html#mllj9-5-4"/>
+                </navPoint>
+            </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="f5a05212-4d16-4f60-941b-1fda3fe2c8a3" playOrder="112">
+            <navLabel>
+                <text>Chapter-7　两湖山水·展开最美的水墨长卷</text>
+            </navLabel>
+            <content src="text/part0010.html"/>
+            <navPoint class="chapter" id="988b06ad-202e-4773-8ee8-17272eacda26" playOrder="113">
+                <navLabel>
+                    <text>湖北</text>
+                </navLabel>
+                <content src="text/part0010.html#mllj10-1"/>
+                <navPoint class="chapter" id="baba7110-a82e-43e0-aede-4fc5f7cd78a8" playOrder="114">
+                    <navLabel>
+                        <text>神农架</text>
+                    </navLabel>
+                    <content src="text/part0010.html#mllj10-1-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="5ecf667e-ab8d-41aa-a165-96b41953e02f" playOrder="115">
+                    <navLabel>
+                        <text>武当山</text>
+                    </navLabel>
+                    <content src="text/part0010.html#mllj10-1-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="08553a4a-32f3-4036-b354-a9415eeea60b" playOrder="116">
+                    <navLabel>
+                        <text>黄鹤楼</text>
+                    </navLabel>
+                    <content src="text/part0010.html#mllj10-1-3"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="56f5c315-6ad4-40c7-b70b-0ba273540fcc" playOrder="117">
+                <navLabel>
+                    <text>湖南</text>
+                </navLabel>
+                <content src="text/part0010.html#mllj10-2"/>
+                <navPoint class="chapter" id="9c0c197a-0d96-42cd-b6a8-e75b13ff39b7" playOrder="118">
+                    <navLabel>
+                        <text>洞庭湖</text>
+                    </navLabel>
+                    <content src="text/part0010.html#mllj10-2-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="ed4aac7e-d913-4e6d-b721-26088867a21c" playOrder="119">
+                    <navLabel>
+                        <text>张家界</text>
+                    </navLabel>
+                    <content src="text/part0010.html#mllj10-2-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="f6130350-6495-4c67-a50a-021805cab7bd" playOrder="120">
+                    <navLabel>
+                        <text>衡山</text>
+                    </navLabel>
+                    <content src="text/part0010.html#mllj10-2-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="f9496710-4704-4a75-bf0d-c6da4b862faa" playOrder="121">
+                    <navLabel>
+                        <text>凤凰古城</text>
+                    </navLabel>
+                    <content src="text/part0010.html#mllj10-2-4"/>
+                </navPoint>
+                <navPoint class="chapter" id="18a13276-fa38-43de-876f-b4d6229d6e99" playOrder="122">
+                    <navLabel>
+                        <text>德夯</text>
+                    </navLabel>
+                    <content src="text/part0010.html#mllj10-2-5"/>
+                </navPoint>
+            </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="d8c48dcc-e221-4df1-946a-386966fe6d5b" playOrder="123">
+            <navLabel>
+                <text>Chapter-8　烟波江南·与时光一起，在此终老</text>
+            </navLabel>
+            <content src="text/part0011.html"/>
+            <navPoint class="chapter" id="355684e5-4a6b-4f53-a05f-46b12b88f848" playOrder="124">
+                <navLabel>
+                    <text>江苏</text>
+                </navLabel>
+                <content src="text/part0011.html#mllj11-1"/>
+                <navPoint class="chapter" id="374bc42e-5145-4901-9991-106db7f93860" playOrder="125">
+                    <navLabel>
+                        <text>太湖</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-1-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="6ee70813-fd26-46e1-9e4f-0428b4747ad9" playOrder="126">
+                    <navLabel>
+                        <text>苏州园林</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-1-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="bdcbc4b7-55e9-4f94-be1e-a7f63e208c10" playOrder="127">
+                    <navLabel>
+                        <text>专题：姑苏城的湖光山色</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-1-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="d2cff51d-b563-4304-8e93-886fb94a3c9e" playOrder="128">
+                    <navLabel>
+                        <text>扬州</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-1-4"/>
+                </navPoint>
+                <navPoint class="chapter" id="7d331da9-c8c7-45ba-9253-6ad657dbb7dd" playOrder="129">
+                    <navLabel>
+                        <text>专题：水乡的小镇</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-1-5"/>
+                </navPoint>
+                <navPoint class="chapter" id="214fbdac-e2c8-4007-bec5-c91cb06b6853" playOrder="130">
+                    <navLabel>
+                        <text>南京</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-1-6"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="26de3891-91c7-4092-b35e-5da4c336886d" playOrder="131">
+                <navLabel>
+                    <text>上海</text>
+                </navLabel>
+                <content src="text/part0011.html#mllj11-2"/>
+                <navPoint class="chapter" id="3c26bcf1-d6b2-48d4-b3e8-adaf0ee90d40" playOrder="132">
+                    <navLabel>
+                        <text>夜上海</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-2-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="cc53adfd-9319-4d2e-9abf-7ae24f90784b" playOrder="133">
+                    <navLabel>
+                        <text>豫园</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-2-2"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="733508f3-87c6-408d-af6b-717aa0dec62a" playOrder="134">
+                <navLabel>
+                    <text>浙江</text>
+                </navLabel>
+                <content src="text/part0011.html#mllj11-3"/>
+                <navPoint class="chapter" id="9aac217b-847f-4733-9a1e-c15cca5015db" playOrder="135">
+                    <navLabel>
+                        <text>普陀山</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-3-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="ddc54e9c-de9c-4ce8-b441-4ae2d4b945a9" playOrder="136">
+                    <navLabel>
+                        <text>西湖</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-3-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="8e0ac4bc-8263-438e-b8da-958c3718efdf" playOrder="137">
+                    <navLabel>
+                        <text>专题：钱塘自古繁华杭州</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-3-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="d668908b-52ee-4c32-a62c-13be3dd66942" playOrder="138">
+                    <navLabel>
+                        <text>嘉兴</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-3-4"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="1baff5fd-1aa9-4695-86c2-2d3a97cfec65" playOrder="139">
+                <navLabel>
+                    <text>安徽</text>
+                </navLabel>
+                <content src="text/part0011.html#mllj11-4"/>
+                <navPoint class="chapter" id="5243aa9c-a23d-49f6-a76d-eb9ce0086ad3" playOrder="140">
+                    <navLabel>
+                        <text>黄山</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-4-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="092c1684-fe86-47c3-a1c2-b31f6b142b1a" playOrder="141">
+                    <navLabel>
+                        <text>九华山</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-4-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="1d794c90-7419-4bf0-a570-b81a19e29706" playOrder="142">
+                    <navLabel>
+                        <text>天柱山</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-4-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="eff6379f-55f0-4ca0-8524-3298a843e547" playOrder="143">
+                    <navLabel>
+                        <text>西递与宏村</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-4-4"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="3812efe5-c939-4f51-8d49-4f925efb1b64" playOrder="144">
+                <navLabel>
+                    <text>江西</text>
+                </navLabel>
+                <content src="text/part0011.html#mllj11-5"/>
+                <navPoint class="chapter" id="bf911d7b-aa74-4ac6-9cbc-73cc3f0dd2f9" playOrder="145">
+                    <navLabel>
+                        <text>庐山</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-5-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="a10b07e1-890e-4328-8dcd-cde091a06c2c" playOrder="146">
+                    <navLabel>
+                        <text>三清山</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-5-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="00dff2e9-a8d0-471e-8dcf-22b66460b02c" playOrder="147">
+                    <navLabel>
+                        <text>婺源</text>
+                    </navLabel>
+                    <content src="text/part0011.html#mllj11-5-3"/>
+                </navPoint>
+            </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="0ca51dfa-7577-4670-8abe-94fbba6bf89e" playOrder="148">
+            <navLabel>
+                <text>Chapter-9　东南沿海行·伴着海风去呼吸</text>
+            </navLabel>
+            <content src="text/part0012.html"/>
+            <navPoint class="chapter" id="0aa48c95-c048-4bc3-a0af-5907554e9d2d" playOrder="149">
+                <navLabel>
+                    <text>福建</text>
+                </navLabel>
+                <content src="text/part0012.html#mllj12-1"/>
+                <navPoint class="chapter" id="66900cc8-3b1d-4b78-9e3b-524d3e51fbdf" playOrder="150">
+                    <navLabel>
+                        <text>武夷山</text>
+                    </navLabel>
+                    <content src="text/part0012.html#mllj12-1-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="8debac84-3b93-4a31-9631-4a4935dc9bb0" playOrder="151">
+                    <navLabel>
+                        <text>福建土楼</text>
+                    </navLabel>
+                    <content src="text/part0012.html#mllj12-1-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="4534bff9-b265-4ff6-a358-c35026b80bec" playOrder="152">
+                    <navLabel>
+                        <text>鼓浪屿</text>
+                    </navLabel>
+                    <content src="text/part0012.html#mllj12-1-3"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="00d984f4-6c8d-4d72-a69f-744da219ea39" playOrder="153">
+                <navLabel>
+                    <text>广东</text>
+                </navLabel>
+                <content src="text/part0012.html#mllj12-2"/>
+                <navPoint class="chapter" id="08f2ff2d-46a4-4b6a-abb1-3db4461821bd" playOrder="154">
+                    <navLabel>
+                        <text>丹霞山</text>
+                    </navLabel>
+                    <content src="text/part0012.html#mllj12-2-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="4b101b24-8338-4acf-977a-3ab976e78eea" playOrder="155">
+                    <navLabel>
+                        <text>七星岩</text>
+                    </navLabel>
+                    <content src="text/part0012.html#mllj12-2-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="4b84e0c9-52db-4bd0-9201-5a2e85f6a0cd" playOrder="156">
+                    <navLabel>
+                        <text>开平碉楼</text>
+                    </navLabel>
+                    <content src="text/part0012.html#mllj12-2-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="386cbe96-a1f8-48e7-97f5-58209f12bc34" playOrder="157">
+                    <navLabel>
+                        <text>广州</text>
+                    </navLabel>
+                    <content src="text/part0012.html#mllj12-2-4"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="c06d9a59-bc28-40f4-b24c-38f86140d3b2" playOrder="158">
+                <navLabel>
+                    <text>海南</text>
+                </navLabel>
+                <content src="text/part0012.html#mllj12-3"/>
+                <navPoint class="chapter" id="086010cf-d5ea-4abc-bdb9-ec22b964a0b9" playOrder="159">
+                    <navLabel>
+                        <text>亚龙湾</text>
+                    </navLabel>
+                    <content src="text/part0012.html#mllj12-3-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="9b04a38e-2e6c-4811-9f2d-2d4baf149fbf" playOrder="160">
+                    <navLabel>
+                        <text>三亚</text>
+                    </navLabel>
+                    <content src="text/part0012.html#mllj12-3-2"/>
+                </navPoint>
+            </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="aad6de3f-1b05-47d1-a301-976df8a3ad47" playOrder="161">
+            <navLabel>
+                <text>Chapter-10　港澳台之旅·加入，这场永不落幕的繁华</text>
+            </navLabel>
+            <content src="text/part0013.html"/>
+            <navPoint class="chapter" id="c531fb32-f8df-4eeb-8d32-727df6678561" playOrder="162">
+                <navLabel>
+                    <text>香港</text>
+                </navLabel>
+                <content src="text/part0013.html#mllj13-1"/>
+                <navPoint class="chapter" id="f4922c2d-c435-4f02-9d38-cde21f752def" playOrder="163">
+                    <navLabel>
+                        <text>港岛</text>
+                    </navLabel>
+                    <content src="text/part0013.html#mllj13-1-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="4e9ca066-3ae7-4760-b742-ef8cfbc4941a" playOrder="164">
+                    <navLabel>
+                        <text>九龙区</text>
+                    </navLabel>
+                    <content src="text/part0013.html#mllj13-1-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="12f57866-1241-4bf1-8bbc-41b829870a21" playOrder="165">
+                    <navLabel>
+                        <text>旺角</text>
+                    </navLabel>
+                    <content src="text/part0013.html#mllj13-1-3"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="f93c81ff-90af-4540-897a-7149f0a5a8a9" playOrder="166">
+                <navLabel>
+                    <text>澳门</text>
+                </navLabel>
+                <content src="text/part0013.html#mllj13-2"/>
+                <navPoint class="chapter" id="a021888c-7caa-467a-bd72-71b2408033f5" playOrder="167">
+                    <navLabel>
+                        <text>大三巴牌坊</text>
+                    </navLabel>
+                    <content src="text/part0013.html#mllj13-2-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="82903031-9b68-4ba0-bc98-48015845a95d" playOrder="168">
+                    <navLabel>
+                        <text>妈阁庙</text>
+                    </navLabel>
+                    <content src="text/part0013.html#mllj13-2-2"/>
+                </navPoint>
+            </navPoint>
+            <navPoint class="chapter" id="a83f6c74-68ce-4a4d-96cd-e36fa94ef170" playOrder="169">
+                <navLabel>
+                    <text>台湾</text>
+                </navLabel>
+                <content src="text/part0013.html#mllj13-3"/>
+                <navPoint class="chapter" id="9d14959a-6035-48b8-86bd-1d0d16cb1bd0" playOrder="170">
+                    <navLabel>
+                        <text>台北</text>
+                    </navLabel>
+                    <content src="text/part0013.html#mllj13-3-1"/>
+                </navPoint>
+                <navPoint class="chapter" id="0b9cff22-0f72-4fa8-a328-551805790cd3" playOrder="171">
+                    <navLabel>
+                        <text>日月潭</text>
+                    </navLabel>
+                    <content src="text/part0013.html#mllj13-3-2"/>
+                </navPoint>
+                <navPoint class="chapter" id="fa3d7570-cb12-4ec7-828b-d9cf1d755a17" playOrder="172">
+                    <navLabel>
+                        <text>阿里山</text>
+                    </navLabel>
+                    <content src="text/part0013.html#mllj13-3-3"/>
+                </navPoint>
+                <navPoint class="chapter" id="711943be-444a-41b1-88dd-86ead4fb5a10" playOrder="173">
+                    <navLabel>
+                        <text>野柳</text>
+                    </navLabel>
+                    <content src="text/part0013.html#mllj13-3-4"/>
+                </navPoint>
+            </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="da045873-0a52-4b39-8511-5507dce415a4" playOrder="174">
+            <navLabel>
+                <text>走遍中国</text>
+            </navLabel>
+            <content src="text/part0014.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="37d126ae-c25e-4702-82c1-fd39f154ed55" playOrder="175">
+            <navLabel>
+                <text>绝美的旅程</text>
+            </navLabel>
+            <content src="text/part0015.html"/>
+        </navPoint>
+    </navMap>
 </ncx>

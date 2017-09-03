@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@interface XDSCatalogueModel : NSObject
+@property (nonatomic, copy) NSString *catalogueName;
+@property (nonatomic, copy) NSString *link;
+@property (nonatomic, copy) NSString *catalogueId;//if the id is nil, it means the catalogue is the first level catalogue 如果id为空，则为一级目录
+
+@end
+
 typedef  NS_ENUM(NSInteger,LPPEBookType){
     LPPEBookTypeTxt,
     LPPEBookTypeEpub,
@@ -27,6 +34,10 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
 @property (nonatomic, readonly) NSArray *pageStrings;//每一页的普通文本
 @property (nonatomic, readonly) NSArray *pageLocations;//每一页在章节中的位置
 @property (nonatomic, readonly) NSInteger pageCount;//章节总页数
+
+- (void)setCatalogueModelArray:(NSArray<XDSCatalogueModel *> *)catalogueModelArray;
+@property (nonatomic, readonly) NSArray<XDSCatalogueModel *> *catalogueModelArray;//本章所有二级目录的Model
+@property (nonatomic, readonly) NSDictionary *locationWithPageIdMapping;//存放对应id的location，用于根据链接跳转到指定页面   @{NSString:NSNumber}
 
 @property (nonatomic, readonly) NSArray<NSString *> *imageSrcArray;//本章所有图片的链接
 @property (nonatomic, readonly) NSArray<XDSNoteModel *>*notes;
