@@ -164,6 +164,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     };
     
     
+    [self isReadConfigChanged];
     XDSReadConfig *config = self.currentConfig;
     CGFloat fontSize = (config.currentFontSize > 1)?config.currentFontSize:config.cachefontSize;
     UIColor *textColor = config.currentTextColor?config.currentTextColor:config.cacheTextColor;
@@ -217,6 +218,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     }
     
     self.locationWithPageIdMapping = locationWithPageIdMapping;
+
     *attString = mutableAttString;
 }
 
@@ -324,6 +326,19 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     return NO;
 }
 
+- (NSInteger)getPageWithLocationInChapter:(NSInteger)locationInChapter{
+    NSInteger page = 0;
+    for (int i = 0; i < self.pageLocations.count; i ++) {
+        NSInteger location = [self.pageLocations[i] integerValue];
+        if (locationInChapter < location) {
+            page = (i > 0)? (i - 1):0;
+            break;
+        }
+    }
+    
+    return page;
+}
+
 - (NSArray *)notesAtPage:(NSInteger)page {
     NSInteger location = [_pageLocations[page] integerValue];
     NSInteger length = [_pageStrings[page] length];
@@ -352,6 +367,13 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         self.currentConfig = shareConfig;
     }
     return isReadConfigChanged;
+}
+
+- (XDSReadConfig *)currentConfig {
+    if (_currentConfig == nil) {
+        [self isReadConfigChanged];
+    }
+    return _currentConfig;
 }
 
 -(id)copyWithZone:(NSZone *)zone{

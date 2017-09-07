@@ -10,6 +10,7 @@
 
 #import "XDSWIFIFileTransferViewController.h"
 #import "XDSReadManager.h"
+#import <WebKit/WebKit.h>
 @interface ViewController ()
 @end
 
@@ -24,6 +25,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
+//        WKWebView
+//        UIWebView
+        
 //        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"11处特工皇妃"withExtension:@"epub"];//包含长章节，注意内存警告
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"zoubianzhongguo"withExtension:@"epub"];
 //        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"每天懂一点好玩心理学"withExtension:@"epub"];

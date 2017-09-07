@@ -247,7 +247,9 @@
     XDSChapterModel *chapter;
     NSMutableArray *catalogueModelArrayInChapter;
     
-    for (CXMLElement *element in navPoints) {
+    for (int i = 0; i < navPoints.count; i ++) {
+        CXMLElement *element = navPoints[i];
+        
         NSArray *navLabels = [element elementsForName:@"navLabel"];
         NSArray *contents = [element elementsForName:@"content"];
         if (!navLabels.count || !contents) {
@@ -274,16 +276,19 @@
         
         NSArray *links = [chapterSrc componentsSeparatedByString:@"#"];
         if (links.count == 1) {
+            catalogueModel.catalogueId = @"";
             catalogueModelArrayInChapter = [NSMutableArray arrayWithCapacity:0];
             chapter = [[XDSChapterModel alloc] init];
             chapter.chapterName = chapterName;
             chapter.chapterSrc = chapterSrc;
             [chapter setCatalogueModelArray:catalogueModelArrayInChapter];
             [chapters addObject:chapter];
-
         }else {
             catalogueModel.catalogueId = links.lastObject;
         }
+        
+        catalogueModel.chapter = chapters.count - 1;
+
         [catalogueModelArrayInChapter addObject:catalogueModel];
 
     }

@@ -13,6 +13,8 @@
 @property (nonatomic, copy) NSString *link;
 @property (nonatomic, copy) NSString *catalogueId;//if the id is nil, it means the catalogue is the first level catalogue 如果id为空，则为一级目录
 
+@property (nonatomic, assign) NSInteger chapter;//章节
+
 @end
 
 typedef  NS_ENUM(NSInteger,LPPEBookType){
@@ -47,6 +49,7 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
 - (void)addNote:(XDSNoteModel *)noteModel;//insert a book note into chapter 向该章节中插入一条笔记
 - (void)addOrDeleteABookmark:(XDSMarkModel *)markModel;//insert a bookmark into chapter 向该章节中插入一条书签
 
+- (NSInteger)getPageWithLocationInChapter:(NSInteger)locationInChapter;
 - (BOOL)isMarkAtPage:(NSInteger)page;
 - (NSArray *)notesAtPage:(NSInteger)page;
 

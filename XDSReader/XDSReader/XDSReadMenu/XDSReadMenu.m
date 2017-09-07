@@ -187,10 +187,18 @@ XDSCatalogueViewDelegate
 }
 
 //TODO:XDSCatalogueViewDelegate
-- (void)catalogueViewDidSelectedChapter:(XDSChapterModel *)chapterModel{
-    NSInteger selectedChapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:chapterModel];
-    NSInteger page = 0;
-    [[XDSReadManager sharedManager] readViewJumpToChapter:selectedChapter page:page];
+- (void)catalogueViewDidSelecteCatalogue:(XDSCatalogueModel *)catalogueModel {
+    
+    NSInteger selectedChapterNum = catalogueModel.chapter;
+    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[selectedChapterNum];
+    
+    if (chapterModel.locationWithPageIdMapping == nil) {
+        [CURRENT_BOOK_MODEL loadContentInChapter:chapterModel];
+    }
+    NSString *locationKey = [NSString stringWithFormat:@"${id=%@}", catalogueModel.catalogueId];
+    NSInteger locationInChapter = [chapterModel.locationWithPageIdMapping[locationKey] integerValue];
+    NSInteger page = [chapterModel getPageWithLocationInChapter:locationInChapter];
+    [[XDSReadManager sharedManager] readViewJumpToChapter:selectedChapterNum page:page];
     [self hideReadMenu];
 }
 

@@ -17,6 +17,10 @@ CGFloat const kCatalogueTableViewCellHeight = 44.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.rowHeight = kCatalogueTableViewCellHeight;
+    self.tableView.sectionFooterHeight = CGFLOAT_MIN;
+    self.tableView.sectionHeaderHeight = CGFLOAT_MIN;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -31,11 +35,12 @@ CGFloat const kCatalogueTableViewCellHeight = 44.f;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return CURRENT_BOOK_MODEL.chapters.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return CURRENT_BOOK_MODEL.chapters.count;
+    XDSChapterModel *chapter = CURRENT_BOOK_MODEL.chapters[section];
+    return chapter.catalogueModelArray.count;
 }
 
 
@@ -46,21 +51,29 @@ CGFloat const kCatalogueTableViewCellHeight = 44.f;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
     }
     
-    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[indexPath.row];
-    cell.textLabel.text = chapterModel.chapterName;
+    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[indexPath.section];
+    XDSCatalogueModel *catalogueModel = chapterModel.catalogueModelArray[indexPath.row];
+    
     cell.textLabel.textColor = [UIColor darkGrayColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (CURRENT_RECORD.chapterModel == chapterModel) {
         cell.textLabel.textColor = TEXT_COLOR_XDS_2;
+    }
+    
+    if (catalogueModel.catalogueId.length) {
+        cell.textLabel.text = [@"    " stringByAppendingString:catalogueModel.catalogueName];
+    }else{
+        cell.textLabel.text = catalogueModel.catalogueName;
     }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (_cvDelegate && [_cvDelegate respondsToSelector:@selector(catalogueViewDidSelectedChapter:)]){
-        XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[indexPath.row];
-        [_cvDelegate catalogueViewDidSelectedChapter:chapterModel];
+    if (_cvDelegate && [_cvDelegate respondsToSelector:@selector(catalogueViewDidSelecteCatalogue:)]){
+        XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[indexPath.section];
+        XDSCatalogueModel *catalogueModel = chapterModel.catalogueModelArray[indexPath.row];
+        [_cvDelegate catalogueViewDidSelecteCatalogue:catalogueModel];
     }
 }
 @end

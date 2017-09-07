@@ -251,7 +251,6 @@
 #warning show action sheet
         
     }else if (imageView.url){
-#warning show image browser
         [self showPhotoBrowserWithImage:imageView.url.path];
     }
 }
@@ -261,6 +260,42 @@
         [XDSReaderUtil showAlertWithTitle:@"笔记内容" message:noteModel.content];
     }else{
         NSLog(@"xxxxxxxxxxxxxxx");
+        NSString *url = [button.URL.absoluteString stringByRemovingPercentEncoding];
+        NSArray *pathAndId = [url componentsSeparatedByString:@"#"];
+        url = pathAndId.firstObject;
+        
+        XDSCatalogueModel *catalogueModel;
+        for (XDSChapterModel *chapterModel in CURRENT_BOOK_MODEL.chapters) {
+            if ([url hasSuffix:chapterModel.chapterSrc]) {
+                catalogueModel = [[XDSCatalogueModel alloc] init];
+                catalogueModel.chapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:chapterModel];
+                if (pathAndId.count == 2) {
+                    catalogueModel.catalogueId = pathAndId.lastObject;
+                }
+                break;
+            }
+        }
+        
+        if (catalogueModel) {
+            //jump to relative chapter and page
+            NSLog(@"==== chapter");
+            NSInteger selectedChapterNum = catalogueModel.chapter;
+            XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[selectedChapterNum];
+            
+            if (chapterModel.locationWithPageIdMapping == nil) {
+                [CURRENT_BOOK_MODEL loadContentInChapter:chapterModel];
+            }
+            NSString *locationKey = [NSString stringWithFormat:@"${id=%@}", catalogueModel.catalogueId];
+            NSInteger locationInChapter = [chapterModel.locationWithPageIdMapping[locationKey] integerValue];
+            NSInteger page = [chapterModel getPageWithLocationInChapter:locationInChapter];
+
+            NSLog(@"chapter = %zd, page = %zd", selectedChapterNum, page);
+            
+        }else {
+            [[UIApplication sharedApplication] openURL:button.URL];
+        }
+        
+        
     }
 }
 
