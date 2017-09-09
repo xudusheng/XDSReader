@@ -146,8 +146,6 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
 + (id)getLocalModelWithURL:(NSURL *)url{
     NSString *key = [url.path lastPathComponent];
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-#warning message
-    data = nil;
     if (!data) {
         if ([[key pathExtension].lowercaseString isEqualToString:@"txt"]) {
             XDSBookModel *model = [[XDSBookModel alloc] initWithContent:[XDSReaderUtil encodeWithURL:url]];

@@ -95,6 +95,7 @@ XDSReadManagerDelegate
     XDSReadViewController *readView = _pageViewController.viewControllers.firstObject;
     UIColor *theme = [XDSReadConfig shareInstance].currentTheme?[XDSReadConfig shareInstance].currentTheme:[XDSReadConfig shareInstance].cacheTheme;
     readView.view.backgroundColor = theme;
+    readView.readView.backgroundColor = theme;
 }
 - (void)readViewEffectDidChanged{}
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page{

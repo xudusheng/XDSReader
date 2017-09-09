@@ -50,7 +50,7 @@ XDSReader已经将Menu的UI显示与逻辑进行了剥离，使用时可以根�
                                           page:(NSInteger *)page
                                       delegate:(id<XDSReadViewControllerDelegate>)rvDelegate;
 
-- (void)readViewJumpToChapter:(NSInteger *)chapter page:(NSInteger *)page;//跳转到指定章节（上一章，下一章，slider，目录）
+- (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到指定章节（上一章，下一章，slider，目录）
 - (void)readViewJumpToNote:(XDSNoteModel *)note;//跳转到指定笔记，因为是笔记是基于位置查找的，使用page查找可能出错
 - (void)readViewJumpToMark:(XDSMarkModel *)mark;//跳转到指定书签，因为是书签是基于位置查找的，使用page查找可能出错
 - (void)configReadFontSize:(BOOL)plus;//设置字体大小;
@@ -109,7 +109,7 @@ model.locationInChapterContent = _selectRange.location + [chapterModel.pageArray
 ```objective-c	
 NSInteger selectedChapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:chapterModel];
 NSInteger page = 0;
-[[XDSReadManager sharedManager] readViewJumpToChapter:&selectedChapter page:&page];   
+[[XDSReadManager sharedManager] readViewJumpToChapter:selectedChapter page:page];   
 ```
 ##### 9跳转到指定笔记位置
 ```objective-c
