@@ -371,6 +371,21 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     return page;
 }
 
+- (XDSCatalogueModel *)getCatalogueModelInChapter:(NSInteger)locationInChapter {
+    if (self.catalogueModelArray.count && self.locationWithPageIdMapping) {
+        XDSCatalogueModel *targetCatalogue = self.catalogueModelArray.firstObject;
+        for (XDSCatalogueModel *aCatalogue in self.catalogueModelArray) {
+            NSString *idKey = [NSString stringWithFormat:@"${id=%@}", aCatalogue.catalogueId];
+            NSNumber *location = self.locationWithPageIdMapping[idKey];
+            if (locationInChapter > location.integerValue) {
+                targetCatalogue = aCatalogue;
+            }
+        }
+        return targetCatalogue;
+    }
+    return nil;
+}
+
 - (NSArray *)notesAtPage:(NSInteger)page {
     NSInteger location = [_pageLocations[page] integerValue];
     NSInteger length = [_pageStrings[page] length];

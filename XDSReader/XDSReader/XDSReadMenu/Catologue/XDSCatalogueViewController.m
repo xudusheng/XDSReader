@@ -57,7 +57,9 @@ CGFloat const kCatalogueTableViewCellHeight = 44.f;
     cell.textLabel.textColor = [UIColor darkGrayColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (CURRENT_RECORD.chapterModel == chapterModel) {
-        cell.textLabel.textColor = TEXT_COLOR_XDS_2;
+        if ([CURRENT_RECORD.chapterModel getCatalogueModelInChapter:CURRENT_RECORD.location] == catalogueModel) {            
+            cell.textLabel.textColor = TEXT_COLOR_XDS_2;
+        }
     }
     
     if (catalogueModel.catalogueId.length) {
