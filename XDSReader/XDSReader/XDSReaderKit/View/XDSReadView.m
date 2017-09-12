@@ -97,33 +97,6 @@
     self.readTextView.attributedString = self.readAttributedContent;
 }
 
-//TODO: docs
--(void)drawDotWithLeft:(CGRect)leftDocFrame right:(CGRect)rightDocFrame{
-    if (CGRectEqualToRect(CGRectZero, leftDocFrame) || (CGRectEqualToRect(CGRectZero, rightDocFrame))){
-        return;
-    }
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGMutablePathRef pathRef = CGPathCreateMutable();
-    [[UIColor orangeColor] setFill];
-    CGPathAddRect(pathRef, NULL, CGRectMake(CGRectGetMinX(leftDocFrame)-2, CGRectGetMinY(leftDocFrame),2, CGRectGetHeight(leftDocFrame)));
-    CGPathAddRect(pathRef, NULL, CGRectMake(CGRectGetMaxX(rightDocFrame), CGRectGetMinY(rightDocFrame),2, CGRectGetHeight(rightDocFrame)));
-    CGContextAddPath(ctx, pathRef);
-    CGContextFillPath(ctx);
-    CGPathRelease(pathRef);
-    CGFloat dotSize = 15.f;//doc size  小圆点尺寸
-    CGFloat clickableSize = dotSize + 20.f;//clickable size 可点区域尺寸
-    _leftRect = CGRectMake(CGRectGetMinX(leftDocFrame)-clickableSize/2,
-                           CGRectGetMinY(leftDocFrame)-clickableSize/2,
-                           clickableSize,
-                           clickableSize);
-    _rightRect = CGRectMake(CGRectGetMaxX(rightDocFrame)-clickableSize/2,
-                            CGRectGetMaxY(rightDocFrame)-clickableSize/2,
-                            clickableSize,
-                            clickableSize);
-    CGContextDrawImage(ctx,CGRectMake(CGRectGetMinX(leftDocFrame)-dotSize/2, CGRectGetMinY(leftDocFrame)-dotSize/2, dotSize, dotSize),[UIImage imageNamed:@"r_drag-dot"].CGImage);
-    CGContextDrawImage(ctx,CGRectMake(CGRectGetMaxX(rightDocFrame)-dotSize/2, CGRectGetMaxY(rightDocFrame)-dotSize/2, dotSize, dotSize),[UIImage imageNamed:@"r_drag-dot"].CGImage);
-}
-
 //TODO: Magnifier View
 -(void)showMagnifier{
     if (!_magnifierView) {
@@ -473,6 +446,44 @@
     [self hiddenMenu];
 }
 //MARK: - OTHER PRIVATE METHODS 私有方法
+//TODO: 绘制选中区域左右节点
+-(void)drawDotWithLeft:(CGRect)leftDocFrame right:(CGRect)rightDocFrame{
+    if (CGRectEqualToRect(CGRectZero, leftDocFrame) || (CGRectEqualToRect(CGRectZero, rightDocFrame))){
+        return;
+    }
+    
+    CGFloat dotSize = 8.f;//doc size  小圆点尺寸
+    CGFloat clickableSize = dotSize + 20.f;//clickable size 可点区域尺寸
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGMutablePathRef pathRef = CGPathCreateMutable();
+    [SELECTED_AREA_DOC_COLOR setFill];
+    
+    CGPathMoveToPoint(pathRef, NULL, CGRectGetMinX(leftDocFrame)-2, CGRectGetMinY(leftDocFrame));
+    CGPathAddRect(pathRef, NULL, CGRectMake(CGRectGetMinX(leftDocFrame)-2, CGRectGetMinY(leftDocFrame),2, CGRectGetHeight(leftDocFrame)));
+    
+    CGPathMoveToPoint(pathRef, NULL, CGRectGetMaxX(rightDocFrame), CGRectGetMinY(rightDocFrame));
+    CGPathAddRect(pathRef, NULL, CGRectMake(CGRectGetMaxX(rightDocFrame), CGRectGetMinY(rightDocFrame),2, CGRectGetHeight(rightDocFrame)));
+    
+    CGPathMoveToPoint(pathRef, NULL, CGRectGetMinX(leftDocFrame)-1, CGRectGetMinY(leftDocFrame));
+    CGPathAddArc(pathRef, NULL, CGRectGetMinX(leftDocFrame)-1, CGRectGetMinY(leftDocFrame) - dotSize/2, dotSize/2, 0, M_PI*2, NO);
+    
+    CGPathMoveToPoint(pathRef, NULL, CGRectGetMaxX(leftDocFrame)+1, CGRectGetMaxY(leftDocFrame) + dotSize/2);
+    CGPathAddArc(pathRef, NULL, CGRectGetMaxX(rightDocFrame)+1, CGRectGetMaxY(rightDocFrame) + dotSize/2, dotSize/2, 0, M_PI*2, NO);
+    
+    CGContextAddPath(ctx, pathRef);
+    CGContextFillPath(ctx);
+    CGPathRelease(pathRef);
+    
+    _leftRect = CGRectMake(CGRectGetMinX(leftDocFrame)-clickableSize/2,
+                           CGRectGetMinY(leftDocFrame)-clickableSize/2,
+                           clickableSize,
+                           clickableSize);
+    _rightRect = CGRectMake(CGRectGetMaxX(rightDocFrame)-clickableSize/2,
+                            CGRectGetMaxY(rightDocFrame)-clickableSize/2,
+                            clickableSize,
+                            clickableSize);
+}
 
 //绘制选中区域的背景色
 - (void)drawSelectedPath:(NSArray *)pathArray leftDot:(CGRect *)leftDot rightDot:(CGRect *)rightDot{
@@ -482,7 +493,7 @@
     }
     _pan.enabled = YES;
     CGMutablePathRef pathRef = CGPathCreateMutable();
-    [[UIColor cyanColor] setFill];
+    [SELECTED_AREA_BACKGROUND_COLOR setFill];
     for (int i = 0; i < [pathArray count]; i++) {
         CGRect rect = CGRectFromString([pathArray objectAtIndex:i]);
         CGPathAddRect(pathRef, NULL, rect);
