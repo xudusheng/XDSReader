@@ -25,55 +25,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-//        WKWebView
-//        UIWebView
         
-//        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"11处特工皇妃"withExtension:@"epub"];//包含长章节，注意内存警告
-//        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"zoubianzhongguo"withExtension:@"epub"];
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"每天懂一点好玩心理学"withExtension:@"epub"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"zoubianzhongguo"withExtension:@"epub"];
+//        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"每天懂一点好玩心理学"withExtension:@"epub"];
 
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 1){
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"11处特工王妃"withExtension:@"TXT"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"zoubianzhongguo"withExtension:@"TXT"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 2){
         XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
         [self.navigationController pushViewController:wifiTransferVC animated:YES];
-        
-//        XDSDemoViewController *demoVC = [[XDSDemoViewController alloc] init];
-//        [self.navigationController presentViewController:demoVC animated:YES completion:nil];
-//        [self.navigationController pushViewController:demoVC animated:YES];
-        
-//        XDSReadPageViewController *readPageVC = [[XDSReadPageViewController alloc] init];
-//        [self presentViewController:readPageVC animated:YES completion:nil];
-
-//        NSString *path = [[NSBundle mainBundle] pathForResource:@"XDSShareConfig.plist" ofType:nil];
-//        NSArray *array = [NSArray arrayWithContentsOfFile:path];
-//        
-//        NSURL *url = [NSURL URLWithString:@"reader://share/home"];
-//        
-//        for (NSDictionary *dict in array) {
-//            if ([dict[@"exact_url"] isEqualToString:url.absoluteString]) {
-//                NSString *object = dict[@"object"];
-//                if ([object hasPrefix:@"#"]) {
-//                    object = [object substringFromIndex:1];
-//                    Class class = NSClassFromString(object);
-//                    if (class) {
-//                        UIViewController *controller = [[class alloc] init];
-//                        [controller.view setValue:[UIColor redColor] forKey:@"backgroundColor"];
-//                        [controller setValuesForKeysWithDictionary:@{}];
-//                        [self.navigationController pushViewController:controller animated:YES];
-////                        [self presentViewController:controller animated:YES completion:nil];
-//                    }
-//                    break;
-//                }
-//            }
-//        }
-        
-        
-        
-//        NSLog(@"url = %@", url);
-        
     }
 }
 

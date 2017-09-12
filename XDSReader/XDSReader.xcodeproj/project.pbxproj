@@ -13,12 +13,10 @@
 		A29AA3FB1F5A8E3D00FB24EE /* XDSPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */; };
 		FC61F7AF1F14651600DA83F4 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */; };
 		FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */; };
-		FC61F84C1F18764D00DA83F4 /* NSAttributedString+Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F84B1F18764D00DA83F4 /* NSAttributedString+Encoding.m */; };
 		FC6D956D1F3378AC006A0583 /* XDSBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D95681F3378AC006A0583 /* XDSBookModel.m */; };
 		FC6D956E1F3378AC006A0583 /* XDSChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D956A1F3378AC006A0583 /* XDSChapterModel.m */; };
 		FC6D956F1F3378AC006A0583 /* XDSRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D956C1F3378AC006A0583 /* XDSRecordModel.m */; };
 		FC6D95721F337938006A0583 /* XDSReadView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D95711F337938006A0583 /* XDSReadView.m */; };
-		FC6D95761F340B25006A0583 /* 11处特工王妃.TXT in Resources */ = {isa = PBXBuildFile; fileRef = FC6D95751F340B25006A0583 /* 11处特工王妃.TXT */; };
 		FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */ = {isa = PBXBuildFile; fileRef = FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */; };
 		FC88A51A1F0CCAE900BDF04A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FC88A5191F0CCAE900BDF04A /* README.md */; };
 		FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */; };
@@ -91,14 +89,6 @@
 		FCA78BC21EF39B6000114907 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */; };
 		FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */; };
 		FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC61EF3A2D600114907 /* mdjyml.txt */; };
-		FCA78BD21EF3A2D700114907 /* sale_discount_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */; };
-		FCA78BD31EF3A2D700114907 /* ic_add.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC81EF3A2D600114907 /* ic_add.png */; };
-		FCA78BD41EF3A2D700114907 /* reader_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC91EF3A2D600114907 /* reader_more@2x.png */; };
-		FCA78BD51EF3A2D700114907 /* bg_back_white.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCA1EF3A2D600114907 /* bg_back_white.png */; };
-		FCA78BD61EF3A2D700114907 /* bg_back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCB1EF3A2D600114907 /* bg_back_white@2x.png */; };
-		FCA78BD71EF3A2D700114907 /* reader_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCC1EF3A2D600114907 /* reader_cover@2x.png */; };
-		FCA78BD81EF3A2D700114907 /* r_drag-dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCD1EF3A2D600114907 /* r_drag-dot@2x.png */; };
-		FCA78BD91EF3A2D700114907 /* bt_tjcp_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BCE1EF3A2D600114907 /* bt_tjcp_no@2x.png */; };
 		FCA78BE31EF5F6AA00114907 /* XDSReadMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BE21EF5F6AA00114907 /* XDSReadMenu.m */; };
 		FCA78BE61EF6D6FE00114907 /* XDSMenuBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BE51EF6D6FE00114907 /* XDSMenuBottomView.m */; };
 		FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BE71EF7592100114907 /* XDSReadMenu.xcassets */; };
@@ -114,15 +104,10 @@
 		FCA78C141EF929AA00114907 /* XDSCatalogueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C131EF929AA00114907 /* XDSCatalogueViewController.m */; };
 		FCA78C171EF929BE00114907 /* XDSNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C161EF929BE00114907 /* XDSNoteViewController.m */; };
 		FCA78C1A1EF929CE00114907 /* XDSMarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C191EF929CE00114907 /* XDSMarkViewController.m */; };
-		FCA78C251EFA00DB00114907 /* 华文中宋.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C1C1EFA00DA00114907 /* 华文中宋.ttf */; };
-		FCA78C261EFA00DB00114907 /* 华文宋体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C1D1EFA00DB00114907 /* 华文宋体.ttf */; };
 		FCA78C271EFA00DB00114907 /* 华文彩云.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C1E1EFA00DB00114907 /* 华文彩云.ttf */; };
 		FCA78C281EFA00DB00114907 /* 华文新魏.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C1F1EFA00DB00114907 /* 华文新魏.ttf */; };
-		FCA78C291EFA00DB00114907 /* 华文楷体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C201EFA00DB00114907 /* 华文楷体.ttf */; };
 		FCA78C2A1EFA00DB00114907 /* 华文琥珀.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C211EFA00DB00114907 /* 华文琥珀.ttf */; };
-		FCA78C2B1EFA00DB00114907 /* 华文细黑.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C221EFA00DB00114907 /* 华文细黑.ttf */; };
 		FCA78C2C1EFA00DB00114907 /* 华文行楷.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C231EFA00DB00114907 /* 华文行楷.ttf */; };
-		FCA78C2D1EFA00DB00114907 /* 华文隶书.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C241EFA00DB00114907 /* 华文隶书.ttf */; };
 		FCA78C3B1EFB793F00114907 /* XDSNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C3A1EFB793F00114907 /* XDSNoteCell.m */; };
 		FCA78C3E1EFCA92C00114907 /* XDSNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78C3D1EFCA92C00114907 /* XDSNoDataView.m */; };
 		FCA78C401EFCA96800114907 /* XDSNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA78C3F1EFCA96800114907 /* XDSNoDataView.xib */; };
@@ -142,8 +127,6 @@
 		FC61F7AD1F14651600DA83F4 /* XDSReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadPageViewController.h; sourceTree = "<group>"; };
 		FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadPageViewController.m; sourceTree = "<group>"; };
 		FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = XDSShareConfig.plist; sourceTree = "<group>"; };
-		FC61F84A1F18764D00DA83F4 /* NSAttributedString+Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Encoding.h"; sourceTree = "<group>"; };
-		FC61F84B1F18764D00DA83F4 /* NSAttributedString+Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Encoding.m"; sourceTree = "<group>"; };
 		FC6D95671F3378AC006A0583 /* XDSBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSBookModel.h; sourceTree = "<group>"; };
 		FC6D95681F3378AC006A0583 /* XDSBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSBookModel.m; sourceTree = "<group>"; };
 		FC6D95691F3378AC006A0583 /* XDSChapterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSChapterModel.h; sourceTree = "<group>"; };
@@ -152,7 +135,6 @@
 		FC6D956C1F3378AC006A0583 /* XDSRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSRecordModel.m; sourceTree = "<group>"; };
 		FC6D95701F337938006A0583 /* XDSReadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadView.h; sourceTree = "<group>"; };
 		FC6D95711F337938006A0583 /* XDSReadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadView.m; sourceTree = "<group>"; };
-		FC6D95751F340B25006A0583 /* 11处特工王妃.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "11处特工王妃.TXT"; sourceTree = "<group>"; };
 		FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = zoubianzhongguo.epub; sourceTree = "<group>"; };
 		FC88A5191F0CCAE900BDF04A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "妖神记.txt"; sourceTree = "<group>"; };
@@ -289,14 +271,6 @@
 		FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "每天懂一点好玩心理学.epub"; sourceTree = "<group>"; };
 		FCA78BC61EF3A2D600114907 /* mdjyml.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdjyml.txt; sourceTree = "<group>"; };
-		FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sale_discount_yellow.png; sourceTree = "<group>"; };
-		FCA78BC81EF3A2D600114907 /* ic_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_add.png; sourceTree = "<group>"; };
-		FCA78BC91EF3A2D600114907 /* reader_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_more@2x.png"; sourceTree = "<group>"; };
-		FCA78BCA1EF3A2D600114907 /* bg_back_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_back_white.png; sourceTree = "<group>"; };
-		FCA78BCB1EF3A2D600114907 /* bg_back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_back_white@2x.png"; sourceTree = "<group>"; };
-		FCA78BCC1EF3A2D600114907 /* reader_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_cover@2x.png"; sourceTree = "<group>"; };
-		FCA78BCD1EF3A2D600114907 /* r_drag-dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "r_drag-dot@2x.png"; sourceTree = "<group>"; };
-		FCA78BCE1EF3A2D600114907 /* bt_tjcp_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_tjcp_no@2x.png"; sourceTree = "<group>"; };
 		FCA78BE11EF5F6AA00114907 /* XDSReadMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadMenu.h; sourceTree = "<group>"; };
 		FCA78BE21EF5F6AA00114907 /* XDSReadMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadMenu.m; sourceTree = "<group>"; };
 		FCA78BE41EF6D6FE00114907 /* XDSMenuBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMenuBottomView.h; sourceTree = "<group>"; };
@@ -326,15 +300,10 @@
 		FCA78C161EF929BE00114907 /* XDSNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSNoteViewController.m; sourceTree = "<group>"; };
 		FCA78C181EF929CE00114907 /* XDSMarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSMarkViewController.h; sourceTree = "<group>"; };
 		FCA78C191EF929CE00114907 /* XDSMarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSMarkViewController.m; sourceTree = "<group>"; };
-		FCA78C1C1EFA00DA00114907 /* 华文中宋.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文中宋.ttf"; sourceTree = "<group>"; };
-		FCA78C1D1EFA00DB00114907 /* 华文宋体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文宋体.ttf"; sourceTree = "<group>"; };
 		FCA78C1E1EFA00DB00114907 /* 华文彩云.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文彩云.ttf"; sourceTree = "<group>"; };
 		FCA78C1F1EFA00DB00114907 /* 华文新魏.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文新魏.ttf"; sourceTree = "<group>"; };
-		FCA78C201EFA00DB00114907 /* 华文楷体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文楷体.ttf"; sourceTree = "<group>"; };
 		FCA78C211EFA00DB00114907 /* 华文琥珀.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文琥珀.ttf"; sourceTree = "<group>"; };
-		FCA78C221EFA00DB00114907 /* 华文细黑.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文细黑.ttf"; sourceTree = "<group>"; };
 		FCA78C231EFA00DB00114907 /* 华文行楷.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文行楷.ttf"; sourceTree = "<group>"; };
-		FCA78C241EFA00DB00114907 /* 华文隶书.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文隶书.ttf"; sourceTree = "<group>"; };
 		FCA78C391EFB793F00114907 /* XDSNoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSNoteCell.h; sourceTree = "<group>"; };
 		FCA78C3A1EFB793F00114907 /* XDSNoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSNoteCell.m; sourceTree = "<group>"; };
 		FCA78C3C1EFCA92C00114907 /* XDSNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSNoDataView.h; sourceTree = "<group>"; };
@@ -654,8 +623,6 @@
 		FCA78B351EF2932200114907 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				FC61F84A1F18764D00DA83F4 /* NSAttributedString+Encoding.h */,
-				FC61F84B1F18764D00DA83F4 /* NSAttributedString+Encoding.m */,
 				FCA78B4F1EF2DEB500114907 /* TouchXML */,
 				FCA78B391EF2935200114907 /* GTMDefines.h */,
 				FCA78B3A1EF2935200114907 /* GTMNSString+HTML.h */,
@@ -725,19 +692,10 @@
 		FCA78BC31EF3A2CF00114907 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FCA78BC61EF3A2D600114907 /* mdjyml.txt */,
 				FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */,
 				FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */,
 				FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */,
-				FC6D95751F340B25006A0583 /* 11处特工王妃.TXT */,
-				FCA78BC61EF3A2D600114907 /* mdjyml.txt */,
-				FCA78BC71EF3A2D600114907 /* sale_discount_yellow.png */,
-				FCA78BC81EF3A2D600114907 /* ic_add.png */,
-				FCA78BC91EF3A2D600114907 /* reader_more@2x.png */,
-				FCA78BCA1EF3A2D600114907 /* bg_back_white.png */,
-				FCA78BCB1EF3A2D600114907 /* bg_back_white@2x.png */,
-				FCA78BCC1EF3A2D600114907 /* reader_cover@2x.png */,
-				FCA78BCD1EF3A2D600114907 /* r_drag-dot@2x.png */,
-				FCA78BCE1EF3A2D600114907 /* bt_tjcp_no@2x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -802,15 +760,10 @@
 		FCA78C1B1EFA00DA00114907 /* 华文字体 */ = {
 			isa = PBXGroup;
 			children = (
-				FCA78C1C1EFA00DA00114907 /* 华文中宋.ttf */,
-				FCA78C1D1EFA00DB00114907 /* 华文宋体.ttf */,
 				FCA78C1E1EFA00DB00114907 /* 华文彩云.ttf */,
 				FCA78C1F1EFA00DB00114907 /* 华文新魏.ttf */,
-				FCA78C201EFA00DB00114907 /* 华文楷体.ttf */,
 				FCA78C211EFA00DB00114907 /* 华文琥珀.ttf */,
-				FCA78C221EFA00DB00114907 /* 华文细黑.ttf */,
 				FCA78C231EFA00DB00114907 /* 华文行楷.ttf */,
-				FCA78C241EFA00DB00114907 /* 华文隶书.ttf */,
 			);
 			path = "华文字体";
 			sourceTree = "<group>";
@@ -880,34 +833,20 @@
 				FCA78C401EFCA96800114907 /* XDSNoDataView.xib in Resources */,
 				FCA78AD01EF2914F00114907 /* index.html in Resources */,
 				FCA78A601EF290F400114907 /* LaunchScreen.storyboard in Resources */,
-				FCA78BD71EF3A2D700114907 /* reader_cover@2x.png in Resources */,
 				FCA78AD21EF2914F00114907 /* wifi.png in Resources */,
-				FCA78C2D1EFA00DB00114907 /* 华文隶书.ttf in Resources */,
 				FCA78C2C1EFA00DB00114907 /* 华文行楷.ttf in Resources */,
 				FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */,
 				FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */,
 				FCA78A5D1EF290F400114907 /* Assets.xcassets in Resources */,
-				FCA78BD51EF3A2D700114907 /* bg_back_white.png in Resources */,
-				FCA78C261EFA00DB00114907 /* 华文宋体.ttf in Resources */,
-				FCA78C251EFA00DB00114907 /* 华文中宋.ttf in Resources */,
-				FCA78BD41EF3A2D700114907 /* reader_more@2x.png in Resources */,
 				FCA78C2A1EFA00DB00114907 /* 华文琥珀.ttf in Resources */,
-				FCA78BD61EF3A2D700114907 /* bg_back_white@2x.png in Resources */,
-				FCA78BD21EF3A2D700114907 /* sale_discount_yellow.png in Resources */,
 				FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */,
-				FCA78C2B1EFA00DB00114907 /* 华文细黑.ttf in Resources */,
 				FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */,
 				FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */,
-				FC6D95761F340B25006A0583 /* 11处特工王妃.TXT in Resources */,
 				FCA78C281EFA00DB00114907 /* 华文新魏.ttf in Resources */,
 				FCA78AD11EF2914F00114907 /* upload.html in Resources */,
-				FCA78BD91EF3A2D700114907 /* bt_tjcp_no@2x.png in Resources */,
 				FCA78AB31EF2914F00114907 /* About.txt in Resources */,
-				FCA78BD81EF3A2D700114907 /* r_drag-dot@2x.png in Resources */,
-				FCA78C291EFA00DB00114907 /* 华文楷体.ttf in Resources */,
 				FCA78A5B1EF290F400114907 /* Main.storyboard in Resources */,
 				FCA78C271EFA00DB00114907 /* 华文彩云.ttf in Resources */,
-				FCA78BD31EF3A2D700114907 /* ic_add.png in Resources */,
 				FCA78ABD1EF2914F00114907 /* README.txt in Resources */,
 				FCA78AD51EF2914F00114907 /* XDSWIFIFileTransferViewController.xib in Resources */,
 				FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */,
@@ -979,7 +918,6 @@
 				FCA78B801EF2DEB500114907 /* CXMLDocument_PrivateExtensions.m in Sources */,
 				FCA78AC91EF2914F00114907 /* HTTPDataResponse.m in Sources */,
 				FC6D95721F337938006A0583 /* XDSReadView.m in Sources */,
-				FC61F84C1F18764D00DA83F4 /* NSAttributedString+Encoding.m in Sources */,
 				FCA78B7E1EF2DEB500114907 /* CXHTMLDocument.m in Sources */,
 				FCA78AC41EF2914F00114907 /* HTTPServer.m in Sources */,
 				FCA78AC71EF2914F00114907 /* MultipartMessageHeaderField.m in Sources */,

@@ -4,15 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>华文中宋.ttf</string>
-		<string>华文宋体.ttf</string>
 		<string>华文彩云.ttf</string>
 		<string>华文新魏.ttf</string>
 		<string>华文楷体.ttf</string>
-		<string>华文琥珀.ttf</string>
-		<string>华文细黑.ttf</string>
 		<string>华文行楷.ttf</string>
-		<string>华文隶书.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

@@ -7,7 +7,6 @@
 //
 
 #import "XDSChapterModel.h"
-#import "NSAttributedString+Encoding.h"
 
 
 //@property (nonatomic, copy) NSString *catalogueName;
