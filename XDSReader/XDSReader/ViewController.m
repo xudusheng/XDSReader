@@ -31,7 +31,7 @@
 
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 1){
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"zoubianzhongguo"withExtension:@"TXT"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"妖神记"withExtension:@"txt"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 2){
         XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
