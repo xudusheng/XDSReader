@@ -26,28 +26,33 @@
         [match enumerateObjectsUsingBlock:^(NSTextCheckingResult *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSRange range = [obj range];
             NSInteger local = range.location;
+            
+            XDSChapterModel *model = [[XDSChapterModel alloc] init];
+
             if (idx == 0) {
-                XDSChapterModel *model = [[XDSChapterModel alloc] init];
                 model.chapterName = @"开始";
                 NSUInteger len = local;
                 model.originContent = [content substringWithRange:NSMakeRange(0, len)];
-                [*chapters addObject:model];
                 
             }
             if (idx > 0 ) {
-                XDSChapterModel *model = [[XDSChapterModel alloc] init];
                 model.chapterName = [content substringWithRange:lastRange];
                 NSUInteger len = local-lastRange.location;
-                model.originContent = [content substringWithRange:NSMakeRange(lastRange.location, len)];
-                [*chapters addObject:model];
-                
+                model.originContent = [content substringWithRange:NSMakeRange(lastRange.location, len)];                
             }
             if (idx == match.count-1) {
-                XDSChapterModel *model = [[XDSChapterModel alloc] init];
                 model.chapterName = [content substringWithRange:range];
                 model.originContent = [content substringWithRange:NSMakeRange(local, content.length-local)];
-                [*chapters addObject:model];
             }
+
+            XDSCatalogueModel *catalogueModel = [[XDSCatalogueModel alloc] init];
+            catalogueModel.catalogueName = model.chapterName;
+            catalogueModel.link = @"";
+            catalogueModel.catalogueId = @"";
+            catalogueModel.chapter = (*chapters).count;
+            model.catalogueModelArray = @[catalogueModel];
+            
+            [*chapters addObject:model];
             lastRange = range;
         }];
     }else{

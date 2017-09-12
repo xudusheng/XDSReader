@@ -9,7 +9,39 @@
 #import "XDSChapterModel.h"
 #import "NSAttributedString+Encoding.h"
 
+
+//@property (nonatomic, copy) NSString *catalogueName;
+//@property (nonatomic, copy) NSString *link;
+//@property (nonatomic, copy) NSString *catalogueId;//if the id is nil, it means the catalogue is the first level catalogue 如果id为空，则为一级目录
+//
+//@property (nonatomic, assign) NSInteger chapter;//章节
+
 @implementation XDSCatalogueModel
+NSString *const kXDSCatalogueModelCatalogueNameEncodeKey = @"catalogueName";
+NSString *const kXDSCatalogueModelLinkEncodeKey = @"link";
+NSString *const kXDSCatalogueModelCatalogueIdEncodeKey = @"catalogueId";
+NSString *const kXDSCatalogueModelChapterEncodeKey = @"chapter";
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.catalogueName forKey:kXDSCatalogueModelCatalogueNameEncodeKey];
+    [aCoder encodeObject:self.link forKey:kXDSCatalogueModelLinkEncodeKey];
+    [aCoder encodeObject:self.catalogueId forKey:kXDSCatalogueModelCatalogueIdEncodeKey];
+    [aCoder encodeInt:(int)self.chapter forKey:kXDSCatalogueModelChapterEncodeKey];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if (self) {
+        self.catalogueName = [aDecoder decodeObjectForKey:kXDSCatalogueModelCatalogueNameEncodeKey];
+        self.link = [aDecoder decodeObjectForKey:kXDSCatalogueModelLinkEncodeKey];
+        self.catalogueId = [aDecoder decodeObjectForKey:kXDSCatalogueModelCatalogueIdEncodeKey];
+        self.chapter = [aDecoder decodeIntForKey:kXDSCatalogueModelChapterEncodeKey];
+        
+    }
+    return self;
+}
+
+
 @end
 
 
@@ -38,6 +70,7 @@
 NSString *const kXDSChapterModelChapterNameEncodeKey = @"chapterName";
 NSString *const kXDSChapterModelChapterSrcEncodeKey = @"chapterSrc";
 NSString *const kXDSChapterModelOriginContentEncodeKey = @"originContent";
+NSString *const kXDSChapterModelCatalogueModelArrayEncodeKey = @"catalogueModelArray";
 NSString *const kXDSChapterModelLocationWithPageIdEncodeKey = @"locationWithPageIdMapping";
 NSString *const kXDSChapterModelImageSrcArrayEncodeKey = @"imageSrcArray";
 NSString *const kXDSChapterModelNotesEncodeKey = @"notes";
@@ -387,6 +420,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     model.pageStrings = self.pageStrings;
     model.pageLocations = self.pageLocations;
     model.pageCount = self.pageCount;
+    model.catalogueModelArray = self.catalogueModelArray;
     model.locationWithPageIdMapping = self.locationWithPageIdMapping;
     model.imageSrcArray = self.imageSrcArray;
     model.notes = self.notes;
@@ -397,6 +431,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     [aCoder encodeObject:self.chapterName forKey:kXDSChapterModelChapterNameEncodeKey];
     [aCoder encodeObject:self.chapterSrc forKey:kXDSChapterModelChapterSrcEncodeKey];
     [aCoder encodeObject:self.originContent forKey:kXDSChapterModelOriginContentEncodeKey];
+    [aCoder encodeObject:self.catalogueModelArray forKey:kXDSChapterModelCatalogueModelArrayEncodeKey];
     [aCoder encodeObject:self.locationWithPageIdMapping forKey:kXDSChapterModelLocationWithPageIdEncodeKey];
     [aCoder encodeObject:self.imageSrcArray forKey:kXDSChapterModelImageSrcArrayEncodeKey];
     [aCoder encodeObject:self.notes forKey:kXDSChapterModelNotesEncodeKey];
@@ -408,6 +443,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         self.chapterName = [aDecoder decodeObjectForKey:kXDSChapterModelChapterNameEncodeKey];
         self.chapterSrc = [aDecoder decodeObjectForKey:kXDSChapterModelChapterSrcEncodeKey];
         self.originContent = [aDecoder decodeObjectForKey:kXDSChapterModelOriginContentEncodeKey];
+        self.catalogueModelArray = [aDecoder decodeObjectForKey:kXDSChapterModelCatalogueModelArrayEncodeKey];
         self.locationWithPageIdMapping = [aDecoder decodeObjectForKey:kXDSChapterModelLocationWithPageIdEncodeKey];
         self.imageSrcArray = [aDecoder decodeObjectForKey:kXDSChapterModelImageSrcArrayEncodeKey];
         self.notes = [aDecoder decodeObjectForKey:kXDSChapterModelNotesEncodeKey];
