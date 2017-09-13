@@ -16,22 +16,22 @@ XDSReader是一个支持epub与txt格式的电子书阅读器，支持目录、�
 dusheng.xu$ cd /Users/(省略若干路径)/XDSReader
 dusheng.xu$ pod install
 
-<!--工程配置：  -->
-<!--1、将工程中的XDSReaderKit与XDSReadMenu两个文件夹add到工程中；  -->
-<!--2、由于需要xml解析，需要添加相应的库支持  -->
-<!--	添加libz.tbd-->
-<!--	other link flag 添加  -lxml2-->
-<!--	Header Search Paths 添加  usr/include/libxml2-->
-<!-- 	-->
-<!--//.pch文件中-->
-<!--//工程中引用第三方库ZipArchive进行文件解压，其中包含c代码，-->
-<!--//需要在.pch文件添加一句话#ifdef __OBJC__ #endif，-->
-<!--//然后将所有#import<>/#import ""都要放置到这句话的中间-->
-<!--#ifdef __OBJC__-->
-<!--	#import <UIKit/UIKit.h>-->
-<!--	#import <Foundation/Foundation.h>-->
-<!--	#import "XDSReaderHeader.h"-->
-<!--#endif-->
+// 工程配置：  
+// 1、将工程中的XDSReaderKit与XDSReadMenu两个文件夹add到工程中；  
+// 2、由于需要xml解析，需要添加相应的库支持  
+    	添加libz.tbd
+        other link flag 添加  -lxml2
+        Header Search Paths 添加  usr/include/libxml2
+
+// .pch文件中
+//  工程中引用第三方库ZipArchive进行文件解压，其中包含c代码，
+//  需要在.pch文件添加一句话#ifdef __OBJC__ #endif，
+//  然后将所有#import<>/#import ""都要放置到这句话的中间
+    #ifdef __OBJC__
+        #import <UIKit/UIKit.h>
+        #import <Foundation/Foundation.h>
+        #import "XDSReaderHeader.h"
+//  #endif
 ```	
 
 ```objective-c
