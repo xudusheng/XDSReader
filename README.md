@@ -1,29 +1,37 @@
 # XDSReader
-XDSReader是一个支持epub与txt格式的电子书阅读器，支持目录、添加笔记、添加书签、字体切换、章节切换等功能。epub目前仅支持显示查看文本与图片，后续将继续添加标注、图片点击、笔记点击等功能。
+XDSReader是一个支持epub与txt格式的电子书阅读器，支持目录、添加笔记、添加书签、字体切换、章节切换、换线等功能。后来引入了DTCoreText框架，使阅读器完美兼容CSS功能，在此基础上添加了图片预览功能，书籍内部与外部跳转功能。
 
 先看一下效果图
 
 	
-![TXT效果预览](http://ohlldt20k.bkt.clouddn.com/image/git/XDSReader-txt.gif  "TXT效果预览")
-![EPUB效果预览](http://ohlldt20k.bkt.clouddn.com/image/git/XDSReader-epub.gif  "EPUB效果预览")
+![TXT效果预览](http://ohlldt20k.bkt.clouddn.com/image/git/XDSReader-txt.gif  "点击查看TXT效果预览")
+![EPUB效果预览](http://ohlldt20k.bkt.clouddn.com/image/git/XDSReader-epub.gif  "点击EPUB效果预览")
 
 ```objective-c 
-工程配置：  
-1、将工程中的XDSReaderKit与XDSReadMenu两个文件夹add到工程中；  
-2、由于需要xml解析，需要添加相应的库支持  
-	添加libz.tbd
-	other link flag 添加  -lxml2
-	Header Search Paths 添加  usr/include/libxml2
- 	
-//.pch文件中
-//工程中引用第三方库ZipArchive进行文件解压，其中包含c代码，
-//需要在.pch文件添加一句话#ifdef __OBJC__ #endif，
-//然后将所有#import<>/#import ""都要放置到这句话的中间
-#ifdef __OBJC__
-	#import <UIKit/UIKit.h>
-	#import <Foundation/Foundation.h>
-	#import "XDSReaderHeader.h"
-#endif
+// 工程依赖了几个开源库，运行工程之前需要先安装一下这几个开源库
+// 1、打开终端命令行工具；
+// 2、cd 到工程所在目录
+// 3、执行 pod install 命令
+
+dusheng.xu$ cd /Users/(省略若干路径)/XDSReader
+dusheng.xu$ pod install
+
+<!--工程配置：  -->
+<!--1、将工程中的XDSReaderKit与XDSReadMenu两个文件夹add到工程中；  -->
+<!--2、由于需要xml解析，需要添加相应的库支持  -->
+<!--	添加libz.tbd-->
+<!--	other link flag 添加  -lxml2-->
+<!--	Header Search Paths 添加  usr/include/libxml2-->
+<!-- 	-->
+<!--//.pch文件中-->
+<!--//工程中引用第三方库ZipArchive进行文件解压，其中包含c代码，-->
+<!--//需要在.pch文件添加一句话#ifdef __OBJC__ #endif，-->
+<!--//然后将所有#import<>/#import ""都要放置到这句话的中间-->
+<!--#ifdef __OBJC__-->
+<!--	#import <UIKit/UIKit.h>-->
+<!--	#import <Foundation/Foundation.h>-->
+<!--	#import "XDSReaderHeader.h"-->
+<!--#endif-->
 ```	
 
 ```objective-c
@@ -52,8 +60,8 @@ XDSReader已经将Menu的UI显示与逻辑进行了剥离，使用时可以根�
 
 ```objective-c  
 //获取对于章节页码的radViewController，并为其设置代理对象
-- (XDSReadViewController *)readViewWithChapter:(NSInteger *)chapter
-                                          page:(NSInteger *)page
+- (XDSReadViewController *)readViewWithChapter:(NSInteger)chapter
+                                          page:(NSInteger)page
                                       delegate:(id<XDSReadViewControllerDelegate>)rvDelegate;
 
 - (void)readViewJumpToChapter:(NSInteger)chapter page:(NSInteger)page;//跳转到指定章节（上一章，下一章，slider，目录）
