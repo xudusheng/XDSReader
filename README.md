@@ -1,6 +1,12 @@
 # XDSReader
 XDSReader是一个支持epub与txt格式的电子书阅读器，支持目录、添加笔记、添加书签、字体切换、章节切换等功能。epub目前仅支持显示查看文本与图片，后续将继续添加标注、图片点击、笔记点击等功能。
 
+先看一下效果图
+
+[id]: http://ohlldt20k.bkt.clouddn.com/image/git/XDSReader-txt.gif  "TXT效果预览"
+[id]: http://ohlldt20k.bkt.clouddn.com/image/git/XDSReader-epub.gif  "EPUB效果预览"
+
+
 ```objective-c 
 工程配置：  
 1、将工程中的XDSReaderKit与XDSReadMenu两个文件夹add到工程中；  
