@@ -3,8 +3,8 @@ XDSReader是一个支持epub与txt格式的电子书阅读器，支持目录、�
 
 先看一下效果图
 
-[id]: http://ohlldt20k.bkt.clouddn.com/image/git/XDSReader-txt.gif  "TXT效果预览"
-[id]: http://ohlldt20k.bkt.clouddn.com/image/git/XDSReader-epub.gif  "EPUB效果预览"
+![TXT效果预览](http://ohlldt20k.bkt.clouddn.com/image/git/XDSReader-txt.gif  "TXT效果预览")
+![EPUB效果预览](http://ohlldt20k.bkt.clouddn.com/image/git/XDSReader-epub.gif  "EPUB效果预览")
 
 
 ```objective-c 
