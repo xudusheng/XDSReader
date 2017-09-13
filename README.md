@@ -149,3 +149,8 @@ NSInteger page = 0;
   @property (nonatomic,copy) NSArray<XDSMarkModel *>*marks;
 @end
 ```
+
+
+申明：
+epub解析参考了[DZMeBookRead](https://github.com/GGGHub/Reader)一些思路，感谢[DZMeBookRead](https://github.com/GGGHub/Reader)的作者。
+因为个人审美问题以及UI设计水平有限，XDSReader的menu UI基本上是参照[DZMeBookRead](https://github.com/dengzemiao/DZMeBookRead)绘制的，感谢@dengzemiao。
