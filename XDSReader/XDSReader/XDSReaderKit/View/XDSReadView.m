@@ -30,7 +30,7 @@
 
 @property (nonatomic,strong) XDSMagnifierView *magnifierView;
 
-@property (strong, nonatomic) DTAttributedTextView *readTextView;
+@property (strong, nonatomic) DTAttributedTextContentView *readTextView;
 
 @property (nonatomic, strong) NSMutableAttributedString *readAttributedContent;
 
@@ -88,10 +88,10 @@
     
     CGRect frame = self.bounds;
     // we draw images and links via subviews provided by delegate methods
-    self.readTextView = [[DTAttributedTextView alloc] initWithFrame:frame];
+    self.readTextView = [[DTAttributedTextContentView alloc] initWithFrame:frame];
     self.readTextView.shouldDrawImages = YES;
     self.readTextView.shouldDrawLinks = YES;
-    self.readTextView.textDelegate = self; // delegate for custom sub views
+    self.readTextView.delegate = self; // delegate for custom sub views
     self.readTextView.backgroundColor = [UIColor clearColor];
     [self addSubview:self.readTextView];
     self.readTextView.attributedString = self.readAttributedContent;
@@ -552,7 +552,7 @@
 //=============================
 - (CGRect)parserRectWithPoint:(CGPoint)point range:(NSRange *)selectRange{
     
-    DTCoreTextLayoutFrame *visibleframe = self.readTextView.attributedTextContentView.layoutFrame;    
+    DTCoreTextLayoutFrame *visibleframe = self.readTextView.layoutFrame;
     NSArray *linse = visibleframe.lines;
     CGRect rect = CGRectZero;
     if (nil == linse) {
@@ -594,7 +594,7 @@
                            range:(NSRange *)selectRange
                            paths:(NSArray *)paths
                  isDirectionRight:(BOOL)isDirectionRight{
-    DTCoreTextLayoutFrame *visibleframe = self.readTextView.attributedTextContentView.layoutFrame;
+    DTCoreTextLayoutFrame *visibleframe = self.readTextView.layoutFrame;
     NSArray *linse = visibleframe.lines;
     if (nil == linse || linse.count < 1) {
         return paths;

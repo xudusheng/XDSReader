@@ -10,7 +10,6 @@
 #import "XDSReadView.h"
 @interface XDSReadViewController ()
 
-@property (strong, nonatomic) DTAttributedTextView *readTextView;
 @property (strong, nonatomic) XDSChapterModel *chapterModel;
 
 @end
