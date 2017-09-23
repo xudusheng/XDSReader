@@ -19,6 +19,7 @@ XDSReadManagerDelegate
     NSInteger _page;       //当前显示的页数
     NSInteger _chapterChange;  //将要变化的章节
     NSInteger _pageChange;     //将要变化的页数
+    NSInteger _isDoingAnnimation;//是否正在翻页
 }
 
 @property (nonatomic,strong) UIPageViewController *pageViewController;
@@ -132,6 +133,12 @@ XDSReadManagerDelegate
 //TODO: UIPageViewControllerDelegate, UIPageViewControllerDataSource
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
                viewControllerBeforeViewController:(UIViewController *)viewController{
+
+    NSLog(@"444444444444444444444");
+    if (_isDoingAnnimation) {
+        return nil;
+    }
+    
     _pageChange = _page;
     _chapterChange = _chapter;
     
@@ -146,12 +153,17 @@ XDSReadManagerDelegate
     }
     _pageChange--;
     
+    _isDoingAnnimation = YES;
     return [[XDSReadManager sharedManager] readViewWithChapter:&_chapterChange
                                                           page:&_pageChange
                                                        pageUrl:nil];
 }
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
                 viewControllerAfterViewController:(UIViewController *)viewController{
+    NSLog(@"333333333333333333333333");
+    if (_isDoingAnnimation) {
+        return nil;
+    }
     
     _pageChange = _page;
     _chapterChange = _chapter;
@@ -166,6 +178,9 @@ XDSReadManagerDelegate
     }else{
         _pageChange++;
     }
+    
+    
+    _isDoingAnnimation = YES;
     return [[XDSReadManager sharedManager] readViewWithChapter:&_chapterChange
                                                           page:&_pageChange
                                                        pageUrl:nil];
@@ -173,6 +188,8 @@ XDSReadManagerDelegate
 
 #pragma mark -PageViewController Delegate
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers{
+    NSLog(@"22222222222222222222222222");
+
     _chapter = _chapterChange;
     _page = _pageChange;
 }
@@ -180,6 +197,8 @@ XDSReadManagerDelegate
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed{
+    NSLog(@"1111111111111111111");
+    _isDoingAnnimation = NO;
     if (!completed) {
         XDSReadViewController *readView = previousViewControllers.firstObject;
         _page = readView.pageNum;
