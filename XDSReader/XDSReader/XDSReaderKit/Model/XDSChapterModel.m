@@ -209,8 +209,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     //                                              context:nil];
     //    CGFloat headIndent = CGRectGetWidth(headerFrame);
     
-    CGFloat headIndent = 0.f;
-    CGSize maxImageSize = CGSizeMake(_showBounds.size.width - headIndent*2, _showBounds.size.height - headIndent);
+    CGSize maxImageSize = CGSizeMake(_showBounds.size.width - 20, _showBounds.size.height);
     
     NSDictionary *dic = @{NSTextSizeMultiplierDocumentOption:@(fontSize/11.0),
                           DTDefaultLineHeightMultiplier:@1.5,
@@ -219,8 +218,8 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
                           DTDefaultLinkHighlightColor:@"red",
                           DTDefaultTextColor:textColor,
                           DTDefaultFontName:fontName,
-                          DTWillFlushBlockCallBack:callBackBlock,
-                          DTIgnoreInlineStylesOption:@(YES),
+//                          DTWillFlushBlockCallBack:callBackBlock,
+                          DTDefaultTextAlignment:@(NSTextAlignmentJustified),
                           };
     
     NSMutableDictionary *options = [NSMutableDictionary dictionaryWithDictionary:dic];
@@ -411,6 +410,7 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     XDSReadConfig *shareConfig = [XDSReadConfig shareInstance];
     BOOL isReadConfigChanged = ![_currentConfig isEqual:shareConfig];
     if (isReadConfigChanged) {
+        [shareConfig isReadConfigChanged];
         self.currentConfig = shareConfig;
     }
     return isReadConfigChanged;
