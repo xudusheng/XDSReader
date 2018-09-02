@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cJz-5J-j1s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cJz-5J-j1s">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -106,11 +106,44 @@
             </objects>
             <point key="canvasLocation" x="679.20000000000005" y="218.1409295352324"/>
         </scene>
+        <!--Reader Web View Controller-->
+        <scene sceneID="A0M-rL-q3X">
+            <objects>
+                <viewController id="g50-jY-8dl" customClass="XDSReaderWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OZW-mx-AX1"/>
+                        <viewControllerLayoutGuide type="bottom" id="zGS-SE-pRY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0GB-KV-UnM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" paginationMode="leftToRight" translatesAutoresizingMaskIntoConstraints="NO" id="YFB-f6-WrV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zGS-SE-pRY" firstAttribute="top" secondItem="YFB-f6-WrV" secondAttribute="bottom" id="9ek-28-e2J"/>
+                            <constraint firstAttribute="trailing" secondItem="YFB-f6-WrV" secondAttribute="trailing" id="Bcm-lr-G8l"/>
+                            <constraint firstItem="YFB-f6-WrV" firstAttribute="top" secondItem="OZW-mx-AX1" secondAttribute="bottom" id="MpO-9l-88d"/>
+                            <constraint firstItem="YFB-f6-WrV" firstAttribute="leading" secondItem="0GB-KV-UnM" secondAttribute="leading" id="pc9-3B-hG4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="YFB-f6-WrV" id="XDb-CQ-Bgj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jth-8q-kd1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1493" y="278"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="jZ5-CN-KOC">
             <objects>
                 <navigationController id="cJz-5J-j1s" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="65c-QB-Q02">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="65c-QB-Q02">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

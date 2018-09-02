@@ -159,9 +159,23 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         html = [NSString stringWithContentsOfFile:readmePath encoding:NSUTF8StringEncoding error:NULL];
         html = [html stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"];
         html = [html stringByReplacingOccurrencesOfString:@"\n" withString:@"<p></p>"];
+        html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
+        
+        
+        
+        NSRange fileNameLastConR = [fileName rangeOfString:@"(/)([^/]+)$" options:NSRegularExpressionSearch];
+        NSString *imageRootPath = [fileName substringToIndex:fileNameLastConR.location];
+        
+        NSString *imageSrcRegex = @"(src=)([\"'])((../)*)";
+        
+        NSRange imageSrcRang = [html rangeOfString:imageSrcRegex options:NSRegularExpressionSearch];
+        
+        if (imageSrcRang.location != NSNotFound) {
+            
+        }
         NSString *imagePath = [@"src=\"" stringByAppendingString:OEBPSUrl];
         html = [html stringByReplacingOccurrencesOfString:@"src=\".." withString:imagePath];
-        html = [html stringByReplacingOccurrencesOfString:@"<p></p>" withString:@""];
+
     }else if (self.originContent.length) {
         //load txt content
         html = self.originContent;
@@ -202,12 +216,12 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     UIColor *textColor = config.currentTextColor?config.currentTextColor:config.cacheTextColor;
     NSString *fontName = config.currentFontName?config.currentFontName:config.cacheFontName;
     
-    //    NSString *header = @"你好";
-    //    CGRect headerFrame = [header boundingRectWithSize:CGSizeMake(100, 100)
-    //                                              options:NSStringDrawingUsesLineFragmentOrigin
-    //                                           attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]}
-    //                                              context:nil];
-    //    CGFloat headIndent = CGRectGetWidth(headerFrame);
+//        NSString *header = @"你好";
+//        CGRect headerFrame = [header boundingRectWithSize:CGSizeMake(100, 100)
+//                                                  options:NSStringDrawingUsesLineFragmentOrigin
+//                                               attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]}
+//                                                  context:nil];
+//        CGFloat headIndent = CGRectGetWidth(headerFrame);
     
     CGSize maxImageSize = CGSizeMake(_showBounds.size.width - 20, _showBounds.size.height);
     

@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		607B6C6126EB56737488D902 /* libPods-XDSReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */; };
+		A274ABEF213C522400728064 /* 十宗罪.epub in Resources */ = {isa = PBXBuildFile; fileRef = A29C5893213C47E000764DFB /* 十宗罪.epub */; };
 		A29AA3F21F5A6D6300FB24EE /* UIControl+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F11F5A6D6300FB24EE /* UIControl+XDSHyperLink.m */; };
 		A29AA3F51F5A6D8000FB24EE /* UIView+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F41F5A6D8000FB24EE /* UIView+XDSHyperLink.m */; };
 		A29AA3FB1F5A8E3D00FB24EE /* XDSPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */; };
+		A2D153AC1F6381C70016C492 /* XDSReaderWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D153AB1F6381C70016C492 /* XDSReaderWebViewController.m */; };
 		FC61F7AF1F14651600DA83F4 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */; };
 		FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */; };
 		FC6D956D1F3378AC006A0583 /* XDSBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D95681F3378AC006A0583 /* XDSBookModel.m */; };
@@ -123,6 +125,9 @@
 		A29AA3F41F5A6D8000FB24EE /* UIView+XDSHyperLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XDSHyperLink.m"; sourceTree = "<group>"; };
 		A29AA3F91F5A8E3D00FB24EE /* XDSPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSPhotoBrowser.h; sourceTree = "<group>"; };
 		A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSPhotoBrowser.m; sourceTree = "<group>"; };
+		A29C5893213C47E000764DFB /* 十宗罪.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "十宗罪.epub"; sourceTree = "<group>"; };
+		A2D153AA1F6381C70016C492 /* XDSReaderWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderWebViewController.h; sourceTree = "<group>"; };
+		A2D153AB1F6381C70016C492 /* XDSReaderWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReaderWebViewController.m; sourceTree = "<group>"; };
 		E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XDSReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC61F7AD1F14651600DA83F4 /* XDSReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadPageViewController.h; sourceTree = "<group>"; };
 		FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadPageViewController.m; sourceTree = "<group>"; };
@@ -365,6 +370,8 @@
 				FCA78A541EF290F400114907 /* AppDelegate.m */,
 				FCA78A561EF290F400114907 /* ViewController.h */,
 				FCA78A571EF290F400114907 /* ViewController.m */,
+				A2D153AA1F6381C70016C492 /* XDSReaderWebViewController.h */,
+				A2D153AB1F6381C70016C492 /* XDSReaderWebViewController.m */,
 				FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */,
 				FCA78A591EF290F400114907 /* Main.storyboard */,
 				FCA78A5C1EF290F400114907 /* Assets.xcassets */,
@@ -694,6 +701,7 @@
 			children = (
 				FCA78BC61EF3A2D600114907 /* mdjyml.txt */,
 				FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */,
+				A29C5893213C47E000764DFB /* 十宗罪.epub */,
 				FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */,
 				FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */,
 			);
@@ -802,8 +810,8 @@
 				TargetAttributes = {
 					FCA78A4C1EF290F400114907 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 85W725W7AQ;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = C7C8DA83Q8;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -836,6 +844,7 @@
 				FCA78AD21EF2914F00114907 /* wifi.png in Resources */,
 				FCA78C2C1EFA00DB00114907 /* 华文行楷.ttf in Resources */,
 				FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */,
+				A274ABEF213C522400728064 /* 十宗罪.epub in Resources */,
 				FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */,
 				FCA78A5D1EF290F400114907 /* Assets.xcassets in Resources */,
 				FCA78C2A1EFA00DB00114907 /* 华文琥珀.ttf in Resources */,
@@ -905,7 +914,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -981,6 +990,7 @@
 				FCA78AC51EF2914F00114907 /* MultipartFormDataParser.m in Sources */,
 				FCA78BFD1EF7CA5A00114907 /* XDSHaloButton.m in Sources */,
 				FCA78B821EF2DEB500114907 /* CXMLElement_CreationExtensions.m in Sources */,
+				A2D153AC1F6381C70016C492 /* XDSReaderWebViewController.m in Sources */,
 				FC6D956E1F3378AC006A0583 /* XDSChapterModel.m in Sources */,
 				FCA78AC21EF2914F00114907 /* HTTPConnection.m in Sources */,
 				FCA78AC61EF2914F00114907 /* MultipartMessageHeader.m in Sources */,
@@ -1119,7 +1129,9 @@
 			baseConfigurationReference = 566644BA861A753275F3D3DE /* Pods-XDSReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 85W725W7AQ;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = C7C8DA83Q8;
 				GCC_PREFIX_HEADER = XDSReader/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1136,6 +1148,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.XDSReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "00131509-d27c-4674-85cf-2ce853064c7a";
+				PROVISIONING_PROFILE_SPECIFIER = develop_new;
 			};
 			name = Debug;
 		};
@@ -1144,7 +1158,9 @@
 			baseConfigurationReference = 39079157DFAB83B2A1877F23 /* Pods-XDSReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 85W725W7AQ;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = C7C8DA83Q8;
 				GCC_PREFIX_HEADER = XDSReader/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1161,6 +1177,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.XDSReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "00131509-d27c-4674-85cf-2ce853064c7a";
+				PROVISIONING_PROFILE_SPECIFIER = develop_new;
 			};
 			name = Release;
 		};

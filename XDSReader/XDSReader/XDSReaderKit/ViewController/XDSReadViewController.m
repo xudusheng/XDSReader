@@ -32,7 +32,7 @@
     self.readView = [[XDSReadView alloc] initWithFrame:frame chapterNum:self.chapterNum pageNum:self.pageNum];
     self.readView.backgroundColor = self.view.backgroundColor;
     [self.view addSubview:self.readView];
-    
+
 }
 
 - (void)dealloc{
