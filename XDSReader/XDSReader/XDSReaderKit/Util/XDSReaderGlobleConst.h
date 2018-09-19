@@ -18,8 +18,12 @@ UIKIT_EXTERN CGFloat const kReadViewMarginRight;
 #define DEVICE_MAIN_SCREEN_WIDTH_XDSR [UIScreen mainScreen].bounds.size.width
 #define DEVICE_MAIN_SCREEN_HEIGHT_XDSR [UIScreen mainScreen].bounds.size.height
 
-#define DISTANCE_FROM_TOP_GUIDEN(__view__)  (__view__.frame.origin.y + __view__.frame.size.height)
-#define DISTANCE_FROM_LEFT_GUIDEN(__view__) (__view__.frame.origin.x + __view__.frame.size.width)
+#define DEVICE_STATUS_BAR_HEIGHT   [[UIApplication sharedApplication] statusBarFrame].size.height  // 适配iPhone x 状态浪高度
+#define DEVICE_SAFE_VIEW_TOP_SPACE (DEVICE_STATUS_BAR_HEIGHT + 44)
+#define DEVICE_NAV_BAR_HEIGHT DEVICE_SAFE_VIEW_TOP_SPACE // 导航栏高度
+#define IS_IPHONE_X ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define DEVICE_TAB_BAR_HEIGHT     (IS_IPHONE_X?83:49) // 适配iPhone x 底栏高度
+
 
 #define RGB(__R__, __G__, __B__) [UIColor colorWithRed:(__R__)/255.0 green:(__G__)/255.0 blue:(__B__)/255.0 alpha:1.0]
 

@@ -19,9 +19,6 @@ UIKIT_EXTERN CGFloat const kSpace_xds_10;
 UIKIT_EXTERN CGFloat const kSpace_xds_20;
 UIKIT_EXTERN CGFloat const kSpace_xds_5;
 
-UIKIT_EXTERN CGFloat const kNavgationBarHeight;// 导航栏高度
-UIKIT_EXTERN CGFloat const kTabBarHeight;// TabBar高度
-UIKIT_EXTERN CGFloat const kStatusBarHeight;// StatusBar高度
 
 // MARK: -- 字体支持
 #define FONT_SYSTEM_XDS_10 [UIFont systemFontOfSize:10]

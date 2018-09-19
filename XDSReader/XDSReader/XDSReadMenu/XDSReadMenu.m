@@ -88,7 +88,7 @@ XDSCatalogueViewDelegate
 }
 //TODO: -- Top View
 - (void)createMenuTopView{
-    CGRect frame = CGRectMake(0, -kNavgationBarHeight, DEVICE_MAIN_SCREEN_WIDTH_XDSR, kNavgationBarHeight);
+    CGRect frame = CGRectMake(0, -DEVICE_NAV_BAR_HEIGHT, DEVICE_MAIN_SCREEN_WIDTH_XDSR, DEVICE_NAV_BAR_HEIGHT);
     self.topView = [[XDSMenuTopView alloc] initWithFrame:frame];
     self.topView.backgroundColor = READ_BACKGROUND_COLOC;
     [self addSubview:self.topView];
@@ -222,7 +222,7 @@ XDSCatalogueViewDelegate
 }
 //MARK: - OTHER PRIVATE METHODS
 - (void)showCatalogueView{
-    CGRect topFrame = CGRectMake(0, -kNavgationBarHeight, DEVICE_MAIN_SCREEN_WIDTH_XDSR, kNavgationBarHeight);
+    CGRect topFrame = CGRectMake(0, -DEVICE_NAV_BAR_HEIGHT, DEVICE_MAIN_SCREEN_WIDTH_XDSR, DEVICE_NAV_BAR_HEIGHT);
     CGRect bottomViewFrame = CGRectMake(0,
                                         DEVICE_MAIN_SCREEN_HEIGHT_XDSR,
                                         DEVICE_MAIN_SCREEN_WIDTH_XDSR,
@@ -278,7 +278,7 @@ XDSCatalogueViewDelegate
     
 }
 - (void)hideReadMenu{
-    CGRect topFrame = CGRectMake(0, -kNavgationBarHeight, DEVICE_MAIN_SCREEN_WIDTH_XDSR, kNavgationBarHeight);
+    CGRect topFrame = CGRectMake(0, -DEVICE_NAV_BAR_HEIGHT, DEVICE_MAIN_SCREEN_WIDTH_XDSR, DEVICE_NAV_BAR_HEIGHT);
     CGRect bottomViewFrame = CGRectMake(0,
                                         DEVICE_MAIN_SCREEN_HEIGHT_XDSR,
                                         DEVICE_MAIN_SCREEN_WIDTH_XDSR,
@@ -341,7 +341,7 @@ XDSCatalogueViewDelegate
     [super didMoveToSuperview];
     if (self.superview) {
         CGRect bottomFrame = CGRectMake(0, DEVICE_MAIN_SCREEN_HEIGHT_XDSR - kXDSReadMenuBottomViewHeight, DEVICE_MAIN_SCREEN_WIDTH_XDSR, kXDSReadMenuBottomViewHeight);
-        CGRect topFrame = CGRectMake(0, 0, DEVICE_MAIN_SCREEN_WIDTH_XDSR, kNavgationBarHeight);
+        CGRect topFrame = CGRectMake(0, 0, DEVICE_MAIN_SCREEN_WIDTH_XDSR, DEVICE_NAV_BAR_HEIGHT);
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
         [UIView animateWithDuration:kXDSReadMenuAnimateDuration animations:^{
             self.bottomView.frame = bottomFrame;

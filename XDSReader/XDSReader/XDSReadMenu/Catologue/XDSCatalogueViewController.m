@@ -30,7 +30,7 @@ CGFloat const kCatalogueTableViewCellHeight = 44.f;
     NSInteger chapter = [CURRENT_BOOK_MODEL.chapters indexOfObject:CURRENT_RECORD.chapterModel];
     CGRect visibleRect = self.view.bounds;
     visibleRect.size.height = kCatalogueTableViewCellHeight;
-    visibleRect.origin.y = kCatalogueTableViewCellHeight * chapter + CGRectGetHeight(self.view.bounds)/2 + kTabBarHeight;
+    visibleRect.origin.y = kCatalogueTableViewCellHeight * chapter + CGRectGetHeight(self.view.bounds)/2 + DEVICE_TAB_BAR_HEIGHT;
     [self.tableView scrollRectToVisible:visibleRect animated:NO];
 }
 

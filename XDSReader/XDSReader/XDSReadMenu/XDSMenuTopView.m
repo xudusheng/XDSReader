@@ -33,7 +33,7 @@
     // 返回
     self.backButton = ({
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(0, kStatusBarHeight, buttonW, CGRectGetHeight(self.frame) - kStatusBarHeight);
+        button.frame = CGRectMake(0, DEVICE_STATUS_BAR_HEIGHT, buttonW, CGRectGetHeight(self.frame) - DEVICE_STATUS_BAR_HEIGHT);
         [button setImage:[UIImage imageNamed:@"G_Back_0"] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(closeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
@@ -43,7 +43,7 @@
     // 书签
     self.markButton = ({
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(CGRectGetWidth(self.frame) - buttonW, kStatusBarHeight, buttonW, CGRectGetHeight(self.frame) - kStatusBarHeight);
+        button.frame = CGRectMake(CGRectGetWidth(self.frame) - buttonW, DEVICE_STATUS_BAR_HEIGHT, buttonW, CGRectGetHeight(self.frame) - DEVICE_STATUS_BAR_HEIGHT);
         [button setImage:[UIImage imageNamed:@"RM_17"] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"RM_18"] forState:UIControlStateSelected];
         [button addTarget:self action:@selector(markButtonClick:) forControlEvents:UIControlEventTouchUpInside];

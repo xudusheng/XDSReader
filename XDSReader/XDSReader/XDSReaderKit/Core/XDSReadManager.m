@@ -28,10 +28,10 @@ static XDSReadManager *readManager;
 }
 
 + (CGRect)readViewBounds {
-    CGRect bounds = CGRectMake(kReadViewMarginTop,
-                               kReadViewMarginLeft,
+    CGRect bounds = CGRectMake(kReadViewMarginLeft,
+                               DEVICE_STATUS_BAR_HEIGHT,
                                DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight,
-                               DEVICE_MAIN_SCREEN_HEIGHT_XDSR-kReadViewMarginTop-kReadViewMarginBottom);
+                               DEVICE_MAIN_SCREEN_HEIGHT_XDSR-DEVICE_STATUS_BAR_HEIGHT-kReadViewMarginBottom);
     return bounds;
 }
 //MARK: - //获取对于章节页码的radViewController
