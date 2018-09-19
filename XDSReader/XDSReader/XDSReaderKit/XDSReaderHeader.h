@@ -43,4 +43,6 @@
 #import "XDSReadPageViewController.h"
 #import "XDSReadManager.h"
 
+#import "DTCoreText.h"
+
 #endif /* XDSReaderHeader_h */

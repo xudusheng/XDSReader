@@ -95,6 +95,7 @@
     [httpServer setType:@"_http._tcp."];
     // webPath是server搜寻HTML等文件的路径
     NSString *webPath = [[NSBundle mainBundle] resourcePath];
+//    [httpServer setPort:80];
     [httpServer setDocumentRoot:webPath];
     [httpServer setConnectionClass:[MyHTTPConnection class]];
     NSLog(@"connectionClass = %@", [httpServer connectionClass]);

@@ -787,7 +787,6 @@
 				FCA78A491EF290F400114907 /* Sources */,
 				FCA78A4A1EF290F400114907 /* Frameworks */,
 				FCA78A4B1EF290F400114907 /* Resources */,
-				0E3FAD665B6026FF853B8C6B /* [CP] Embed Pods Frameworks */,
 				0C9413BBAE40C09E4AE8FEC9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -810,7 +809,7 @@
 				TargetAttributes = {
 					FCA78A4C1EF290F400114907 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = C7C8DA83Q8;
+						DevelopmentTeam = 8RW49AS53X;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -873,30 +872,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader-resources.sh",
-				$PODS_CONFIGURATION_BUILD_DIR/MWPhotoBrowser/MWPhotoBrowser.bundle,
+				"${PODS_CONFIGURATION_BUILD_DIR}/MWPhotoBrowser/MWPhotoBrowser.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MWPhotoBrowser.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0E3FAD665B6026FF853B8C6B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DEA57E0C5007BD49D72F0A9F /* [CP] Check Pods Manifest.lock */ = {
@@ -914,7 +898,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1131,7 +1115,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = C7C8DA83Q8;
+				DEVELOPMENT_TEAM = 8RW49AS53X;
 				GCC_PREFIX_HEADER = XDSReader/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1148,8 +1132,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.XDSReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "00131509-d27c-4674-85cf-2ce853064c7a";
-				PROVISIONING_PROFILE_SPECIFIER = develop_new;
+				PROVISIONING_PROFILE = "abcd2365-cfc1-4588-8f01-a93b5064e24f";
+				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Development";
 			};
 			name = Debug;
 		};
