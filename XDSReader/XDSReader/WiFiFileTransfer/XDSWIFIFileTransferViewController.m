@@ -55,6 +55,11 @@
                                             selector:@selector(processStartOfPartWithHeaderNotification:)
                                                 name:kGetProcessStartOfPartWithHeaderNotificationName
                                               object:nil];
+    
+    
+    
+    //如果输入IP以后无法连接到设备，则尝试调用一下网络请求，激活网络连接以后再尝试
+//    [self demoRequest];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -97,13 +102,15 @@
     NSString *webPath = [[NSBundle mainBundle] resourcePath];
     [httpServer setDocumentRoot:webPath];
     [httpServer setConnectionClass:[MyHTTPConnection class]];
+    [httpServer setPort:80];
     NSLog(@"connectionClass = %@", [httpServer connectionClass]);
     
     NSError *err;
     if ([httpServer start:&err]) {
         NSLog(@"IP %@",[XDSIPHelper deviceIPAdress]);
         NSLog(@"port %hu",[httpServer listeningPort]);
-        _ipAndPortLabel.text = [NSString stringWithFormat:@"http://%@:%hu", [XDSIPHelper deviceIPAdress], [httpServer listeningPort]];
+//        _ipAndPortLabel.text = [NSString stringWithFormat:@"http://%@:%hu", [XDSIPHelper deviceIPAdress], [httpServer listeningPort]];
+        _ipAndPortLabel.text = [NSString stringWithFormat:@"http://%@", [XDSIPHelper deviceIPAdress]];
     }else{
         NSLog(@"%@",err);
     }
@@ -113,7 +120,27 @@
 #pragma mark - 代理方法
 
 #pragma mark - 网络请求
+-(void)demoRequest{
+    //访问百度首页
+    
+    //1. 创建一个网络请求
+    NSURL *url = [NSURL URLWithString:@"http://m.baidu.com"];
+    
+    //2.创建请求对象
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    //3.获得会话对象
+    NSURLSession *session=[NSURLSession sharedSession];
+    
+    //4.根据会话对象创建一个Task(发送请求）
+    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 
+        NSLog(@"网络响应：response：%@",response);
+    }];
+    
+    //5.执行任务
+    [dataTask resume];
+}
 #pragma mark - 点击事件处理
 
 #pragma mark - 其他私有方法
