@@ -156,6 +156,21 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
         NSString *fileName = [NSString stringWithFormat:@"%@/%@", OEBPSUrl, self.chapterSrc];
         //    // Load HTML data
         readmePath = fileName;
+        
+        NSString *decodeURL = [readmePath stringByRemovingPercentEncoding];
+        NSString *encodeURL = [readmePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+
+        if ([[NSFileManager defaultManager] fileExistsAtPath:decodeURL]) {
+            NSLog(@"======存在");
+            readmePath = decodeURL;
+        }
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:encodeURL]) {
+            NSLog(@"======存在");
+            readmePath = encodeURL;
+        }
+        
         html = [NSString stringWithContentsOfFile:readmePath encoding:NSUTF8StringEncoding error:NULL];
         html = [html stringByReplacingOccurrencesOfString:@"\r" withString:@"\n"];
         html = [html stringByReplacingOccurrencesOfString:@"\n" withString:@"<p></p>"];
@@ -246,6 +261,9 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
 }
 
 - (void)getIdMarkLocationAndReplaceIt:(NSAttributedString **)attString {
+    if ((*attString).length < 1) {
+        return;
+    }
     NSMutableString *mutableStr = [NSMutableString stringWithString:(*attString).string];
     NSMutableAttributedString *mutableAttString = [*attString mutableCopy];
     NSMutableDictionary *locationWithPageIdMapping = [@{} mutableCopy];

@@ -27,7 +27,9 @@
 @property (nonatomic,copy) NSString *rootDocumentUrl;//解压包所在路径
 @property (nonatomic,copy) NSString *OEBPSUrl;//OPF与NCX文件所在的文件夹路径
 
-@property (nonatomic,copy) NSString *cover;//封面
+@property (nonatomic,readonly) NSString *coverPath;//封面图片所在的完整路径
+
+@property (nonatomic,copy) NSString *cover;//封面图片的相对路径
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *creator;
 @property (nonatomic,copy) NSString *subject;
@@ -40,6 +42,8 @@
 @property (nonatomic,copy) NSString *relation;
 @property (nonatomic,copy) NSString *coverage;
 @property (nonatomic,copy) NSString *rights;
+@property (nonatomic,assign) LPPEBookType bookType;//电子书类型（txt, epub）
+
 @end
 
 @interface XDSBookModel : NSObject <NSCoding>

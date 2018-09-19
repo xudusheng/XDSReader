@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//UIBarButtonItem *closeItem = [UIBarButtonItem alloc] initWithImage:[] style:<#(UIBarButtonItemStyle)#> target:<#(nullable id)#> action:<#(nullable SEL)#>
+//UIBarButtonItem *closeItem = [UIBarButtonItem alloc] initWithImage:[] style:(UIBarButtonItemStyle) target:<#(nullable id)#> action:<#(nullable SEL)#>
     
     UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStyleDone target:self action:@selector(closeButtonClick:)];
     self.navigationItem.rightBarButtonItem = closeItem;

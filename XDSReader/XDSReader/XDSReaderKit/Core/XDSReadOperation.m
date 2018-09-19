@@ -326,8 +326,13 @@
 }
 
 + (NSString *)readCoverImage:(CXMLDocument *)document{
-    CXMLElement *element = (CXMLElement *)[document nodeForXPath:@"//opf:meta[@name='cover']" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
-    NSString *cover = [element attributeForName:@"content"].stringValue;
-    return cover.length?cover:@"";
+    CXMLElement *coverElement = (CXMLElement *)[document nodeForXPath:@"//opf:meta[@name='cover']" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
+    NSString *cover_id = [coverElement attributeForName:@"content"].stringValue;
+    
+    NSString *xpath = [NSString stringWithFormat:@"//opf:item[@id='%@']", cover_id];
+    CXMLElement *item_cover_element = (CXMLElement *)[document nodeForXPath:xpath namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
+    NSString *cover_href = [item_cover_element attributeForName:@"href"].stringValue;
+
+    return cover_href.length?cover_href:@"";
 }
 @end

@@ -2504,25 +2504,25 @@ static NSMutableArray *recentNonces;
 	
 	dispatch_async(connectionQueue, ^{ @autoreleasepool {
 		
-		if (sender != httpResponse)
+        if (sender != self->httpResponse)
 		{
 			HTTPLogWarn(@"%@[%p]: %@ - Sender is not current httpResponse", THIS_FILE, self, THIS_METHOD);
 			return;
 		}
 		
-		if (!sentResponseHeaders)
+        if (!self->sentResponseHeaders)
 		{
 			[self sendResponseHeadersAndBody];
 		}
 		else
 		{
-			if (ranges == nil)
+            if (self->ranges == nil)
 			{
 				[self continueSendingStandardResponseBody];
 			}
 			else
 			{
-				if ([ranges count] == 1)
+                if ([self->ranges count] == 1)
 					[self continueSendingSingleRangeResponseBody];
 				else
 					[self continueSendingMultiRangeResponseBody];

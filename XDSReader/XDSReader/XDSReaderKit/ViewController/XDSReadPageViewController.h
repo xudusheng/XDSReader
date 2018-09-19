@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface XDSReadPageViewController : UIViewController
+#import "XDSReadManager.h"
+@interface XDSReadPageViewController : UIViewController <XDSReadManagerDelegate>
 
 @end

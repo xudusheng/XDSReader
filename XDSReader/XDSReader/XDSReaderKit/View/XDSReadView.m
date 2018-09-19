@@ -10,7 +10,7 @@
 #import "XDSChapterModel.h"
 #import "UIView+XDSHyperLink.h"
 #import "XDSPhotoBrowser.h"
-@interface XDSReadView () <DTAttributedTextContentViewDelegate, MWPhotoBrowserDelegate>
+@interface XDSReadView () <DTAttributedTextContentViewDelegate>
 
 {
     NSRange _selectRange;
@@ -357,46 +357,46 @@
 
 #pragma mark - MJPhotoBrowser库关键代码
 - (void)showPhotoBrowserWithImage:(NSString *)imageurl {
-    //显示大图
-    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
-    // 2.显示相册
-    XDSPhotoBrowser *browser = [[XDSPhotoBrowser alloc] initWithDelegate:self];
-    
-    // Set options
-    browser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
-    browser.displayNavArrows = YES; // Whether to display left and right nav arrows on toolbar (defaults to NO)
-    browser.displaySelectionButtons = NO; // Whether selection buttons are shown on each image (defaults to NO)
-    browser.zoomPhotosToFill = YES; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
-    browser.alwaysShowControls = YES; // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
-    browser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
-    browser.startOnGrid = YES; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
-    browser.autoPlayOnAppear = YES; // Auto-play first video
-    browser.enableSwipeToDismiss = YES;
-    
-    browser.currentPhotoIndex = [imageSrcArray containsObject:imageurl]?[imageSrcArray indexOfObject:imageurl]:0; // 弹出相册时显示第几张图片
-    [browser showNextPhotoAnimated:YES];
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:browser];
-    [[UIViewController xds_visiableViewController] presentViewController:nav animated:YES completion:nil];
+//    //显示大图
+//    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
+//    // 2.显示相册
+//    XDSPhotoBrowser *browser = [[XDSPhotoBrowser alloc] initWithDelegate:self];
+//
+//    // Set options
+//    browser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
+//    browser.displayNavArrows = YES; // Whether to display left and right nav arrows on toolbar (defaults to NO)
+//    browser.displaySelectionButtons = NO; // Whether selection buttons are shown on each image (defaults to NO)
+//    browser.zoomPhotosToFill = YES; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
+//    browser.alwaysShowControls = YES; // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
+//    browser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
+//    browser.startOnGrid = YES; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
+//    browser.autoPlayOnAppear = YES; // Auto-play first video
+//    browser.enableSwipeToDismiss = YES;
+//
+//    browser.currentPhotoIndex = [imageSrcArray containsObject:imageurl]?[imageSrcArray indexOfObject:imageurl]:0; // 弹出相册时显示第几张图片
+//    [browser showNextPhotoAnimated:YES];
+//
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:browser];
+//    [[UIViewController xds_visiableViewController] presentViewController:nav animated:YES completion:nil];
 }
 
 
-- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
-    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
-
-    return imageSrcArray.count;
-}
-
-- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
-    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
-
-    if (index < imageSrcArray.count) {
-        NSString *scr = imageSrcArray[index];
-        MWPhoto *photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:scr]];
-        return photo;
-    }
-    return nil;
-}
+//- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+//    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
+//
+//    return imageSrcArray.count;
+//}
+//
+//- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+//    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
+//
+//    if (index < imageSrcArray.count) {
+//        NSString *scr = imageSrcArray[index];
+//        MWPhoto *photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:scr]];
+//        return photo;
+//    }
+//    return nil;
+//}
 
 #pragma mark Menu Function
 -(void)menuCopy:(id)sender{

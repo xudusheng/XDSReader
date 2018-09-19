@@ -24,6 +24,7 @@ NSString *const kLPPBookInfoModelSourceEncodeKey = @"source";
 NSString *const kLPPBookInfoModelRelationEncodeKey = @"relation";
 NSString *const kLPPBookInfoModelCoverageEncodeKey = @"coverage";
 NSString *const kLPPBookInfoModelRightsEncodeKey = @"rights";
+NSString *const kLPPBookInfoModelBookTypeEncodeKey = @"bookType";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.rootDocumentUrl forKey:kLPPBookInfoModelRootDocumentUrlEncodeKey];
@@ -41,6 +42,9 @@ NSString *const kLPPBookInfoModelRightsEncodeKey = @"rights";
     [aCoder encodeObject:self.relation forKey:kLPPBookInfoModelRelationEncodeKey];
     [aCoder encodeObject:self.coverage forKey:kLPPBookInfoModelCoverageEncodeKey];
     [aCoder encodeObject:self.rights forKey:kLPPBookInfoModelRightsEncodeKey];
+    [aCoder encodeObject:self.rights forKey:kLPPBookInfoModelRightsEncodeKey];
+    [aCoder encodeInteger:self.bookType forKey:kLPPBookInfoModelBookTypeEncodeKey];
+
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
@@ -59,12 +63,25 @@ NSString *const kLPPBookInfoModelRightsEncodeKey = @"rights";
         self.source = [aDecoder decodeObjectForKey:kLPPBookInfoModelSourceEncodeKey];
         self.relation = [aDecoder decodeObjectForKey:kLPPBookInfoModelRelationEncodeKey];
         self.coverage = [aDecoder decodeObjectForKey:kLPPBookInfoModelCoverageEncodeKey];
-        self.rights = [aDecoder decodeObjectForKey:kLPPBookInfoModelRightsEncodeKey];        
+        self.rights = [aDecoder decodeObjectForKey:kLPPBookInfoModelRightsEncodeKey];
+        self.bookType = [aDecoder decodeIntegerForKey:kLPPBookInfoModelBookTypeEncodeKey];
     }
     return self;
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    
+}
+
+- (NSString *)coverPath {
+    if (self.bookType == LPPEBookTypeTxt) {
+        return @"";
+    }else {
+        NSString *OEBPSUrl = self.OEBPSUrl;
+        OEBPSUrl = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:OEBPSUrl];
+        NSString *fileName = [NSString stringWithFormat:@"%@/%@", OEBPSUrl, self.cover];
+        return fileName;
+    }
     
 }
 
@@ -102,6 +119,7 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
     self = [super init];
     if (self) {
         _bookBasicInfo = [[LPPBookInfoModel alloc] init];
+        _bookBasicInfo.bookType = LPPEBookTypeEpub;
         _chapters = [XDSReadOperation ePubFileHandle:ePubPath bookInfoModel:_bookBasicInfo];
         _record = [[XDSRecordModel alloc] init];
         _record.chapterModel = _chapters.firstObject;
@@ -144,12 +162,20 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 + (id)getLocalModelWithURL:(NSURL *)url{
+    if (url == nil) {
+        return nil;
+    }
     NSString *key = [url.path lastPathComponent];
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    data = nil;
     if (!data) {
         if ([[key pathExtension].lowercaseString isEqualToString:@"txt"]) {
             XDSBookModel *model = [[XDSBookModel alloc] initWithContent:[XDSReaderUtil encodeWithURL:url]];
             model.resource = url;
+            LPPBookInfoModel *info = [[LPPBookInfoModel alloc] init];
+            info.bookType = LPPEBookTypeTxt;
+            info.title = [key substringToIndex:key.length-4];
+            model.bookBasicInfo = info;
             [XDSBookModel updateLocalModel:model url:url];
             return model;
         }else if ([[key pathExtension].lowercaseString isEqualToString:@"epub"]){
@@ -159,7 +185,10 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
             [XDSBookModel updateLocalModel:model url:url];
             return model;
         }else{
-            @throw [NSException exceptionWithName:@"FileException" reason:@"文件格式错误" userInfo:nil];
+//            @throw [NSException exceptionWithName:@"FileException" reason:@"文件格式错误" userInfo:nil];
+//            文件格式错误
+            NSLog(@"文件格式错误");
+            return nil;
         }
         
     }
