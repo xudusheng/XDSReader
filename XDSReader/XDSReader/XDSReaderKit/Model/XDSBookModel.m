@@ -42,7 +42,6 @@ NSString *const kLPPBookInfoModelBookTypeEncodeKey = @"bookType";
     [aCoder encodeObject:self.relation forKey:kLPPBookInfoModelRelationEncodeKey];
     [aCoder encodeObject:self.coverage forKey:kLPPBookInfoModelCoverageEncodeKey];
     [aCoder encodeObject:self.rights forKey:kLPPBookInfoModelRightsEncodeKey];
-    [aCoder encodeObject:self.rights forKey:kLPPBookInfoModelRightsEncodeKey];
     [aCoder encodeInteger:self.bookType forKey:kLPPBookInfoModelBookTypeEncodeKey];
 
 }
@@ -152,22 +151,45 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
     }
     return self;
 }
-+ (void)updateLocalModel:(XDSBookModel *)readModel url:(NSURL *)url{
-    NSString *key = [url.path lastPathComponent];
-    NSMutableData *data=[[NSMutableData alloc]init];
-    NSKeyedArchiver *archiver=[[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [archiver encodeObject:readModel forKey:key];
-    [archiver finishEncoding];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+
+- (void)dealloc {
+    NSLog(@"bookModel dealloc");
+    [self saveBook];
 }
+
+- (void)saveBook {
+        NSString *key = [self.resource.path lastPathComponent];
+        NSMutableData *data=[[NSMutableData alloc] init];
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+        [archiver encodeObject:self forKey:key];
+        [archiver finishEncoding];
+
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
+        
+}
+//14631822
+
+//+ (void)updateLocalModel:(XDSBookModel *)readModel url:(NSURL *)url{
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        NSString *key = [url.path lastPathComponent];
+//        NSMutableData *data=[[NSMutableData alloc]init];
+//        NSKeyedArchiver *archiver=[[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+//        [archiver encodeObject:readModel forKey:key];
+//        [archiver finishEncoding];
+//        NSLog(@"111111111");
+//        [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
+//        NSLog(@"222222222");
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//        NSLog(@"33333333");
+//    });
+//
+//}
 + (id)getLocalModelWithURL:(NSURL *)url{
     if (url == nil) {
         return nil;
     }
     NSString *key = [url.path lastPathComponent];
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-    data = nil;
     if (!data) {
         if ([[key pathExtension].lowercaseString isEqualToString:@"txt"]) {
             XDSBookModel *model = [[XDSBookModel alloc] initWithContent:[XDSReaderUtil encodeWithURL:url]];
@@ -176,13 +198,13 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
             info.bookType = LPPEBookTypeTxt;
             info.title = [key substringToIndex:key.length-4];
             model.bookBasicInfo = info;
-            [XDSBookModel updateLocalModel:model url:url];
+//            [XDSBookModel updateLocalModel:model url:url];
             return model;
         }else if ([[key pathExtension].lowercaseString isEqualToString:@"epub"]){
             NSLog(@"this is epub");
             XDSBookModel *model = [[XDSBookModel alloc] initWithePub:url.path];
             model.resource = url;
-            [XDSBookModel updateLocalModel:model url:url];
+//            [XDSBookModel updateLocalModel:model url:url];
             return model;
         }else{
 //            @throw [NSException exceptionWithName:@"FileException" reason:@"文件格式错误" userInfo:nil];
@@ -237,7 +259,7 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
 - (void)addNote:(XDSNoteModel *)noteModel{
     XDSChapterModel *chapterModel = self.chapters[noteModel.chapter];
     [chapterModel addNote:noteModel];
-    [XDSBookModel updateLocalModel:self url:self.resource]; //本地保存
+//    [XDSBookModel updateLocalModel:self url:self.resource]; //本地保存
     [self devideChaptersContainNotes];
 }
 
@@ -270,7 +292,7 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
         [CURRENT_BOOK_MODEL loadContentInChapter:chapterModel];
     }
     [chapterModel addOrDeleteABookmark:markModel];
-    [XDSBookModel updateLocalModel:self url:self.resource]; //本地保存
+//    [XDSBookModel updateLocalModel:self url:self.resource]; //本地保存
     [self devideChaptersContainMarks];
 }
 
@@ -289,11 +311,6 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
         [self devideChaptersContainMarks];
     }
     return _chapterContainMarks;
-}
-
-
-- (void)dealloc {
-    NSLog(@"bookModel dealloc");
 }
 
 @end

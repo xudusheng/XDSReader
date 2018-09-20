@@ -78,6 +78,8 @@ XDSReadManagerDelegate
 //MARK: - DELEGATE METHODS
 //TODO: XDSReadManagerDelegate
 - (void)readViewDidClickCloseButton{
+    //保存阅读记录
+//    [XDSBookModel updateLocalModel:CURRENT_BOOK_MODEL url:CURRENT_BOOK_MODEL.resource];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)readViewFontDidChanged {

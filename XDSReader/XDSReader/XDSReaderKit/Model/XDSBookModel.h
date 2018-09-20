@@ -62,7 +62,7 @@
 
 - (instancetype)initWithContent:(NSString *)content;
 - (instancetype)initWithePub:(NSString *)ePubPath;
-+ (void)updateLocalModel:(XDSBookModel *)bookModel url:(NSURL *)url;
+- (void)saveBook;//保存书本，包括阅读记录，笔记，书签等
 + (id)getLocalModelWithURL:(NSURL *)url;
 
 - (void)loadContentInChapter:(XDSChapterModel *)chapterModel;

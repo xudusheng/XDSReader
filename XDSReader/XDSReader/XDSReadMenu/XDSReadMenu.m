@@ -39,6 +39,7 @@ XDSCatalogueViewDelegate
 @property (strong, nonatomic) UIButton *lightButton;/// 亮度按钮
 @property (strong, nonatomic) XDSReadSettingView *readSettingView;/// 小说阅读设置
 
+@property (nonatomic,assign) BOOL showStatusBar;
 @end
 
 @implementation XDSReadMenu
@@ -51,11 +52,16 @@ XDSCatalogueViewDelegate
     return self;
 }
 
+- (void)setShowStatusBar:(BOOL)showStatusBar {
+    _showStatusBar = showStatusBar;
+    [self.viewController setNeedsStatusBarAppearanceUpdate];
+}
 
 - (void)createReadMenu{
     
     // 隐藏状态栏
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    self.showStatusBar = YES;
     
     // 允许获取电量信息
     [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];

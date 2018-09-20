@@ -422,11 +422,11 @@
                                                       style:UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction * _Nonnull action) {
                                                         XDSNoteModel *model = [[XDSNoteModel alloc] init];
-                                                        model.content = [_content substringWithRange:_selectRange];
+                                                        model.content = [self->_content substringWithRange:self->_selectRange];
                                                         model.note = alertController.textFields.firstObject.text;
                                                         model.date = [NSDate date];
                                                         XDSChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
-                                                        model.locationInChapterContent = _selectRange.location + [chapterModel.pageLocations[CURRENT_RECORD.currentPage] integerValue];
+                                                        model.locationInChapterContent = self->_selectRange.location + [chapterModel.pageLocations[CURRENT_RECORD.currentPage] integerValue];
                                                         [[XDSReadManager sharedManager] addNoteModel:model];
                                                         [self addLineForNote:model];
                                                         [self cancelSelected];

@@ -119,6 +119,7 @@
 /* Begin PBXFileReference section */
 		1898DAB821533A840090F3B4 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		1898DAB921533A840090F3B4 /* upload.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = upload.html; sourceTree = "<group>"; };
+		18BB4E2B2153D75C00C4A2CD /* XDSReaderHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderHeader.h; sourceTree = "<group>"; };
 		39079157DFAB83B2A1877F23 /* Pods-XDSReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.release.xcconfig"; sourceTree = "<group>"; };
 		566644BA861A753275F3D3DE /* Pods-XDSReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.debug.xcconfig"; sourceTree = "<group>"; };
 		A29AA3F01F5A6D6300FB24EE /* UIControl+XDSHyperLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+XDSHyperLink.h"; sourceTree = "<group>"; };
@@ -223,7 +224,6 @@
 		FCA78AD91EF2916700114907 /* XDSReadConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadConfig.m; sourceTree = "<group>"; };
 		FCA78B141EF2916700114907 /* XDSReaderGlobleConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderGlobleConst.h; sourceTree = "<group>"; };
 		FCA78B151EF2916700114907 /* XDSReaderGlobleConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReaderGlobleConst.m; sourceTree = "<group>"; };
-		FCA78B181EF2916700114907 /* XDSReaderHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderHeader.h; sourceTree = "<group>"; };
 		FCA78B331EF2918000114907 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		FCA78B361EF2933E00114907 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
 		FCA78B371EF2933E00114907 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
@@ -538,6 +538,7 @@
 		FCA78AD61EF2916700114907 /* XDSReaderKit */ = {
 			isa = PBXGroup;
 			children = (
+				18BB4E2B2153D75C00C4A2CD /* XDSReaderHeader.h */,
 				FCA78BC31EF3A2CF00114907 /* Resource */,
 				FCA78B351EF2932200114907 /* External */,
 				FCA78AD71EF2916700114907 /* Core */,
@@ -545,7 +546,6 @@
 				FCA78B131EF2916700114907 /* Util */,
 				FCA78B161EF2916700114907 /* View */,
 				FCA78B171EF2916700114907 /* ViewController */,
-				FCA78B181EF2916700114907 /* XDSReaderHeader.h */,
 			);
 			path = XDSReaderKit;
 			sourceTree = "<group>";
