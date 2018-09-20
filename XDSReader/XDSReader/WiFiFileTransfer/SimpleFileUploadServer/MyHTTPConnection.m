@@ -118,7 +118,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
 {
 	HTTPLogTrace();
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:kGetContentLengthNotificationName object:@(contentLength) userInfo:@{kGetContentLengthNotificationName:@(contentLength)}];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kGetContentLengthNotificationName object:@(contentLength) userInfo:@{kGetContentLengthNotificationName:@(contentLength)}];
 
 	// set up mime parser
     NSString* boundary = [request headerField:@"boundary"];
@@ -137,7 +137,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
     // parsed data.
     [parser appendData:postDataChunk];
     NSLog(@"processBodyData = %zd",postDataChunk.length);
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDownloadProcessBodyDataNotificationName object:@(postDataChunk.length) userInfo:@{kDownloadProcessBodyDataNotificationName:@(postDataChunk.length)}];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kDownloadProcessBodyDataNotificationName object:@(postDataChunk.length) userInfo:@{kDownloadProcessBodyDataNotificationName:@(postDataChunk.length)}];
 }
 
 
@@ -158,7 +158,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
 		return;
 	}
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:kGetProcessStartOfPartWithHeaderNotificationName object:filename userInfo:@{kGetProcessStartOfPartWithHeaderNotificationName:filename}];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kGetProcessStartOfPartWithHeaderNotificationName object:filename userInfo:@{kGetProcessStartOfPartWithHeaderNotificationName:filename}];
 
 	NSString* uploadDirPath = [[config documentRoot] stringByAppendingPathComponent:@"upload"];
     NSLog(@"uploadDirPath = %@", uploadDirPath);

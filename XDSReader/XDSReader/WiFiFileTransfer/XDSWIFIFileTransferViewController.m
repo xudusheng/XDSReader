@@ -12,8 +12,13 @@
 #import "DDTTYLogger.h"
 #import "MyHTTPConnection.h"
 #import "XDSIPHelper.h"
-@interface XDSWIFIFileTransferViewController (){
+
+#import "GCDWebUploader.h"
+
+@interface XDSWIFIFileTransferViewController () <GCDWebUploaderDelegate> {
+@private
     HTTPServer *httpServer;
+    GCDWebUploader *webServer;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *ipAndPortLabel;
@@ -51,10 +56,10 @@
                                             selector:@selector(receiveDownloadProcessBodyDataNotification:)
                                                 name:kDownloadProcessBodyDataNotificationName
                                               object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(processStartOfPartWithHeaderNotification:)
-                                                name:kGetProcessStartOfPartWithHeaderNotificationName
-                                              object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self
+//                                            selector:@selector(processStartOfPartWithHeaderNotification:)
+//                                                name:kGetProcessStartOfPartWithHeaderNotificationName
+//                                              object:nil];
     
     
     
@@ -83,36 +88,50 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         // something
         _progressView.progress = (double)_downloadLength/_contentLength;
-        _progressLabel.text = [NSString stringWithFormat:@"正在下载第%zd文件：%@ %zd%%", _fileCount, _curentDownloadFileName, (NSInteger)(_progressView.progress * 100)];
+        _progressLabel.text = [NSString stringWithFormat:@"正在下载第%zd文件：%zd%%", _fileCount, (NSInteger)(_progressView.progress * 100)];
 
+//        14698325  14697804
     });
     
 }
-- (void)processStartOfPartWithHeaderNotification:(NSNotification *)notification{
-    _curentDownloadFileName = notification.object;
-    _curentDownloadFileCount += 1;
-}
+//- (void)processStartOfPartWithHeaderNotification:(NSNotification *)notification{
+//    _curentDownloadFileName = notification.object;
+//    _curentDownloadFileCount += 1;
+//}
 #pragma mark - UI相关
 - (void)createXDSWIFIFileTransferViewControllerUI{
     self.view.backgroundColor = [UIColor whiteColor];
     _progressView.progress = 0.0;
-    httpServer = [[HTTPServer alloc] init];
-    [httpServer setType:@"_http._tcp."];
-    // webPath是server搜寻HTML等文件的路径
-    NSString *webPath = [[NSBundle mainBundle] resourcePath];
-    [httpServer setDocumentRoot:webPath];
-    [httpServer setConnectionClass:[MyHTTPConnection class]];
-    [httpServer setPort:80];
-    NSLog(@"connectionClass = %@", [httpServer connectionClass]);
     
-    NSError *err;
-    if ([httpServer start:&err]) {
-        NSLog(@"IP %@",[XDSIPHelper deviceIPAdress]);
-        NSLog(@"port %hu",[httpServer listeningPort]);
-        _ipAndPortLabel.text = [NSString stringWithFormat:@"http://%@", [XDSIPHelper deviceIPAdress]];
-    }else{
-        NSLog(@"%@",err);
+    NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    webServer = [[GCDWebUploader alloc] initWithUploadDirectory:documentsPath];
+    webServer.delegate = self;
+    webServer.allowHiddenItems = YES;
+    if ([webServer start]) {
+        _ipAndPortLabel.text = [NSString stringWithFormat:NSLocalizedString(@"http://%@", nil), [XDSIPHelper deviceIPAdress]];
+    } else {
+        _ipAndPortLabel.text = NSLocalizedString(@"GCDWebServer not running!", nil);
     }
+    
+    
+    
+//    httpServer = [[HTTPServer alloc] init];
+//    [httpServer setType:@"_http._tcp."];
+//    // webPath是server搜寻HTML等文件的路径
+//    NSString *webPath = [[NSBundle mainBundle] resourcePath];
+//    [httpServer setDocumentRoot:webPath];
+//    [httpServer setConnectionClass:[MyHTTPConnection class]];
+//    [httpServer setPort:80];
+//    NSLog(@"connectionClass = %@", [httpServer connectionClass]);
+//
+//    NSError *err;
+//    if ([httpServer start:&err]) {
+//        NSLog(@"IP %@",[XDSIPHelper deviceIPAdress]);
+//        NSLog(@"port %hu",[httpServer listeningPort]);
+//        _ipAndPortLabel.text = [NSString stringWithFormat:@"http://%@", [XDSIPHelper deviceIPAdress]];
+//    }else{
+//        NSLog(@"%@",err);
+//    }
 
 }
 
