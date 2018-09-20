@@ -59,7 +59,7 @@
     
     
     //如果输入IP以后无法连接到设备，则尝试调用一下网络请求，激活网络连接以后再尝试
-//    [self demoRequest];
+    [self demoRequest];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

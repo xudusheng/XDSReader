@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1898DABA21533A840090F3B4 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 1898DAB821533A840090F3B4 /* index.html */; };
+		1898DABB21533A840090F3B4 /* upload.html in Resources */ = {isa = PBXBuildFile; fileRef = 1898DAB921533A840090F3B4 /* upload.html */; };
 		607B6C6126EB56737488D902 /* libPods-XDSReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */; };
 		A274ABEF213C522400728064 /* 十宗罪.epub in Resources */ = {isa = PBXBuildFile; fileRef = A29C5893213C47E000764DFB /* 十宗罪.epub */; };
 		A29AA3F21F5A6D6300FB24EE /* UIControl+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F11F5A6D6300FB24EE /* UIControl+XDSHyperLink.m */; };
@@ -57,8 +59,6 @@
 		FCA78ACD1EF2914F00114907 /* HTTPRedirectResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78AA51EF2914F00114907 /* HTTPRedirectResponse.m */; };
 		FCA78ACE1EF2914F00114907 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78AA71EF2914F00114907 /* WebSocket.m */; };
 		FCA78ACF1EF2914F00114907 /* MyHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78AA91EF2914F00114907 /* MyHTTPConnection.m */; };
-		FCA78AD01EF2914F00114907 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = FCA78AAB1EF2914F00114907 /* index.html */; };
-		FCA78AD11EF2914F00114907 /* upload.html in Resources */ = {isa = PBXBuildFile; fileRef = FCA78AAC1EF2914F00114907 /* upload.html */; };
 		FCA78AD21EF2914F00114907 /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA78AAD1EF2914F00114907 /* wifi.png */; };
 		FCA78AD31EF2914F00114907 /* XDSIPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78AAF1EF2914F00114907 /* XDSIPHelper.m */; };
 		FCA78AD41EF2914F00114907 /* XDSWIFIFileTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78AB11EF2914F00114907 /* XDSWIFIFileTransferViewController.m */; };
@@ -117,6 +117,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1898DAB821533A840090F3B4 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		1898DAB921533A840090F3B4 /* upload.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = upload.html; sourceTree = "<group>"; };
 		39079157DFAB83B2A1877F23 /* Pods-XDSReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.release.xcconfig"; sourceTree = "<group>"; };
 		566644BA861A753275F3D3DE /* Pods-XDSReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.debug.xcconfig"; sourceTree = "<group>"; };
 		A29AA3F01F5A6D6300FB24EE /* UIControl+XDSHyperLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+XDSHyperLink.h"; sourceTree = "<group>"; };
@@ -211,8 +213,6 @@
 		FCA78AA71EF2914F00114907 /* WebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocket.m; sourceTree = "<group>"; };
 		FCA78AA81EF2914F00114907 /* MyHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHTTPConnection.h; sourceTree = "<group>"; };
 		FCA78AA91EF2914F00114907 /* MyHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHTTPConnection.m; sourceTree = "<group>"; };
-		FCA78AAB1EF2914F00114907 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		FCA78AAC1EF2914F00114907 /* upload.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = upload.html; sourceTree = "<group>"; };
 		FCA78AAD1EF2914F00114907 /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifi.png; sourceTree = "<group>"; };
 		FCA78AAE1EF2914F00114907 /* XDSIPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSIPHelper.h; sourceTree = "<group>"; };
 		FCA78AAF1EF2914F00114907 /* XDSIPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSIPHelper.m; sourceTree = "<group>"; };
@@ -331,6 +331,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1898DAB721533A840090F3B4 /* web */ = {
+			isa = PBXGroup;
+			children = (
+				1898DAB821533A840090F3B4 /* index.html */,
+				1898DAB921533A840090F3B4 /* upload.html */,
+			);
+			path = web;
+			sourceTree = "<group>";
+		};
 		4124ED2D2ACEE3913CAC621E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,9 +420,9 @@
 				FCA78A6A1EF2914F00114907 /* CocoaAsyncSocket */,
 				FCA78A6E1EF2914F00114907 /* CocoaLumberjack */,
 				FCA78A801EF2914F00114907 /* Core */,
+				1898DAB721533A840090F3B4 /* web */,
 				FCA78AA81EF2914F00114907 /* MyHTTPConnection.h */,
 				FCA78AA91EF2914F00114907 /* MyHTTPConnection.m */,
-				FCA78AAA1EF2914F00114907 /* web */,
 			);
 			path = SimpleFileUploadServer;
 			sourceTree = "<group>";
@@ -524,15 +533,6 @@
 				FCA78AA51EF2914F00114907 /* HTTPRedirectResponse.m */,
 			);
 			path = Responses;
-			sourceTree = "<group>";
-		};
-		FCA78AAA1EF2914F00114907 /* web */ = {
-			isa = PBXGroup;
-			children = (
-				FCA78AAB1EF2914F00114907 /* index.html */,
-				FCA78AAC1EF2914F00114907 /* upload.html */,
-			);
-			path = web;
 			sourceTree = "<group>";
 		};
 		FCA78AD61EF2916700114907 /* XDSReaderKit */ = {
@@ -837,13 +837,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1898DABA21533A840090F3B4 /* index.html in Resources */,
 				FCA78C401EFCA96800114907 /* XDSNoDataView.xib in Resources */,
-				FCA78AD01EF2914F00114907 /* index.html in Resources */,
 				FCA78A601EF290F400114907 /* LaunchScreen.storyboard in Resources */,
 				FCA78AD21EF2914F00114907 /* wifi.png in Resources */,
 				FCA78C2C1EFA00DB00114907 /* 华文行楷.ttf in Resources */,
 				FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */,
 				A274ABEF213C522400728064 /* 十宗罪.epub in Resources */,
+				1898DABB21533A840090F3B4 /* upload.html in Resources */,
 				FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */,
 				FCA78A5D1EF290F400114907 /* Assets.xcassets in Resources */,
 				FCA78C2A1EFA00DB00114907 /* 华文琥珀.ttf in Resources */,
@@ -851,7 +852,6 @@
 				FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */,
 				FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */,
 				FCA78C281EFA00DB00114907 /* 华文新魏.ttf in Resources */,
-				FCA78AD11EF2914F00114907 /* upload.html in Resources */,
 				FCA78AB31EF2914F00114907 /* About.txt in Resources */,
 				FCA78A5B1EF290F400114907 /* Main.storyboard in Resources */,
 				FCA78C271EFA00DB00114907 /* 华文彩云.ttf in Resources */,
