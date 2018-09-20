@@ -54,13 +54,12 @@ XDSCatalogueViewDelegate
 
 - (void)setShowStatusBar:(BOOL)showStatusBar {
     _showStatusBar = showStatusBar;
-    [self.viewController setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)createReadMenu{
     
     // 隐藏状态栏
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     self.showStatusBar = YES;
     
     // 允许获取电量信息

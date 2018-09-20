@@ -19,6 +19,8 @@ XDSReadManagerDelegate
     NSInteger _page;       //当前显示的页数
     NSInteger _chapterChange;  //将要变化的章节
     NSInteger _pageChange;     //将要变化的页数
+    
+    UIStatusBarStyle lastStatusBarStyle;
 }
 
 @property (nonatomic,strong) UIPageViewController *pageViewController;
@@ -34,6 +36,7 @@ XDSReadManagerDelegate
     [self createReadPageViewControllerUI];
 }
 
+
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     _pageViewController.view.frame = self.view.frame;
@@ -42,6 +45,9 @@ XDSReadManagerDelegate
 //MARK: - ABOUT UI
 - (void)createReadPageViewControllerUI{
     [self addChildViewController:self.pageViewController];
+    
+    self->lastStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     _chapter = CURRENT_RECORD.currentChapter;
     _page = CURRENT_RECORD.currentPage;
@@ -78,8 +84,7 @@ XDSReadManagerDelegate
 //MARK: - DELEGATE METHODS
 //TODO: XDSReadManagerDelegate
 - (void)readViewDidClickCloseButton{
-    //保存阅读记录
-//    [XDSBookModel updateLocalModel:CURRENT_BOOK_MODEL url:CURRENT_BOOK_MODEL.resource];
+    [[UIApplication sharedApplication] setStatusBarStyle:self->lastStatusBarStyle];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)readViewFontDidChanged {

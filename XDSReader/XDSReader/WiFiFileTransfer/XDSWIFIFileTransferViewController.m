@@ -109,7 +109,6 @@
     if ([httpServer start:&err]) {
         NSLog(@"IP %@",[XDSIPHelper deviceIPAdress]);
         NSLog(@"port %hu",[httpServer listeningPort]);
-//        _ipAndPortLabel.text = [NSString stringWithFormat:@"http://%@:%hu", [XDSIPHelper deviceIPAdress], [httpServer listeningPort]];
         _ipAndPortLabel.text = [NSString stringWithFormat:@"http://%@", [XDSIPHelper deviceIPAdress]];
     }else{
         NSLog(@"%@",err);

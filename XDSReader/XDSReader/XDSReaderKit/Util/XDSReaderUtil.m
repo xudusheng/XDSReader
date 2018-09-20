@@ -70,4 +70,50 @@
 
     [[UIViewController xds_visiableViewController] presentViewController:alertVC animated:YES completion:nil];;
 }
+
++ (BOOL)isPhoneX {
+#if TARGET_OS_IOS
+    
+    BOOL isPhoneX = NO;
+    
+    if (@available(iOS 11.0, *)) {
+        if ([UIApplication sharedApplication].delegate.window.safeAreaInsets.top > 0.0 ||
+            [UIApplication sharedApplication].delegate.window.safeAreaInsets.left > 0.0) {
+            isPhoneX = YES;
+        }
+    }
+    
+    return isPhoneX;
+#else
+    
+    return NO;
+    
+#endif
+}
+
++ (UIEdgeInsets)safeAreaInsets {
+#if TARGET_OS_IOS
+    
+    UIEdgeInsets value = UIEdgeInsetsZero;
+    
+    if (@available(iOS 11.0, *)) {
+        value = [UIApplication sharedApplication].delegate.window.safeAreaInsets;
+    }
+    
+    return value;
+    
+#else
+    
+    UIEdgeInsets value = UIEdgeInsetsZero;
+    
+    if (@available(tvOS 11.0, *)) {
+        value = [UIApplication sharedApplication].delegate.window.safeAreaInsets;
+    }
+    
+    return value;
+    
+#endif
+    
+}
+
 @end

@@ -28,4 +28,6 @@
 
 + (void)showAlertWithTitle:(NSString *)title message:(NSString *)message;
 
++ (BOOL)isPhoneX;
++ (UIEdgeInsets)safeAreaInsets;
 @end
