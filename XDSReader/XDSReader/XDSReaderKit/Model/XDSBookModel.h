@@ -24,6 +24,9 @@
 //    <rights>：权限描述
 //    <x-metadata>，即扩展元素。如果有些信息在上述元素中无法描述，则在此元素中进行扩展。
 
+@property (nonatomic,strong) NSString *fullName;//全称  如   斗破苍穹.txt
+
+
 @property (nonatomic,copy) NSString *rootDocumentUrl;//解压包所在路径
 @property (nonatomic,copy) NSString *OEBPSUrl;//OPF与NCX文件所在的文件夹路径
 
@@ -48,7 +51,6 @@
 
 @interface XDSBookModel : NSObject <NSCoding>
 
-@property (nonatomic,strong) NSURL *resource;//资源路径
 @property (nonatomic, strong) LPPBookInfoModel *bookBasicInfo;//书籍基本信息
 @property (nonatomic,copy) NSString *content;//电子书文本内容
 @property (nonatomic,assign) LPPEBookType bookType;//电子书类型（txt, epub）

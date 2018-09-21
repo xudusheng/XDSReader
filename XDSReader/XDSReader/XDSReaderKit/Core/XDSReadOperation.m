@@ -102,6 +102,12 @@
 }
 
 #pragma mark - ePub处理
++ (void)readBaseInfoWithBaseInfoModel:(LPPBookInfoModel *)bookInfoModel {
+#error 解析书籍基本信息
+    
+}
+
+
 + (NSArray *)ePubFileHandle:(NSString *)path bookInfoModel:(LPPBookInfoModel *)bookInfoModel{
     //解压epub文件并返回解压文件夹的相对路径(根路径为document路径)
     NSString *ePubPath = [self unZip:path];
@@ -114,7 +120,6 @@
     bookInfoModel.rootDocumentUrl = ePubPath;
     bookInfoModel.OEBPSUrl = [OPFPath stringByDeletingLastPathComponent];
     return [self parseOPF:OPFPath bookInfoModel:bookInfoModel];
-    
 }
 #pragma mark - 解压文件路径(相对路径)
 + (NSString *)unZip:(NSString *)path{
@@ -154,14 +159,13 @@
         NSLog(@"ERROR: ePub not Valid");
         return nil;
     }
-    
 }
 
 #pragma mark - 解析OPF文件
-+ (NSArray *)parseOPF:(NSString *)opfRelativePath bookInfoModel:(LPPBookInfoModel *)bookInfoModel{
++ (NSDictionary *)readBookBaseInfo:(NSString *)opfRelativePath {
     NSString *opfPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:opfRelativePath];
     CXMLDocument *opfDocument = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:opfPath] options:0 error:nil];
-
+    
     NSString *title = [self readDCValueFromOPFForKey:@"title" document:opfDocument];
     NSString *creator = [self readDCValueFromOPFForKey:@"creator" document:opfDocument];
     NSString *subject = [self readDCValueFromOPFForKey:@"subject" document:opfDocument];
@@ -176,9 +180,18 @@
     NSString *rights = [self readDCValueFromOPFForKey:@"rights" document:opfDocument];
     
     NSString *cover = [self readCoverImage:opfDocument];
-
+    
     NSDictionary *bookInfo = NSDictionaryOfVariableBindings(title, creator, subject, descrip, date, type, format, identifier, source, relation, coverage, rights, cover);
+    return bookInfo;
+}
+
++ (NSArray *)parseOPF:(NSString *)opfRelativePath bookInfoModel:(LPPBookInfoModel *)bookInfoModel{
+    
+    NSDictionary *bookInfo = [self readBookBaseInfo:opfRelativePath];
     [bookInfoModel setValuesForKeysWithDictionary:bookInfo];
+    
+    NSString *opfPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:opfRelativePath];
+    CXMLDocument *opfDocument = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:opfPath] options:0 error:nil];
     
     CXMLElement *element = (CXMLElement *)[opfDocument nodeForXPath:@"//opf:item[@media-type='application/x-dtbncx+xml']" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
     //opf文件的命名空间 xmlns="http://www.idpf.org/2007/opf" 需要取到某个节点设置命名空间的键为opf 用opf:节点来获取节点
