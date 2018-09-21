@@ -72,6 +72,9 @@
     if ([httpServer isRunning]) {
         [httpServer stop];
     }
+    if ([webServer isRunning]) {
+        [webServer stop];
+    }
 }
 
 
@@ -88,7 +91,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         // something
         _progressView.progress = (double)_downloadLength/_contentLength;
-        _progressLabel.text = [NSString stringWithFormat:@"正在下载第%zd文件：%zd%%", _fileCount, (NSInteger)(_progressView.progress * 100)];
+        _progressLabel.text = [NSString stringWithFormat:@"正在上传第%zd文件：%zd%%", _fileCount, (NSInteger)(_progressView.progress * 100)];
 
 //        14698325  14697804
     });
@@ -136,8 +139,15 @@
 }
 
 #pragma mark - 代理方法
+- (void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path {
+    _progressLabel.text = [NSString stringWithFormat:@"第%zd文件以上传完成", _fileCount];
+}
+- (void)webUploader:(GCDWebUploader*)uploader didDownloadFileAtPath:(NSString*)path{
+    _progressLabel.text = [NSString stringWithFormat:@"第%zd文件以上传完成", _fileCount];
 
+}
 #pragma mark - 网络请求
+
 -(void)demoRequest{
     //访问百度首页
     
