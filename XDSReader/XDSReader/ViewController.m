@@ -42,7 +42,10 @@
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 2){
         XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
-        [self.navigationController pushViewController:wifiTransferVC animated:YES];
+        [self presentViewController:wifiTransferVC
+                                   animated: YES
+                          inRransparentForm:YES
+                                 completion:nil];
     }
 }
  
