@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="6k0-4w-Kcv" customClass="XDSReaderWifiView">
+            <rect key="frame" x="0.0" y="0.0" width="430" height="370"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAR-DW-SQI">
+                    <rect key="frame" x="20" y="62" width="390" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="ohH-HH-5mE"/>
+                    </constraints>
+                    <string key="text">请确保电脑和手机在同一个局域网下
+传输过程中请勿离开此页面或锁屏</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.30196078430000001" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="do1-N9-Cwc">
+                    <rect key="frame" x="35" y="199" width="361" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Tf6-y2-TTe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_book.png" translatesAutoresizingMaskIntoConstraints="NO" id="TM2-vt-Bi7">
+                    <rect key="frame" x="35" y="117" width="360" height="62"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请在电脑浏览器中输入以上地址" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exm-Wb-9X4">
+                    <rect key="frame" x="35" y="239" width="360" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="kKn-P4-meo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.30196078430000001" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NfY-4f-si5">
+                    <rect key="frame" x="35" y="269" width="360" height="3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="Vc6-Wh-nWZ"/>
+                    </constraints>
+                    <color key="progressTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="trackTintColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGC-1c-EYv">
+                    <rect key="frame" x="35" y="280" width="360" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="any-cK-Ng5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1b-sG-l6E">
+                    <rect key="frame" x="35" y="310" width="359.5" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="mOO-MG-nYd"/>
+                    </constraints>
+                    <state key="normal" title="关闭"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已连接WiFi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYi-Vg-Zv9">
+                    <rect key="frame" x="35" y="20" width="360" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="lxW-JB-Wuf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OYi-Vg-Zv9" firstAttribute="centerX" secondItem="TM2-vt-Bi7" secondAttribute="centerX" id="5mb-Iw-3sW"/>
+                <constraint firstItem="TM2-vt-Bi7" firstAttribute="top" secondItem="iAR-DW-SQI" secondAttribute="bottom" constant="15" id="92w-FF-nLf"/>
+                <constraint firstItem="iAR-DW-SQI" firstAttribute="leading" secondItem="6k0-4w-Kcv" secondAttribute="leading" constant="20" id="ACt-GG-cXc"/>
+                <constraint firstItem="exm-Wb-9X4" firstAttribute="leading" secondItem="TM2-vt-Bi7" secondAttribute="leading" id="Dg5-k4-Y7r"/>
+                <constraint firstItem="iAR-DW-SQI" firstAttribute="centerX" secondItem="6k0-4w-Kcv" secondAttribute="centerX" id="EWB-Nh-myo"/>
+                <constraint firstItem="do1-N9-Cwc" firstAttribute="leading" secondItem="TM2-vt-Bi7" secondAttribute="leading" id="FN8-X8-bzW"/>
+                <constraint firstItem="OYi-Vg-Zv9" firstAttribute="top" secondItem="6k0-4w-Kcv" secondAttribute="top" constant="20" id="NeF-3b-TsJ"/>
+                <constraint firstItem="NfY-4f-si5" firstAttribute="leading" secondItem="exm-Wb-9X4" secondAttribute="leading" id="NiK-zD-3Ff"/>
+                <constraint firstItem="do1-N9-Cwc" firstAttribute="top" secondItem="TM2-vt-Bi7" secondAttribute="bottom" constant="20" id="Tw2-v5-My6"/>
+                <constraint firstItem="do1-N9-Cwc" firstAttribute="centerX" secondItem="iAR-DW-SQI" secondAttribute="centerX" id="W75-wM-Kpg"/>
+                <constraint firstItem="TM2-vt-Bi7" firstAttribute="centerX" secondItem="do1-N9-Cwc" secondAttribute="centerX" id="WPf-h8-IMv"/>
+                <constraint firstItem="exm-Wb-9X4" firstAttribute="top" secondItem="do1-N9-Cwc" secondAttribute="bottom" constant="10" id="b9P-WK-mp0"/>
+                <constraint firstItem="e1b-sG-l6E" firstAttribute="leading" secondItem="NfY-4f-si5" secondAttribute="leading" id="ckM-3T-bYg"/>
+                <constraint firstItem="tGC-1c-EYv" firstAttribute="leading" secondItem="NfY-4f-si5" secondAttribute="leading" id="e7j-Y8-XlJ"/>
+                <constraint firstItem="exm-Wb-9X4" firstAttribute="trailing" secondItem="NfY-4f-si5" secondAttribute="trailing" id="fuS-La-w8U"/>
+                <constraint firstItem="NfY-4f-si5" firstAttribute="top" secondItem="exm-Wb-9X4" secondAttribute="bottom" constant="15" id="g7a-lQ-nT5"/>
+                <constraint firstItem="e1b-sG-l6E" firstAttribute="centerX" secondItem="NfY-4f-si5" secondAttribute="centerX" id="gbK-5m-8hX"/>
+                <constraint firstItem="tGC-1c-EYv" firstAttribute="trailing" secondItem="NfY-4f-si5" secondAttribute="trailing" id="hQr-U3-Akf"/>
+                <constraint firstAttribute="bottom" secondItem="e1b-sG-l6E" secondAttribute="bottom" constant="20" id="ikm-Q3-0HV"/>
+                <constraint firstItem="OYi-Vg-Zv9" firstAttribute="leading" secondItem="TM2-vt-Bi7" secondAttribute="leading" id="krE-eI-kk3"/>
+                <constraint firstItem="e1b-sG-l6E" firstAttribute="top" secondItem="tGC-1c-EYv" secondAttribute="bottom" constant="15" id="lCy-hF-82O"/>
+                <constraint firstItem="tGC-1c-EYv" firstAttribute="top" secondItem="NfY-4f-si5" secondAttribute="bottom" constant="8" id="n82-iR-zQ1"/>
+                <constraint firstItem="exm-Wb-9X4" firstAttribute="centerX" secondItem="TM2-vt-Bi7" secondAttribute="centerX" id="nr1-TO-GVz"/>
+                <constraint firstItem="TM2-vt-Bi7" firstAttribute="leading" secondItem="6k0-4w-Kcv" secondAttribute="leading" constant="35" id="uy6-jz-z5o"/>
+                <constraint firstItem="iAR-DW-SQI" firstAttribute="top" secondItem="OYi-Vg-Zv9" secondAttribute="bottom" constant="20" id="vgP-Dr-y76"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="closeButton" destination="e1b-sG-l6E" id="vkK-pM-vy8"/>
+                <outlet property="ipAndPortLabel" destination="do1-N9-Cwc" id="dTc-X8-xBC"/>
+                <outlet property="progressLabel" destination="tGC-1c-EYv" id="Xgj-IT-2Qo"/>
+                <outlet property="progressView" destination="NfY-4f-si5" id="64J-Rf-nnc"/>
+            </connections>
+            <point key="canvasLocation" x="-562" y="-21"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo_book.png" width="512" height="512"/>
+    </resources>
+</document>

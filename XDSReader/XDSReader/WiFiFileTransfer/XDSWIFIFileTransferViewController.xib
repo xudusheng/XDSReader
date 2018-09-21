@@ -11,10 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XDSWIFIFileTransferViewController">
             <connections>
-                <outlet property="closeButton" destination="eR6-e9-PmU" id="232-eq-tng"/>
-                <outlet property="ipAndPortLabel" destination="EQt-k1-UHT" id="UQF-3v-yi7"/>
-                <outlet property="progressLabel" destination="J59-yg-h1p" id="3Ho-Al-XNl"/>
-                <outlet property="progressView" destination="KmV-55-Ipk" id="JkM-7r-cdt"/>
                 <outlet property="view" destination="jJr-X7-GYC" id="mpU-J8-tFP"/>
             </connections>
         </placeholder>
@@ -22,109 +18,7 @@
         <view contentMode="scaleToFill" id="jJr-X7-GYC">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uji-wY-6vK">
-                    <rect key="frame" x="0.0" y="306" width="375" height="361"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnS-ME-fI3">
-                            <rect key="frame" x="20" y="81" width="334.5" height="26.5"/>
-                            <string key="text">请确保电脑和手机在同一个局域网下
-传输过程中请勿离开此页面或锁屏</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                            <color key="textColor" red="0.30196078430000001" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQt-k1-UHT">
-                            <rect key="frame" x="35" y="191" width="305.5" height="30"/>
-                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="rX7-bW-drF"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_book.png" translatesAutoresizingMaskIntoConstraints="NO" id="NOp-Jr-gIQ">
-                            <rect key="frame" x="35" y="127" width="304.5" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="3ob-u0-7Y8"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请在电脑浏览器中输入以上地址" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CS1-fy-jFO">
-                            <rect key="frame" x="35" y="231" width="304.5" height="15"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="15" id="3cQ-Vl-AnD"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                            <color key="textColor" red="0.30196078430000001" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KmV-55-Ipk">
-                            <rect key="frame" x="35" y="261" width="304.5" height="2"/>
-                            <color key="progressTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="trackTintColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </progressView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J59-yg-h1p">
-                            <rect key="frame" x="35" y="271" width="304.5" height="15"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="15" id="beY-Yw-JkA"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR6-e9-PmU">
-                            <rect key="frame" x="35" y="301" width="304" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="ecM-Lq-vs1"/>
-                            </constraints>
-                            <state key="normal" title="关闭"/>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已连接WiFi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkg-QR-47v">
-                            <rect key="frame" x="35" y="30" width="304.5" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="wnS-ME-fI3" firstAttribute="top" secondItem="bkg-QR-47v" secondAttribute="bottom" constant="30" id="1On-La-4dr"/>
-                        <constraint firstItem="NOp-Jr-gIQ" firstAttribute="centerX" secondItem="EQt-k1-UHT" secondAttribute="centerX" id="584-wa-ruw"/>
-                        <constraint firstItem="CS1-fy-jFO" firstAttribute="centerX" secondItem="NOp-Jr-gIQ" secondAttribute="centerX" id="9vS-Qi-elf"/>
-                        <constraint firstItem="bkg-QR-47v" firstAttribute="top" secondItem="Uji-wY-6vK" secondAttribute="top" constant="30" id="C0c-6t-doR"/>
-                        <constraint firstItem="eR6-e9-PmU" firstAttribute="centerX" secondItem="KmV-55-Ipk" secondAttribute="centerX" id="Cdx-Wc-Uwt"/>
-                        <constraint firstItem="J59-yg-h1p" firstAttribute="top" secondItem="KmV-55-Ipk" secondAttribute="bottom" constant="8" id="HN1-Gq-iGb"/>
-                        <constraint firstItem="J59-yg-h1p" firstAttribute="trailing" secondItem="KmV-55-Ipk" secondAttribute="trailing" id="I7f-y6-1Fz"/>
-                        <constraint firstAttribute="bottom" secondItem="eR6-e9-PmU" secondAttribute="bottom" constant="20" id="Ny0-tz-0yG"/>
-                        <constraint firstItem="bkg-QR-47v" firstAttribute="centerX" secondItem="NOp-Jr-gIQ" secondAttribute="centerX" id="OnY-vr-8DM"/>
-                        <constraint firstItem="eR6-e9-PmU" firstAttribute="leading" secondItem="KmV-55-Ipk" secondAttribute="leading" id="aBF-w8-nPm"/>
-                        <constraint firstItem="KmV-55-Ipk" firstAttribute="top" secondItem="CS1-fy-jFO" secondAttribute="bottom" constant="15" id="aKM-xZ-Rgf"/>
-                        <constraint firstItem="wnS-ME-fI3" firstAttribute="centerX" secondItem="Uji-wY-6vK" secondAttribute="centerX" id="cO1-Si-2qo"/>
-                        <constraint firstItem="EQt-k1-UHT" firstAttribute="top" secondItem="NOp-Jr-gIQ" secondAttribute="bottom" constant="20" id="d7n-nh-wiV"/>
-                        <constraint firstItem="NOp-Jr-gIQ" firstAttribute="leading" secondItem="Uji-wY-6vK" secondAttribute="leading" constant="35" id="eUL-c0-JIy"/>
-                        <constraint firstItem="eR6-e9-PmU" firstAttribute="top" secondItem="J59-yg-h1p" secondAttribute="bottom" constant="15" id="g5W-6r-8p9"/>
-                        <constraint firstItem="CS1-fy-jFO" firstAttribute="trailing" secondItem="KmV-55-Ipk" secondAttribute="trailing" id="g9v-vh-aRs"/>
-                        <constraint firstItem="EQt-k1-UHT" firstAttribute="leading" secondItem="NOp-Jr-gIQ" secondAttribute="leading" id="j35-ga-vXf"/>
-                        <constraint firstItem="CS1-fy-jFO" firstAttribute="leading" secondItem="NOp-Jr-gIQ" secondAttribute="leading" id="jnE-YP-12z"/>
-                        <constraint firstItem="J59-yg-h1p" firstAttribute="leading" secondItem="KmV-55-Ipk" secondAttribute="leading" id="oRU-pn-vEu"/>
-                        <constraint firstItem="wnS-ME-fI3" firstAttribute="leading" secondItem="Uji-wY-6vK" secondAttribute="leading" constant="20" id="qd5-L2-b0i"/>
-                        <constraint firstItem="bkg-QR-47v" firstAttribute="leading" secondItem="NOp-Jr-gIQ" secondAttribute="leading" id="rhu-6D-WPY"/>
-                        <constraint firstItem="CS1-fy-jFO" firstAttribute="top" secondItem="EQt-k1-UHT" secondAttribute="bottom" constant="10" id="sND-ZV-48M"/>
-                        <constraint firstItem="KmV-55-Ipk" firstAttribute="leading" secondItem="CS1-fy-jFO" secondAttribute="leading" id="vGO-4g-kKK"/>
-                        <constraint firstItem="NOp-Jr-gIQ" firstAttribute="top" secondItem="wnS-ME-fI3" secondAttribute="bottom" constant="20" id="wTn-Yu-zyt"/>
-                        <constraint firstItem="EQt-k1-UHT" firstAttribute="centerX" secondItem="wnS-ME-fI3" secondAttribute="centerX" id="zRA-c7-Hco"/>
-                    </constraints>
-                </view>
-            </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.1974796660958904" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="Uji-wY-6vK" secondAttribute="trailing" id="IVt-8c-BJo"/>
-                <constraint firstAttribute="bottom" secondItem="Uji-wY-6vK" secondAttribute="bottom" id="P1p-ue-4bk"/>
-                <constraint firstItem="Uji-wY-6vK" firstAttribute="leading" secondItem="jJr-X7-GYC" secondAttribute="leading" id="QdP-Rn-feE"/>
-            </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="logo_book.png" width="512" height="512"/>
-    </resources>
 </document>

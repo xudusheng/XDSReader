@@ -29,6 +29,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         
 //        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"11处特工皇妃"withExtension:@"epub"];//包含长章节，注意内存警告

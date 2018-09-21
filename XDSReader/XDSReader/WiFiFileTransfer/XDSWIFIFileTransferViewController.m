@@ -10,18 +10,18 @@
 #import "XDSIPHelper.h"
 
 #import "GCDWebUploader.h"
+#import "XDSReaderWifiView.h"
+
+#define XDS_WIFI_VIEW_HEIGHT 370.f
+#define XDS_WIFI_VIEW_SHOW_ORIGINY (DEVICE_MAIN_SCREEN_HEIGHT_XDSR - XDS_WIFI_VIEW_HEIGHT)
+#define XDS_WIFI_VIEW_HIDDEN_ORIGINY DEVICE_MAIN_SCREEN_HEIGHT_XDSR
 
 @interface XDSWIFIFileTransferViewController () <GCDWebUploaderDelegate> {
 @private
     GCDWebUploader *webServer;
 }
 
-@property (weak, nonatomic) IBOutlet UILabel *ipAndPortLabel;
-@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
-@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
-@property (weak, nonatomic) IBOutlet UIButton *closeButton;
-
-
+@property (nonatomic,strong) XDSReaderWifiView *wifiView;
 @property (assign, nonatomic)NSInteger fileCount;//文件数量  许杜生添加 2015.12.22
 @property (assign, nonatomic)UInt64 contentLength;//文件内容大小  许杜生添加 2015.12.22
 @property (assign, nonatomic)UInt64 downloadLength;//已下载的文件内容大小  许杜生添加 2015.12.22
@@ -54,13 +54,10 @@
     [self demoRequest];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    if ([webServer isRunning]) {
-        [webServer stop];
-    }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self startAnimation:YES];
 }
-
 
 - (void)receiveANewFileNotification:(NSNotification *)notification{
     self.fileCount += 1;
@@ -77,37 +74,35 @@
     // 主线程执行
     dispatch_async(dispatch_get_main_queue(), ^{
         // something
-        self.progressView.progress = (double)self.downloadLength/self.contentLength;
-        self.progressLabel.text = [NSString stringWithFormat:@"正在上传第%ld文件，进度%zd%%", (long)self.fileCount, (NSInteger)(self.progressView.progress * 100)];
+        self.wifiView.progressView.progress = (double)self.downloadLength/self.contentLength;
+        self.wifiView.progressLabel.text = [NSString stringWithFormat:@"正在上传第%ld文件，进度%zd%%", (long)self.fileCount, (NSInteger)(self.wifiView.progressView.progress * 100)];
 
     });
     
 }
 #pragma mark - UI相关
 - (void)createXDSWIFIFileTransferViewControllerUI{
-    _progressView.progress = 0.0;
+    self.wifiView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([XDSReaderWifiView class]) owner:self options:nil].firstObject;
+    self.wifiView.frame = CGRectMake(0, XDS_WIFI_VIEW_HIDDEN_ORIGINY, DEVICE_MAIN_SCREEN_WIDTH_XDSR, XDS_WIFI_VIEW_HEIGHT);
+    [self.view addSubview:self.wifiView];
     
-    self.closeButton.layer.cornerRadius = 20.f;
-    self.closeButton.layer.masksToBounds = YES;
-    self.closeButton.layer.borderColor = [UIColor blueColor].CGColor;
-    self.closeButton.layer.borderWidth = 1.f;
-    [self.closeButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [self.closeButton addTarget:self action:@selector(closeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.wifiView.progressView.progress = 0.0;
+    [self.wifiView.closeButton addTarget:self action:@selector(closeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     webServer = [[GCDWebUploader alloc] initWithUploadDirectory:documentsPath];
     webServer.delegate = self;
     webServer.allowHiddenItems = YES;
     if ([webServer start]) {
-        _ipAndPortLabel.text = [NSString stringWithFormat:NSLocalizedString(@"http://%@", nil), [XDSIPHelper deviceIPAdress]];
+        self.wifiView.ipAndPortLabel.text = [NSString stringWithFormat:NSLocalizedString(@"http://%@", nil), [XDSIPHelper deviceIPAdress]];
     } else {
-        _ipAndPortLabel.text = NSLocalizedString(@"GCDWebServer not running!", nil);
+        self.wifiView.ipAndPortLabel.text = NSLocalizedString(@"GCDWebServer not running!", nil);
     }
 }
 
 #pragma mark - 代理方法
 - (void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path {
-    _progressLabel.text = [NSString stringWithFormat:@"第%ld文件已上传完成", (long)_fileCount];
+    self.wifiView.progressLabel.text = [NSString stringWithFormat:@"第%ld文件已上传完成", (long)_fileCount];
     self.isUploading = NO;
 }
 #pragma mark - 网络请求
@@ -134,14 +129,27 @@
 }
 #pragma mark - 点击事件处理
 - (void)closeButtonClick:(UIButton *)closeButton {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([webServer isRunning]) {
+        [webServer stop];
+    }
+    
+    [self startAnimation:NO];
 }
 #pragma mark - 其他私有方法
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    NSLog(@"keyPath = %@", keyPath);
-    NSLog(@"object = %@", object);
-    NSLog(@"change = %@", change);
+
+- (void)startAnimation:(BOOL)isViewAppear{
+    CGFloat originY = isViewAppear?XDS_WIFI_VIEW_SHOW_ORIGINY:XDS_WIFI_VIEW_HIDDEN_ORIGINY;
+    CGRect frame = self.wifiView.frame;
+    frame.origin.y = originY;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.wifiView.frame = frame;
+    } completion:^(BOOL finished) {
+        if (!isViewAppear) {
+            [self dismissViewControllerAnimated:NO completion:nil];
+        }
+    }];
 }
+
 #pragma mark - 内存管理相关
 - (void)XDSWIFIFileTransferViewControllerDataInit{
     

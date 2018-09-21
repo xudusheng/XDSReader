@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		18B3DC7B2154892F00FFD27E /* logo_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B3DC7A2154892F00FFD27E /* logo_book.png */; };
 		18B3DC7E21548BAF00FFD27E /* UIViewController+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC7D21548BAF00FFD27E /* UIViewController+XDSReader.m */; };
+		18B3DC8121549A8A00FFD27E /* XDSReaderWifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC8021549A8A00FFD27E /* XDSReaderWifiView.m */; };
+		18B3DC8321549A9600FFD27E /* XDSReaderWifiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B3DC8221549A9600FFD27E /* XDSReaderWifiView.xib */; };
 		18BB4E8D2153E6F400C4A2CD /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18BB4E8C2153E6F400C4A2CD /* libxml2.tbd */; };
 		18BB4EB62153E79000C4A2CD /* GCDWebDAVServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4E912153E79000C4A2CD /* GCDWebDAVServer.m */; };
 		18BB4EB72153E79000C4A2CD /* GCDWebServerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4E962153E79000C4A2CD /* GCDWebServerResponse.m */; };
@@ -107,6 +109,9 @@
 		18B3DC7A2154892F00FFD27E /* logo_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_book.png; sourceTree = "<group>"; };
 		18B3DC7C21548BAF00FFD27E /* UIViewController+XDSReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSReader.h"; sourceTree = "<group>"; };
 		18B3DC7D21548BAF00FFD27E /* UIViewController+XDSReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSReader.m"; sourceTree = "<group>"; };
+		18B3DC7F21549A8A00FFD27E /* XDSReaderWifiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSReaderWifiView.h; sourceTree = "<group>"; };
+		18B3DC8021549A8A00FFD27E /* XDSReaderWifiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSReaderWifiView.m; sourceTree = "<group>"; };
+		18B3DC8221549A9600FFD27E /* XDSReaderWifiView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XDSReaderWifiView.xib; sourceTree = "<group>"; };
 		18BB4E2B2153D75C00C4A2CD /* XDSReaderHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderHeader.h; sourceTree = "<group>"; };
 		18BB4E8C2153E6F400C4A2CD /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		18BB4E902153E79000C4A2CD /* GCDWebDAVServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebDAVServer.h; sourceTree = "<group>"; };
@@ -454,6 +459,9 @@
 				FCA78AB01EF2914F00114907 /* XDSWIFIFileTransferViewController.h */,
 				FCA78AB11EF2914F00114907 /* XDSWIFIFileTransferViewController.m */,
 				FCA78AB21EF2914F00114907 /* XDSWIFIFileTransferViewController.xib */,
+				18B3DC7F21549A8A00FFD27E /* XDSReaderWifiView.h */,
+				18B3DC8021549A8A00FFD27E /* XDSReaderWifiView.m */,
+				18B3DC8221549A9600FFD27E /* XDSReaderWifiView.xib */,
 			);
 			path = WiFiFileTransfer;
 			sourceTree = "<group>";
@@ -780,6 +788,7 @@
 				FCA78C271EFA00DB00114907 /* 华文彩云.ttf in Resources */,
 				FCA78AD51EF2914F00114907 /* XDSWIFIFileTransferViewController.xib in Resources */,
 				FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */,
+				18B3DC8321549A9600FFD27E /* XDSReaderWifiView.xib in Resources */,
 				18B3DC7B2154892F00FFD27E /* logo_book.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,6 +867,7 @@
 				FCA78B7F1EF2DEB500114907 /* CXMLDocument.m in Sources */,
 				FCA78B831EF2DEB500114907 /* CXMLElement_ElementTreeExtensions.m in Sources */,
 				FCA78C3E1EFCA92C00114907 /* XDSNoDataView.m in Sources */,
+				18B3DC8121549A8A00FFD27E /* XDSReaderWifiView.m in Sources */,
 				FCA78B191EF2916700114907 /* XDSReadConfig.m in Sources */,
 				FCA78C3B1EFB793F00114907 /* XDSNoteCell.m in Sources */,
 				FCA78BE61EF6D6FE00114907 /* XDSMenuBottomView.m in Sources */,
