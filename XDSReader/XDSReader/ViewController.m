@@ -36,10 +36,11 @@
 //        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"zoubianzhongguo"withExtension:@"epub"];
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"每天懂一点好玩心理学"withExtension:@"epub"];
 //        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"十宗罪" withExtension:@"epub"];
-        
         [self showReadPageViewControllerWithFileURL:fileURL];
+
+
     }else if(indexPath.row == 1){
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"妖神记"withExtension:@"txt"];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"妖神记" withExtension:@"txt"];
         [self showReadPageViewControllerWithFileURL:fileURL];
     }else if(indexPath.row == 2){
         XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
@@ -57,7 +58,8 @@
     }
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        XDSBookModel *bookModel = [XDSBookModel getLocalModelWithURL:fileURL];
+        LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:fileURL];
+        XDSBookModel *bookModel = [XDSBookModel bookModelWithBaseInfo:bookInfo];
         dispatch_async(dispatch_get_main_queue(), ^{
             XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
             [[XDSReadManager sharedManager] setResourceURL:fileURL];//文件位置

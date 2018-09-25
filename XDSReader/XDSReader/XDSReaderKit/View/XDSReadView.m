@@ -263,6 +263,7 @@
             NSInteger page = [chapterModel getPageWithLocationInChapter:locationInChapter];
 
             NSLog(@"chapter = %zd, page = %zd", selectedChapterNum, page);
+            [[XDSReadManager sharedManager] readViewJumpToChapter:selectedChapterNum page:page];
             
         }else {
             [[UIApplication sharedApplication] openURL:button.URL];

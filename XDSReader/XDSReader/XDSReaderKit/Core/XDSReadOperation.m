@@ -10,6 +10,25 @@
 #import "ZipArchive.h"
 #import "TouchXML.h"
 
+@implementation NSString (XDSEPUB)
+
+
+- (NSString *)fullPath {
+    NSString *path = self;
+    if (![path hasPrefix:@"/"]) {
+        path = [@"/" stringByAppendingString:path];
+    }
+    NSString *zipPath_fullPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:path];
+    return zipPath_fullPath;
+}
+- (NSString *)relativePath {
+    NSString *zipFile_relativePath = [EPUB_EXTRACTION_FOLDER stringByAppendingString:self];
+    zipFile_relativePath = [@"/" stringByAppendingString:zipFile_relativePath];
+    return zipFile_relativePath;
+}
+
+@end
+
 @implementation XDSReadOperation
 
 + (void)separateChapter:(NSMutableArray **)chapters content:(NSString *)content {
@@ -102,11 +121,98 @@
 }
 
 #pragma mark - ePub处理
-+ (void)readBaseInfoWithBaseInfoModel:(LPPBookInfoModel *)bookInfoModel {
-#error 解析书籍基本信息
+///解析书籍基本信息
++ (LPPBookInfoModel *)getBookInfoWithFile:(NSURL *)url {
+    if (!url) {
+        return nil;
+    }
     
+    NSString *path = url.path;
+    NSString *fullName = path.lastPathComponent;
+        if ([[path.lastPathComponent pathExtension].lowercaseString isEqualToString:@"txt"]) {
+            NSString *txtName = fullName;
+            //txt文件的完整路径
+            NSString *txt_fullPath = [txtName fullPath];
+            NSFileManager *filemanager = [[NSFileManager alloc] init];
+            //documents下不存在该txt文件，则将该txt文件复制到documents文件夹里面去
+            if (![filemanager fileExistsAtPath:txt_fullPath]) {
+                NSError *error = nil;
+                BOOL success = [filemanager copyItemAtURL:url toURL:[NSURL fileURLWithPath:txt_fullPath] error:&error];
+                if (success) {
+                    NSLog(@"成功将%@复制到document目录下", fullName);
+                }
+            }
+            
+            LPPBookInfoModel *bookInfoModel = [[LPPBookInfoModel alloc] init];
+            bookInfoModel.fullName = fullName;
+            bookInfoModel.bookType = LPPEBookTypeTxt;
+            bookInfoModel.title = [fullName substringToIndex:fullName.length-4];
+            return bookInfoModel;
+
+        }else if ([[path.lastPathComponent pathExtension].lowercaseString isEqualToString:@"epub"]){
+            NSString *folderfileName = [[path stringByDeletingPathExtension] lastPathComponent];
+            //epub解压文件的相对路径
+            NSString *folder_relativePath = [folderfileName relativePath];
+            //epub解压文件的完整路径
+            NSString *folder_fullPath = [folder_relativePath fullPath];
+            NSFileManager *filemanager=[[NSFileManager alloc] init];
+            //文件夹不存在，进行一次解压
+            if (![filemanager fileExistsAtPath:folder_fullPath]) {
+                folder_relativePath = [self unZip:path];
+                if (folder_relativePath.length < 1) {//解压失败，返回nil
+                    return nil;
+                }
+            }
+            
+            //获取opf文件的相对路径
+            NSString *opfRelativePath = [self opfRelativePath:folder_relativePath];
+            if (opfRelativePath.length < 1) { //opf文件不存在
+                return nil;
+            }
+            
+            NSDictionary *bookInfo = [self readBookBaseInfo:[opfRelativePath fullPath]];
+            LPPBookInfoModel *bookInfoModel = [[LPPBookInfoModel alloc] init];
+            bookInfoModel.fullName = fullName;
+            bookInfoModel.bookType = LPPEBookTypeEpub;
+            bookInfoModel.rootDocumentUrl = folder_relativePath;
+            bookInfoModel.OEBPSUrl = [opfRelativePath stringByDeletingLastPathComponent];
+            [bookInfoModel setValuesForKeysWithDictionary:bookInfo];
+            return bookInfoModel;
+        }else{
+            //@throw [NSException exceptionWithName:@"FileException" reason:@"文件格式错误" userInfo:nil];
+            //文件格式错误
+            NSLog(@"文件格式错误");
+            return nil;
+        }
 }
 
++ (NSArray *)readChaptersWithBookInfo:(LPPBookInfoModel *)bookInfo{
+    if (bookInfo.bookType == LPPEBookTypeTxt) {
+        NSURL *url = [NSURL fileURLWithPath:[bookInfo.fullName fullPath]];
+        NSString *content = [XDSReaderUtil encodeWithURL:url];
+        NSMutableArray *charpter = [NSMutableArray array];
+        [XDSReadOperation separateChapter:&charpter content:content];
+        return charpter;
+        
+    }else if (bookInfo.bookType == LPPEBookTypeEpub){
+        
+        NSString *folder_relativePath = bookInfo.rootDocumentUrl;
+        NSFileManager *filemanager = [[NSFileManager alloc] init];
+        //文件夹不存在，进行一次解压
+        if (![filemanager fileExistsAtPath:[folder_relativePath fullPath]]) {
+            folder_relativePath = [self unZip:[folder_relativePath fullPath]];
+            if (folder_relativePath.length < 1) {//解压失败，返回nil
+                return nil;
+            }
+        }
+        
+        NSString *opfRealtivePath = [self opfRelativePath:folder_relativePath];
+        //获取opf文件的相对路径
+        return [self parseOPF:[opfRealtivePath fullPath]];
+    }
+    return nil;
+
+}
 
 + (NSArray *)ePubFileHandle:(NSString *)path bookInfoModel:(LPPBookInfoModel *)bookInfoModel{
     //解压epub文件并返回解压文件夹的相对路径(根路径为document路径)
@@ -116,10 +222,10 @@
     }
     
     //获取opf文件的相对路径
-    NSString *OPFPath = [self OPFPath:ePubPath];
+    NSString *opfRealtivePath = [self opfRelativePath:ePubPath];
     bookInfoModel.rootDocumentUrl = ePubPath;
-    bookInfoModel.OEBPSUrl = [OPFPath stringByDeletingLastPathComponent];
-    return [self parseOPF:OPFPath bookInfoModel:bookInfoModel];
+    bookInfoModel.OEBPSUrl = [opfRealtivePath stringByDeletingLastPathComponent];
+    return [self parseOPF:opfRealtivePath bookInfoModel:bookInfoModel];
 }
 #pragma mark - 解压文件路径(相对路径)
 + (NSString *)unZip:(NSString *)path{
@@ -144,8 +250,8 @@
     return nil;
 }
 #pragma mark - OPF文件路径
-+ (NSString *)OPFPath:(NSString *)epubPath{
-    NSString *epubExtractionFolderFullPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:epubPath];
++ (NSString *)opfRelativePath:(NSString *)epubRelativePath{
+    NSString *epubExtractionFolderFullPath = [epubRelativePath fullPath];
     NSString *containerPath = [epubExtractionFolderFullPath stringByAppendingString:@"/META-INF/container.xml"];
     //container.xml文件路径 通过container.xml获取到opf文件的路径
     NSFileManager *fileManager = [[NSFileManager alloc] init];
@@ -153,7 +259,7 @@
         CXMLDocument* document = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:containerPath] options:0 error:nil];
         CXMLNode* opfPath = [document nodeForXPath:@"//@full-path" error:nil];
         // xml文件中获取full-path属性的节点  full-path的属性值就是opf文件的绝对路径
-        NSString *path = [NSString stringWithFormat:@"%@/%@",epubPath,[opfPath stringValue]];
+        NSString *path = [NSString stringWithFormat:@"%@/%@",epubRelativePath,[opfPath stringValue]];
         return path;
     } else {
         NSLog(@"ERROR: ePub not Valid");
@@ -162,9 +268,8 @@
 }
 
 #pragma mark - 解析OPF文件
-+ (NSDictionary *)readBookBaseInfo:(NSString *)opfRelativePath {
-    NSString *opfPath = [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:opfRelativePath];
-    CXMLDocument *opfDocument = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:opfPath] options:0 error:nil];
++ (NSDictionary *)readBookBaseInfo:(NSString *)opfFullPath {
+    CXMLDocument *opfDocument = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:opfFullPath] options:0 error:nil];
     
     NSString *title = [self readDCValueFromOPFForKey:@"title" document:opfDocument];
     NSString *creator = [self readDCValueFromOPFForKey:@"creator" document:opfDocument];
@@ -183,6 +288,22 @@
     
     NSDictionary *bookInfo = NSDictionaryOfVariableBindings(title, creator, subject, descrip, date, type, format, identifier, source, relation, coverage, rights, cover);
     return bookInfo;
+}
+
++ (NSArray *)parseOPF:(NSString *)opfFullPath{
+    CXMLDocument *opfDocument = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:opfFullPath] options:0 error:nil];
+    CXMLElement *element = (CXMLElement *)[opfDocument nodeForXPath:@"//opf:item[@media-type='application/x-dtbncx+xml']" namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
+    //opf文件的命名空间 xmlns="http://www.idpf.org/2007/opf" 需要取到某个节点设置命名空间的键为opf 用opf:节点来获取节点
+    NSString *ncxFile;
+    if (element) {
+        ncxFile = [[element attributeForName:@"href"] stringValue];//获取ncx文件名称 根据ncx获取书的目录
+    }
+    
+    NSString *absolutePath = [opfFullPath stringByDeletingLastPathComponent];
+    CXMLDocument *ncxDoc = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@", absolutePath,ncxFile]] options:0 error:nil];
+
+    //read carologue from ncx file 从ncx读取书籍目录（需优化，需要处理章节内链接问题）
+    return [self readCarologueFromNCX:ncxDoc];
 }
 
 + (NSArray *)parseOPF:(NSString *)opfRelativePath bookInfoModel:(LPPBookInfoModel *)bookInfoModel{

@@ -26,7 +26,6 @@
 
 @property (nonatomic,strong) NSString *fullName;//全称  如   斗破苍穹.txt
 
-
 @property (nonatomic,copy) NSString *rootDocumentUrl;//解压包所在路径
 @property (nonatomic,copy) NSString *OEBPSUrl;//OPF与NCX文件所在的文件夹路径
 
@@ -52,7 +51,6 @@
 @interface XDSBookModel : NSObject <NSCoding>
 
 @property (nonatomic, strong) LPPBookInfoModel *bookBasicInfo;//书籍基本信息
-@property (nonatomic,copy) NSString *content;//电子书文本内容
 @property (nonatomic,assign) LPPEBookType bookType;//电子书类型（txt, epub）
 @property (nonatomic,readonly) NSArray <XDSChapterModel*> *chapters;//章节
 @property (nonatomic,readonly) NSArray <XDSChapterModel*> *chapterContainNotes;//包含笔记的章节
@@ -62,10 +60,9 @@
 
 
 
-- (instancetype)initWithContent:(NSString *)content;
-- (instancetype)initWithePub:(NSString *)ePubPath;
+- (instancetype)initWithBookInfo:(LPPBookInfoModel *)bookInfo;
 - (void)saveBook;//保存书本，包括阅读记录，笔记，书签等
-+ (id)getLocalModelWithURL:(NSURL *)url;
++ (id)bookModelWithBaseInfo:(LPPBookInfoModel *)baseInfo;
 
 - (void)loadContentInChapter:(XDSChapterModel *)chapterModel;
 - (void)loadContentForAllChapters;

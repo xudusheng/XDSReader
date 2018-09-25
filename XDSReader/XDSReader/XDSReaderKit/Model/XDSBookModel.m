@@ -9,6 +9,7 @@
 #import "XDSBookModel.h"
 @implementation LPPBookInfoModel
 
+NSString *const kLPPBookInfoModelFullNameEncodeKey = @"fullName";
 NSString *const kLPPBookInfoModelRootDocumentUrlEncodeKey = @"rootDocumentUrl";
 NSString *const kLPPBookInfoModelOEBPSUrlEncodeKey = @"OEBPSUrl";
 NSString *const kLPPBookInfoModelCoverEncodeKey = @"cover";
@@ -27,6 +28,7 @@ NSString *const kLPPBookInfoModelRightsEncodeKey = @"rights";
 NSString *const kLPPBookInfoModelBookTypeEncodeKey = @"bookType";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.fullName forKey:kLPPBookInfoModelFullNameEncodeKey];
     [aCoder encodeObject:self.rootDocumentUrl forKey:kLPPBookInfoModelRootDocumentUrlEncodeKey];
     [aCoder encodeObject:self.OEBPSUrl forKey:kLPPBookInfoModelOEBPSUrlEncodeKey];
     [aCoder encodeObject:self.cover forKey:kLPPBookInfoModelCoverEncodeKey];
@@ -48,6 +50,7 @@ NSString *const kLPPBookInfoModelBookTypeEncodeKey = @"bookType";
 - (id)initWithCoder:(NSCoder *)aDecoder{
     self = [super init];
     if (self) {
+        self.fullName = [aDecoder decodeObjectForKey:kLPPBookInfoModelFullNameEncodeKey];
         self.rootDocumentUrl = [aDecoder decodeObjectForKey:kLPPBookInfoModelRootDocumentUrlEncodeKey];
         self.OEBPSUrl = [aDecoder decodeObjectForKey:kLPPBookInfoModelOEBPSUrlEncodeKey];
         self.cover = [aDecoder decodeObjectForKey:kLPPBookInfoModelCoverEncodeKey];
@@ -94,45 +97,28 @@ NSString *const kLPPBookInfoModelBookTypeEncodeKey = @"bookType";
 @implementation XDSBookModel
 
 NSString *const kXDSBookModelBookBasicInfoEncodeKey = @"bookBasicInfo";
-NSString *const kXDSBookModelContentEncodeKey = @"content";
 NSString *const kXDSBookModelBookTypeEncodeKey = @"bookType";
 NSString *const kXDSBookModelChaptersEncodeKey = @"chapters";
 NSString *const kXDSBookModelRecordEncodeKey = @"record";
 
-- (instancetype)initWithContent:(NSString *)content{
-    self = [super init];
-    if (self) {
-        _content = content;
-        NSMutableArray *charpter = [NSMutableArray array];
-        [XDSReadOperation separateChapter:&charpter content:content];
-        _chapters = charpter;
-        _record = [[XDSRecordModel alloc] init];
-        _record.chapterModel = charpter.firstObject;
-        _record.location = 0;
-        _bookType = LPPEBookTypeTxt;
-    }
-    return self;
-}
-- (instancetype)initWithePub:(NSString *)ePubPath{
-    self = [super init];
-    if (self) {
-        _bookBasicInfo = [[LPPBookInfoModel alloc] init];
-        _bookBasicInfo.bookType = LPPEBookTypeEpub;
-        _chapters = [XDSReadOperation ePubFileHandle:ePubPath bookInfoModel:_bookBasicInfo];
+- (instancetype)initWithBookInfo:(LPPBookInfoModel *)bookInfo {
+    if (self = [super init]) {
+        _chapters = [XDSReadOperation readChaptersWithBookInfo:bookInfo];
+        _bookType = bookInfo.bookType;;
         _record = [[XDSRecordModel alloc] init];
         _record.chapterModel = _chapters.firstObject;
         _record.location = 0;
-        _bookType = LPPEBookTypeEpub;
+        _bookBasicInfo = bookInfo;
     }
     return self;
 }
+
 + (void)showCoverPage {
     
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.bookBasicInfo forKey:kXDSBookModelBookBasicInfoEncodeKey];
-    [aCoder encodeObject:self.content forKey:kXDSBookModelContentEncodeKey];
     [aCoder encodeObject:self.chapters forKey:kXDSBookModelChaptersEncodeKey];
     [aCoder encodeObject:self.record forKey:kXDSBookModelRecordEncodeKey];
     [aCoder encodeObject:@(self.bookType) forKey:kXDSBookModelBookTypeEncodeKey];
@@ -141,7 +127,6 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
     self = [super init];
     if (self) {
         self.bookBasicInfo = [aDecoder decodeObjectForKey:kXDSBookModelBookBasicInfoEncodeKey];
-        self.content = [aDecoder decodeObjectForKey:kXDSBookModelContentEncodeKey];
         self.chapters = [aDecoder decodeObjectForKey:kXDSBookModelChaptersEncodeKey];
         self.record = [aDecoder decodeObjectForKey:kXDSBookModelRecordEncodeKey];
         self.bookType = [[aDecoder decodeObjectForKey:kXDSBookModelBookTypeEncodeKey] integerValue];
@@ -150,8 +135,9 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
 }
 
 - (void)dealloc {
-    NSLog(@"bookModel dealloc");
+    NSLog(@"save book");
     [self saveBook];
+    NSLog(@"bookModel dealloc");
 }
 
 - (void)saveBook {
@@ -164,58 +150,18 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
         
 }
 
-+ (id)getBookBaseInfoWithURL:(NSURL *)url {
-    if (url == nil) {
++ (id)bookModelWithBaseInfo:(LPPBookInfoModel *)baseInfo{
+    if (baseInfo == nil) {
         return nil;
     }
-    NSString *fullname = [url.path lastPathComponent];
-    if ([[fullname pathExtension].lowercaseString isEqualToString:@"txt"]) {
-        LPPBookInfoModel *baseInfo = [[LPPBookInfoModel alloc] init];
-        baseInfo.bookType = LPPEBookTypeTxt;
-        baseInfo.fullName = fullname;
-        baseInfo.title = [fullname substringToIndex:fullname.length-4];
-        return baseInfo;
-    }else if ([[fullname pathExtension].lowercaseString isEqualToString:@"epub"]){
-        NSLog(@"this is epub");
-        XDSBookModel *model = [[XDSBookModel alloc] initWithePub:url.path];
-        model.bookBasicInfo.fullName = fullname;
-        return model;
-    }else{
-        //格式错误
-        NSLog(@"文件格式错误");
-        return nil;
-    }
-    
-}
-
-+ (id)getLocalModelWithURL:(NSURL *)url{
-    if (url == nil) {
-        return nil;
-    }
-    NSString *key = [url.path lastPathComponent];
+    NSString *key = baseInfo.fullName;
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     if (!data) {
-        if ([[key pathExtension].lowercaseString isEqualToString:@"txt"]) {
-            XDSBookModel *model = [[XDSBookModel alloc] initWithContent:[XDSReaderUtil encodeWithURL:url]];
-            LPPBookInfoModel *info = [[LPPBookInfoModel alloc] init];
-            info.bookType = LPPEBookTypeTxt;
-            info.fullName = key;
-            info.title = [key substringToIndex:key.length-4];
-            model.bookBasicInfo = info;
-            return model;
-        }else if ([[key pathExtension].lowercaseString isEqualToString:@"epub"]){
-            NSLog(@"this is epub");
-            XDSBookModel *model = [[XDSBookModel alloc] initWithePub:url.path];
-            model.bookBasicInfo.fullName = key;
-            return model;
-        }else{
-            //格式错误
-            NSLog(@"文件格式错误");
-            return nil;
-        }
-        
+        XDSBookModel *model = [[XDSBookModel alloc] initWithBookInfo:baseInfo];
+        [model saveBook];
+        return model;
     }
-    NSKeyedUnarchiver *unarchive = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+    NSKeyedUnarchiver *unarchive = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
     //主线程操作
     XDSBookModel *model = [unarchive decodeObjectForKey:key];
     return model;

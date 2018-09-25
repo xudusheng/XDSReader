@@ -76,7 +76,6 @@
         // something
         self.wifiView.progressView.progress = (double)self.downloadLength/self.contentLength;
         self.wifiView.progressLabel.text = [NSString stringWithFormat:@"正在上传第%ld文件，进度%zd%%", (long)self.fileCount, (NSInteger)(self.wifiView.progressView.progress * 100)];
-
     });
     
 }
