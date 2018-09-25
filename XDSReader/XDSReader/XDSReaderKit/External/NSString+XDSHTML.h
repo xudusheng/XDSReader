@@ -31,7 +31,7 @@
 
 // Dependant upon GTMNSString+HTML
 
-@interface NSString (HTML)
+@interface NSString (XDSHTML)
 
 // Instance Methods
 - (NSString *)stringByConvertingHTMLToPlainText;

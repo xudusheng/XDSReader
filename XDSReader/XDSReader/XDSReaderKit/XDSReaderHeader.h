@@ -23,7 +23,7 @@
 
 #import "XDSReaderGlobleConst.h"
 #import "GTMNSString+HTML.h"
-#import "NSString+HTML.h"
+#import "NSString+XDSHTML.h"
 #import "UIViewController+XDSReader.h"
 #import "XDSReaderUtil.h"
 #import "XDSReadConfig.h"

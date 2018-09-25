@@ -10,6 +10,15 @@
 
 @interface UIViewController (XDSReader)
 /**
+ *  获取当前可见ViewController
+ *
+ *  NS_EXTENSION_UNAVAILABLE_IOS
+ *  标记iOS插件不能使用这些API,后面有一个参数，可以作为提示，用什么API替换
+ */
+
++ (UIViewController *)xds_visiableViewController NS_EXTENSION_UNAVAILABLE_IOS("iOS插件不能使用这些API，请参考实现方法重新定义API");
+
+/**
  背景透明的形式显示present
  
  @param viewControllerToPresent 目标控制器

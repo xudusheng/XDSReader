@@ -31,7 +31,7 @@
 
 @implementation XDSReadOperation
 
-+ (void)separateChapter:(NSMutableArray **)chapters content:(NSString *)content {
++ (void)separateChapter:(NSMutableArray * __autoreleasing *)chapters content:(NSString *)content {
 
     [*chapters removeAllObjects];
     NSString *regPattern = @"第[0-9一二三四五六七八九十百千]*[章回].*";
@@ -141,6 +141,12 @@
                 if (success) {
                     NSLog(@"成功将%@复制到document目录下", fullName);
                 }
+            }
+            
+            
+        #warning 测试代码，如果documents下面不存在，先拷贝到documents目录下，再从documents目录下读取，避免重复读取
+            if (![txt_fullPath isEqualToString:path]) {
+                return nil;
             }
             
             LPPBookInfoModel *bookInfoModel = [[LPPBookInfoModel alloc] init];

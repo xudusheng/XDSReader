@@ -1,10 +1,11 @@
 
+use_frameworks!
+inhibit_all_warnings!
+
 target 'XDSReader' do
     
     pod 'ZipArchive', '~> 1.4.0'
-    
-    
-    
+
     platform :ios, '8.0'
     pod 'DTCoreText'
     pod 'MWPhotoBrowser', '~> 2.1.2'

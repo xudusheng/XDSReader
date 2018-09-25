@@ -116,17 +116,33 @@
 
 #pragma mark - 其他私有方法
 - (void)loadLocalBooks {
+
+    [self.bookList removeAllObjects];
+
+    //本地文件-同步执行
+    NSArray *fileList = @[@"不懂这些英文你就OUT了(正版).epub", @"Android从入门到精通.epub", @"三人成狼.txt", @"特种神医.txt"];
+    for (NSString *fileName in fileList) {
+        
+        //注意，url初始化方法与从documents读取文件的url初始化方法的区别
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];
+        
+        LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:fileURL];
+        bookInfo?[self.bookList addObject:bookInfo]:NULL;
+        [self.mCollectionView reloadData];
+    }
+    
+    
+    //从documents目录读取-异步执行
     NSFileManager *fileManager = [NSFileManager defaultManager];
     //在这里获取应用程序Documents文件夹里的文件及文件夹列表
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDir = documentPaths.firstObject;
     NSError *error = nil;
-    NSArray *fileList = [[NSArray alloc] init];
+    fileList = [[NSArray alloc] init];
     //fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组
     fileList = [fileManager contentsOfDirectoryAtPath:documentDir error:&error];
     
     NSLog(@"%@", fileList);
-    [self.bookList removeAllObjects];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         for (NSString *fileName in fileList) {
@@ -142,24 +158,6 @@
         });
     });
     
-    //本地文件
-    fileList = @[@"不懂这些英文你就OUT了(正版).epub", @"Android从入门到精通.epub", @"三人成狼.txt", @"特种神医.txt"];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        for (NSString *fileName in fileList) {
-            
-            //注意，url初始化方法与从documents读取文件的url初始化方法的区别
-            NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];
-            
-            LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:fileURL];
-            bookInfo?[self.bookList addObject:bookInfo]:NULL;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.mCollectionView reloadData];
-            });
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.mCollectionView reloadData];
-        });
-    });
     
 }
 

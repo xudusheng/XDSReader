@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031B1B2853A8A75BAF03EEA1 /* Pods_XDSReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7F5927F6C835989775828 /* Pods_XDSReader.framework */; };
 		18B3DC7E21548BAF00FFD27E /* UIViewController+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC7D21548BAF00FFD27E /* UIViewController+XDSReader.m */; };
 		18B3DC8121549A8A00FFD27E /* XDSReaderWifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC8021549A8A00FFD27E /* XDSReaderWifiView.m */; };
 		18B3DC8321549A9600FFD27E /* XDSReaderWifiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B3DC8221549A9600FFD27E /* XDSReaderWifiView.xib */; };
@@ -34,7 +35,6 @@
 		18D7E61E215A59EF0006EC1E /* 特种神医.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E61A215A59EF0006EC1E /* 特种神医.txt */; };
 		18D7E623215A5AAC0006EC1E /* Android从入门到精通.epub in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E622215A5AAB0006EC1E /* Android从入门到精通.epub */; };
 		18D7E624215A5B470006EC1E /* 不懂这些英文你就OUT了(正版).epub in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E621215A5A540006EC1E /* 不懂这些英文你就OUT了(正版).epub */; };
-		607B6C6126EB56737488D902 /* libPods-XDSReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */; };
 		A274ABEF213C522400728064 /* 十宗罪.epub in Resources */ = {isa = PBXBuildFile; fileRef = A29C5893213C47E000764DFB /* 十宗罪.epub */; };
 		A29AA3F21F5A6D6300FB24EE /* UIControl+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F11F5A6D6300FB24EE /* UIControl+XDSHyperLink.m */; };
 		A29AA3F51F5A6D8000FB24EE /* UIView+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F41F5A6D8000FB24EE /* UIView+XDSHyperLink.m */; };
@@ -60,7 +60,7 @@
 		FCA78B191EF2916700114907 /* XDSReadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78AD91EF2916700114907 /* XDSReadConfig.m */; };
 		FCA78B311EF2916700114907 /* XDSReaderGlobleConst.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B151EF2916700114907 /* XDSReaderGlobleConst.m */; };
 		FCA78B341EF2918000114907 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA78B331EF2918000114907 /* libz.tbd */; };
-		FCA78B381EF2933E00114907 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B371EF2933E00114907 /* NSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		FCA78B381EF2933E00114907 /* NSString+XDSHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B371EF2933E00114907 /* NSString+XDSHTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FCA78B3C1EF2935200114907 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B3B1EF2935200114907 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FCA78B451EF2986800114907 /* XDSMarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B441EF2986800114907 /* XDSMarkModel.m */; };
 		FCA78B481EF2994200114907 /* XDSNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78B471EF2994200114907 /* XDSNoteModel.m */; };
@@ -161,6 +161,7 @@
 		18D7E622215A5AAB0006EC1E /* Android从入门到精通.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Android从入门到精通.epub"; sourceTree = "<group>"; };
 		39079157DFAB83B2A1877F23 /* Pods-XDSReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.release.xcconfig"; sourceTree = "<group>"; };
 		566644BA861A753275F3D3DE /* Pods-XDSReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.debug.xcconfig"; sourceTree = "<group>"; };
+		8BC7F5927F6C835989775828 /* Pods_XDSReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XDSReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A29AA3F01F5A6D6300FB24EE /* UIControl+XDSHyperLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+XDSHyperLink.h"; sourceTree = "<group>"; };
 		A29AA3F11F5A6D6300FB24EE /* UIControl+XDSHyperLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+XDSHyperLink.m"; sourceTree = "<group>"; };
 		A29AA3F31F5A6D8000FB24EE /* UIView+XDSHyperLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XDSHyperLink.h"; sourceTree = "<group>"; };
@@ -168,7 +169,6 @@
 		A29AA3F91F5A8E3D00FB24EE /* XDSPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSPhotoBrowser.h; sourceTree = "<group>"; };
 		A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSPhotoBrowser.m; sourceTree = "<group>"; };
 		A29C5893213C47E000764DFB /* 十宗罪.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "十宗罪.epub"; sourceTree = "<group>"; };
-		E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XDSReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC61F7AD1F14651600DA83F4 /* XDSReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadPageViewController.h; sourceTree = "<group>"; };
 		FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadPageViewController.m; sourceTree = "<group>"; };
 		FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = XDSShareConfig.plist; sourceTree = "<group>"; };
@@ -204,8 +204,8 @@
 		FCA78B141EF2916700114907 /* XDSReaderGlobleConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderGlobleConst.h; sourceTree = "<group>"; };
 		FCA78B151EF2916700114907 /* XDSReaderGlobleConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReaderGlobleConst.m; sourceTree = "<group>"; };
 		FCA78B331EF2918000114907 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		FCA78B361EF2933E00114907 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
-		FCA78B371EF2933E00114907 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		FCA78B361EF2933E00114907 /* NSString+XDSHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XDSHTML.h"; sourceTree = "<group>"; };
+		FCA78B371EF2933E00114907 /* NSString+XDSHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XDSHTML.m"; sourceTree = "<group>"; };
 		FCA78B391EF2935200114907 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		FCA78B3A1EF2935200114907 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		FCA78B3B1EF2935200114907 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
@@ -304,7 +304,7 @@
 			files = (
 				18BB4E8D2153E6F400C4A2CD /* libxml2.tbd in Frameworks */,
 				FCA78B341EF2918000114907 /* libz.tbd in Frameworks */,
-				607B6C6126EB56737488D902 /* libPods-XDSReader.a in Frameworks */,
+				031B1B2853A8A75BAF03EEA1 /* Pods_XDSReader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,7 +585,7 @@
 			children = (
 				18BB4E8C2153E6F400C4A2CD /* libxml2.tbd */,
 				FCA78B331EF2918000114907 /* libz.tbd */,
-				E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */,
+				8BC7F5927F6C835989775828 /* Pods_XDSReader.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -597,8 +597,8 @@
 				FCA78B391EF2935200114907 /* GTMDefines.h */,
 				FCA78B3A1EF2935200114907 /* GTMNSString+HTML.h */,
 				FCA78B3B1EF2935200114907 /* GTMNSString+HTML.m */,
-				FCA78B361EF2933E00114907 /* NSString+HTML.h */,
-				FCA78B371EF2933E00114907 /* NSString+HTML.m */,
+				FCA78B361EF2933E00114907 /* NSString+XDSHTML.h */,
+				FCA78B371EF2933E00114907 /* NSString+XDSHTML.m */,
 				FCA78BC01EF39B6000114907 /* UIImage+ImageEffects.h */,
 				FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */,
 				A29AA3F31F5A6D8000FB24EE /* UIView+XDSHyperLink.h */,
@@ -752,7 +752,7 @@
 				FCA78A491EF290F400114907 /* Sources */,
 				FCA78A4A1EF290F400114907 /* Frameworks */,
 				FCA78A4B1EF290F400114907 /* Resources */,
-				0C9413BBAE40C09E4AE8FEC9 /* [CP] Copy Pods Resources */,
+				136708414589E276761538E1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -832,22 +832,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0C9413BBAE40C09E4AE8FEC9 /* [CP] Copy Pods Resources */ = {
+		136708414589E276761538E1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/MWPhotoBrowser/MWPhotoBrowser.bundle",
+				"${SRCROOT}/Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/DTCoreText/DTCoreText.framework",
+				"${BUILT_PRODUCTS_DIR}/DTFoundation/DTFoundation.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/ZipArchive/ZipArchive.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MWPhotoBrowser.bundle",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTCoreText.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTFoundation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZipArchive.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DEA57E0C5007BD49D72F0A9F /* [CP] Check Pods Manifest.lock */ = {
@@ -916,7 +928,7 @@
 				FCA78B7D1EF2DEB500114907 /* CXMLNode_CreationExtensions.m in Sources */,
 				FCA78C041EF81E1A00114907 /* XDSLightView.m in Sources */,
 				FCB229011F0F19C3007A0EA0 /* XDSReadViewController.m in Sources */,
-				FCA78B381EF2933E00114907 /* NSString+HTML.m in Sources */,
+				FCA78B381EF2933E00114907 /* NSString+XDSHTML.m in Sources */,
 				FCA78B871EF2DEB500114907 /* CXMLNode_XPathExtensions.m in Sources */,
 				FCA78A551EF290F400114907 /* AppDelegate.m in Sources */,
 				FCA78C1A1EF929CE00114907 /* XDSMarkViewController.m in Sources */,

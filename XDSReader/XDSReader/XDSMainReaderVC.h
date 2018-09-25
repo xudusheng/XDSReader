@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XDSMainReaderVC : UITableViewController
+@interface XDSMainReaderVC : UIViewController
 
 
 @end
