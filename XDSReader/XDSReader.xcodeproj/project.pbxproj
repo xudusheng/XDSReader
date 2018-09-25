@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18B3DC7B2154892F00FFD27E /* logo_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B3DC7A2154892F00FFD27E /* logo_book.png */; };
 		18B3DC7E21548BAF00FFD27E /* UIViewController+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC7D21548BAF00FFD27E /* UIViewController+XDSReader.m */; };
 		18B3DC8121549A8A00FFD27E /* XDSReaderWifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC8021549A8A00FFD27E /* XDSReaderWifiView.m */; };
 		18B3DC8321549A9600FFD27E /* XDSReaderWifiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B3DC8221549A9600FFD27E /* XDSReaderWifiView.xib */; };
@@ -28,12 +27,18 @@
 		18BB4EC32153E79000C4A2CD /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EB02153E79000C4A2CD /* GCDWebServerFileRequest.m */; };
 		18BB4EC42153E79000C4A2CD /* GCDWebUploader.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18BB4EB32153E79000C4A2CD /* GCDWebUploader.bundle */; };
 		18BB4EC52153E79000C4A2CD /* GCDWebUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB4EB52153E79000C4A2CD /* GCDWebUploader.m */; };
+		18D7E611215A57990006EC1E /* logo_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E610215A57990006EC1E /* logo_book.png */; };
+		18D7E616215A585E0006EC1E /* XDSBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E614215A585D0006EC1E /* XDSBookCell.xib */; };
+		18D7E617215A585E0006EC1E /* XDSBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E615215A585D0006EC1E /* XDSBookCell.m */; };
+		18D7E61D215A59EF0006EC1E /* 三人成狼.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E619215A59EF0006EC1E /* 三人成狼.txt */; };
+		18D7E61E215A59EF0006EC1E /* 特种神医.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E61A215A59EF0006EC1E /* 特种神医.txt */; };
+		18D7E623215A5AAC0006EC1E /* Android从入门到精通.epub in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E622215A5AAB0006EC1E /* Android从入门到精通.epub */; };
+		18D7E624215A5B470006EC1E /* 不懂这些英文你就OUT了(正版).epub in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E621215A5A540006EC1E /* 不懂这些英文你就OUT了(正版).epub */; };
 		607B6C6126EB56737488D902 /* libPods-XDSReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */; };
 		A274ABEF213C522400728064 /* 十宗罪.epub in Resources */ = {isa = PBXBuildFile; fileRef = A29C5893213C47E000764DFB /* 十宗罪.epub */; };
 		A29AA3F21F5A6D6300FB24EE /* UIControl+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F11F5A6D6300FB24EE /* UIControl+XDSHyperLink.m */; };
 		A29AA3F51F5A6D8000FB24EE /* UIView+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F41F5A6D8000FB24EE /* UIView+XDSHyperLink.m */; };
 		A29AA3FB1F5A8E3D00FB24EE /* XDSPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */; };
-		A2D153AC1F6381C70016C492 /* XDSReaderWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2D153AB1F6381C70016C492 /* XDSReaderWebViewController.m */; };
 		FC61F7AF1F14651600DA83F4 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */; };
 		FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */; };
 		FC6D956D1F3378AC006A0583 /* XDSBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D95681F3378AC006A0583 /* XDSBookModel.m */; };
@@ -45,7 +50,7 @@
 		FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */; };
 		FCA78A521EF290F400114907 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A511EF290F400114907 /* main.m */; };
 		FCA78A551EF290F400114907 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A541EF290F400114907 /* AppDelegate.m */; };
-		FCA78A581EF290F400114907 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A571EF290F400114907 /* ViewController.m */; };
+		FCA78A581EF290F400114907 /* XDSMainReaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78A571EF290F400114907 /* XDSMainReaderVC.m */; };
 		FCA78A5B1EF290F400114907 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA78A591EF290F400114907 /* Main.storyboard */; };
 		FCA78A5D1EF290F400114907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA78A5C1EF290F400114907 /* Assets.xcassets */; };
 		FCA78A601EF290F400114907 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA78A5E1EF290F400114907 /* LaunchScreen.storyboard */; };
@@ -106,7 +111,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18B3DC7A2154892F00FFD27E /* logo_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_book.png; sourceTree = "<group>"; };
 		18B3DC7C21548BAF00FFD27E /* UIViewController+XDSReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSReader.h"; sourceTree = "<group>"; };
 		18B3DC7D21548BAF00FFD27E /* UIViewController+XDSReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSReader.m"; sourceTree = "<group>"; };
 		18B3DC7F21549A8A00FFD27E /* XDSReaderWifiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSReaderWifiView.h; sourceTree = "<group>"; };
@@ -147,6 +151,14 @@
 		18BB4EB32153E79000C4A2CD /* GCDWebUploader.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GCDWebUploader.bundle; sourceTree = "<group>"; };
 		18BB4EB42153E79000C4A2CD /* GCDWebUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebUploader.h; sourceTree = "<group>"; };
 		18BB4EB52153E79000C4A2CD /* GCDWebUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebUploader.m; sourceTree = "<group>"; };
+		18D7E610215A57990006EC1E /* logo_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_book.png; path = XDSReader/WiFiFileTransfer/logo_book.png; sourceTree = SOURCE_ROOT; };
+		18D7E613215A585D0006EC1E /* XDSBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSBookCell.h; sourceTree = "<group>"; };
+		18D7E614215A585D0006EC1E /* XDSBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XDSBookCell.xib; sourceTree = "<group>"; };
+		18D7E615215A585D0006EC1E /* XDSBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSBookCell.m; sourceTree = "<group>"; };
+		18D7E619215A59EF0006EC1E /* 三人成狼.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "三人成狼.txt"; sourceTree = "<group>"; };
+		18D7E61A215A59EF0006EC1E /* 特种神医.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "特种神医.txt"; sourceTree = "<group>"; };
+		18D7E621215A5A540006EC1E /* 不懂这些英文你就OUT了(正版).epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "不懂这些英文你就OUT了(正版).epub"; sourceTree = "<group>"; };
+		18D7E622215A5AAB0006EC1E /* Android从入门到精通.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Android从入门到精通.epub"; sourceTree = "<group>"; };
 		39079157DFAB83B2A1877F23 /* Pods-XDSReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.release.xcconfig"; sourceTree = "<group>"; };
 		566644BA861A753275F3D3DE /* Pods-XDSReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.debug.xcconfig"; sourceTree = "<group>"; };
 		A29AA3F01F5A6D6300FB24EE /* UIControl+XDSHyperLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+XDSHyperLink.h"; sourceTree = "<group>"; };
@@ -156,8 +168,6 @@
 		A29AA3F91F5A8E3D00FB24EE /* XDSPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSPhotoBrowser.h; sourceTree = "<group>"; };
 		A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSPhotoBrowser.m; sourceTree = "<group>"; };
 		A29C5893213C47E000764DFB /* 十宗罪.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "十宗罪.epub"; sourceTree = "<group>"; };
-		A2D153AA1F6381C70016C492 /* XDSReaderWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReaderWebViewController.h; sourceTree = "<group>"; };
-		A2D153AB1F6381C70016C492 /* XDSReaderWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReaderWebViewController.m; sourceTree = "<group>"; };
 		E79B1C3C9B575A9F1A5B2FB1 /* libPods-XDSReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XDSReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC61F7AD1F14651600DA83F4 /* XDSReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadPageViewController.h; sourceTree = "<group>"; };
 		FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadPageViewController.m; sourceTree = "<group>"; };
@@ -177,8 +187,8 @@
 		FCA78A511EF290F400114907 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FCA78A531EF290F400114907 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FCA78A541EF290F400114907 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FCA78A561EF290F400114907 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FCA78A571EF290F400114907 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FCA78A561EF290F400114907 /* XDSMainReaderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSMainReaderVC.h; sourceTree = "<group>"; };
+		FCA78A571EF290F400114907 /* XDSMainReaderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSMainReaderVC.m; sourceTree = "<group>"; };
 		FCA78A5A1EF290F400114907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FCA78A5C1EF290F400114907 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCA78A5F1EF290F400114907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -307,7 +317,6 @@
 				18BB4E8F2153E79000C4A2CD /* GCDWebDAVServer */,
 				18BB4E922153E79000C4A2CD /* GCDWebServer */,
 				18BB4EB22153E79000C4A2CD /* GCDWebUploader */,
-				18B3DC7A2154892F00FFD27E /* logo_book.png */,
 			);
 			path = GCDWebServer;
 			sourceTree = "<group>";
@@ -390,6 +399,27 @@
 			path = GCDWebUploader;
 			sourceTree = "<group>";
 		};
+		18D7E612215A585D0006EC1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18D7E613215A585D0006EC1E /* XDSBookCell.h */,
+				18D7E614215A585D0006EC1E /* XDSBookCell.xib */,
+				18D7E615215A585D0006EC1E /* XDSBookCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18D7E618215A59C90006EC1E /* Books */ = {
+			isa = PBXGroup;
+			children = (
+				18D7E621215A5A540006EC1E /* 不懂这些英文你就OUT了(正版).epub */,
+				18D7E622215A5AAB0006EC1E /* Android从入门到精通.epub */,
+				18D7E619215A59EF0006EC1E /* 三人成狼.txt */,
+				18D7E61A215A59EF0006EC1E /* 特种神医.txt */,
+			);
+			path = Books;
+			sourceTree = "<group>";
+		};
 		4124ED2D2ACEE3913CAC621E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,11 +457,11 @@
 				FCA78A681EF2914F00114907 /* WiFiFileTransfer */,
 				FCA78A531EF290F400114907 /* AppDelegate.h */,
 				FCA78A541EF290F400114907 /* AppDelegate.m */,
-				FCA78A561EF290F400114907 /* ViewController.h */,
-				FCA78A571EF290F400114907 /* ViewController.m */,
-				A2D153AA1F6381C70016C492 /* XDSReaderWebViewController.h */,
-				A2D153AB1F6381C70016C492 /* XDSReaderWebViewController.m */,
+				FCA78A561EF290F400114907 /* XDSMainReaderVC.h */,
+				FCA78A571EF290F400114907 /* XDSMainReaderVC.m */,
+				18D7E612215A585D0006EC1E /* View */,
 				FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */,
+				18D7E618215A59C90006EC1E /* Books */,
 				FCA78A591EF290F400114907 /* Main.storyboard */,
 				FCA78A5C1EF290F400114907 /* Assets.xcassets */,
 				FCA78A5E1EF290F400114907 /* LaunchScreen.storyboard */,
@@ -454,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				18BB4E8E2153E79000C4A2CD /* GCDWebServer */,
+				18D7E610215A57990006EC1E /* logo_book.png */,
 				FCA78AAE1EF2914F00114907 /* XDSIPHelper.h */,
 				FCA78AAF1EF2914F00114907 /* XDSIPHelper.m */,
 				FCA78AB01EF2914F00114907 /* XDSWIFIFileTransferViewController.h */,
@@ -776,20 +807,25 @@
 				FCA78A601EF290F400114907 /* LaunchScreen.storyboard in Resources */,
 				FCA78C2C1EFA00DB00114907 /* 华文行楷.ttf in Resources */,
 				FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */,
+				18D7E624215A5B470006EC1E /* 不懂这些英文你就OUT了(正版).epub in Resources */,
 				A274ABEF213C522400728064 /* 十宗罪.epub in Resources */,
+				18D7E623215A5AAC0006EC1E /* Android从入门到精通.epub in Resources */,
+				18D7E616215A585E0006EC1E /* XDSBookCell.xib in Resources */,
 				FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */,
+				18D7E611215A57990006EC1E /* logo_book.png in Resources */,
 				FCA78A5D1EF290F400114907 /* Assets.xcassets in Resources */,
 				FCA78C2A1EFA00DB00114907 /* 华文琥珀.ttf in Resources */,
 				FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */,
 				FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */,
 				FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */,
 				FCA78C281EFA00DB00114907 /* 华文新魏.ttf in Resources */,
+				18D7E61E215A59EF0006EC1E /* 特种神医.txt in Resources */,
 				FCA78A5B1EF290F400114907 /* Main.storyboard in Resources */,
+				18D7E61D215A59EF0006EC1E /* 三人成狼.txt in Resources */,
 				FCA78C271EFA00DB00114907 /* 华文彩云.ttf in Resources */,
 				FCA78AD51EF2914F00114907 /* XDSWIFIFileTransferViewController.xib in Resources */,
 				FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */,
 				18B3DC8321549A9600FFD27E /* XDSReaderWifiView.xib in Resources */,
-				18B3DC7B2154892F00FFD27E /* logo_book.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,7 +894,7 @@
 				FCA78BA91EF362CA00114907 /* XDSMagnifierView.m in Sources */,
 				FCA78B7C1EF2DEB500114907 /* CXMLDocument_CreationExtensions.m in Sources */,
 				FCA78BE31EF5F6AA00114907 /* XDSReadMenu.m in Sources */,
-				FCA78A581EF290F400114907 /* ViewController.m in Sources */,
+				FCA78A581EF290F400114907 /* XDSMainReaderVC.m in Sources */,
 				FCA78B481EF2994200114907 /* XDSNoteModel.m in Sources */,
 				18BB4EC22153E79000C4A2CD /* GCDWebServerDataRequest.m in Sources */,
 				FCA78B881EF2DEB500114907 /* CXMLUnsupportedNode.m in Sources */,
@@ -896,7 +932,7 @@
 				FCA78BFD1EF7CA5A00114907 /* XDSHaloButton.m in Sources */,
 				FCA78B821EF2DEB500114907 /* CXMLElement_CreationExtensions.m in Sources */,
 				18BB4EB62153E79000C4A2CD /* GCDWebDAVServer.m in Sources */,
-				A2D153AC1F6381C70016C492 /* XDSReaderWebViewController.m in Sources */,
+				18D7E617215A585E0006EC1E /* XDSBookCell.m in Sources */,
 				FC6D956E1F3378AC006A0583 /* XDSChapterModel.m in Sources */,
 				FCA78AD31EF2914F00114907 /* XDSIPHelper.m in Sources */,
 				18BB4EC52153E79000C4A2CD /* GCDWebUploader.m in Sources */,

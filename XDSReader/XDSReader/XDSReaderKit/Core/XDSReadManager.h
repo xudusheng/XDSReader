@@ -18,7 +18,6 @@
 
 + (CGRect)readViewBounds;
 
-@property (nonatomic,strong) NSURL *resourceURL;
 @property (nonatomic,strong) XDSBookModel *bookModel;
 @property (nonatomic,weak) id<XDSReadManagerDelegate> rmDelegate;
 

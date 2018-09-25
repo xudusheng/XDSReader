@@ -32,7 +32,7 @@
 @implementation XDSWIFIFileTransferViewController
 
 + (instancetype)newInstance{
-    XDSWIFIFileTransferViewController *wifiVC = [[XDSWIFIFileTransferViewController alloc] initWithNibName:@"XDSWIFIFileTransferViewController" bundle:nil];
+    XDSWIFIFileTransferViewController *wifiVC = [[XDSWIFIFileTransferViewController alloc] init];
     return wifiVC;
 }
 - (void)viewDidLoad {
@@ -94,8 +94,9 @@
     webServer.allowHiddenItems = YES;
     if ([webServer start]) {
         self.wifiView.ipAndPortLabel.text = [NSString stringWithFormat:NSLocalizedString(@"http://%@", nil), [XDSIPHelper deviceIPAdress]];
+        self.wifiView.wifiNameLabel.text = [NSString stringWithFormat:@"已连接WiFi：%@", [XDSIPHelper getWifiName]];
     } else {
-        self.wifiView.ipAndPortLabel.text = NSLocalizedString(@"GCDWebServer not running!", nil);
+        self.wifiView.ipAndPortLabel.text = @"";
     }
 }
 

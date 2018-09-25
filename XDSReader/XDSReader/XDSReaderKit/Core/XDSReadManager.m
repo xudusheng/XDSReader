@@ -154,8 +154,6 @@ static XDSReadManager *readManager;
     _bookModel.record.location = [_bookModel.record.chapterModel.pageLocations[page] integerValue];
     _bookModel.record.currentChapter = chapter;
     
-//    [XDSBookModel updateLocalModel:_bookModel url:_resourceURL];
-
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewDidUpdateReadRecord)]) {
         [self.rmDelegate readViewDidUpdateReadRecord];
     }
@@ -170,7 +168,6 @@ static XDSReadManager *readManager;
     
     //release memery 释放内存
     self.bookModel = nil;
-    self.resourceURL = nil;
     
     if (self.rmDelegate && [self.rmDelegate respondsToSelector:@selector(readViewDidClickCloseButton)]) {
         [self.rmDelegate readViewDidClickCloseButton];

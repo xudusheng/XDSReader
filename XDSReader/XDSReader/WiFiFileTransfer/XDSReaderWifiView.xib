@@ -115,6 +115,7 @@
                 <outlet property="ipAndPortLabel" destination="do1-N9-Cwc" id="dTc-X8-xBC"/>
                 <outlet property="progressLabel" destination="tGC-1c-EYv" id="Xgj-IT-2Qo"/>
                 <outlet property="progressView" destination="NfY-4f-si5" id="64J-Rf-nnc"/>
+                <outlet property="wifiNameLabel" destination="OYi-Vg-Zv9" id="Iig-i5-XEi"/>
             </connections>
             <point key="canvasLocation" x="-562" y="-21"/>
         </view>

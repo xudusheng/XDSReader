@@ -43,10 +43,10 @@ dusheng.xu$ pod install
 NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"走遍中国珍藏版(图说天下·国家地理系列)"withExtension:@"epub"];
 
 dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:fileURL];
     XDSBookModel *bookModel = [XDSBookModel getLocalModelWithURL:fileURL];
     dispatch_async(dispatch_get_main_queue(), ^{
         XDSReadPageViewController *pageView = [[XDSReadPageViewController alloc] init];
-        [[XDSReadManager sharedManager] setResourceURL:fileURL];//文件位置
         [[XDSReadManager sharedManager] setBookModel:bookModel];
         [[XDSReadManager sharedManager] setRmDelegate:pageView];
         [self presentViewController:pageView animated:YES completion:nil];

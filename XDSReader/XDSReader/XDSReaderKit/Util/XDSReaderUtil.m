@@ -98,6 +98,9 @@
     
     if (@available(iOS 11.0, *)) {
         value = [UIApplication sharedApplication].delegate.window.safeAreaInsets;
+        if (![self isPhoneX]) {
+            value.top = 20.f;
+        }
     }
     
     return value;

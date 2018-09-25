@@ -177,6 +177,7 @@
             bookInfoModel.rootDocumentUrl = folder_relativePath;
             bookInfoModel.OEBPSUrl = [opfRelativePath stringByDeletingLastPathComponent];
             [bookInfoModel setValuesForKeysWithDictionary:bookInfo];
+            bookInfoModel.title = bookInfoModel.title.length?bookInfoModel.title:[fullName substringToIndex:fullName.length-5];
             return bookInfoModel;
         }else{
             //@throw [NSException exceptionWithName:@"FileException" reason:@"文件格式错误" userInfo:nil];

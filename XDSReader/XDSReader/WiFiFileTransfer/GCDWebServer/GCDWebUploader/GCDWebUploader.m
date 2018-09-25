@@ -46,6 +46,7 @@
 #import "GCDWebServerErrorResponse.h"
 #import "GCDWebServerFileResponse.h"
 
+#import "XDSIPHelper.h"
 @interface GCDWebUploader () {
 @private
   NSString* _uploadDirectory;
@@ -311,8 +312,12 @@
       
 #if TARGET_OS_IPHONE
 //      NSString* device = [[UIDevice currentDevice] name];
-    NSString *device = @"当前连接的WiFi：<span style = 'color:green'>BSNL</span>，支持上传的文件格式：<span style='color:green'>epub，pdf，txt，mobi，umd，ebk2</span><br>当前设备：<span style='color:green'>老杜</span>，总容量：<span style = 'color:green'>14.89GB</span>，可用容量：<span style='color:green'>2.70GB</span>";
-        
+        NSString *device = @"当前连接的WiFi：<span style = 'color:green'>${wifi}</span>，支持上传的文件格式：<span style='color:green'>epub，txt </span><br>当前设备：<span style='color:green'>${devicename}</span>，总容量：<span style = 'color:green'>${tatlespace}</span>，可用容量：<span style='color:green'>${freespace}</span>";
+        device = [device stringByReplacingOccurrencesOfString:@"${wifi}" withString:[XDSIPHelper getWifiName]];
+        device = [device stringByReplacingOccurrencesOfString:@"${devicename}" withString:[UIDevice currentDevice].name];
+        device = [device stringByReplacingOccurrencesOfString:@"${tatlespace}" withString:[XDSIPHelper getMaxSpace]];
+        device = [device stringByReplacingOccurrencesOfString:@"${freespace}" withString:[XDSIPHelper getFreeSpace]];
+
 
 #else
       NSString* device = CFBridgingRelease(SCDynamicStoreCopyComputerName(NULL, NULL));

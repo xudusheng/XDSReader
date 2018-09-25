@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface XDSReaderWifiView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *wifiNameLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *ipAndPortLabel;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
