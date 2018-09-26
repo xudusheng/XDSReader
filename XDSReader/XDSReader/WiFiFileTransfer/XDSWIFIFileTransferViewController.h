@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol XDSWIFIFileTransferViewControllerDelegate <NSObject>
+
+- (void)didBooksChanged;
+
+@end
+
+
 @interface XDSWIFIFileTransferViewController : UIViewController
 
 + (instancetype)newInstance;
+
+
+@property (nonatomic,weak) id <XDSWIFIFileTransferViewControllerDelegate> wDelegate;
 
 @end

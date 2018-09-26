@@ -46,6 +46,9 @@
 @property (nonatomic,copy) NSString *rights;
 @property (nonatomic,assign) LPPEBookType bookType;//电子书类型（txt, epub）
 
+@property (nonatomic,assign) NSTimeInterval latestModifyTime;//最近阅读时间，用于排序
+@property (nonatomic,assign) BOOL isLastRead;//是否是最近阅读
+
 @end
 
 @interface XDSBookModel : NSObject <NSCoding>

@@ -31,8 +31,8 @@
 
 @implementation XDSReadOperation
 
-+ (void)separateChapter:(NSMutableArray * __autoreleasing *)chapters content:(NSString *)content {
-
++ (void)separateChapter:(NSMutableArray **)chapters content:(NSString *)content {
+    
     [*chapters removeAllObjects];
     NSString *regPattern = @"第[0-9一二三四五六七八九十百千]*[章回].*";
     NSError* error = NULL;
@@ -47,7 +47,7 @@
             NSInteger local = range.location;
             
             XDSChapterModel *model = [[XDSChapterModel alloc] init];
-
+            
             if (idx == 0) {
                 model.chapterName = @"开始";
                 NSUInteger len = local;
@@ -57,13 +57,13 @@
             if (idx > 0 ) {
                 model.chapterName = [content substringWithRange:lastRange];
                 NSUInteger len = local-lastRange.location;
-                model.originContent = [content substringWithRange:NSMakeRange(lastRange.location, len)];                
+                model.originContent = [content substringWithRange:NSMakeRange(lastRange.location, len)];
             }
             if (idx == match.count-1) {
                 model.chapterName = [content substringWithRange:range];
                 model.originContent = [content substringWithRange:NSMakeRange(local, content.length-local)];
             }
-
+            
             XDSCatalogueModel *catalogueModel = [[XDSCatalogueModel alloc] init];
             catalogueModel.catalogueName = model.chapterName;
             catalogueModel.link = @"";
@@ -129,68 +129,76 @@
     
     NSString *path = url.path;
     NSString *fullName = path.lastPathComponent;
-        if ([[path.lastPathComponent pathExtension].lowercaseString isEqualToString:@"txt"]) {
-            NSString *txtName = fullName;
-            //txt文件的完整路径
-            NSString *txt_fullPath = [txtName fullPath];
-            NSFileManager *filemanager = [[NSFileManager alloc] init];
-            //documents下不存在该txt文件，则将该txt文件复制到documents文件夹里面去
-            if (![filemanager fileExistsAtPath:txt_fullPath]) {
-                NSError *error = nil;
-                BOOL success = [filemanager copyItemAtURL:url toURL:[NSURL fileURLWithPath:txt_fullPath] error:&error];
-                if (success) {
-                    NSLog(@"成功将%@复制到document目录下", fullName);
-                }
+    
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:fullName];
+    if (data) {
+        NSKeyedUnarchiver *unarchive = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        XDSBookModel *bookModel = [unarchive decodeObjectForKey:fullName];
+        return bookModel.bookBasicInfo;
+    }
+    
+    if ([[path.lastPathComponent pathExtension].lowercaseString isEqualToString:@"txt"]) {
+        NSString *txtName = fullName;
+        //txt文件的完整路径
+        NSString *txt_fullPath = [txtName fullPath];
+        NSFileManager *filemanager = [[NSFileManager alloc] init];
+        //documents下不存在该txt文件，则将该txt文件复制到documents文件夹里面去
+        if (![filemanager fileExistsAtPath:txt_fullPath]) {
+            NSError *error = nil;
+            BOOL success = [filemanager copyItemAtURL:url toURL:[NSURL fileURLWithPath:txt_fullPath] error:&error];
+            if (success) {
+                NSLog(@"成功将%@复制到document目录下", fullName);
             }
-            
-            
-        #warning 测试代码，如果documents下面不存在，先拷贝到documents目录下，再从documents目录下读取，避免重复读取
-            if (![txt_fullPath isEqualToString:path]) {
-                return nil;
-            }
-            
-            LPPBookInfoModel *bookInfoModel = [[LPPBookInfoModel alloc] init];
-            bookInfoModel.fullName = fullName;
-            bookInfoModel.bookType = LPPEBookTypeTxt;
-            bookInfoModel.title = [fullName substringToIndex:fullName.length-4];
-            return bookInfoModel;
-
-        }else if ([[path.lastPathComponent pathExtension].lowercaseString isEqualToString:@"epub"]){
-            NSString *folderfileName = [[path stringByDeletingPathExtension] lastPathComponent];
-            //epub解压文件的相对路径
-            NSString *folder_relativePath = [folderfileName relativePath];
-            //epub解压文件的完整路径
-            NSString *folder_fullPath = [folder_relativePath fullPath];
-            NSFileManager *filemanager=[[NSFileManager alloc] init];
-            //文件夹不存在，进行一次解压
-            if (![filemanager fileExistsAtPath:folder_fullPath]) {
-                folder_relativePath = [self unZip:path];
-                if (folder_relativePath.length < 1) {//解压失败，返回nil
-                    return nil;
-                }
-            }
-            
-            //获取opf文件的相对路径
-            NSString *opfRelativePath = [self opfRelativePath:folder_relativePath];
-            if (opfRelativePath.length < 1) { //opf文件不存在
-                return nil;
-            }
-            
-            NSDictionary *bookInfo = [self readBookBaseInfo:[opfRelativePath fullPath]];
-            LPPBookInfoModel *bookInfoModel = [[LPPBookInfoModel alloc] init];
-            bookInfoModel.fullName = fullName;
-            bookInfoModel.bookType = LPPEBookTypeEpub;
-            bookInfoModel.rootDocumentUrl = folder_relativePath;
-            bookInfoModel.OEBPSUrl = [opfRelativePath stringByDeletingLastPathComponent];
-            [bookInfoModel setValuesForKeysWithDictionary:bookInfo];
-            bookInfoModel.title = bookInfoModel.title.length?bookInfoModel.title:[fullName substringToIndex:fullName.length-5];
-            return bookInfoModel;
-        }else{
-            //@throw [NSException exceptionWithName:@"FileException" reason:@"文件格式错误" userInfo:nil];
-            //文件格式错误
-            NSLog(@"文件格式错误");
+        }
+        
+#warning 测试代码，如果documents下面不存在，先拷贝到documents目录下，再从documents目录下读取，避免重复读取
+        if (![txt_fullPath isEqualToString:path]) {
             return nil;
         }
+
+        
+        LPPBookInfoModel *bookInfoModel = [[LPPBookInfoModel alloc] init];
+        bookInfoModel.fullName = fullName;
+        bookInfoModel.bookType = LPPEBookTypeTxt;
+        bookInfoModel.title = [fullName substringToIndex:fullName.length-4];
+        return bookInfoModel;
+        
+    }else if ([[path.lastPathComponent pathExtension].lowercaseString isEqualToString:@"epub"]){
+        NSString *folderfileName = [[path stringByDeletingPathExtension] lastPathComponent];
+        //epub解压文件的相对路径
+        NSString *folder_relativePath = [folderfileName relativePath];
+        //epub解压文件的完整路径
+        NSString *folder_fullPath = [folder_relativePath fullPath];
+        NSFileManager *filemanager=[[NSFileManager alloc] init];
+        //文件夹不存在，进行一次解压
+        if (![filemanager fileExistsAtPath:folder_fullPath]) {
+            folder_relativePath = [self unZip:path];
+            if (folder_relativePath.length < 1) {//解压失败，返回nil
+                return nil;
+            }
+        }
+        
+        //获取opf文件的相对路径
+        NSString *opfRelativePath = [self opfRelativePath:folder_relativePath];
+        if (opfRelativePath.length < 1) { //opf文件不存在
+            return nil;
+        }
+        
+        NSDictionary *bookInfo = [self readBookBaseInfo:[opfRelativePath fullPath]];
+        LPPBookInfoModel *bookInfoModel = [[LPPBookInfoModel alloc] init];
+        bookInfoModel.fullName = fullName;
+        bookInfoModel.bookType = LPPEBookTypeEpub;
+        bookInfoModel.rootDocumentUrl = folder_relativePath;
+        bookInfoModel.OEBPSUrl = [opfRelativePath stringByDeletingLastPathComponent];
+        [bookInfoModel setValuesForKeysWithDictionary:bookInfo];
+        bookInfoModel.title = bookInfoModel.title.length?bookInfoModel.title:[fullName substringToIndex:fullName.length-5];
+        return bookInfoModel;
+    }else{
+        //@throw [NSException exceptionWithName:@"FileException" reason:@"文件格式错误" userInfo:nil];
+        //文件格式错误
+        NSLog(@"文件格式错误");
+        return nil;
+    }
 }
 
 + (NSArray *)readChaptersWithBookInfo:(LPPBookInfoModel *)bookInfo{
@@ -218,7 +226,7 @@
         return [self parseOPF:[opfRealtivePath fullPath]];
     }
     return nil;
-
+    
 }
 
 + (NSArray *)ePubFileHandle:(NSString *)path bookInfoModel:(LPPBookInfoModel *)bookInfoModel{
@@ -308,7 +316,7 @@
     
     NSString *absolutePath = [opfFullPath stringByDeletingLastPathComponent];
     CXMLDocument *ncxDoc = [[CXMLDocument alloc] initWithContentsOfURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@", absolutePath,ncxFile]] options:0 error:nil];
-
+    
     //read carologue from ncx file 从ncx读取书籍目录（需优化，需要处理章节内链接问题）
     return [self readCarologueFromNCX:ncxDoc];
 }
@@ -333,7 +341,7 @@
     
     
     
-//    return [self readCarologueFromOPF:opfDocument ncxDoc:ncxDoc];
+    //    return [self readCarologueFromOPF:opfDocument ncxDoc:ncxDoc];
     
     //read carologue from ncx file 从ncx读取书籍目录（需优化，需要处理章节内链接问题）
     return [self readCarologueFromNCX:ncxDoc];
@@ -345,7 +353,7 @@
     NSMutableDictionary *titleDictionary = [[NSMutableDictionary alloc] init];
     for (CXMLElement* element in itemsArray) {
         [itemDictionary setValue:[[element attributeForName:@"href"] stringValue] forKey:[[element attributeForName:@"id"] stringValue]];
-
+        
         NSString *href = [[element attributeForName:@"href"] stringValue];
         
         NSString *xpath = [NSString stringWithFormat:@"//ncx:content[@src='%@']/../ncx:navLabel/ncx:text", href];
@@ -373,14 +381,14 @@
         chapter.chapterName = chapterName;
         chapter.chapterSrc = chapHref;
         
-//        XDSChapterModel *model = [XDSChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",chapterRelativeFolder,chapHref]
-//                                                            title:[titleDictionary valueForKey:chapHref]
-//                                                        imagePath:[[[opfRelativePath stringByDeletingLastPathComponent]stringByAppendingPathComponent:chapHref] stringByDeletingLastPathComponent]];
+        //        XDSChapterModel *model = [XDSChapterModel chapterWithEpub:[NSString stringWithFormat:@"%@/%@",chapterRelativeFolder,chapHref]
+        //                                                            title:[titleDictionary valueForKey:chapHref]
+        //                                                        imagePath:[[[opfRelativePath stringByDeletingLastPathComponent]stringByAppendingPathComponent:chapHref] stringByDeletingLastPathComponent]];
         [chapters addObject:chapter];
         
     }
     return chapters;
-
+    
 }
 
 + (NSArray *)readCarologueFromNCX:(CXMLDocument *)ncxDoc{
@@ -434,9 +442,9 @@
         }
         
         catalogueModel.chapter = chapters.count - 1;
-
+        
         [catalogueModelArrayInChapter addObject:catalogueModel];
-
+        
     }
     return chapters;
 }
@@ -473,7 +481,7 @@
     NSString *xpath = [NSString stringWithFormat:@"//opf:item[@id='%@']", cover_id];
     CXMLElement *item_cover_element = (CXMLElement *)[document nodeForXPath:xpath namespaceMappings:[NSDictionary dictionaryWithObject:@"http://www.idpf.org/2007/opf" forKey:@"opf"] error:nil];
     NSString *cover_href = [item_cover_element attributeForName:@"href"].stringValue;
-
+    
     return cover_href.length?cover_href:@"";
 }
 @end

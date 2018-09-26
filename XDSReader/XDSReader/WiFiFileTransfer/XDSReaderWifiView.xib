@@ -27,7 +27,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="do1-N9-Cwc">
-                    <rect key="frame" x="35" y="199" width="361" height="30"/>
+                    <rect key="frame" x="35" y="189" width="361" height="30"/>
                     <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Tf6-y2-TTe"/>
@@ -36,10 +36,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_book.png" translatesAutoresizingMaskIntoConstraints="NO" id="TM2-vt-Bi7">
-                    <rect key="frame" x="35" y="117" width="360" height="62"/>
+                    <rect key="frame" x="35" y="117" width="360" height="52"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请在电脑浏览器中输入以上地址" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exm-Wb-9X4">
-                    <rect key="frame" x="35" y="239" width="360" height="15"/>
+                    <rect key="frame" x="35" y="229" width="360" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="kKn-P4-meo"/>
                     </constraints>
@@ -48,7 +48,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NfY-4f-si5">
-                    <rect key="frame" x="35" y="269" width="360" height="3"/>
+                    <rect key="frame" x="35" y="259" width="360" height="3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="3" id="Vc6-Wh-nWZ"/>
                     </constraints>
@@ -56,9 +56,9 @@
                     <color key="trackTintColor" red="0.84313725490000002" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </progressView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGC-1c-EYv">
-                    <rect key="frame" x="35" y="280" width="360" height="15"/>
+                    <rect key="frame" x="35" y="270" width="360" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="15" id="any-cK-Ng5"/>
+                        <constraint firstAttribute="height" constant="25" id="any-cK-Ng5"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

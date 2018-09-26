@@ -26,6 +26,7 @@ NSString *const kLPPBookInfoModelRelationEncodeKey = @"relation";
 NSString *const kLPPBookInfoModelCoverageEncodeKey = @"coverage";
 NSString *const kLPPBookInfoModelRightsEncodeKey = @"rights";
 NSString *const kLPPBookInfoModelBookTypeEncodeKey = @"bookType";
+NSString *const kLPPBookInfoModelLatestModifyTimeEncodeKey = @"latestModifyTime";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.fullName forKey:kLPPBookInfoModelFullNameEncodeKey];
@@ -45,6 +46,7 @@ NSString *const kLPPBookInfoModelBookTypeEncodeKey = @"bookType";
     [aCoder encodeObject:self.coverage forKey:kLPPBookInfoModelCoverageEncodeKey];
     [aCoder encodeObject:self.rights forKey:kLPPBookInfoModelRightsEncodeKey];
     [aCoder encodeInteger:self.bookType forKey:kLPPBookInfoModelBookTypeEncodeKey];
+    [aCoder encodeDouble:self.latestModifyTime forKey:kLPPBookInfoModelLatestModifyTimeEncodeKey];
 
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
@@ -67,6 +69,7 @@ NSString *const kLPPBookInfoModelBookTypeEncodeKey = @"bookType";
         self.coverage = [aDecoder decodeObjectForKey:kLPPBookInfoModelCoverageEncodeKey];
         self.rights = [aDecoder decodeObjectForKey:kLPPBookInfoModelRightsEncodeKey];
         self.bookType = [aDecoder decodeIntegerForKey:kLPPBookInfoModelBookTypeEncodeKey];
+        self.latestModifyTime = [aDecoder decodeDoubleForKey:kLPPBookInfoModelLatestModifyTimeEncodeKey];
     }
     return self;
 }
@@ -134,13 +137,13 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
     return self;
 }
 
-- (void)dealloc {
-    NSLog(@"save book");
-    [self saveBook];
-    NSLog(@"bookModel dealloc");
-}
-
 - (void)saveBook {
+    
+    //保存最近阅读时间
+    NSTimeInterval time = [NSDate timeIntervalSinceReferenceDate];
+    self.bookBasicInfo.latestModifyTime = time;
+    self.bookBasicInfo.isLastRead = YES;
+    
     NSString *key = self.bookBasicInfo.fullName;
     NSMutableData *data=[[NSMutableData alloc] init];
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
@@ -164,6 +167,7 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
     NSKeyedUnarchiver *unarchive = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
     //主线程操作
     XDSBookModel *model = [unarchive decodeObjectForKey:key];
+    model.bookBasicInfo = baseInfo;
     return model;
 }
 

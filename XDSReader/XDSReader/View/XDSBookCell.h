@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *mImageView;
 @property (weak, nonatomic) IBOutlet UILabel *mTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mContentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastReadMark;
 
 @end

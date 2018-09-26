@@ -7,7 +7,29 @@
 //
 
 #import "XDSReaderUtil.h"
-#import "UIViewController+XDSReader.h"
+
+@implementation UIViewController (XDSReader)
+#pragma mark - 获取当前可见ViewController
++ (UIViewController *)xds_visiableViewController {
+    UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    return [UIViewController xds_topViewControllerForViewController:rootViewController];
+}
+
++ (UIViewController *)xds_topViewControllerForViewController:(UIViewController *)viewController {
+    if ([viewController isKindOfClass:[UITabBarController class]]) {
+        return [self xds_topViewControllerForViewController:[(UITabBarController *)viewController selectedViewController]];
+    } else if ([viewController isKindOfClass:[UINavigationController class]]) {
+        return [(UINavigationController *)viewController visibleViewController];
+    } else {
+        if (viewController.presentedViewController) {
+            return [self xds_topViewControllerForViewController:viewController.presentedViewController];
+        } else {
+            return viewController;
+        }
+    }
+}
+@end
+
 @implementation XDSReaderUtil
 + (NSString *)encodeWithURL:(NSURL *)url{
     if (!url) {

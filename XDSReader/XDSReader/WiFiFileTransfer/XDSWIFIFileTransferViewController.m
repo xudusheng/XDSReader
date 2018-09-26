@@ -92,6 +92,7 @@
     webServer = [[GCDWebUploader alloc] initWithUploadDirectory:documentsPath];
     webServer.delegate = self;
     webServer.allowHiddenItems = YES;
+    webServer.allowedFileExtensions = @[@"epub", @"txt"];
     if ([webServer start]) {
         self.wifiView.ipAndPortLabel.text = [NSString stringWithFormat:NSLocalizedString(@"http://%@", nil), [XDSIPHelper deviceIPAdress]];
         self.wifiView.wifiNameLabel.text = [NSString stringWithFormat:@"已连接WiFi：%@", [XDSIPHelper getWifiName]];
@@ -101,10 +102,34 @@
 }
 
 #pragma mark - 代理方法
-- (void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path {
-    self.wifiView.progressLabel.text = [NSString stringWithFormat:@"第%ld文件已上传完成", (long)_fileCount];
-    self.isUploading = NO;
+- (void)webUploader:(GCDWebUploader*)uploader didDownloadFileAtPath:(NSString*)path {
+    self.wifiView.progressLabel.text = [NSString stringWithFormat:@"%@\n已下载完成", path.lastPathComponent];
+
 }
+- (void)webUploader:(GCDWebUploader*)uploader didUploadFileAtPath:(NSString*)path {
+    self.wifiView.progressLabel.text = [NSString stringWithFormat:@"%@\n已上传完成", path.lastPathComponent];
+    self.isUploading = NO;
+    [self reloadBookList];
+}
+- (void)webUploader:(GCDWebUploader*)uploader didMoveItemFromPath:(NSString*)fromPath toPath:(NSString*)toPath {
+    self.wifiView.progressLabel.text = [NSString stringWithFormat:@"%@\n已移动到新的文件夹", fromPath.lastPathComponent];
+    [self reloadBookList];
+}
+- (void)webUploader:(GCDWebUploader*)uploader didDeleteItemAtPath:(NSString*)path {
+    self.wifiView.progressLabel.text = [NSString stringWithFormat:@"%@\n删除成功", path.lastPathComponent];
+    [self reloadBookList];
+
+}
+- (void)webUploader:(GCDWebUploader*)uploader didCreateDirectoryAtPath:(NSString*)path {
+    self.wifiView.progressLabel.text = [NSString stringWithFormat:@"已创建%@文件夹", path.lastPathComponent];
+}
+
+- (void)reloadBookList {
+    if (_wDelegate && [_wDelegate respondsToSelector:@selector(didBooksChanged)]) {
+        [_wDelegate didBooksChanged];
+    }
+}
+
 #pragma mark - 网络请求
 
 -(void)demoRequest{

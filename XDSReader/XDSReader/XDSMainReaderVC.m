@@ -9,27 +9,33 @@
 #import "XDSMainReaderVC.h"
 #import "XDSBookCell.h"
 #import "XDSWIFIFileTransferViewController.h"
-@interface XDSMainReaderVC ()<UICollectionViewDelegate, UICollectionViewDataSource>
+
+@interface XDSMainReaderVC ()<UICollectionViewDelegate, UICollectionViewDataSource, XDSWIFIFileTransferViewControllerDelegate>
 @property (strong, nonatomic) NSMutableArray<LPPBookInfoModel*> * bookList;
 @property (strong, nonatomic) UICollectionView * mCollectionView;
 
+@property (nonatomic,assign) BOOL hasFirstLoadBooks;
 @end
 
 @implementation XDSMainReaderVC
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.translucent = NO;
     [self movieListViewControllerDataInit];
-    [self createBookListViewControllerUI];
-    
+    [self createMovieListViewControllerUI];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self loadLocalBooks];
-    
+    if (!_hasFirstLoadBooks) {
+        [self loadLocalBooks];
+        self.hasFirstLoadBooks = YES;
+    }else {
+        [self sortBooksByModifyTime];
+    }
 }
 
 #pragma mark - UI相关
-- (void)createBookListViewControllerUI{
+- (void)createMovieListViewControllerUI{
     self.view.backgroundColor = [UIColor whiteColor];
     //创建一个layout布局类
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
@@ -42,7 +48,7 @@
     layout.sectionInset = UIEdgeInsetsMake(itemMargin, itemMargin, itemMargin, itemMargin);
     //创建collectionView 通过一个布局策略layout来创建
     self.mCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _mCollectionView.backgroundColor = [UIColor whiteColor];
+    _mCollectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     //代理设置
     _mCollectionView.delegate=self;
     _mCollectionView.dataSource=self;
@@ -51,6 +57,7 @@
     
     [_mCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([XDSBookCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([XDSBookCell class])];
     _mCollectionView.frame = self.view.bounds;
+    
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加书籍" style:UIBarButtonItemStyleDone target:self action:@selector(showWifiView)];
     self.navigationItem.rightBarButtonItem = barButtonItem;
@@ -66,16 +73,17 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     XDSBookCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XDSBookCell class]) forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     LPPBookInfoModel *bookInfoModel = self.bookList[indexPath.row];
     UIImage *cover = [UIImage imageWithContentsOfFile:bookInfoModel.coverPath];
     cell.mImageView.image = cover;
-    
     cell.mTitleLabel.text = bookInfoModel.title;
+    
+    cell.lastReadMark.hidden = !bookInfoModel.isLastRead;
+    
     return cell;
 }
-
-
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     LPPBookInfoModel *bookInfoModel = self.bookList[indexPath.row];
@@ -88,6 +96,11 @@
             [self presentViewController:pageView animated:YES completion:nil];
         });
     });
+}
+
+#pragma mark - XDSWIFIFileTransferViewControllerDelegate
+- (void)didBooksChanged {
+    [self loadLocalBooks];
 }
 #pragma mark - 点击事件处理
 - (void)showReadPageViewControllerWithFileURL:(NSURL *)fileURL{
@@ -108,6 +121,7 @@
 
 - (void)showWifiView {
     XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
+    wifiTransferVC.wDelegate = self;
     [self presentViewController:wifiTransferVC
                        animated: YES
               inRransparentForm:YES
@@ -116,9 +130,8 @@
 
 #pragma mark - 其他私有方法
 - (void)loadLocalBooks {
-
     [self.bookList removeAllObjects];
-
+    
     //本地文件-同步执行
     NSArray *fileList = @[@"不懂这些英文你就OUT了(正版).epub", @"Android从入门到精通.epub", @"三人成狼.txt", @"特种神医.txt"];
     for (NSString *fileName in fileList) {
@@ -130,9 +143,7 @@
         bookInfo?[self.bookList addObject:bookInfo]:NULL;
         [self.mCollectionView reloadData];
     }
-    
-    
-    //从documents目录读取-异步执行
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
     //在这里获取应用程序Documents文件夹里的文件及文件夹列表
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -142,27 +153,36 @@
     //fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组
     fileList = [fileManager contentsOfDirectoryAtPath:documentDir error:&error];
     
-    NSLog(@"%@", fileList);
-    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         for (NSString *fileName in fileList) {
             NSString *path = [NSString stringWithFormat:@"%@/%@", documentDir, fileName];
             LPPBookInfoModel *bookInfo = [XDSReadOperation getBookInfoWithFile:[NSURL fileURLWithPath:path]];
             bookInfo?[self.bookList addObject:bookInfo]:NULL;
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.mCollectionView reloadData];
+                [self.mCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
             });
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.mCollectionView reloadData];
+            [self sortBooksByModifyTime];
         });
     });
     
-    
+}
+
+- (void)sortBooksByModifyTime {
+    [self.bookList sortUsingComparator:^NSComparisonResult(LPPBookInfoModel * _Nonnull book_1, LPPBookInfoModel * _Nonnull book_2) {
+        BOOL isBig = book_2.latestModifyTime > book_1.latestModifyTime;
+        if (isBig) {
+            book_1.isLastRead = NO;
+        }
+        return isBig;
+    }];
+    [self.mCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
 }
 
 #pragma mark - 内存管理相关
 - (void)movieListViewControllerDataInit{
     self.bookList = [[NSMutableArray alloc] initWithCapacity:0];
 }
+
 @end

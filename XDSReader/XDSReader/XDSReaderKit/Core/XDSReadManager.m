@@ -163,8 +163,8 @@ static XDSReadManager *readManager;
 //MARK: - 关闭阅读器
 - (void)closeReadView{
     
-//    //关闭前保存阅读记录
-//    [self.bookModel saveBook];
+    //关闭前保存阅读记录
+    [self.bookModel saveBook];
     
     //release memery 释放内存
     self.bookModel = nil;
