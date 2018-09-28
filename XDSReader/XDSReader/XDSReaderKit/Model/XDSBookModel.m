@@ -144,13 +144,35 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
     self.bookBasicInfo.latestModifyTime = time;
     self.bookBasicInfo.isLastRead = YES;
     
-    NSString *key = self.bookBasicInfo.fullName;
-    NSMutableData *data=[[NSMutableData alloc] init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [archiver encodeObject:self forKey:key];
-    [archiver finishEncoding];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
+        NSString *key = self.bookBasicInfo.fullName;
+        NSMutableData *data=[[NSMutableData alloc] init];
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+        [archiver encodeObject:self forKey:key];
+        [archiver finishEncoding];
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *archiverPath = key.archiverPath;
+        if (![fileManager fileExistsAtPath:archiverPath]) {
+            if (![fileManager fileExistsAtPath:ARCHIVER_FOLDER]) {
+                BOOL createFolderSuccess = [fileManager createDirectoryAtPath:ARCHIVER_FOLDER withIntermediateDirectories:YES attributes:nil error:nil];
+                if (!createFolderSuccess) {
+                    NSLog(@"归档文件夹创建失败,阅读记录保存失败");
+                }
+            }
+            BOOL createFileSuccess = [fileManager createFileAtPath:archiverPath contents:data attributes:nil];
+            if (!createFileSuccess) {
+                NSLog(@"阅读记录保存失败");
+            }
+        }else {
+            NSError *error = nil;
+            [data writeToFile:archiverPath options:NSDataWritingAtomic error:&error];
+            if (error) {
+                NSLog(@"阅读记录保存失败 = %@", error);
+            }
+        }
+    });
 }
 
 + (id)bookModelWithBaseInfo:(LPPBookInfoModel *)baseInfo{
@@ -158,10 +180,10 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
         return nil;
     }
     NSString *key = baseInfo.fullName;
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+//    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    NSData *data=[[NSData alloc] initWithContentsOfFile:key.archiverPath];
     if (!data) {
         XDSBookModel *model = [[XDSBookModel alloc] initWithBookInfo:baseInfo];
-        [model saveBook];
         return model;
     }
     NSKeyedUnarchiver *unarchive = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];

@@ -12,6 +12,8 @@
 
 - (NSString *)fullPath;
 - (NSString *)relativePath;
+- (NSString *)archiverPath;
+
 @end
 
 @interface XDSReadOperation : NSObject

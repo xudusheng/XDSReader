@@ -27,6 +27,15 @@
     return zipFile_relativePath;
 }
 
+- (NSString *)archiverPath {
+    NSString *archiverPath = self.xds_md5;
+    if (![archiverPath hasPrefix:@"/"]) {
+        archiverPath = [@"/" stringByAppendingString:archiverPath];
+    }
+    archiverPath = [ARCHIVER_FOLDER stringByAppendingString:archiverPath];
+    return archiverPath;
+}
+
 @end
 
 @implementation XDSReadOperation
@@ -130,7 +139,8 @@
     NSString *path = url.path;
     NSString *fullName = path.lastPathComponent;
     
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:fullName];
+//    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:fullName];
+    NSData *data=[[NSData alloc] initWithContentsOfFile:fullName.archiverPath];
     if (data) {
         NSKeyedUnarchiver *unarchive = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         XDSBookModel *bookModel = [unarchive decodeObjectForKey:fullName];

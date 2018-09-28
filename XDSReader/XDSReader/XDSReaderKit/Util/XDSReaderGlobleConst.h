@@ -36,8 +36,10 @@ UIKIT_EXTERN CGFloat const kReadViewMarginRight;
 //epub文件所在文件夹名称
 #define EPUB_FOLDER @"epub/"
 //epub解压包所在文件夹名称
-#define EPUB_EXTRACTION_FOLDER @"epubExtraction/"
+#define EPUB_EXTRACTION_FOLDER @".epubExtraction/"
 
+//epub解压包所在文件夹名称
+#define ARCHIVER_FOLDER [APP_SANDBOX_DOCUMENT_PATH stringByAppendingString:@"/.archiver"]//归档路径
 
 UIKIT_EXTERN CGFloat const kXDSReadViewMinFontSize;
 UIKIT_EXTERN CGFloat const kXDSReadViewMaxFontSize;

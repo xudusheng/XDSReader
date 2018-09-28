@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		031B1B2853A8A75BAF03EEA1 /* Pods_XDSReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7F5927F6C835989775828 /* Pods_XDSReader.framework */; };
 		1808D3BC215BD56400F822FD /* UIViewController+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3BA215BD56300F822FD /* UIViewController+XDSReader.m */; };
+		187AD2CF215E476D00C45B69 /* NSString+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 187AD2CE215E476C00C45B69 /* NSString+XDSReader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18B3DC7E21548BAF00FFD27E /* UIViewController+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC7D21548BAF00FFD27E /* UIViewController+XDSReader.m */; };
 		18B3DC8121549A8A00FFD27E /* XDSReaderWifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC8021549A8A00FFD27E /* XDSReaderWifiView.m */; };
 		18B3DC8321549A9600FFD27E /* XDSReaderWifiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B3DC8221549A9600FFD27E /* XDSReaderWifiView.xib */; };
@@ -113,6 +114,8 @@
 /* Begin PBXFileReference section */
 		1808D3BA215BD56300F822FD /* UIViewController+XDSReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSReader.m"; sourceTree = "<group>"; };
 		1808D3BB215BD56300F822FD /* UIViewController+XDSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSReader.h"; sourceTree = "<group>"; };
+		187AD2CD215E476C00C45B69 /* NSString+XDSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XDSReader.h"; sourceTree = "<group>"; };
+		187AD2CE215E476C00C45B69 /* NSString+XDSReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XDSReader.m"; sourceTree = "<group>"; };
 		18B3DC7C21548BAF00FFD27E /* UIViewController+XDSReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSReader.h"; sourceTree = "<group>"; };
 		18B3DC7D21548BAF00FFD27E /* UIViewController+XDSReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSReader.m"; sourceTree = "<group>"; };
 		18B3DC7F21549A8A00FFD27E /* XDSReaderWifiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSReaderWifiView.h; sourceTree = "<group>"; };
@@ -597,6 +600,8 @@
 				FCA78B391EF2935200114907 /* GTMDefines.h */,
 				FCA78B3A1EF2935200114907 /* GTMNSString+HTML.h */,
 				FCA78B3B1EF2935200114907 /* GTMNSString+HTML.m */,
+				187AD2CD215E476C00C45B69 /* NSString+XDSReader.h */,
+				187AD2CE215E476C00C45B69 /* NSString+XDSReader.m */,
 				1808D3BB215BD56300F822FD /* UIViewController+XDSReader.h */,
 				1808D3BA215BD56300F822FD /* UIViewController+XDSReader.m */,
 				FCA78BC01EF39B6000114907 /* UIImage+ImageEffects.h */,
@@ -889,6 +894,7 @@
 			files = (
 				FCA78B801EF2DEB500114907 /* CXMLDocument_PrivateExtensions.m in Sources */,
 				FC6D95721F337938006A0583 /* XDSReadView.m in Sources */,
+				187AD2CF215E476D00C45B69 /* NSString+XDSReader.m in Sources */,
 				FCA78B7E1EF2DEB500114907 /* CXHTMLDocument.m in Sources */,
 				18BB4EBC2153E79000C4A2CD /* GCDWebServerErrorResponse.m in Sources */,
 				18BB4EC32153E79000C4A2CD /* GCDWebServerFileRequest.m in Sources */,
