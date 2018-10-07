@@ -38,7 +38,6 @@
 
 #pragma mark -
 #pragma mark Instance Methods
-
 - (NSString *)xds_md5
 {
     const char *str = [self UTF8String];

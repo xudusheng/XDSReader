@@ -114,6 +114,7 @@
 /* Begin PBXFileReference section */
 		1808D3BA215BD56300F822FD /* UIViewController+XDSReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSReader.m"; sourceTree = "<group>"; };
 		1808D3BB215BD56300F822FD /* UIViewController+XDSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSReader.h"; sourceTree = "<group>"; };
+		1819E0872169ABA500EBBB78 /* XDSReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XDSReader.entitlements; sourceTree = "<group>"; };
 		187AD2CD215E476C00C45B69 /* NSString+XDSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XDSReader.h"; sourceTree = "<group>"; };
 		187AD2CE215E476C00C45B69 /* NSString+XDSReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XDSReader.m"; sourceTree = "<group>"; };
 		18B3DC7C21548BAF00FFD27E /* UIViewController+XDSReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSReader.h"; sourceTree = "<group>"; };
@@ -453,6 +454,7 @@
 		FCA78A4F1EF290F400114907 /* XDSReader */ = {
 			isa = PBXGroup;
 			children = (
+				1819E0872169ABA500EBBB78 /* XDSReader.entitlements */,
 				FC88A5191F0CCAE900BDF04A /* README.md */,
 				FCA78C1B1EFA00DA00114907 /* 华文字体 */,
 				FCA78BE01EF5F40200114907 /* XDSReadMenu */,
@@ -779,8 +781,13 @@
 				TargetAttributes = {
 					FCA78A4C1EF290F400114907 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 8RW49AS53X;
+						DevelopmentTeam = 85W725W7AQ;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1105,9 +1112,10 @@
 			baseConfigurationReference = 566644BA861A753275F3D3DE /* Pods-XDSReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = XDSReader/XDSReader.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 8RW49AS53X;
+				DEVELOPMENT_TEAM = 85W725W7AQ;
 				GCC_PREFIX_HEADER = XDSReader/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1125,7 +1133,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.reader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "abcd2365-cfc1-4588-8f01-a93b5064e24f";
-				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Development";
+				PROVISIONING_PROFILE_SPECIFIER = ireader.com.youmi.reader;
 			};
 			name = Debug;
 		};
@@ -1134,9 +1142,10 @@
 			baseConfigurationReference = 39079157DFAB83B2A1877F23 /* Pods-XDSReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = XDSReader/XDSReader.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = C7C8DA83Q8;
+				DEVELOPMENT_TEAM = 85W725W7AQ;
 				GCC_PREFIX_HEADER = XDSReader/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1154,7 +1163,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.youmi.reader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "00131509-d27c-4674-85cf-2ce853064c7a";
-				PROVISIONING_PROFILE_SPECIFIER = develop_new;
+				PROVISIONING_PROFILE_SPECIFIER = ireader.com.youmi.reader;
 			};
 			name = Release;
 		};
