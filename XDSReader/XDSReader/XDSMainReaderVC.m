@@ -9,7 +9,7 @@
 #import "XDSMainReaderVC.h"
 #import "XDSBookCell.h"
 #import "XDSWIFIFileTransferViewController.h"
-
+#import "XDSHTMLReaderVC.h"
 @interface XDSMainReaderVC ()<UICollectionViewDelegate, UICollectionViewDataSource, XDSWIFIFileTransferViewControllerDelegate>
 @property (strong, nonatomic) NSMutableArray<LPPBookInfoModel*> * bookList;
 @property (strong, nonatomic) UICollectionView * mCollectionView;
@@ -120,12 +120,16 @@
 }
 
 - (void)showWifiView {
-    XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
-    wifiTransferVC.wDelegate = self;
-    [self presentViewController:wifiTransferVC
-                       animated: YES
-              inRransparentForm:YES
-                     completion:nil];
+//    XDSWIFIFileTransferViewController *wifiTransferVC = [XDSWIFIFileTransferViewController newInstance];
+//    wifiTransferVC.wDelegate = self;
+//    [self presentViewController:wifiTransferVC
+//                       animated: YES
+//              inRransparentForm:YES
+//                     completion:nil];
+
+    XDSHTMLReaderVC *htmlReaderVC = [[XDSHTMLReaderVC alloc] init];
+    [self.navigationController pushViewController:htmlReaderVC animated:YES];
+    
 }
 
 #pragma mark - 其他私有方法
