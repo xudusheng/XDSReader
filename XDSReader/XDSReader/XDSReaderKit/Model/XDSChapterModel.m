@@ -260,6 +260,17 @@ NSString *const kXDSChapterModelMarksEncodeKey = @"marks";
     return attString;
 }
 
+- (NSString *)removeQuotesFromHTML:(NSString *)html {
+    html = [html stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+    html = [html stringByReplacingOccurrencesOfString:@"“" withString:@"&quot;"];
+    html = [html stringByReplacingOccurrencesOfString:@"”" withString:@"&quot;"];
+    html = [html stringByReplacingOccurrencesOfString:@"\r"  withString:@"\\r"];
+    html = [html stringByReplacingOccurrencesOfString:@"\n"  withString:@"\\n"];
+    return html;
+}
+
+
+
 - (void)getIdMarkLocationAndReplaceIt:(NSAttributedString **)attString {
     if ((*attString).length < 1) {
         return;
