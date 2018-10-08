@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		031B1B2853A8A75BAF03EEA1 /* Pods_XDSReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7F5927F6C835989775828 /* Pods_XDSReader.framework */; };
 		1808D3BC215BD56400F822FD /* UIViewController+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3BA215BD56300F822FD /* UIViewController+XDSReader.m */; };
+		183B7F4E216ADD430071F08E /* 不懂这些英文你就OUT了(正版).epub in Resources */ = {isa = PBXBuildFile; fileRef = 183B7F49216ADD420071F08E /* 不懂这些英文你就OUT了(正版).epub */; };
+		183B7F4F216ADD430071F08E /* Android从入门到精通.epub in Resources */ = {isa = PBXBuildFile; fileRef = 183B7F4A216ADD420071F08E /* Android从入门到精通.epub */; };
+		183B7F50216ADD430071F08E /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = 183B7F4B216ADD420071F08E /* mdjyml.txt */; };
+		183B7F51216ADD430071F08E /* 特种神医.txt in Resources */ = {isa = PBXBuildFile; fileRef = 183B7F4C216ADD420071F08E /* 特种神医.txt */; };
+		183B7F52216ADD430071F08E /* 三人成狼.txt in Resources */ = {isa = PBXBuildFile; fileRef = 183B7F4D216ADD420071F08E /* 三人成狼.txt */; };
 		187AD2CF215E476D00C45B69 /* NSString+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 187AD2CE215E476C00C45B69 /* NSString+XDSReader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18B3DC7E21548BAF00FFD27E /* UIViewController+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC7D21548BAF00FFD27E /* UIViewController+XDSReader.m */; };
 		18B3DC8121549A8A00FFD27E /* XDSReaderWifiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B3DC8021549A8A00FFD27E /* XDSReaderWifiView.m */; };
@@ -33,10 +38,6 @@
 		18D7E611215A57990006EC1E /* logo_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E610215A57990006EC1E /* logo_book.png */; };
 		18D7E616215A585E0006EC1E /* XDSBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E614215A585D0006EC1E /* XDSBookCell.xib */; };
 		18D7E617215A585E0006EC1E /* XDSBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E615215A585D0006EC1E /* XDSBookCell.m */; };
-		18D7E61D215A59EF0006EC1E /* 三人成狼.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E619215A59EF0006EC1E /* 三人成狼.txt */; };
-		18D7E61E215A59EF0006EC1E /* 特种神医.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E61A215A59EF0006EC1E /* 特种神医.txt */; };
-		18D7E623215A5AAC0006EC1E /* Android从入门到精通.epub in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E622215A5AAB0006EC1E /* Android从入门到精通.epub */; };
-		18D7E624215A5B470006EC1E /* 不懂这些英文你就OUT了(正版).epub in Resources */ = {isa = PBXBuildFile; fileRef = 18D7E621215A5A540006EC1E /* 不懂这些英文你就OUT了(正版).epub */; };
 		A274ABEF213C522400728064 /* 十宗罪.epub in Resources */ = {isa = PBXBuildFile; fileRef = A29C5893213C47E000764DFB /* 十宗罪.epub */; };
 		A29AA3F21F5A6D6300FB24EE /* UIControl+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F11F5A6D6300FB24EE /* UIControl+XDSHyperLink.m */; };
 		A29AA3F51F5A6D8000FB24EE /* UIView+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F41F5A6D8000FB24EE /* UIView+XDSHyperLink.m */; };
@@ -115,6 +116,11 @@
 		1808D3BA215BD56300F822FD /* UIViewController+XDSReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XDSReader.m"; sourceTree = "<group>"; };
 		1808D3BB215BD56300F822FD /* UIViewController+XDSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSReader.h"; sourceTree = "<group>"; };
 		1819E0872169ABA500EBBB78 /* XDSReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XDSReader.entitlements; sourceTree = "<group>"; };
+		183B7F49216ADD420071F08E /* 不懂这些英文你就OUT了(正版).epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "不懂这些英文你就OUT了(正版).epub"; sourceTree = "<group>"; };
+		183B7F4A216ADD420071F08E /* Android从入门到精通.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Android从入门到精通.epub"; sourceTree = "<group>"; };
+		183B7F4B216ADD420071F08E /* mdjyml.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdjyml.txt; sourceTree = "<group>"; };
+		183B7F4C216ADD420071F08E /* 特种神医.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "特种神医.txt"; sourceTree = "<group>"; };
+		183B7F4D216ADD420071F08E /* 三人成狼.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "三人成狼.txt"; sourceTree = "<group>"; };
 		187AD2CD215E476C00C45B69 /* NSString+XDSReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XDSReader.h"; sourceTree = "<group>"; };
 		187AD2CE215E476C00C45B69 /* NSString+XDSReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XDSReader.m"; sourceTree = "<group>"; };
 		18B3DC7C21548BAF00FFD27E /* UIViewController+XDSReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XDSReader.h"; sourceTree = "<group>"; };
@@ -161,10 +167,6 @@
 		18D7E613215A585D0006EC1E /* XDSBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSBookCell.h; sourceTree = "<group>"; };
 		18D7E614215A585D0006EC1E /* XDSBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XDSBookCell.xib; sourceTree = "<group>"; };
 		18D7E615215A585D0006EC1E /* XDSBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSBookCell.m; sourceTree = "<group>"; };
-		18D7E619215A59EF0006EC1E /* 三人成狼.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "三人成狼.txt"; sourceTree = "<group>"; };
-		18D7E61A215A59EF0006EC1E /* 特种神医.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "特种神医.txt"; sourceTree = "<group>"; };
-		18D7E621215A5A540006EC1E /* 不懂这些英文你就OUT了(正版).epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "不懂这些英文你就OUT了(正版).epub"; sourceTree = "<group>"; };
-		18D7E622215A5AAB0006EC1E /* Android从入门到精通.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Android从入门到精通.epub"; sourceTree = "<group>"; };
 		39079157DFAB83B2A1877F23 /* Pods-XDSReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.release.xcconfig"; sourceTree = "<group>"; };
 		566644BA861A753275F3D3DE /* Pods-XDSReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XDSReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XDSReader/Pods-XDSReader.debug.xcconfig"; sourceTree = "<group>"; };
 		8BC7F5927F6C835989775828 /* Pods_XDSReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XDSReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -413,17 +415,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		18D7E618215A59C90006EC1E /* Books */ = {
-			isa = PBXGroup;
-			children = (
-				18D7E621215A5A540006EC1E /* 不懂这些英文你就OUT了(正版).epub */,
-				18D7E622215A5AAB0006EC1E /* Android从入门到精通.epub */,
-				18D7E619215A59EF0006EC1E /* 三人成狼.txt */,
-				18D7E61A215A59EF0006EC1E /* 特种神医.txt */,
-			);
-			path = Books;
-			sourceTree = "<group>";
-		};
 		4124ED2D2ACEE3913CAC621E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -466,7 +457,6 @@
 				FCA78A571EF290F400114907 /* XDSMainReaderVC.m */,
 				18D7E612215A585D0006EC1E /* View */,
 				FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */,
-				18D7E618215A59C90006EC1E /* Books */,
 				FCA78A591EF290F400114907 /* Main.storyboard */,
 				FCA78A5C1EF290F400114907 /* Assets.xcassets */,
 				FCA78A5E1EF290F400114907 /* LaunchScreen.storyboard */,
@@ -506,7 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				18BB4E2B2153D75C00C4A2CD /* XDSReaderHeader.h */,
-				FCA78BC31EF3A2CF00114907 /* Resource */,
+				FCA78BC31EF3A2CF00114907 /* Books */,
 				FCA78B351EF2932200114907 /* External */,
 				FCA78AD71EF2916700114907 /* Core */,
 				FCA78B101EF2916700114907 /* Model */,
@@ -668,7 +658,7 @@
 			path = Tidy;
 			sourceTree = "<group>";
 		};
-		FCA78BC31EF3A2CF00114907 /* Resource */ = {
+		FCA78BC31EF3A2CF00114907 /* Books */ = {
 			isa = PBXGroup;
 			children = (
 				FCA78BC61EF3A2D600114907 /* mdjyml.txt */,
@@ -676,8 +666,13 @@
 				A29C5893213C47E000764DFB /* 十宗罪.epub */,
 				FC88A5171F0C932A00BDF04A /* zoubianzhongguo.epub */,
 				FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */,
+				183B7F49216ADD420071F08E /* 不懂这些英文你就OUT了(正版).epub */,
+				183B7F4D216ADD420071F08E /* 三人成狼.txt */,
+				183B7F4C216ADD420071F08E /* 特种神医.txt */,
+				183B7F4A216ADD420071F08E /* Android从入门到精通.epub */,
+				183B7F4B216ADD420071F08E /* mdjyml.txt */,
 			);
-			path = Resource;
+			path = Books;
 			sourceTree = "<group>";
 		};
 		FCA78BE01EF5F40200114907 /* XDSReadMenu */ = {
@@ -814,29 +809,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA78C401EFCA96800114907 /* XDSNoDataView.xib in Resources */,
+				183B7F52216ADD430071F08E /* 三人成狼.txt in Resources */,
 				18BB4EC42153E79000C4A2CD /* GCDWebUploader.bundle in Resources */,
+				183B7F4F216ADD430071F08E /* Android从入门到精通.epub in Resources */,
 				FCA78A601EF290F400114907 /* LaunchScreen.storyboard in Resources */,
 				FCA78C2C1EFA00DB00114907 /* 华文行楷.ttf in Resources */,
 				FC88A5181F0C932A00BDF04A /* zoubianzhongguo.epub in Resources */,
-				18D7E624215A5B470006EC1E /* 不懂这些英文你就OUT了(正版).epub in Resources */,
 				A274ABEF213C522400728064 /* 十宗罪.epub in Resources */,
-				18D7E623215A5AAC0006EC1E /* Android从入门到精通.epub in Resources */,
 				18D7E616215A585E0006EC1E /* XDSBookCell.xib in Resources */,
 				FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */,
 				18D7E611215A57990006EC1E /* logo_book.png in Resources */,
 				FCA78A5D1EF290F400114907 /* Assets.xcassets in Resources */,
 				FCA78C2A1EFA00DB00114907 /* 华文琥珀.ttf in Resources */,
 				FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */,
+				183B7F51216ADD430071F08E /* 特种神医.txt in Resources */,
+				183B7F50216ADD430071F08E /* mdjyml.txt in Resources */,
 				FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */,
 				FCA0CD331F2F2BEA00F69962 /* 妖神记.txt in Resources */,
 				FCA78C281EFA00DB00114907 /* 华文新魏.ttf in Resources */,
-				18D7E61E215A59EF0006EC1E /* 特种神医.txt in Resources */,
 				FCA78A5B1EF290F400114907 /* Main.storyboard in Resources */,
-				18D7E61D215A59EF0006EC1E /* 三人成狼.txt in Resources */,
 				FCA78C271EFA00DB00114907 /* 华文彩云.ttf in Resources */,
 				FCA78AD51EF2914F00114907 /* XDSWIFIFileTransferViewController.xib in Resources */,
 				FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */,
 				18B3DC8321549A9600FFD27E /* XDSReaderWifiView.xib in Resources */,
+				183B7F4E216ADD430071F08E /* 不懂这些英文你就OUT了(正版).epub in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
