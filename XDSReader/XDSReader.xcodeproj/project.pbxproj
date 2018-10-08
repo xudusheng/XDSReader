@@ -42,6 +42,9 @@
 		A29AA3F21F5A6D6300FB24EE /* UIControl+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F11F5A6D6300FB24EE /* UIControl+XDSHyperLink.m */; };
 		A29AA3F51F5A6D8000FB24EE /* UIView+XDSHyperLink.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3F41F5A6D8000FB24EE /* UIView+XDSHyperLink.m */; };
 		A29AA3FB1F5A8E3D00FB24EE /* XDSPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */; };
+		A2F03B46216BAE0B0093AC40 /* note.html in Resources */ = {isa = PBXBuildFile; fileRef = A2F03B45216BAE0B0093AC40 /* note.html */; };
+		A2F03B49216BAF870093AC40 /* XDSNoteHTMLVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F03B48216BAF870093AC40 /* XDSNoteHTMLVC.m */; };
+		A2F03B4D216BB1BC0093AC40 /* subnote.html in Resources */ = {isa = PBXBuildFile; fileRef = A2F03B4C216BB1BC0093AC40 /* subnote.html */; };
 		FC61F7AF1F14651600DA83F4 /* XDSReadPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */; };
 		FC61F7B11F14CD4900DA83F4 /* XDSShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */; };
 		FC6D956D1F3378AC006A0583 /* XDSBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6D95681F3378AC006A0583 /* XDSBookModel.m */; };
@@ -177,6 +180,10 @@
 		A29AA3F91F5A8E3D00FB24EE /* XDSPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSPhotoBrowser.h; sourceTree = "<group>"; };
 		A29AA3FA1F5A8E3D00FB24EE /* XDSPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSPhotoBrowser.m; sourceTree = "<group>"; };
 		A29C5893213C47E000764DFB /* 十宗罪.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "十宗罪.epub"; sourceTree = "<group>"; };
+		A2F03B45216BAE0B0093AC40 /* note.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = note.html; sourceTree = "<group>"; };
+		A2F03B47216BAF870093AC40 /* XDSNoteHTMLVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDSNoteHTMLVC.h; sourceTree = "<group>"; };
+		A2F03B48216BAF870093AC40 /* XDSNoteHTMLVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDSNoteHTMLVC.m; sourceTree = "<group>"; };
+		A2F03B4C216BB1BC0093AC40 /* subnote.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = subnote.html; sourceTree = "<group>"; };
 		FC61F7AD1F14651600DA83F4 /* XDSReadPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSReadPageViewController.h; sourceTree = "<group>"; };
 		FC61F7AE1F14651600DA83F4 /* XDSReadPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSReadPageViewController.m; sourceTree = "<group>"; };
 		FC61F7B01F14CD4900DA83F4 /* XDSShareConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = XDSShareConfig.plist; sourceTree = "<group>"; };
@@ -661,6 +668,8 @@
 		FCA78BC31EF3A2CF00114907 /* Books */ = {
 			isa = PBXGroup;
 			children = (
+				A2F03B45216BAE0B0093AC40 /* note.html */,
+				A2F03B4C216BB1BC0093AC40 /* subnote.html */,
 				FCA78BC61EF3A2D600114907 /* mdjyml.txt */,
 				FCA0CD321F2F2BEA00F69962 /* 妖神记.txt */,
 				A29C5893213C47E000764DFB /* 十宗罪.epub */,
@@ -697,6 +706,8 @@
 				FCA78C031EF81E1A00114907 /* XDSLightView.m */,
 				FCA78BE91EF75CB300114907 /* XDSReadViewConst.h */,
 				FCA78BEA1EF75CB300114907 /* XDSReadViewConst.m */,
+				A2F03B47216BAF870093AC40 /* XDSNoteHTMLVC.h */,
+				A2F03B48216BAF870093AC40 /* XDSNoteHTMLVC.m */,
 			);
 			path = XDSReadMenu;
 			sourceTree = "<group>";
@@ -810,6 +821,7 @@
 			files = (
 				FCA78C401EFCA96800114907 /* XDSNoDataView.xib in Resources */,
 				183B7F52216ADD430071F08E /* 三人成狼.txt in Resources */,
+				A2F03B46216BAE0B0093AC40 /* note.html in Resources */,
 				18BB4EC42153E79000C4A2CD /* GCDWebUploader.bundle in Resources */,
 				183B7F4F216ADD430071F08E /* Android从入门到精通.epub in Resources */,
 				FCA78A601EF290F400114907 /* LaunchScreen.storyboard in Resources */,
@@ -833,6 +845,7 @@
 				FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */,
 				18B3DC8321549A9600FFD27E /* XDSReaderWifiView.xib in Resources */,
 				183B7F4E216ADD430071F08E /* 不懂这些英文你就OUT了(正版).epub in Resources */,
+				A2F03B4D216BB1BC0093AC40 /* subnote.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,6 +971,7 @@
 				18B3DC7E21548BAF00FFD27E /* UIViewController+XDSReader.m in Sources */,
 				FCA78B3C1EF2935200114907 /* GTMNSString+HTML.m in Sources */,
 				FCA78B451EF2986800114907 /* XDSMarkModel.m in Sources */,
+				A2F03B49216BAF870093AC40 /* XDSNoteHTMLVC.m in Sources */,
 				1808D3BC215BD56400F822FD /* UIViewController+XDSReader.m in Sources */,
 				FCA78BF81EF7B67700114907 /* XDSReadRootView.m in Sources */,
 				18BB4EB92153E79000C4A2CD /* GCDWebServerFunctions.m in Sources */,

@@ -40,11 +40,11 @@
 
         NSDictionary *dic = NSDictionaryOfVariableBindings(label);
         
-        NSArray *H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[label]-10-|"
+        NSArray *H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[label]-15-|"
                                                              options:NSLayoutFormatAlignmentMask
                                                              metrics:nil
                                                                views:dic];
-        NSArray *V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-5-[label]-5-|"
+        NSArray *V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-15-[label]-15-|"
                                                              options:NSLayoutFormatAlignmentMask
                                                              metrics:nil
                                                                views:dic];

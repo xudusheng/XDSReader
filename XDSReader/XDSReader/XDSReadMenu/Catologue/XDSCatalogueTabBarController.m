@@ -28,25 +28,26 @@
     
     _noteVC = [[XDSNoteViewController alloc] initWithStyle:UITableViewStyleGrouped];
     _noteVC.title = @"笔记";
+    UINavigationController *noteNav = [[UINavigationController alloc] initWithRootViewController:_noteVC];
 
     _markVC = [[XDSMarkViewController alloc] initWithStyle:UITableViewStyleGrouped];
     _markVC.title = @"书签";
     
-    self.viewControllers = @[_catalogueVC, _noteVC, _markVC];
+    self.viewControllers = @[_catalogueVC, noteNav, _markVC];
     self.tabBar.translucent = NO;
     [self.tabBar setBarTintColor:READ_BACKGROUND_COLOC];
     for (UITabBarItem *item in self.tabBar.items) {
         [item setTitlePositionAdjustment:UIOffsetMake(0, -13)];
         [item setTitleTextAttributes:@{
-                                                            NSFontAttributeName:[UIFont systemFontOfSize:13],
-                                                            NSForegroundColorAttributeName:[UIColor whiteColor]
-                                                            }
-                                                 forState:UIControlStateNormal];
+                                       NSFontAttributeName:[UIFont systemFontOfSize:13],
+                                       NSForegroundColorAttributeName:[UIColor whiteColor]
+                                       }
+                            forState:UIControlStateNormal];
         [item setTitleTextAttributes:@{
-                                                            NSFontAttributeName:[UIFont systemFontOfSize:13],
-                                                            NSForegroundColorAttributeName:TEXT_COLOR_XDS_2
-                                                            }
-                                                 forState:UIControlStateSelected];
+                                       NSFontAttributeName:[UIFont systemFontOfSize:13],
+                                       NSForegroundColorAttributeName:TEXT_COLOR_XDS_2
+                                       }
+                            forState:UIControlStateSelected];
     }
 }
 
