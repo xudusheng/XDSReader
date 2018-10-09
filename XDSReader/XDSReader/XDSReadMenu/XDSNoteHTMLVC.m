@@ -11,6 +11,7 @@
 @interface XDSNoteHTMLVC ()
 
 @property(nonatomic, strong) UIWebView *webView;
+@property(nonatomic, copy) NSString *noteString;
 
 @end
 
@@ -22,6 +23,9 @@
     self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.webView];
     [self loadResources];
+    
+    UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(shareAction)];
+    self.navigationItem.leftBarButtonItem = leftBar;
     
     UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
     self.navigationItem.rightBarButtonItem = rightBar;
@@ -58,7 +62,7 @@
             NSString *content = noteModel.content;
             content = content.length?content:@"";
             NSString *note = noteModel.note;
-            note = note.length?note:@"";
+            note = note.length?[NSString stringWithFormat:@"笔记：%@", note]:@"";
 
             subNote = [subNote stringByReplacingOccurrencesOfString:@"<--date-->" withString:[self stringFromDate:date]];
             subNote = [subNote stringByReplacingOccurrencesOfString:@"<--chaptertitle-->" withString:chapterName];
@@ -79,23 +83,52 @@
     noteString = [noteString stringByReplacingOccurrencesOfString:@"<--author-->" withString:creator];
     noteString = [noteString stringByReplacingOccurrencesOfString:@"<--note-->" withString:longNote];
     
+    self.noteString = noteString;
     [self.webView loadHTMLString:noteString baseURL:nil];
 }
 
 
 //NSDate转NSString
 - (NSString *)stringFromDate:(NSDate *)date{
-    //获取系统当前时间
-    NSDate *currentDate = [NSDate date];
     //用于格式化NSDate对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //设置格式：zzz表示时区
     [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
     //NSDate转NSString
-    NSString *currentDateString = [dateFormatter stringFromDate:currentDate];
+    NSString *dateString = [dateFormatter stringFromDate:date];
     //输出currentDateString
-    NSLog(@"%@",currentDateString);
-    return currentDateString;
+    NSLog(@"%@",dateString);
+    return dateString;
+}
+
+
+
+- (void)shareAction
+{
+    NSString *textToShare = [CURRENT_BOOK_MODEL.bookBasicInfo.title stringByAppendingString:@" 的笔记"];
+    NSURL *urlToShare = [NSURL URLWithString:@"https://www.baidu.com"];
+    NSArray *activityItems = @[textToShare, urlToShare];
+    [self shareWithContentArray:activityItems];
+    
+}
+
+- (void)shareWithContentArray:(NSArray *)contentArray
+{
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:contentArray applicationActivities:nil];
+//        activityVC.excludedActivityTypes = @[ UIActivityTypePostToWeibo,UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks];
+    activityVC.completionWithItemsHandler = ^(NSString *activityType,BOOL completed,NSArray *returnedItems,NSError *activityError)
+    {
+        NSLog(@"%@", activityType);
+        
+        if (completed) { // 确定分享
+            NSLog(@"分享成功");
+        }
+        else {
+            NSLog(@"分享失败");
+        }
+    };
+    
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
 
 

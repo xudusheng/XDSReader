@@ -105,6 +105,11 @@
 - (void)exportNote {
     XDSNoteHTMLVC *noteWebVC = [[XDSNoteHTMLVC alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:noteWebVC];
-    [self presentViewController:nav animated:YES completion:nil];
+    
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *presentedVC = rootVC.presentedViewController;
+    if ([presentedVC isKindOfClass:[XDSReadPageViewController class]]) {
+        [presentedVC presentViewController:nav animated:YES completion:nil];
+    }
 }
 @end
