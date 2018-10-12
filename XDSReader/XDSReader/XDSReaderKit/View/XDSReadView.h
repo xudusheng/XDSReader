@@ -16,7 +16,6 @@
 
 - (void)cancelSelected;
 
-
 @property (nonatomic,strong) id<XDSReadViewControllerDelegate> rvDelegate;
 
 

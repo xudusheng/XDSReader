@@ -195,7 +195,7 @@ NSString *const kXDSBookModelRecordEncodeKey = @"record";
 
 - (void)loadContentInChapter:(XDSChapterModel *)chapterModel {
     //load content for current chapter first
-    [chapterModel paginateEpubWithBounds:[XDSReadManager readViewBounds]];
+    [chapterModel paginateEpubWithBounds:[XDSReadManager readViewContentFrame]];
 }
 
 - (void)loadContentForAllChapters {

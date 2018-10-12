@@ -16,7 +16,10 @@
 @interface XDSReadManager : NSObject
 + (XDSReadManager *)sharedManager;
 
-+ (CGRect)readViewBounds;
++ (CGRect)readViewFrame;
++ (UIEdgeInsets)readViewEdgeInsets;
++ (CGRect)readViewContentFrame;
+
 
 @property (nonatomic,strong) XDSBookModel *bookModel;
 @property (nonatomic,weak) id<XDSReadManagerDelegate> rmDelegate;

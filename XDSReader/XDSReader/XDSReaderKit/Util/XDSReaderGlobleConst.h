@@ -27,8 +27,8 @@ UIKIT_EXTERN CGFloat const kReadViewMarginRight;
 
 #define RGB(__R__, __G__, __B__) [UIColor colorWithRed:(__R__)/255.0 green:(__G__)/255.0 blue:(__B__)/255.0 alpha:1.0]
 
-#define SELECTED_AREA_DOC_COLOR RGB(0,0,255)
-#define SELECTED_AREA_BACKGROUND_COLOR [UIColor colorWithRed:0 green:0 blue:1 alpha:0.2]
+#define SELECTED_AREA_DOC_COLOR RGB(17,113,239)
+#define SELECTED_AREA_BACKGROUND_COLOR [UIColor colorWithRed:171.f/255.f green:199.f/255.f blue:228.f/255.f alpha:0.5]
 
 //沙盒document路径
 #define APP_SANDBOX_DOCUMENT_PATH NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject

@@ -28,7 +28,7 @@
     self.navigationController.navigationBarHidden = YES;
     self.view.backgroundColor = [XDSReadConfig shareInstance].currentTheme?[XDSReadConfig shareInstance].currentTheme:[XDSReadConfig shareInstance].cacheTheme;
 
-    CGRect frame = [XDSReadManager readViewBounds];
+    CGRect frame = [XDSReadManager readViewFrame];
     self.readView = [[XDSReadView alloc] initWithFrame:frame chapterNum:self.chapterNum pageNum:self.pageNum];
     self.readView.backgroundColor = self.view.backgroundColor;
     [self.view addSubview:self.readView];

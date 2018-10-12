@@ -133,7 +133,7 @@
     [self.bookList removeAllObjects];
     
     //本地文件-同步执行
-    NSArray *fileList = @[@"不懂这些英文你就OUT了(正版).epub", @"Android从入门到精通.epub", @"三人成狼.txt", @"特种神医.txt"];
+    NSArray *fileList = @[@"不懂这些英文你就OUT了(正版).epub", @"Android从入门到精通.epub",@"特种神医.txt"];
     for (NSString *fileName in fileList) {
         
         //注意，url初始化方法与从documents读取文件的url初始化方法的区别

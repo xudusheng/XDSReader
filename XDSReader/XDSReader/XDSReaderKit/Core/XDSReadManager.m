@@ -27,13 +27,35 @@ static XDSReadManager *readManager;
     return readManager;
 }
 
-+ (CGRect)readViewBounds {
-    CGRect bounds = CGRectMake(kReadViewMarginLeft,
-                               DEVICE_STATUS_BAR_HEIGHT,
-                               DEVICE_MAIN_SCREEN_WIDTH_XDSR-kReadViewMarginLeft-kReadViewMarginRight,
-                               DEVICE_MAIN_SCREEN_HEIGHT_XDSR-DEVICE_STATUS_BAR_HEIGHT-kReadViewMarginBottom);
++ (CGRect)readViewFrame {
+    CGRect frame = CGRectMake(0,
+                               0,
+                               DEVICE_MAIN_SCREEN_WIDTH_XDSR,
+                               DEVICE_MAIN_SCREEN_HEIGHT_XDSR);
+    return frame;
+}
+
++ (UIEdgeInsets)readViewEdgeInsets {
+    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(DEVICE_STATUS_BAR_HEIGHT,
+                                               kReadViewMarginLeft,
+                                               kReadViewMarginBottom,
+                                               kReadViewMarginRight);
+    return edgeInsets;
+}
+
+
++ (CGRect)readViewContentFrame {
+    CGRect frame = [self readViewFrame];
+    UIEdgeInsets edgeInsets = [self readViewEdgeInsets];
+    
+    CGRect bounds = CGRectZero;
+    bounds.origin.x = frame.origin.x - edgeInsets.left;
+    bounds.origin.y = frame.origin.y - edgeInsets.top;
+    bounds.size.height = frame.size.height - edgeInsets.top - edgeInsets.bottom;
+    bounds.size.width = frame.size.width - edgeInsets.left - edgeInsets.right;
     return bounds;
 }
+
 //MARK: - //获取对于章节页码的radViewController
 - (XDSReadViewController *)readViewWithChapter:(NSInteger *)chapter
                                           page:(NSInteger *)page

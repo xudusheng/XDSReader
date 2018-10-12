@@ -10,10 +10,16 @@
 #import "XDSChapterModel.h"
 #import "UIView+XDSHyperLink.h"
 #import "XDSPhotoBrowser.h"
+
+typedef struct _XDSRange {
+    NSInteger location;
+    NSInteger length;
+} XDSRange;
 @interface XDSReadView () <DTAttributedTextContentViewDelegate>
 
 {
-    NSRange _selectRange;
+//    XDSRange _selectRange;
+    //    NSRange _selectRange;
     NSRange _calRange;
     NSArray *_pathArray;
     
@@ -30,7 +36,9 @@
 
 @property (nonatomic,strong) XDSMagnifierView *magnifierView;
 
-@property (strong, nonatomic) DTAttributedTextContentView *readTextView;
+//@property (strong, nonatomic) DTAttributedTextContentView *readTextView;
+@property (strong, nonatomic) DTAttributedTextView *readTextView;
+@property (assign, nonatomic) XDSRange selectRange;
 
 @property (nonatomic, strong) NSMutableAttributedString *readAttributedContent;
 
@@ -50,7 +58,7 @@
         NSMutableAttributedString *pageAttributeString = chapterModel.pageAttributeStrings[self.pageNum];
         _readAttributedContent = pageAttributeString;
         self.content = pageAttributeString.string;
-
+        
         [self createUI];
     }
     return self;
@@ -87,14 +95,29 @@
     
     
     CGRect frame = self.bounds;
+//    // we draw images and links via subviews provided by delegate methods
+//    self.readTextView = [[DTAttributedTextContentView alloc] initWithFrame:frame];
+//    self.readTextView.shouldDrawImages = YES;
+//    self.readTextView.shouldDrawLinks = YES;
+//    self.readTextView.delegate = self; // delegate for custom sub views
+//    self.readTextView.backgroundColor = [UIColor clearColor];
+//    [self addSubview:self.readTextView];
+//    self.readTextView.attributedString = self.readAttributedContent;
+
     // we draw images and links via subviews provided by delegate methods
-    self.readTextView = [[DTAttributedTextContentView alloc] initWithFrame:frame];
+    self.readTextView = [[DTAttributedTextView alloc] initWithFrame:frame];
     self.readTextView.shouldDrawImages = YES;
     self.readTextView.shouldDrawLinks = YES;
-    self.readTextView.delegate = self; // delegate for custom sub views
+    self.readTextView.textDelegate = self; // delegate for custom sub views
     self.readTextView.backgroundColor = [UIColor clearColor];
+    self.readTextView.attributedTextContentView.edgeInsets = UIEdgeInsetsMake(20, 20, 20, 20);
     [self addSubview:self.readTextView];
     self.readTextView.attributedString = self.readAttributedContent;
+    
+    UIView *backView = [[UIView alloc] initWithFrame:self.readTextView.bounds];
+//    backView.backgroundColor = [UIColor redColor];
+    self.readTextView.backgroundView = backView;
+
 }
 
 //TODO: Magnifier View
@@ -133,15 +156,15 @@
     
     // get image for highlighted link text
     UIImage *highlightImage = [attributedTextContentView contentImageWithBounds:frame options:DTCoreTextLayoutFrameDrawingDrawLinksHighlighted];
-
+    
     [button setImage:highlightImage forState:UIControlStateHighlighted];
     
     // use normal push action for opening URL
     [button addTarget:self action:@selector(linkPushed:) forControlEvents:UIControlEventTouchUpInside];
     
-//    // demonstrate combination with long press
-//    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(linkLongPressed:)];
-//    [button addGestureRecognizer:longPress];
+    //    // demonstrate combination with long press
+    //    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(linkLongPressed:)];
+    //    [button addGestureRecognizer:longPress];
     
     return button;
 }
@@ -152,10 +175,10 @@
     
     if ([attachment isKindOfClass:[DTImageTextAttachment class]])
     {
-
+        
         // if the attachment has a hyperlinkURL then this is currently ignored
         DTLazyImageView *imageView = [[DTLazyImageView alloc] initWithFrame:frame];
-//        imageView.delegate = self;
+        //        imageView.delegate = self;
         imageView.userInteractionEnabled = YES;
         // sets the image if there is one
         imageView.image = [(DTImageTextAttachment *)attachment image];
@@ -171,7 +194,7 @@
         if (attachment.hyperLinkURL) {
             imageView.hyperLinkURL = attachment.hyperLinkURL;// if there is a hyperlink
         }
-
+        
         return imageView;
     }else if ([attachment isKindOfClass:[DTObjectTextAttachment class]]) {
         // somecolorparameter has a HTML color
@@ -261,7 +284,7 @@
             NSString *locationKey = [NSString stringWithFormat:@"${id=%@}", catalogueModel.catalogueId];
             NSInteger locationInChapter = [chapterModel.locationWithPageIdMapping[locationKey] integerValue];
             NSInteger page = [chapterModel getPageWithLocationInChapter:locationInChapter];
-
+            
             NSLog(@"chapter = %zd, page = %zd", selectedChapterNum, page);
             [[XDSReadManager sharedManager] readViewJumpToChapter:selectedChapterNum page:page];
             
@@ -300,37 +323,45 @@
         }
     }
 }
--(void)pan:(UIPanGestureRecognizer *)pan{
+- (void)pan:(UIPanGestureRecognizer *)pan{
     
     CGPoint point = [pan locationInView:self];
     [self hiddenMenu];
-    if (pan.state == UIGestureRecognizerStateBegan || pan.state == UIGestureRecognizerStateChanged) {
-        [self showMagnifier];
-        self.magnifierView.touchPoint = point;
-        
-        if (CGRectContainsPoint(_rightRect, point)||CGRectContainsPoint(_leftRect, point)) {
-            if (CGRectContainsPoint(_leftRect, point)) {
-                _isDirectionRight = NO;   //从左侧滑动
+    
+    
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        CGFloat minDistanceToLeftRect = [self minDistanceFromPoint:point toRect:_leftRect];
+        CGFloat minDistanceToRightRect = [self minDistanceFromPoint:point toRect:_rightRect];
+        NSLog(@"left = %f, right = %f", minDistanceToLeftRect, minDistanceToRightRect);
+        if (minDistanceToLeftRect < minDistanceToRightRect){
+            NSLog(@"左边大头针 《= ");
+            if (_selectRange.length > 0) {
+                _selectRange.location = _selectRange.location + _selectRange.length;
+                _selectRange.length = -_selectRange.length;
             }
-            else{
-                _isDirectionRight=  YES;    //从右侧滑动
+        } else {
+            NSLog(@"右边大头针 =》 ");
+            if (_selectRange.length < 0) {
+                _selectRange.location = _selectRange.location + _selectRange.length;
+                _selectRange.length = -_selectRange.length;
             }
         }
-        
+    }
+   if (pan.state == UIGestureRecognizerStateBegan || pan.state == UIGestureRecognizerStateChanged) {
+        [self showMagnifier];
+        self.magnifierView.touchPoint = point;
+
         //传入手势坐标，返回选择文本的range和frame数组，一行一个frame
-        NSArray *path = [self parserRectsWithPoint:point range:&_selectRange paths:_pathArray isDirectionRight:_isDirectionRight];
+        NSArray *path = [self parserRectsWithPoint:point range:&_selectRange paths:_pathArray];
         _pathArray = path;
         [self setNeedsDisplay];
         
-        
     }else{
         [self hiddenMagnifier];
-        _selectState = NO;
         if (!CGRectEqualToRect(_menuRect, CGRectZero)) {
             [self showMenu];
         }
     }
-    
 }
 
 -(void)showMenu {
@@ -358,27 +389,27 @@
 
 #pragma mark - MJPhotoBrowser库关键代码
 - (void)showPhotoBrowserWithImage:(NSString *)imageurl {
-//    //显示大图
-//    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
-//    // 2.显示相册
-//    XDSPhotoBrowser *browser = [[XDSPhotoBrowser alloc] initWithDelegate:self];
-//
-//    // Set options
-//    browser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
-//    browser.displayNavArrows = YES; // Whether to display left and right nav arrows on toolbar (defaults to NO)
-//    browser.displaySelectionButtons = NO; // Whether selection buttons are shown on each image (defaults to NO)
-//    browser.zoomPhotosToFill = YES; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
-//    browser.alwaysShowControls = YES; // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
-//    browser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
-//    browser.startOnGrid = YES; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
-//    browser.autoPlayOnAppear = YES; // Auto-play first video
-//    browser.enableSwipeToDismiss = YES;
-//
-//    browser.currentPhotoIndex = [imageSrcArray containsObject:imageurl]?[imageSrcArray indexOfObject:imageurl]:0; // 弹出相册时显示第几张图片
-//    [browser showNextPhotoAnimated:YES];
-//
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:browser];
-//    [[UIViewController xds_visiableViewController] presentViewController:nav animated:YES completion:nil];
+    //    //显示大图
+    //    NSArray *imageSrcArray = CURRENT_RECORD.chapterModel.imageSrcArray;
+    //    // 2.显示相册
+    //    XDSPhotoBrowser *browser = [[XDSPhotoBrowser alloc] initWithDelegate:self];
+    //
+    //    // Set options
+    //    browser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
+    //    browser.displayNavArrows = YES; // Whether to display left and right nav arrows on toolbar (defaults to NO)
+    //    browser.displaySelectionButtons = NO; // Whether selection buttons are shown on each image (defaults to NO)
+    //    browser.zoomPhotosToFill = YES; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
+    //    browser.alwaysShowControls = YES; // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
+    //    browser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
+    //    browser.startOnGrid = YES; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
+    //    browser.autoPlayOnAppear = YES; // Auto-play first video
+    //    browser.enableSwipeToDismiss = YES;
+    //
+    //    browser.currentPhotoIndex = [imageSrcArray containsObject:imageurl]?[imageSrcArray indexOfObject:imageurl]:0; // 弹出相册时显示第几张图片
+    //    [browser showNextPhotoAnimated:YES];
+    //
+    //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:browser];
+    //    [[UIViewController xds_visiableViewController] presentViewController:nav animated:YES completion:nil];
 }
 
 
@@ -404,14 +435,14 @@
     [self hiddenMenu];
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     
-    [pasteboard setString:[_content substringWithRange:_selectRange]];
+    [pasteboard setString:[_content substringWithRange:[self rangeWithXDSRange:_selectRange]]];
     [XDSReaderUtil showAlertWithTitle:@"成功复制以下内容" message:pasteboard.string];
     
 }
 -(void)menuNote:(id)sender{
     [self hiddenMenu];
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"笔记"
-                                                                             message:[_content substringWithRange:_selectRange]
+                                                                             message:[_content substringWithRange:[self rangeWithXDSRange:_selectRange]]
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = @"输入内容";
@@ -423,7 +454,7 @@
                                                       style:UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction * _Nonnull action) {
                                                         XDSNoteModel *model = [[XDSNoteModel alloc] init];
-                                                        model.content = [self->_content substringWithRange:self->_selectRange];
+                                                        model.content = [self->_content substringWithRange:[self rangeWithXDSRange:self->_selectRange]];
                                                         model.note = alertController.textFields.firstObject.text;
                                                         model.date = [NSDate date];
                                                         XDSChapterModel *chapterModel = CURRENT_RECORD.chapterModel;
@@ -453,8 +484,8 @@
         return;
     }
     
-    CGFloat dotSize = 8.f;//doc size  小圆点尺寸
-    CGFloat clickableSize = dotSize + 20.f;//clickable size 可点区域尺寸
+    CGFloat dotSize = 12.f;//doc size  小圆点尺寸
+    CGFloat clickableSize = dotSize*2;//clickable size 可点区域尺寸
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGMutablePathRef pathRef = CGPathCreateMutable();
@@ -532,7 +563,8 @@
     [attibutes setObject:[UIColor redColor] forKey:NSUnderlineColorAttributeName];
     [attibutes setObject:[noteModel getNoteURL] forKey:NSLinkAttributeName];
     
-    [_readAttributedContent addAttributes:attibutes range:_selectRange];
+    //    [_readAttributedContent addAttributes:attibutes range:_selectRange];
+    [_readAttributedContent addAttributes:attibutes range:[self rangeWithXDSRange:_selectRange]];
     self.readAttributedContent = _readAttributedContent;
 }
 
@@ -551,9 +583,9 @@
 }
 
 //=============================
-- (CGRect)parserRectWithPoint:(CGPoint)point range:(NSRange *)selectRange{
+- (CGRect)parserRectWithPoint:(CGPoint)point range:(XDSRange *)selectRange{
     
-    DTCoreTextLayoutFrame *visibleframe = self.readTextView.layoutFrame;
+    DTCoreTextLayoutFrame *visibleframe = self.readTextView.attributedTextContentView.layoutFrame;
     NSArray *linse = visibleframe.lines;
     CGRect rect = CGRectZero;
     if (nil == linse) {
@@ -591,11 +623,12 @@
     return rect;
 }
 
+
 - (NSArray *)parserRectsWithPoint:(CGPoint)point
-                           range:(NSRange *)selectRange
-                           paths:(NSArray *)paths
-                 isDirectionRight:(BOOL)isDirectionRight{
-    DTCoreTextLayoutFrame *visibleframe = self.readTextView.layoutFrame;
+                            range:(XDSRange *)selectRange
+                            paths:(NSArray *)paths{
+    
+    DTCoreTextLayoutFrame *visibleframe = self.readTextView.attributedTextContentView.layoutFrame;
     NSArray *linse = visibleframe.lines;
     if (nil == linse || linse.count < 1) {
         return paths;
@@ -613,55 +646,36 @@
             break;
         }
     }
-
+    
     if (!containPoint) {
         return paths;
     }
     
-    //set selectedRange
-    if (isDirectionRight) {
-        if (positionRange.location > (*selectRange).location){
-            //在选择区域之间
-            (*selectRange).length = positionRange.location - (*selectRange).location;
-        }else{
-            //在选中区域左边
-            (*selectRange).length = (*selectRange).location - positionRange.location;
-            (*selectRange).location = positionRange.location;
-        }
-    }else{
-        if(positionRange.location < (*selectRange).location) {
-            //在选中区域左边
-            (*selectRange).length = ((*selectRange).location - positionRange.location + (*selectRange).length);
-            (*selectRange).location = positionRange.location;
-        }else if(positionRange.location > (*selectRange).location + (*selectRange).length){
-            //在选中区域右边
-            (*selectRange).location = (*selectRange).location + (*selectRange).length;
-            (*selectRange).length = positionRange.location - (*selectRange).location;
-        }else{
-            //在选择区域之间
-            (*selectRange).length = (*selectRange).location + (*selectRange).length - positionRange.location;
-            (*selectRange).location = positionRange.location;
-            
-        }
+    if (positionRange.location != (*selectRange).location) {
+        (*selectRange).length = positionRange.location - (*selectRange).location;
+        
     }
     
-    DTCoreTextLayoutLine *firstLine = [visibleframe lineContainingIndex:(*selectRange).location];
-    DTCoreTextLayoutLine *lastLine = [visibleframe lineContainingIndex:((*selectRange).location + (*selectRange).length)];
+    NSRange selectRange_NS = [self rangeWithXDSRange:(*selectRange)];
+    
+    
+    DTCoreTextLayoutLine *firstLine = [visibleframe lineContainingIndex:selectRange_NS.location];
+    DTCoreTextLayoutLine *lastLine = [visibleframe lineContainingIndex:(selectRange_NS.location + selectRange_NS.length)];
     
     if (CGRectEqualToRect(firstLine.frame, lastLine.frame)) {
         CGRect frame = firstLine.frame;
-        CGFloat minX = [firstLine offsetForStringIndex:(*selectRange).location];
-        CGFloat maxX = [firstLine offsetForStringIndex:(*selectRange).location + (*selectRange).length];
+        CGFloat minX = [firstLine offsetForStringIndex:selectRange_NS.location];
+        CGFloat maxX = [firstLine offsetForStringIndex:selectRange_NS.location + selectRange_NS.length];
         frame.origin.x += minX;
         frame.size.width = maxX - minX;
         return @[NSStringFromCGRect(frame)];
         
     }else{
-
+        
         NSMutableArray *pathArray = [NSMutableArray arrayWithCapacity:0];
         
-        NSInteger firstIndex = (*selectRange).location;
-        NSInteger lastIndex = (*selectRange).location + (*selectRange).length;
+        NSInteger firstIndex = selectRange_NS.location;
+        NSInteger lastIndex = selectRange_NS.location + selectRange_NS.length;
         
         for (DTCoreTextLayoutLine *layoutLine in linse) {
             NSRange stringRange = layoutLine.stringRange;
@@ -681,10 +695,53 @@
                 lineFrame.size.width = (CGRectGetWidth(lineFrame) - (CGRectGetMaxX(lineFrame)- CGRectGetMinX(lineFrame) - xStart));
             }else{}
             [pathArray addObject:NSStringFromCGRect(lineFrame)];
-
+            
         }
         return pathArray;
     }
+}
+
+
+
+- (NSRange)rangeWithXDSRange:(XDSRange)range {
+    NSRange range_NS = NSMakeRange(0, 0);
+    if (range.length < 0) {
+        range_NS.location = range.location + range.length;
+        range_NS.length = -range.length;
+    }else {
+        range_NS.location = range.location;
+        range_NS.length = range.length;
+
+    }
+    return range_NS;
+}
+
+
+//point与toRect四个角的最短距离
+- (CGFloat)minDistanceFromPoint:(CGPoint)point toRect:(CGRect)toRect{
+    CGFloat distance = 0.f;
+    
+    CGFloat minX = CGRectGetMinX(toRect);
+    CGFloat minY = CGRectGetMinY(toRect);
+    CGFloat maxX = CGRectGetMaxX(toRect);
+    CGFloat maxY = CGRectGetMaxY(toRect);
+    
+    CGPoint left_top_point = {minX, minY};
+    CGPoint left_bottom_point = {minX, maxY};
+    CGPoint right_top_point = {maxX, minY};
+    CGPoint right_bottom_point = {maxX, maxY};
+    
+    distance = [self distanceFromPoint:point toPoint:left_top_point];
+    distance = MIN(distance, [self distanceFromPoint:point toPoint:left_bottom_point]);
+    distance = MIN(distance, [self distanceFromPoint:point toPoint:right_top_point]);
+    distance = MIN(distance, [self distanceFromPoint:point toPoint:right_bottom_point]);
+    return distance;
+    
+}
+
+- (CGFloat)distanceFromPoint:(CGPoint)fromPoint toPoint:(CGPoint)toPoint {
+    CGFloat distance = sqrt(pow((fromPoint.x - toPoint.x), 2) + pow((fromPoint.y - toPoint.y), 2));
+    return distance;
 }
 
 @end

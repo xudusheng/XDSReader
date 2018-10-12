@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		031B1B2853A8A75BAF03EEA1 /* Pods_XDSReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC7F5927F6C835989775828 /* Pods_XDSReader.framework */; };
-		1808D3BC215BD56400F822FD /* UIViewController+XDSReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808D3BA215BD56300F822FD /* UIViewController+XDSReader.m */; };
 		183B7F4E216ADD430071F08E /* 不懂这些英文你就OUT了(正版).epub in Resources */ = {isa = PBXBuildFile; fileRef = 183B7F49216ADD420071F08E /* 不懂这些英文你就OUT了(正版).epub */; };
 		183B7F4F216ADD430071F08E /* Android从入门到精通.epub in Resources */ = {isa = PBXBuildFile; fileRef = 183B7F4A216ADD420071F08E /* Android从入门到精通.epub */; };
 		183B7F50216ADD430071F08E /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = 183B7F4B216ADD420071F08E /* mdjyml.txt */; };
@@ -89,7 +88,6 @@
 		FCA78BA91EF362CA00114907 /* XDSMagnifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BA81EF362CA00114907 /* XDSMagnifierView.m */; };
 		FCA78BC21EF39B6000114907 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BC11EF39B6000114907 /* UIImage+ImageEffects.m */; };
 		FCA78BD01EF3A2D600114907 /* 每天懂一点好玩心理学.epub in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC51EF3A2D600114907 /* 每天懂一点好玩心理学.epub */; };
-		FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BC61EF3A2D600114907 /* mdjyml.txt */; };
 		FCA78BE31EF5F6AA00114907 /* XDSReadMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BE21EF5F6AA00114907 /* XDSReadMenu.m */; };
 		FCA78BE61EF6D6FE00114907 /* XDSMenuBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCA78BE51EF6D6FE00114907 /* XDSMenuBottomView.m */; };
 		FCA78BE81EF7592100114907 /* XDSReadMenu.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA78BE71EF7592100114907 /* XDSReadMenu.xcassets */; };
@@ -782,7 +780,7 @@
 		FCA78A451EF290F400114907 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = macos;
 				TargetAttributes = {
 					FCA78A4C1EF290F400114907 = {
@@ -842,7 +840,6 @@
 				FCA78A5B1EF290F400114907 /* Main.storyboard in Resources */,
 				FCA78C271EFA00DB00114907 /* 华文彩云.ttf in Resources */,
 				FCA78AD51EF2914F00114907 /* XDSWIFIFileTransferViewController.xib in Resources */,
-				FCA78BD11EF3A2D700114907 /* mdjyml.txt in Resources */,
 				18B3DC8321549A9600FFD27E /* XDSReaderWifiView.xib in Resources */,
 				183B7F4E216ADD430071F08E /* 不懂这些英文你就OUT了(正版).epub in Resources */,
 				A2F03B4D216BB1BC0093AC40 /* subnote.html in Resources */,
