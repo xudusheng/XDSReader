@@ -27,6 +27,7 @@ XDSReadManagerDelegate
 
 @property (nonatomic,strong) UIPageViewController *pageViewController;
 @property (strong, nonatomic) XDSReadMenu *readMenuView;//菜单
+@property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
 
 @end
 
@@ -61,12 +62,14 @@ XDSReadManagerDelegate
                                   direction:UIPageViewControllerNavigationDirectionForward
                                    animated:YES
                                  completion:nil];
-    [self.view addGestureRecognizer:({
+    
+    self.tapGesture = ({
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToolMenu)];
         tap.delegate = self;
         tap;
-    })];
+    });
     
+    [self.view addGestureRecognizer:self.tapGesture];
 
 }
 
@@ -131,7 +134,12 @@ XDSReadManagerDelegate
 //TODO: UIGestureRecognizerDelegate
 //解决TabView与Tap手势冲突
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    NSLog(@"%s", __FUNCTION__);
+
+#warning 待优化
+//    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[_chapter];
+//    if (chapterModel.selectRange.length != 0) {
+//        return NO;
+//    }
     if ([touch.view isKindOfClass:[DTAttributedTextContentView class]] ||
         [touch.view isKindOfClass:[DTAttributedTextView class]] ||
         [touch.view isKindOfClass:[XDSReadView class]]) {

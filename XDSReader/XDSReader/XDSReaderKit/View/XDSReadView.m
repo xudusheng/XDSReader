@@ -11,16 +11,7 @@
 #import "UIView+XDSHyperLink.h"
 #import "XDSPhotoBrowser.h"
 
-typedef struct _XDSRange {
-    NSInteger location;
-    NSInteger length;
-} XDSRange;
-@interface XDSReadView () <DTAttributedTextContentViewDelegate>
-
-{
-//    XDSRange _selectRange;
-    //    NSRange _selectRange;
-    NSRange _calRange;
+@interface XDSReadView () <DTAttributedTextContentViewDelegate> {
     NSArray *_pathArray;
     
     UIPanGestureRecognizer *_pan;
@@ -33,7 +24,7 @@ typedef struct _XDSRange {
     BOOL _selectState;
     BOOL _isDirectionRight; //滑动方向  (0---左侧滑动 1 ---右侧滑动)
 }
-
+@property (nonatomic,strong) XDSChapterModel *chapterModel;
 @property (nonatomic,strong) XDSMagnifierView *magnifierView;
 
 //@property (strong, nonatomic) DTAttributedTextContentView *readTextView;
@@ -54,8 +45,8 @@ typedef struct _XDSRange {
     if (self = [super initWithFrame:frame]) {
         self.chapterNum = chapterNum;
         self.pageNum = pageNum;
-        XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapterNum];
-        NSMutableAttributedString *pageAttributeString = chapterModel.pageAttributeStrings[self.pageNum];
+        self.chapterModel = CURRENT_BOOK_MODEL.chapters[self.chapterNum];
+        NSMutableAttributedString *pageAttributeString = self.chapterModel.pageAttributeStrings[self.pageNum];
         _readAttributedContent = pageAttributeString;
         self.content = pageAttributeString.string;
         
@@ -303,7 +294,7 @@ typedef struct _XDSRange {
         
         //传入手势坐标，返回选择文本的range和frame
         CGRect rect = [self parserRectWithPoint:point range:&_selectRange];
-        
+        self.chapterModel.selectRange = _selectRange;
         //显示放大镜
         [self showMagnifier];
         
@@ -327,7 +318,6 @@ typedef struct _XDSRange {
     
     CGPoint point = [pan locationInView:self];
     [self hiddenMenu];
-    
     
     if (pan.state == UIGestureRecognizerStateBegan) {
         CGFloat minDistanceToLeftRect = [self minDistanceFromPoint:point toRect:_leftRect];
@@ -357,6 +347,7 @@ typedef struct _XDSRange {
         [self setNeedsDisplay];
         
     }else{
+        self.chapterModel.selectRange = _selectRange;
         [self hiddenMagnifier];
         if (!CGRectEqualToRect(_menuRect, CGRectZero)) {
             [self showMenu];
@@ -437,6 +428,7 @@ typedef struct _XDSRange {
     
     [pasteboard setString:[_content substringWithRange:[self rangeWithXDSRange:_selectRange]]];
     [XDSReaderUtil showAlertWithTitle:@"成功复制以下内容" message:pasteboard.string];
+    [self cancelSelected];
     
 }
 -(void)menuNote:(id)sender{
@@ -548,6 +540,8 @@ typedef struct _XDSRange {
 
 -(void)cancelSelected{
     if (_pathArray) {
+        _selectRange.location =  0;
+        _selectRange.length = 0;
         _pathArray = nil;
         [self hiddenMenu];
         [self setNeedsDisplay];
@@ -633,6 +627,16 @@ typedef struct _XDSRange {
     if (nil == linse || linse.count < 1) {
         return paths;
     }
+    
+//    DTCoreTextLayoutLine *lastLayoutLine = linse.lastObject;
+//    CGRect lastLayoutLineFrame = lastLayoutLine.frame;
+//    if (CGRectGetMinY(lastLayoutLineFrame) < point.y && CGRectGetMaxY(lastLayoutLineFrame) > point.y) {
+//        point.y = CGRectGetMidY(lastLayoutLineFrame);
+//    }
+//    if (point.x > CGRectGetMaxX(lastLayoutLineFrame)) {
+//        point.x = CGRectGetMaxX(lastLayoutLineFrame);
+//    }
+    
     
     NSRange positionRange = NSMakeRange(0, 0);
     BOOL containPoint = NO;

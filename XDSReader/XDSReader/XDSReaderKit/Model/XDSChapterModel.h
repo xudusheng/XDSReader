@@ -22,6 +22,12 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
     LPPEBookTypeEpub,
 };
 
+typedef struct _XDSRange {
+    NSInteger location;
+    NSInteger length;
+} XDSRange;
+
+
 @interface XDSChapterModel : NSObject <NSCopying,NSCoding>
 
 @property (nonatomic, copy) XDSReadConfig *currentConfig;
@@ -44,6 +50,8 @@ typedef  NS_ENUM(NSInteger,LPPEBookType){
 @property (nonatomic, readonly) NSArray<NSString *> *imageSrcArray;//本章所有图片的链接
 @property (nonatomic, readonly) NSArray<XDSNoteModel *>*notes;
 @property (nonatomic, readonly) NSArray<XDSMarkModel *>*marks;
+
+@property (assign, nonatomic) XDSRange selectRange;//选中的文本位置，用于添加选中背景色和大头针，
 
 - (void)paginateEpubWithBounds:(CGRect)bounds;
 - (void)addNote:(XDSNoteModel *)noteModel;//insert a book note into chapter 向该章节中插入一条笔记
