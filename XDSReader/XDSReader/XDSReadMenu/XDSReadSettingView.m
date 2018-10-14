@@ -95,7 +95,7 @@ NSInteger const kSetingFontSizeButtonTag = 30;
         button.showsTouchWhenHighlighted = YES;
         button.tag = kSetingEffectButtonTag + i;
         button.titleLabel.font = FONT_SYSTEM_XDS_12;
-        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         [button setTitle:effect forState:UIControlStateNormal];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [button setTitleColor:TEXT_COLOR_XDS_2 forState:UIControlStateSelected];
@@ -128,7 +128,7 @@ NSInteger const kSetingFontSizeButtonTag = 30;
         button.showsTouchWhenHighlighted = YES;
         button.tag = kSetingFontButtonTag + i;
         button.titleLabel.font = FONT_SYSTEM_XDS_12;
-        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         [button setTitle:font forState:UIControlStateNormal];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [button setTitleColor:TEXT_COLOR_XDS_2 forState:UIControlStateSelected];
@@ -244,7 +244,7 @@ NSInteger const kSetingFontSizeButtonTag = 30;
                         READ_BACKGROUND_COLOC_3,
                         READ_BACKGROUND_COLOC_4,
                         READ_BACKGROUND_COLOC_5];
-    self.effectArray = @[@"无效果",@"平移",@"仿真",@"上下"];
+    self.effectArray = @[@"仿真翻页",@"左右滑动"];
     
     self.fontArray = @[@{@"name":@"系统",@"font":@""},
                        @{@"name":@"彩云",@"font":@"STCaiyun"},

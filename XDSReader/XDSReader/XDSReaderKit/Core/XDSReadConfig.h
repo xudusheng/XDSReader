@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, XDSReadThemeType) {
+    XDSReadThemeTypeNone = 0,//无效果，白间模式
+    
+    XDSReadThemeTypeBlack,//夜间模式
+    
+    
+};
+
 @interface XDSReadConfig : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, readonly) CGFloat cachefontSize;

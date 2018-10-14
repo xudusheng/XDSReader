@@ -93,7 +93,7 @@
     //用于格式化NSDate对象
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //设置格式：zzz表示时区
-    [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
     //NSDate转NSString
     NSString *dateString = [dateFormatter stringFromDate:date];
     //输出currentDateString

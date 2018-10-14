@@ -52,11 +52,27 @@
     
     //如果输入IP以后无法连接到设备，则尝试调用一下网络请求，激活网络连接以后再尝试
     [self demoRequest];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self startAnimation:YES];
+    
+    
+    
+    NSMutableAttributedString * mAttribute = [[NSMutableAttributedString alloc] initWithString:@"“首先，家里的环境你足够熟悉不仅自己休息不好”家人“也跟疲惫，久而久之就容易出现矛盾。”"];
+    
+    NSMutableDictionary *attibutes = [NSMutableDictionary dictionary];
+    //虚线
+    //[attibutes setObject:@(NSUnderlinePatternDot|NSUnderlineStyleSingle) forKey:NSUnderlineStyleAttributeName];
+    [attibutes setObject:@(NSUnderlinePatternSolid|NSUnderlineStyleSingle) forKey:NSUnderlineStyleAttributeName];
+    [attibutes setObject:[UIColor redColor] forKey:NSUnderlineColorAttributeName];
+    [mAttribute addAttributes:attibutes range:NSMakeRange(0, mAttribute.length)];
+    
+    self.wifiView.progressLabel.attributedText = mAttribute;
+    
+    
 }
 
 - (void)receiveANewFileNotification:(NSNotification *)notification{

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XDSReader/XDSReaderKit/Core/XDSReadOperation.m"
-            timestampString = "526147449.691875"
+            timestampString = "561219937.35393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "245"
@@ -80,22 +80,6 @@
             startingLineNumber = "1823"
             endingLineNumber = "1823"
             landmarkName = "-webViewDidFinishLoad:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "XDSReader/XDSReadMenu/XDSNoteHTMLVC.m"
-            timestampString = "560794495.30055"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "-shareAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
