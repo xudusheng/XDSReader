@@ -14,6 +14,6 @@ CGFloat const kReadViewMarginLeft = 20.f;
 CGFloat const kReadViewMarginRight = 20.f;
 
 
-CGFloat const kXDSReadViewMinFontSize = 11.0f;
-CGFloat const kXDSReadViewMaxFontSize = 20.0f;
-CGFloat const kXDSReadViewDefaultFontSize = 14.0f;
+CGFloat const kXDSReadViewMinFontSize = 14.f;
+CGFloat const kXDSReadViewMaxFontSize = 24.0f;
+CGFloat const kXDSReadViewDefaultFontSize = 17.0f;

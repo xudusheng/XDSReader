@@ -373,4 +373,24 @@
 	
 }
 
+
+//正则替换换行符及其前后的空格
+- (NSString *)xds_replaceMatchRegex:(NSString *)regex withString:(NSString *)replaceString {
+    // 创建 NSRegularExpression 对象,匹配 正则表达式
+    NSRegularExpression *regExp = [[NSRegularExpression alloc] initWithPattern:regex
+                                                                       options:NSRegularExpressionCaseInsensitive
+                                                                         error:nil];
+    // 替换匹配的字符串为 searchStr
+    NSString *resultStr = [regExp stringByReplacingMatchesInString:self
+                                                 options:NSMatchingReportProgress
+                                                   range:NSMakeRange(0, self.length)
+                                            withTemplate:replaceString];
+    return resultStr;
+}
+
+
+- (NSString *)xds_trimString {
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
 @end

@@ -11,7 +11,9 @@
 #import "UIView+XDSHyperLink.h"
 #import "XDSPhotoBrowser.h"
 
+
 @interface XDSReadView () <DTAttributedTextContentViewDelegate> {
+    NSRange _calRange;
     NSArray *_pathArray;
     
     UIPanGestureRecognizer *_pan;
@@ -24,6 +26,7 @@
     BOOL _selectState;
     BOOL _isDirectionRight; //滑动方向  (0---左侧滑动 1 ---右侧滑动)
 }
+
 @property (nonatomic,strong) XDSChapterModel *chapterModel;
 @property (nonatomic,strong) XDSMagnifierView *magnifierView;
 
@@ -294,7 +297,7 @@
         
         //传入手势坐标，返回选择文本的range和frame
         CGRect rect = [self parserRectWithPoint:point range:&_selectRange];
-        self.chapterModel.selectRange = _selectRange;
+
         //显示放大镜
         [self showMagnifier];
         
@@ -307,6 +310,7 @@
     }
     if (longPress.state == UIGestureRecognizerStateEnded) {
         
+        self.chapterModel.selectRange = _selectRange;
         //隐藏放大
         [self hiddenMagnifier];
         if (!CGRectEqualToRect(_menuRect, CGRectZero)) {
@@ -322,18 +326,19 @@
     if (pan.state == UIGestureRecognizerStateBegan) {
         CGFloat minDistanceToLeftRect = [self minDistanceFromPoint:point toRect:_leftRect];
         CGFloat minDistanceToRightRect = [self minDistanceFromPoint:point toRect:_rightRect];
-        NSLog(@"left = %f, right = %f", minDistanceToLeftRect, minDistanceToRightRect);
         if (minDistanceToLeftRect < minDistanceToRightRect){
             NSLog(@"左边大头针 《= ");
             if (_selectRange.length > 0) {
                 _selectRange.location = _selectRange.location + _selectRange.length;
                 _selectRange.length = -_selectRange.length;
+                self.chapterModel.selectRange = _selectRange;
             }
         } else {
             NSLog(@"右边大头针 =》 ");
             if (_selectRange.length < 0) {
                 _selectRange.location = _selectRange.location + _selectRange.length;
                 _selectRange.length = -_selectRange.length;
+                self.chapterModel.selectRange = _selectRange;
             }
         }
     }
@@ -343,11 +348,12 @@
 
         //传入手势坐标，返回选择文本的range和frame数组，一行一个frame
         NSArray *path = [self parserRectsWithPoint:point range:&_selectRange paths:_pathArray];
+       self.chapterModel.selectRange = _selectRange;
+       
         _pathArray = path;
         [self setNeedsDisplay];
         
     }else{
-        self.chapterModel.selectRange = _selectRange;
         [self hiddenMagnifier];
         if (!CGRectEqualToRect(_menuRect, CGRectZero)) {
             [self showMenu];
@@ -426,13 +432,15 @@
     [self hiddenMenu];
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     
-    [pasteboard setString:[_content substringWithRange:[self rangeWithXDSRange:_selectRange]]];
+    NSString *selectedContent = [_content substringWithRange:[self rangeWithXDSRange:_selectRange]];
+    [pasteboard setString:selectedContent];
     [XDSReaderUtil showAlertWithTitle:@"成功复制以下内容" message:pasteboard.string];
-    [self cancelSelected];
     
 }
 -(void)menuNote:(id)sender{
     [self hiddenMenu];
+    NSString *selectedContent = [_content substringWithRange:[self rangeWithXDSRange:_selectRange]];
+    NSLog(@"selectedCotnent = %@", selectedContent);
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"笔记"
                                                                              message:[_content substringWithRange:[self rangeWithXDSRange:_selectRange]]
                                                                       preferredStyle:UIAlertControllerStyleAlert];
@@ -540,8 +548,9 @@
 
 -(void)cancelSelected{
     if (_pathArray) {
-        _selectRange.location =  0;
         _selectRange.length = 0;
+        self.chapterModel.selectRange = _selectRange;
+        
         _pathArray = nil;
         [self hiddenMenu];
         [self setNeedsDisplay];
@@ -628,26 +637,30 @@
         return paths;
     }
     
-//    DTCoreTextLayoutLine *lastLayoutLine = linse.lastObject;
-//    CGRect lastLayoutLineFrame = lastLayoutLine.frame;
-//    if (CGRectGetMinY(lastLayoutLineFrame) < point.y && CGRectGetMaxY(lastLayoutLineFrame) > point.y) {
-//        point.y = CGRectGetMidY(lastLayoutLineFrame);
-//    }
-//    if (point.x > CGRectGetMaxX(lastLayoutLineFrame)) {
-//        point.x = CGRectGetMaxX(lastLayoutLineFrame);
-//    }
-    
-    
     NSRange positionRange = NSMakeRange(0, 0);
     BOOL containPoint = NO;
     for (DTCoreTextLayoutLine *layoutLine in linse) {
         CGRect layoutLineFrame = layoutLine.frame;
-        if (CGRectContainsPoint(layoutLineFrame, point)) {
-            //获取手势在该页中的位置
-            NSInteger index = [layoutLine stringIndexForPosition:point];
-            positionRange.location = index;
+        
+        if (CGRectGetMinY(layoutLineFrame) < point.y && CGRectGetMaxY(layoutLineFrame) > point.y) {
+            
+            NSRange range = [layoutLine stringRange];
+            if (point.x > CGRectGetMinX(layoutLineFrame) && point.x < CGRectGetMaxX(layoutLineFrame)) {
+                //获取手势在该页中的位置
+                NSInteger index = [layoutLine stringIndexForPosition:point];
+                range.length = index - range.location;
+                
+            }
+            
+            NSString *subString = [_readAttributedContent.string substringWithRange:range];
+            
+            //处理换行符
+            if ((*selectRange).location < range.location + range.length &&
+                ([subString hasSuffix:@"\n"] || [subString hasSuffix:@"\r"])) {
+                range.length = range.length - 1;
+            }
+            positionRange.location = range.location + range.length;
             containPoint = YES;
-            break;
         }
     }
     
@@ -662,11 +675,31 @@
     
     NSRange selectRange_NS = [self rangeWithXDSRange:(*selectRange)];
     
-    
     DTCoreTextLayoutLine *firstLine = [visibleframe lineContainingIndex:selectRange_NS.location];
     DTCoreTextLayoutLine *lastLine = [visibleframe lineContainingIndex:(selectRange_NS.location + selectRange_NS.length)];
     
     if (CGRectEqualToRect(firstLine.frame, lastLine.frame)) {
+        
+        //===============================================================================================
+        //空格部分不选中
+//        NSRange subStringRange = [firstLine stringRange];
+//        NSString *subString = [_readAttributedContent.string substringWithRange:subStringRange];
+//        NSRange rangeWithoutWhite = [subString rangeOfString:subString.xds_trimString];
+//        rangeWithoutWhite.location = rangeWithoutWhite.location + subStringRange.location;
+//
+//        //处理左边空格
+//        if (selectRange_NS.location < rangeWithoutWhite.location) {
+//            selectRange_NS.length = selectRange_NS.length - (rangeWithoutWhite.location - selectRange_NS.location);
+//            selectRange_NS.location = rangeWithoutWhite.location;
+//        }
+//
+//        //处理右边空格
+//        if (selectRange_NS.location + selectRange_NS.length > rangeWithoutWhite.location + rangeWithoutWhite.length) {
+//            selectRange_NS.length = selectRange_NS.length - (selectRange_NS.location + selectRange_NS.length - rangeWithoutWhite.location - rangeWithoutWhite.length);
+//            selectRange_NS.length = MAX(selectRange_NS.length, 0);
+//        }
+        //===============================================================================================
+        
         CGRect frame = firstLine.frame;
         CGFloat minX = [firstLine offsetForStringIndex:selectRange_NS.location];
         CGFloat maxX = [firstLine offsetForStringIndex:selectRange_NS.location + selectRange_NS.length];
@@ -689,16 +722,43 @@
                 continue;
             }
             
+            //===============================================================================================
             CGRect lineFrame = layoutLine.frame;
-            if (layoutLine == firstLine ) {
+
+            if (layoutLine == firstLine) {
                 CGFloat xStart = [layoutLine offsetForStringIndex:firstIndex];
                 lineFrame.size.width = (CGRectGetWidth(lineFrame) - (xStart - CGRectGetMinX(lineFrame)));
                 lineFrame.origin.x += xStart;
             }else if(layoutLine == lastLine){
                 CGFloat xStart = [layoutLine offsetForStringIndex:lastIndex];
                 lineFrame.size.width = (CGRectGetWidth(lineFrame) - (CGRectGetMaxX(lineFrame)- CGRectGetMinX(lineFrame) - xStart));
+
             }else{}
             [pathArray addObject:NSStringFromCGRect(lineFrame)];
+            //===============================================================================================
+
+//            //===============================================================================================
+//            //空格部分不选中
+//            NSRange lineRange = [layoutLine stringRange];
+//            NSString *subString = [_readAttributedContent.string substringWithRange:lineRange];
+//            NSRange rangeWithoutWhite = [subString rangeOfString:subString.xds_trimString];
+//            lineRange.location = lineRange.location + rangeWithoutWhite.location;
+//            lineRange.length = rangeWithoutWhite.length;
+//
+//            CGRect lineFrame = layoutLine.frame;
+//
+//            if (layoutLine == firstLine) {
+//                lineRange.length = lineRange.location + lineRange.length - selectRange_NS.location;
+//                lineRange.location = selectRange_NS.location;
+//            }else if(layoutLine == lastLine){
+//                lineRange.length = selectRange_NS.location + selectRange_NS.length - lineRange.location;
+//
+//            }else{}
+//            CGFloat xStart = [layoutLine offsetForStringIndex:lineRange.location];
+//            CGFloat xEnd = [layoutLine offsetForStringIndex:lineRange.location + lineRange.length];
+//            lineFrame.size.width = xEnd - xStart;
+//            lineFrame.origin.x += xStart;
+//            [pathArray addObject:NSStringFromCGRect(lineFrame)];
             
         }
         return pathArray;

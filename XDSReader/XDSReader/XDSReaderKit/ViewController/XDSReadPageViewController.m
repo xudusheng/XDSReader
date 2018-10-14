@@ -135,11 +135,16 @@ XDSReadManagerDelegate
 //解决TabView与Tap手势冲突
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
 
-#warning 待优化
+//    NSLog(@"%s", __FUNCTION__);
+//
+//#warning 待优化
 //    XDSChapterModel *chapterModel = CURRENT_BOOK_MODEL.chapters[_chapter];
+//    NSLog(@"chapterModel = %@ = %ld", chapterModel, chapterModel.selectRange.length);
+//
 //    if (chapterModel.selectRange.length != 0) {
 //        return NO;
 //    }
+    
     if ([touch.view isKindOfClass:[DTAttributedTextContentView class]] ||
         [touch.view isKindOfClass:[DTAttributedTextView class]] ||
         [touch.view isKindOfClass:[XDSReadView class]]) {

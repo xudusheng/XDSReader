@@ -43,6 +43,14 @@
 - (NSString *)stringByRemovingNewLinesAndWhitespace;
 
 // DEPRECIATED - Please use NSString stringByConvertingHTMLToPlainText
-- (NSString *)stringByStrippingTags; 
+- (NSString *)stringByStrippingTags;
+
+
+
+//正则替换文本中所有的换行符及其前后的空格
+- (NSString *)xds_replaceMatchRegex:(NSString *)regex withString:(NSString *)replaceString;
+
+//去除文本前后空格
+- (NSString *)xds_trimString;
 
 @end

@@ -47,7 +47,12 @@
     if (!content) {
         return @"";
     }
-        
+    
+    NSString * regExpStr = @"( *)([(\\n)|(\\r)|(\\f)|(\\t)]+)( *)";
+    NSString * replacement = @"\n";
+    
+    content = [content xds_replaceMatchRegex:regExpStr withString:replacement];
+    
     return content;
     
 }
